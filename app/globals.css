@@ -59,6 +59,8 @@ html {
 body {
   @apply bg-white font-sans text-navy-700 antialiased;
   text-rendering: optimizeLegibility;
+  /* Guard against any absolutely-positioned decoration causing sideways scroll on phones */
+  overflow-x: clip;
 }
 
 ::selection {

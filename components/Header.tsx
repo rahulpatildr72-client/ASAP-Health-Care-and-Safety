@@ -98,9 +98,10 @@ export default function Header() {
         </div>
       </nav>
 
-      {/* Mobile slide-in drawer */}
+      {/* Mobile slide-in drawer (overflow-hidden keeps the off-screen panel
+          from creating horizontal scroll on touch devices) */}
       <div
-        className={`fixed inset-x-0 bottom-0 top-0 -z-10 transition-opacity duration-300 lg:hidden ${
+        className={`fixed inset-x-0 bottom-0 top-0 -z-10 overflow-hidden transition-opacity duration-300 lg:hidden ${
           open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
