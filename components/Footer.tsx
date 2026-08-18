@@ -24,7 +24,7 @@ const linkClass = "transition-colors hover:text-[#3B5BDB]";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[#D6DBF8] bg-gradient-to-b from-[#F1F2FC] to-[#DDE1F9] text-[#5A607A]">
+    <footer className="bg-gradient-to-b from-[#D6DAF6] to-[#C3C8EF] text-[#4A5070]">
       <div className="mx-auto max-w-7xl px-5 pb-16 pt-20 lg:px-8">
         {/* Single row on desktop: brand | navigation | training | contact */}
         <div className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_0.8fr_1fr_1fr]">
@@ -57,7 +57,7 @@ export default function Footer() {
           </div>
 
           <nav aria-label="Footer">
-            <h3 className="font-display font-semibold text-[#1B2559]">Navigation</h3>
+            <h3 className="font-display font-semibold text-[#1B3A6B]">Navigation</h3>
             <ul className="mt-5 space-y-3">
               {navigation.map((item) => (
                 <li key={item.href}>
@@ -70,7 +70,7 @@ export default function Footer() {
           </nav>
 
           <nav aria-label="Training programs">
-            <h3 className="font-display font-semibold text-[#1B2559]">Training</h3>
+            <h3 className="font-display font-semibold text-[#1B3A6B]">Training</h3>
             <ul className="mt-5 space-y-3">
               {COURSES.map((course) => (
                 <li key={course.slug}>
@@ -83,7 +83,7 @@ export default function Footer() {
           </nav>
 
           <div>
-            <h3 className="font-display font-semibold text-[#1B2559]">Contact</h3>
+            <h3 className="font-display font-semibold text-[#1B3A6B]">Contact</h3>
             <ul className="mt-5 space-y-3">
               <li>
                 <a href={CONTACT.phoneHref} className={linkClass}>
@@ -101,7 +101,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-[#C9CDF4] pt-8 text-sm text-[#7A81A8] sm:flex-row">
+        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-[#1B3A6B]/15 pt-8 text-sm text-[#4E5478] sm:flex-row">
           <p>© 2026 {SITE_NAME}. All Rights Reserved.</p>
           <p className="flex gap-6">
             {/* PLACEHOLDER — create real Privacy Policy and Terms pages before launch. */}
