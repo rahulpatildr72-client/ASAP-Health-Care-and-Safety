@@ -86,13 +86,6 @@ body {
     linear-gradient(to bottom, #f2f7fe 0%, #ffffff 100%);
 }
 
-/* Hero visual treatment — no card/box; the photo's edges feather out so it
-   blends into the periwinkle background, like the approved mock. */
-.img-blend {
-  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 42%, transparent 78%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 42%, transparent 78%);
-}
-
 /* Scroll-reveal (driven by components/Reveal.tsx via IntersectionObserver).
    The hidden initial state only applies once JS has stamped `js` on <html> —
    without JavaScript, all content stays fully visible. */

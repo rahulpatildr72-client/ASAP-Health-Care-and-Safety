@@ -51,19 +51,20 @@ export default function Hero() {
           </p>
         </Reveal>
 
-        <Reveal delay={0.15} className="relative mx-auto w-full max-w-md">
-          <div className="img-blend relative aspect-[906/1010]">
-            {/* Hero visual from the approved mock, hue-matched to the fresh-blue theme.
-                No card/box: edges feather into the background (see .img-blend). */}
-            <Image
-              src="/hero-hand.jpg"
-              alt="Wooden mannequin hand holding a card with a heart — training that puts lifesaving in your hands"
-              fill
-              priority
-              sizes="(max-width: 1024px) 100vw, 448px"
-              className="object-cover"
-            />
-          </div>
+        {/* Negative bottom margin lets the wrist run off the hero's bottom edge
+            (section overflow-hidden clips it), matching the approved mock. */}
+        <Reveal delay={0.15} className="relative mx-auto -mb-20 w-full max-w-sm lg:-mb-28 lg:max-w-[400px]">
+          {/* Client-supplied hand cutout (transparent background), hue-matched
+              to the fresh-blue theme — sits directly on the hero wash like the mock. */}
+          <Image
+            src="/hero-hand.webp"
+            alt="Wooden mannequin hand holding a card with a heart — training that puts lifesaving in your hands"
+            width={700}
+            height={1232}
+            priority
+            sizes="(max-width: 1024px) 90vw, 400px"
+            className="h-auto w-full"
+          />
           {chips.map(({ icon: Icon, label, className, delay }) => (
             <Reveal
               key={label}
