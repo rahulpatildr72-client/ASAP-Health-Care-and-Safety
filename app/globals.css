@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-jakarta), ui-sans-serif, sans-serif;
+
+  /* Fresh blue — primary CTA, links, active states, key icons */
+  --color-brand-50: #eff6ff;
+  --color-brand-100: #dbeafe;
+  --color-brand-200: #bfdbfe;
+  --color-brand-300: #93c5fd;
+  --color-brand-400: #60a5fa;
+  --color-brand-500: #3b82f6;
+  --color-brand-600: #2563eb;
+  --color-brand-700: #1d4ed8;
+  --color-brand-800: #1e40af;
+  --color-brand-900: #1e3a8a;
+
+  /* Deep blue-navy for logo, headings + cool slate grays for body text */
+  --color-navy-950: #0d1f3c;
+  --color-navy-900: #142f5e;
+  --color-navy-800: #1e4076;
+  --color-navy-700: #2d548c;
+  --color-navy-600: #5a6b82;
+  --color-navy-500: #6d7f96;
+  --color-navy-400: #9bb0c4;
+  --color-navy-300: #c6d3e0;
+
+  /* Near-black charcoal for display headlines */
+  --color-ink: #16181f;
+
+  /* Fresh light-blue wash — signature background family (peri-* names kept) */
+  --color-peri-50: #f4f8fe;
+  --color-peri-100: #e9f1fd;
+  --color-peri-200: #d9e7fb;
+  --color-peri-300: #c6dbf9;
+  --color-peri-400: #a3c4f4;
+  --color-peri-500: #7faaee;
+  --color-peri-600: #5c8fe6;
+
+  /* aqua-* kept as aliases (legacy class names) remapped into the fresh-blue family */
+  --color-aqua-50: #eff6ff;
+  --color-aqua-100: #e0edfd;
+  --color-aqua-200: #c8dffb;
+  --color-aqua-400: #7faaee;
+  --color-aqua-500: #3b82f6;
+  --color-aqua-600: #2563eb;
+
+  --shadow-card: 0 1px 2px rgb(13 42 92 / 0.04), 0 10px 28px -10px rgb(13 42 92 / 0.12);
+  --shadow-card-hover: 0 2px 4px rgb(13 42 92 / 0.05), 0 22px 44px -14px rgb(37 99 235 / 0.28);
+  --shadow-float: 0 14px 36px -10px rgb(13 42 92 / 0.22);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+
+body {
+  @apply bg-white font-sans text-navy-700 antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  @apply bg-peri-300 text-navy-900;
+}
+
+/* Signature periwinkle washes — mostly near-white (#f4f5fd) with the deepest
+   periwinkle (#dde1f9 range) only as a gentle radial pool behind the hero
+   image, dissolving to pure white at the bottom so sections blend seamlessly. */
+/* Matches the approved hero mock: lightest at the top-left, a deeper
+   fresh-blue bloom behind the image on the right, color held to the
+   bottom edge (no fade to white). */
+.bg-peri-wash {
+  background:
+    radial-gradient(ellipse 65% 80% at 78% 55%, #b8d2f0 0%, transparent 62%),
+    radial-gradient(ellipse 55% 55% at 8% 8%, #f2f7fe 0%, transparent 55%),
+    linear-gradient(160deg, #e8f1fd 0%, #cfe1fb 100%);
+}
+
+.bg-peri-wash-soft {
+  background:
+    radial-gradient(ellipse 70% 60% at 80% 20%, #d9e8fc 0%, transparent 55%),
+    linear-gradient(to bottom, #f2f7fe 0%, #ffffff 100%);
+}
+
+/* Hero visual treatment — no card/box; the photo's edges feather out so it
+   blends into the periwinkle background, like the approved mock. */
+.img-blend {
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 42%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 42%, transparent 78%);
+}
+
+/* Scroll-reveal (driven by components/Reveal.tsx via IntersectionObserver).
+   The hidden initial state only applies once JS has stamped `js` on <html> —
+   without JavaScript, all content stays fully visible. */
+.reveal {
+  transition:
+    opacity 0.6s cubic-bezier(0.21, 0.65, 0.36, 1),
+    transform 0.6s cubic-bezier(0.21, 0.65, 0.36, 1);
+}
+
+html.js .reveal:not(.reveal-visible) {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+/* Client logo marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 45s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal,
+  html.js .reveal:not(.reveal-visible) { opacity: 1; transform: none; transition: none; }
+  .animate-marquee { animation: none; }
+}
