@@ -28,6 +28,25 @@ npm start       # serve the production build locally
 4. Add the production domain in Vercel, then update `SITE_URL` in `data/site.ts`
    and redeploy (it drives the sitemap, robots.txt, JSON-LD and Open Graph URLs).
 
+## Deploy to Cloudflare Pages
+
+The site supports a fully static export (`NEXT_OUTPUT=export`), which is what
+Cloudflare Pages serves.
+
+1. In the [Cloudflare dashboard](https://dash.cloudflare.com), go to
+   **Workers & Pages → Create → Pages → Connect to Git** and select this repo.
+2. Configure the build:
+   - **Framework preset:** Next.js (Static HTML Export)
+   - **Build command:** `npm run build`
+   - **Build output directory:** `out`
+   - **Environment variable:** `NEXT_OUTPUT` = `export`
+3. Deploy. Every push to `main` redeploys automatically.
+4. Attach the production domain under the project's **Custom domains**, then
+   update `SITE_URL` in `data/site.ts` and push.
+
+Note: the static export serves images unoptimized (no image CDN resizing), which
+is fine for this site's image sizes.
+
 ## Where content lives
 
 - **`data/courses.ts`** — every training program (title, overview, who should
