@@ -1,13 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, BadgeCheck, Hand, Laptop, ShieldCheck } from "lucide-react";
+import { ArrowRight, ShieldCheck } from "lucide-react";
 import Reveal from "./Reveal";
-
-const chips = [
-  { icon: BadgeCheck, label: "Certified Trainers", className: "-left-4 top-10 lg:-left-10", delay: 0.5 },
-  { icon: Hand, label: "Hands-On Training", className: "-right-3 top-1/2 lg:-right-8", delay: 0.7 },
-  { icon: Laptop, label: "Online & Onsite", className: "-left-4 bottom-10 lg:-left-12", delay: 0.9 },
-];
 
 export default function Hero() {
   return (
@@ -65,18 +59,6 @@ export default function Hero() {
             sizes="(max-width: 1024px) 90vw, 400px"
             className="h-auto w-full"
           />
-          {chips.map(({ icon: Icon, label, className, delay }) => (
-            <Reveal
-              key={label}
-              delay={delay}
-              className={`absolute ${className} flex items-center gap-2 rounded-full bg-white px-4 py-2.5 shadow-float`}
-            >
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-50">
-                <Icon className="h-4 w-4 text-brand-600" aria-hidden="true" />
-              </span>
-              <span className="whitespace-nowrap text-sm font-semibold text-navy-900">{label}</span>
-            </Reveal>
-          ))}
         </Reveal>
       </div>
     </section>
