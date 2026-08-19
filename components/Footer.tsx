@@ -104,26 +104,8 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Middle strip: accreditation placeholders (client to supply real logos — do not invent badges) */}
-        <div className="mt-14 border-y border-[#1B3A6B]/12 py-8">
-          <p className="text-center font-display text-sm font-semibold uppercase tracking-wide text-[#1B3A6B]">
-            Certified &amp; Recognized By
-          </p>
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
-            {/* PLACEHOLDER SLOTS — replace with official accreditation logos once confirmed. */}
-            {[1, 2, 3, 4].map((i) => (
-              <span
-                key={i}
-                className="flex h-14 w-36 items-center justify-center rounded-xl border border-dashed border-[#8A92B8] text-xs font-medium text-[#7A81A8]"
-              >
-                Accreditation logo
-              </span>
-            ))}
-          </div>
-        </div>
-
         {/* Bottom bar */}
-        <div className="mt-8 flex flex-col items-center justify-between gap-3 text-sm text-[#4E5478] sm:flex-row">
+        <div className="mt-14 flex flex-col items-center justify-between gap-3 border-t border-[#1B3A6B]/15 pt-8 text-sm text-[#4E5478] sm:flex-row">
           <p>© 2026 {SITE_NAME}. All Rights Reserved.</p>
           <p className="flex items-center gap-3">
             {/* PLACEHOLDER — create real Privacy Policy and Terms pages before launch. */}
