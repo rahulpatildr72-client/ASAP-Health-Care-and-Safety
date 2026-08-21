@@ -4,10 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronRight, Phone, Mail, ArrowRight } from "lucide-react";
+import { Menu, X, ChevronRight, ArrowRight } from "lucide-react";
 import { gsap } from "gsap";
 import { useScrollDirection } from "./useScrollDirection";
-import { CONTACT } from "@/data/site";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
@@ -205,7 +204,7 @@ export default function Header() {
       >
         <div
           ref={overlayLinksRef}
-          className="min-h-full flex flex-col justify-between bg-gradient-to-b from-[#FFFFFF] via-[#F4F7FC] to-[#EBF1FF] px-5 pt-24 pb-8"
+          className="min-h-full flex flex-col justify-start bg-gradient-to-b from-[#FFFFFF] via-[#F4F7FC] to-[#EBF1FF] px-5 pt-28 pb-10"
         >
           <div className="space-y-6">
             <p className="text-xs font-semibold uppercase tracking-widest text-[#1B2559]/50 px-1" data-overlay-link>
@@ -235,7 +234,7 @@ export default function Header() {
               })}
             </div>
 
-            {/* Mobile CTA */}
+            {/* Mobile CTA Button */}
             <div data-overlay-link>
               <Link
                 href="/contact"
@@ -245,33 +244,6 @@ export default function Header() {
                 <span>Book Training</span>
                 <ArrowRight className="h-4 w-4" />
               </Link>
-            </div>
-          </div>
-
-          {/* Contact Card at Bottom */}
-          <div className="mt-8 space-y-3" data-overlay-link>
-            <p className="text-xs font-semibold uppercase tracking-widest text-[#1B2559]/50 px-1">
-              Direct Contact
-            </p>
-            <div className="rounded-2xl border border-slate-200/80 bg-white/90 p-4 shadow-sm space-y-3">
-              <a
-                href={CONTACT.phoneHref}
-                className="flex items-center gap-3 text-sm font-semibold text-[#1B2559] hover:text-[#2563EB] transition-colors"
-              >
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-[#2563EB] shrink-0">
-                  <Phone className="h-4 w-4" />
-                </div>
-                <span className="truncate">{CONTACT.phone}</span>
-              </a>
-              <a
-                href={`mailto:${CONTACT.email}`}
-                className="flex items-center gap-3 text-sm font-semibold text-[#1B2559] hover:text-[#2563EB] transition-colors"
-              >
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-[#2563EB] shrink-0">
-                  <Mail className="h-4 w-4" />
-                </div>
-                <span className="truncate">{CONTACT.email}</span>
-              </a>
             </div>
           </div>
         </div>
