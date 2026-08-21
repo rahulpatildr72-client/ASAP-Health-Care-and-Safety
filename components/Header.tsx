@@ -14,9 +14,8 @@ const NAV_LINKS = [
   { label: "Training Programs", href: "/courses" },
   { label: "Corporate Training", href: "/corporate" },
   { label: "Gallery", href: "/gallery" },
+  { label: "Contact", href: "/contact" },
 ];
-
-const CTA_LINK = { label: "Contact", href: "/contact" };
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -26,7 +25,6 @@ export default function Header() {
   const headerRef = useRef<HTMLElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const overlayLinksRef = useRef<HTMLDivElement>(null);
-  const navRef = useRef<HTMLElement>(null);
   const introRan = useRef(false);
 
   const isActive = (href: string) =>
@@ -35,7 +33,7 @@ export default function Header() {
   useEffect(() => setMenuOpen(false), [pathname]);
 
   useEffect(() => {
-    setHasScrolled(scrollY > 100);
+    setHasScrolled(scrollY > 50);
   }, [scrollY]);
 
   useEffect(() => {
@@ -70,7 +68,7 @@ export default function Header() {
     gsap.fromTo(
       header,
       { opacity: 0, y: -10 },
-      { opacity: 1, y: 0, duration: 0.8, delay: 0.6, ease: "power4.out" }
+      { opacity: 1, y: 0, duration: 0.8, delay: 0.2, ease: "power4.out" }
     );
   }, []);
 
@@ -118,31 +116,21 @@ export default function Header() {
   }, [menuOpen]);
 
   const headerHidden = hasScrolled && direction === "down";
-  const headerSolid = hasScrolled && direction === "up";
-
-  const prefersReduced =
-    typeof window !== "undefined"
-      ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
-      : false;
 
   return (
     <>
       <header
         ref={headerRef}
-        className="fixed inset-x-0 top-0 z-[60]"
+        className="fixed inset-x-0 top-0 z-[60] pt-4 pb-2 transition-all duration-300"
         style={{
-          opacity: 0,
-          transform: headerHidden && !prefersReduced ? "translateY(-100%)" : "translateY(0)",
-          transition: "transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), background-color 0.3s ease",
-          backgroundColor: headerSolid ? "#ffffff" : "transparent",
-          borderBottom: headerSolid ? "1px solid rgba(0,0,0,0.08)" : "1px solid transparent",
+          transform: headerHidden ? "translateY(-100%)" : "translateY(0)",
         }}
       >
         <nav
-          ref={navRef}
           aria-label="Main"
-          className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-8"
+          className="mx-auto flex max-w-7xl items-center justify-between px-5 lg:px-8"
         >
+          {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
               src="/logo-full.png"
@@ -150,48 +138,42 @@ export default function Header() {
               width={1001}
               height={310}
               priority
-              className="h-11 w-auto sm:h-12"
+              className="h-10 w-auto sm:h-12"
             />
           </Link>
 
-          <div className="hidden items-center gap-10 lg:flex">
+          {/* Floating Pill Nav Bar */}
+          <div className="hidden items-center rounded-full border border-white/80 bg-white/90 p-1.5 shadow-sm backdrop-blur-md lg:flex gap-1">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 aria-current={isActive(link.href) ? "page" : undefined}
-                className={`link-underline whitespace-nowrap text-[15px] font-medium transition-colors ${
+                className={`whitespace-nowrap rounded-full px-4 py-2 text-[14px] font-medium transition-all ${
                   isActive(link.href)
-                    ? "text-[#3B5BDB] active"
-                    : "text-[#1B2559]/80 hover:text-[#3B5BDB]"
+                    ? "bg-[#EAF0FF] text-[#2563EB] font-semibold"
+                    : "text-[#1B2559]/80 hover:bg-slate-50 hover:text-[#2563EB]"
                 }`}
               >
                 {link.label}
               </Link>
             ))}
+          </div>
 
+          {/* Right Action CTA Button */}
+          <div className="hidden items-center lg:flex">
             <Link
-              href={CTA_LINK.href}
-              aria-current={isActive(CTA_LINK.href) ? "page" : undefined}
-              className={`group link-underline inline-flex items-center gap-1 whitespace-nowrap text-[15px] font-medium transition-colors ${
-                isActive(CTA_LINK.href)
-                  ? "text-[#3B5BDB] active"
-                  : "text-[#1B2559]/80 hover:text-[#3B5BDB]"
-              }`}
+              href="/contact"
+              className="inline-flex items-center justify-center rounded-full bg-[#2563EB] px-6 py-2.5 text-[14px] font-bold text-white shadow-md shadow-blue-500/25 transition-all hover:bg-blue-700 hover:shadow-lg hover:-translate-y-0.5"
             >
-              {CTA_LINK.label}
-              <span
-                aria-hidden="true"
-                className="inline-block text-[#3B5BDB] transition-transform duration-300 group-hover:translate-x-1"
-              >
-                →
-              </span>
+              Book Training
             </Link>
           </div>
 
+          {/* Mobile Menu Button */}
           <button
             type="button"
-            className="link-underline text-[15px] font-medium text-[#1B2559] hover:text-[#3B5BDB] lg:hidden"
+            className="flex h-10 items-center justify-center rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-[#1B2559] shadow-sm border border-slate-200 backdrop-blur-md lg:hidden"
             aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((v) => !v)}
@@ -201,6 +183,7 @@ export default function Header() {
         </nav>
       </header>
 
+      {/* Mobile Overlay */}
       <div
         ref={overlayRef}
         className="fixed inset-0 z-50 lg:hidden"
@@ -214,14 +197,14 @@ export default function Header() {
           className="flex h-full flex-col justify-between px-5 pb-10 pt-28"
         >
           <nav className="space-y-2">
-            {[...NAV_LINKS, CTA_LINK].map((link) => (
+            {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 data-overlay-link
                 onClick={() => setMenuOpen(false)}
-                className={`block font-display text-[2.6rem] leading-[1.08] tracking-tight transition-colors ${
-                  isActive(link.href) ? "text-[#3B5BDB]" : "text-[#1B2559]/70 hover:text-[#3B5BDB]"
+                className={`block font-display text-[2.4rem] leading-[1.08] tracking-tight transition-colors ${
+                  isActive(link.href) ? "text-[#2563EB] font-bold" : "text-[#1B2559]/70 hover:text-[#2563EB]"
                 }`}
               >
                 {link.label}
@@ -233,10 +216,10 @@ export default function Header() {
             data-overlay-link
             className="flex items-center justify-between border-t border-[rgba(0,0,0,0.08)] pt-6 text-sm text-[#1B2559]/70"
           >
-            <a href={`mailto:${CONTACT.email}`} className="link-underline hover:text-[#3B5BDB]">
+            <a href={`mailto:${CONTACT.email}`} className="link-underline hover:text-[#2563EB]">
               {CONTACT.email}
             </a>
-            <a href={CONTACT.phoneHref} className="link-underline hover:text-[#3B5BDB]">
+            <a href={CONTACT.phoneHref} className="link-underline hover:text-[#2563EB]">
               {CONTACT.phone}
             </a>
           </div>
