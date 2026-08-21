@@ -6,7 +6,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronRight, ArrowRight } from "lucide-react";
 import { gsap } from "gsap";
-import { useScrollDirection } from "./useScrollDirection";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
@@ -19,8 +18,6 @@ const NAV_LINKS = [
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [hasScrolled, setHasScrolled] = useState(false);
-  const { direction, scrollY } = useScrollDirection();
   const pathname = usePathname();
   const headerRef = useRef<HTMLElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -31,10 +28,6 @@ export default function Header() {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   useEffect(() => setMenuOpen(false), [pathname]);
-
-  useEffect(() => {
-    setHasScrolled(scrollY > 50);
-  }, [scrollY]);
 
   useEffect(() => {
     if (menuOpen) {
@@ -115,16 +108,12 @@ export default function Header() {
     }
   }, [menuOpen]);
 
-  const headerHidden = hasScrolled && direction === "down";
-
   return (
     <>
+      {/* Sticky Header - always visible on scroll */}
       <header
         ref={headerRef}
         className="fixed inset-x-0 top-0 z-[60] pt-4 pb-2 transition-all duration-300"
-        style={{
-          transform: headerHidden ? "translateY(-100%)" : "translateY(0)",
-        }}
       >
         <nav
           aria-label="Main"
@@ -170,24 +159,18 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu 3-Line Hamburger Icon Button */}
           <button
             type="button"
-            className="flex items-center gap-2 rounded-full border border-slate-200/90 bg-white/95 px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#1B2559] shadow-sm backdrop-blur-md transition-all active:scale-95 lg:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200/90 bg-white/95 text-[#1B2559] shadow-sm backdrop-blur-md transition-all active:scale-95 lg:hidden"
             aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((v) => !v)}
           >
             {menuOpen ? (
-              <>
-                <X className="h-4 w-4 text-[#2563EB]" />
-                <span>Close</span>
-              </>
+              <X className="h-5 w-5 text-[#2563EB]" />
             ) : (
-              <>
-                <Menu className="h-4 w-4 text-[#2563EB]" />
-                <span>Menu</span>
-              </>
+              <Menu className="h-5 w-5 text-[#1B2559]" />
             )}
           </button>
         </nav>
@@ -204,13 +187,9 @@ export default function Header() {
       >
         <div
           ref={overlayLinksRef}
-          className="min-h-full flex flex-col justify-start bg-gradient-to-b from-[#FFFFFF] via-[#F4F7FC] to-[#EBF1FF] px-5 pt-28 pb-10"
+          className="min-h-full flex flex-col justify-start bg-gradient-to-b from-[#FFFFFF] via-[#F4F7FC] to-[#EBF1FF] px-5 pt-24 pb-10"
         >
           <div className="space-y-6">
-            <p className="text-xs font-semibold uppercase tracking-widest text-[#1B2559]/50 px-1" data-overlay-link>
-              Navigation
-            </p>
-
             {/* Nav Card Group */}
             <div className="rounded-2xl border border-slate-200/80 bg-white/90 p-2 shadow-sm space-y-1.5" data-overlay-link>
               {NAV_LINKS.map((link) => {
