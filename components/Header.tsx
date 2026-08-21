@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Menu, X, ChevronRight, Phone, Mail, ArrowRight } from "lucide-react";
 import { gsap } from "gsap";
 import { useScrollDirection } from "./useScrollDirection";
 import { CONTACT } from "@/data/site";
@@ -89,15 +90,15 @@ export default function Header() {
 
       gsap.to(overlay, {
         opacity: 1,
-        duration: 0.4,
-        ease: "power3.inOut",
+        duration: 0.35,
+        ease: "power3.out",
         onStart: () => { overlay.style.pointerEvents = "auto"; },
       });
 
       gsap.fromTo(
         links,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.5, stagger: 0.08, ease: "power4.out", delay: 0.15 }
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.4, stagger: 0.05, ease: "power3.out", delay: 0.1 }
       );
     } else {
       if (prefersReduced) {
@@ -108,8 +109,8 @@ export default function Header() {
 
       gsap.to(overlay, {
         opacity: 0,
-        duration: 0.3,
-        ease: "power3.inOut",
+        duration: 0.25,
+        ease: "power3.in",
         onComplete: () => { overlay.style.pointerEvents = "none"; },
       });
     }
@@ -142,7 +143,7 @@ export default function Header() {
             />
           </Link>
 
-          {/* Floating Pill Nav Bar */}
+          {/* Desktop Floating Pill Nav Bar */}
           <div className="hidden items-center rounded-full border border-white/80 bg-white/90 p-1.5 shadow-sm backdrop-blur-md lg:flex gap-1">
             {NAV_LINKS.map((link) => (
               <Link
@@ -160,7 +161,7 @@ export default function Header() {
             ))}
           </div>
 
-          {/* Right Action CTA Button */}
+          {/* Desktop CTA Button */}
           <div className="hidden items-center lg:flex">
             <Link
               href="/contact"
@@ -173,55 +174,105 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             type="button"
-            className="flex h-10 items-center justify-center rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-[#1B2559] shadow-sm border border-slate-200 backdrop-blur-md lg:hidden"
+            className="flex items-center gap-2 rounded-full border border-slate-200/90 bg-white/95 px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#1B2559] shadow-sm backdrop-blur-md transition-all active:scale-95 lg:hidden"
             aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((v) => !v)}
           >
-            {menuOpen ? "Close" : "Menu"}
+            {menuOpen ? (
+              <>
+                <X className="h-4 w-4 text-[#2563EB]" />
+                <span>Close</span>
+              </>
+            ) : (
+              <>
+                <Menu className="h-4 w-4 text-[#2563EB]" />
+                <span>Menu</span>
+              </>
+            )}
           </button>
         </nav>
       </header>
 
-      {/* Mobile Overlay */}
+      {/* Mobile Drawer Overlay */}
       <div
         ref={overlayRef}
-        className="fixed inset-0 z-50 lg:hidden"
-        style={{ opacity: 0, pointerEvents: "none", backgroundColor: "#F0F3FC" }}
+        className="fixed inset-0 z-50 overflow-y-auto lg:hidden bg-slate-950/40 backdrop-blur-md"
+        style={{ opacity: 0, pointerEvents: "none" }}
         role="dialog"
         aria-modal="true"
         aria-label="Navigation menu"
       >
         <div
           ref={overlayLinksRef}
-          className="flex h-full flex-col justify-between px-5 pb-10 pt-28"
+          className="min-h-full flex flex-col justify-between bg-gradient-to-b from-[#FFFFFF] via-[#F4F7FC] to-[#EBF1FF] px-5 pt-24 pb-8"
         >
-          <nav className="space-y-2">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                data-overlay-link
-                onClick={() => setMenuOpen(false)}
-                className={`block font-display text-[2.4rem] leading-[1.08] tracking-tight transition-colors ${
-                  isActive(link.href) ? "text-[#2563EB] font-bold" : "text-[#1B2559]/70 hover:text-[#2563EB]"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
+          <div className="space-y-6">
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#1B2559]/50 px-1" data-overlay-link>
+              Navigation
+            </p>
 
-          <div
-            data-overlay-link
-            className="flex items-center justify-between border-t border-[rgba(0,0,0,0.08)] pt-6 text-sm text-[#1B2559]/70"
-          >
-            <a href={`mailto:${CONTACT.email}`} className="link-underline hover:text-[#2563EB]">
-              {CONTACT.email}
-            </a>
-            <a href={CONTACT.phoneHref} className="link-underline hover:text-[#2563EB]">
-              {CONTACT.phone}
-            </a>
+            {/* Nav Card Group */}
+            <div className="rounded-2xl border border-slate-200/80 bg-white/90 p-2 shadow-sm space-y-1.5" data-overlay-link>
+              {NAV_LINKS.map((link) => {
+                const active = isActive(link.href);
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    data-overlay-link
+                    onClick={() => setMenuOpen(false)}
+                    className={`flex items-center justify-between rounded-xl px-4 py-3.5 text-base font-bold transition-all ${
+                      active
+                        ? "bg-[#2563EB] text-white shadow-md shadow-blue-500/20"
+                        : "text-[#1B2559] hover:bg-slate-50"
+                    }`}
+                  >
+                    <span>{link.label}</span>
+                    <ChevronRight className={`h-4 w-4 ${active ? "text-white" : "text-[#2563EB]"}`} />
+                  </Link>
+                );
+              })}
+            </div>
+
+            {/* Mobile CTA */}
+            <div data-overlay-link>
+              <Link
+                href="/contact"
+                onClick={() => setMenuOpen(false)}
+                className="flex w-full items-center justify-center gap-2 rounded-2xl bg-[#2563EB] py-4 text-center font-display text-base font-bold text-white shadow-lg shadow-blue-500/25 transition-transform active:scale-[0.98]"
+              >
+                <span>Book Training</span>
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Contact Card at Bottom */}
+          <div className="mt-8 space-y-3" data-overlay-link>
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#1B2559]/50 px-1">
+              Direct Contact
+            </p>
+            <div className="rounded-2xl border border-slate-200/80 bg-white/90 p-4 shadow-sm space-y-3">
+              <a
+                href={CONTACT.phoneHref}
+                className="flex items-center gap-3 text-sm font-semibold text-[#1B2559] hover:text-[#2563EB] transition-colors"
+              >
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-[#2563EB] shrink-0">
+                  <Phone className="h-4 w-4" />
+                </div>
+                <span className="truncate">{CONTACT.phone}</span>
+              </a>
+              <a
+                href={`mailto:${CONTACT.email}`}
+                className="flex items-center gap-3 text-sm font-semibold text-[#1B2559] hover:text-[#2563EB] transition-colors"
+              >
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-[#2563EB] shrink-0">
+                  <Mail className="h-4 w-4" />
+                </div>
+                <span className="truncate">{CONTACT.email}</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
