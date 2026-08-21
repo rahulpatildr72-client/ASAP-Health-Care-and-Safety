@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import CourseCard from "@/components/CourseCard";
 import CTABanner from "@/components/CTABanner";
-import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
+import FadeIn from "@/components/FadeIn";
 import { COURSES } from "@/data/courses";
 import { SITE_NAME } from "@/data/site";
 
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 export default function CoursesPage() {
   return (
     <>
-      <section className="bg-peri-wash-soft pb-16 pt-36 sm:pt-40">
+      <section className="bg-surface pb-20 pt-36 sm:pt-44">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading
             as="h1"
@@ -32,13 +32,13 @@ export default function CoursesPage() {
         </div>
       </section>
 
-      <section className="bg-white pb-24">
+      <section className="bg-white py-24 border-t border-[rgba(0,0,0,0.08)]">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="border-b border-[rgba(0,0,0,0.08)]">
             {COURSES.map((course, i) => (
-              <Reveal key={course.slug} delay={(i % 3) * 0.1}>
-                <CourseCard course={course} />
-              </Reveal>
+              <FadeIn key={course.slug} delay={i * 0.08}>
+                <CourseCard course={course} index={i} />
+              </FadeIn>
             ))}
           </div>
         </div>

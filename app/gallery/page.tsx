@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Lightbox, { type GalleryImage } from "@/components/Lightbox";
 import SectionHeading from "@/components/SectionHeading";
 import CTABanner from "@/components/CTABanner";
-import Reveal from "@/components/Reveal";
+import FadeIn from "@/components/FadeIn";
 import { SITE_NAME } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -15,7 +15,6 @@ export const metadata: Metadata = {
   },
 };
 
-/* PLACEHOLDER photos — replace with real session photos (keep width/height ratios accurate). */
 const IMAGES: GalleryImage[] = [
   {
     src: "https://images.unsplash.com/photo-1638202993928-7267aad84c31?auto=format&fit=crop&w=900&q=80",
@@ -76,7 +75,7 @@ const IMAGES: GalleryImage[] = [
 export default function GalleryPage() {
   return (
     <>
-      <section className="bg-peri-wash-soft pb-16 pt-36 sm:pt-40">
+      <section className="bg-surface pb-20 pt-36 sm:pt-44">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading
             as="h1"
@@ -88,11 +87,11 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      <section className="bg-white pb-24">
+      <section className="bg-white py-24 border-t border-[rgba(0,0,0,0.08)]">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <Reveal>
+          <FadeIn>
             <Lightbox images={IMAGES} />
-          </Reveal>
+          </FadeIn>
         </div>
       </section>
 
