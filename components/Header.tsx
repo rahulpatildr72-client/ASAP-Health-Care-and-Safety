@@ -110,38 +110,38 @@ export default function Header() {
 
   return (
     <>
-      {/* Sticky Header - always visible on scroll */}
+      {/* Sleek Dark Navy Full-Bleed Sticky Header (matching Image 2) */}
       <header
         ref={headerRef}
-        className="fixed inset-x-0 top-0 z-[60] pt-4 pb-2 transition-all duration-300"
+        className="fixed inset-x-0 top-0 z-[60] bg-[#0A1329]/95 border-b border-white/10 py-3 backdrop-blur-md transition-all duration-300 shadow-md"
       >
         <nav
           aria-label="Main"
           className="mx-auto flex max-w-7xl items-center justify-between px-5 lg:px-8"
         >
-          {/* Logo */}
-          <Link href="/" className="flex items-center">
+          {/* Logo with clean white rounded container for contrast */}
+          <Link href="/" className="flex items-center rounded-xl bg-white px-3 py-1.5 shadow-sm transition-transform hover:scale-[1.02]">
             <Image
               src="/logo-full.png"
               alt="ASAP Healthcare & Safety"
               width={1001}
               height={310}
               priority
-              className="h-10 w-auto sm:h-12"
+              className="h-8 w-auto sm:h-9"
             />
           </Link>
 
-          {/* Desktop Floating Pill Nav Bar */}
-          <div className="hidden items-center rounded-full border border-white/80 bg-white/90 p-1.5 shadow-sm backdrop-blur-md lg:flex gap-1">
+          {/* Desktop Dark Navy Nav Links */}
+          <div className="hidden items-center gap-1.5 lg:flex">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 aria-current={isActive(link.href) ? "page" : undefined}
-                className={`whitespace-nowrap rounded-full px-4 py-2 text-[14px] font-medium transition-all ${
+                className={`whitespace-nowrap rounded-full px-4 py-2 text-[14px] font-semibold transition-all ${
                   isActive(link.href)
-                    ? "bg-[#EAF0FF] text-[#2563EB] font-semibold"
-                    : "text-[#1B2559]/80 hover:bg-slate-50 hover:text-[#2563EB]"
+                    ? "bg-[#2563EB] text-white shadow-md shadow-blue-500/30"
+                    : "text-slate-200 hover:bg-white/10 hover:text-white"
                 }`}
               >
                 {link.label}
@@ -153,24 +153,24 @@ export default function Header() {
           <div className="hidden items-center lg:flex">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-full bg-[#2563EB] px-6 py-2.5 text-[14px] font-bold text-white shadow-md shadow-blue-500/25 transition-all hover:bg-blue-700 hover:shadow-lg hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center rounded-full bg-[#2563EB] px-6 py-2.5 text-[14px] font-bold text-white shadow-md shadow-blue-500/30 transition-all hover:bg-blue-600 hover:shadow-lg hover:-translate-y-0.5 active:scale-95"
             >
               Book Training
             </Link>
           </div>
 
-          {/* Mobile Menu 3-Line Hamburger Icon Button */}
+          {/* Mobile Menu 3-Line Button */}
           <button
             type="button"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200/90 bg-white/95 text-[#1B2559] shadow-sm backdrop-blur-md transition-all active:scale-95 lg:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white shadow-sm backdrop-blur-md transition-all active:scale-95 lg:hidden"
             aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((v) => !v)}
           >
             {menuOpen ? (
-              <X className="h-5 w-5 text-[#2563EB]" />
+              <X className="h-5 w-5 text-white" />
             ) : (
-              <Menu className="h-5 w-5 text-[#1B2559]" />
+              <Menu className="h-5 w-5 text-white" />
             )}
           </button>
         </nav>
@@ -179,7 +179,7 @@ export default function Header() {
       {/* Mobile Drawer Overlay */}
       <div
         ref={overlayRef}
-        className="fixed inset-0 z-50 overflow-y-auto lg:hidden bg-slate-950/40 backdrop-blur-md"
+        className="fixed inset-0 z-50 overflow-y-auto lg:hidden bg-slate-950/60 backdrop-blur-md"
         style={{ opacity: 0, pointerEvents: "none" }}
         role="dialog"
         aria-modal="true"
@@ -187,11 +187,11 @@ export default function Header() {
       >
         <div
           ref={overlayLinksRef}
-          className="min-h-full flex flex-col justify-start bg-gradient-to-b from-[#FFFFFF] via-[#F4F7FC] to-[#EBF1FF] px-5 pt-24 pb-10"
+          className="min-h-full flex flex-col justify-start bg-gradient-to-b from-[#0A1329] via-[#0D1B3E] to-[#0A1329] px-5 pt-24 pb-10"
         >
           <div className="space-y-6">
             {/* Nav Card Group */}
-            <div className="rounded-2xl border border-slate-200/80 bg-white/90 p-2 shadow-sm space-y-1.5" data-overlay-link>
+            <div className="rounded-2xl border border-white/10 bg-[#132042]/90 p-2 shadow-xl space-y-1.5" data-overlay-link>
               {NAV_LINKS.map((link) => {
                 const active = isActive(link.href);
                 return (
@@ -202,12 +202,12 @@ export default function Header() {
                     onClick={() => setMenuOpen(false)}
                     className={`flex items-center justify-between rounded-xl px-4 py-3.5 text-base font-bold transition-all ${
                       active
-                        ? "bg-[#2563EB] text-white shadow-md shadow-blue-500/20"
-                        : "text-[#1B2559] hover:bg-slate-50"
+                        ? "bg-[#2563EB] text-white shadow-md shadow-blue-500/30"
+                        : "text-slate-200 hover:bg-white/10 hover:text-white"
                     }`}
                   >
                     <span>{link.label}</span>
-                    <ChevronRight className={`h-4 w-4 ${active ? "text-white" : "text-[#2563EB]"}`} />
+                    <ChevronRight className={`h-4 w-4 ${active ? "text-white" : "text-blue-400"}`} />
                   </Link>
                 );
               })}
@@ -218,7 +218,7 @@ export default function Header() {
               <Link
                 href="/contact"
                 onClick={() => setMenuOpen(false)}
-                className="flex w-full items-center justify-center gap-2 rounded-2xl bg-[#2563EB] py-4 text-center font-display text-base font-bold text-white shadow-lg shadow-blue-500/25 transition-transform active:scale-[0.98]"
+                className="flex w-full items-center justify-center gap-2 rounded-2xl bg-[#2563EB] py-4 text-center font-display text-base font-bold text-white shadow-lg shadow-blue-500/30 transition-transform active:scale-[0.98]"
               >
                 <span>Book Training</span>
                 <ArrowRight className="h-4 w-4" />
