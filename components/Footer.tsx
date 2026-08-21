@@ -108,16 +108,15 @@ export default function Footer() {
         <div className="mt-14 flex flex-col items-center justify-between gap-3 border-t border-[#1B3A6B]/15 pt-8 text-sm text-[#4E5478] sm:flex-row">
           <p>© 2026 {SITE_NAME}. All Rights Reserved.</p>
           <p className="flex items-center gap-3">
-            {/* PLACEHOLDER — create real Privacy Policy and Terms pages before launch. */}
-            <a href="#" className={linkClass}>
+            <Link href="/privacy" className={linkClass}>
               Privacy
-            </a>
+            </Link>
             <span aria-hidden="true" className="text-[#8A92B8]">
               |
             </span>
-            <a href="#" className={linkClass}>
+            <Link href="/terms" className={linkClass}>
               Terms
-            </a>
+            </Link>
           </p>
         </div>
       </div>

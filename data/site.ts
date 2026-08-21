@@ -15,7 +15,7 @@ export const CONTACT = {
   phone: "+91 99677 30940",
   phoneHref: "tel:+919967730940",
   /* PLACEHOLDER — replace with the real WhatsApp business number (digits only, country code first). */
-  whatsapp: "91XXXXXXXXXX",
+  whatsapp: "919967730940",
   email: "info@preciouslifemedihelp.com",
   location: "Goregaon West, Mumbai, Maharashtra, India",
   onlineNote: "Live online training available worldwide",

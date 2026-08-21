@@ -57,7 +57,7 @@ is fine for this site's image sizes.
 
 ## ⚠ PLACEHOLDER CHECKLIST — complete before launch
 
-- [ ] **WhatsApp number** — `CONTACT.whatsapp` in `data/site.ts` (currently `91XXXXXXXXXX`).
+- [x] **WhatsApp number** — `CONTACT.whatsapp` updated in `data/site.ts` (`919967730940`).
 - [ ] **Web3Forms key** — `WEB3FORMS_KEY` in `data/site.ts` (currently `YOUR_WEB3FORMS_KEY`).
       Create a free key at web3forms.com pointed at the business email, then test the form.
 - [ ] **Production domain** — `SITE_URL` in `data/site.ts`.
@@ -80,6 +80,6 @@ is fine for this site's image sizes.
       permission and swap in real monochrome logos in `components/LogoWall.tsx`.
 - [ ] **Google Map embed** — replace the placeholder panel in `app/contact/page.tsx`.
 - [ ] **Social links** — the footer icons in `components/Footer.tsx` point to `#`.
-- [ ] **Privacy Policy & Terms** — footer links are placeholders; add real pages.
+- [x] **Privacy Policy & Terms** — added dedicated `/privacy` and `/terms` pages and updated footer links.
 - [ ] **Compliance wording** — the Factories Act note on `/corporate` is general
       guidance; have the client's compliance advisor confirm the wording.
