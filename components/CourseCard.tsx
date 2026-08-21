@@ -1,44 +1,37 @@
+"use client";
+
 import Link from "next/link";
-import {
-  ArrowRight,
-  Building2,
-  Cross,
-  HeartPulse,
-  ShieldCheck,
-  Wind,
-  Zap,
-  type LucideIcon,
-} from "lucide-react";
 import type { Course } from "@/data/courses";
 
-const ICONS: Record<Course["icon"], LucideIcon> = {
-  cross: Cross,
-  heart: HeartPulse,
-  zap: Zap,
-  wind: Wind,
-  shield: ShieldCheck,
-  building: Building2,
-};
+export default function CourseCard({ course, index }: { course: Course; index?: number }) {
+  const formattedNumber = typeof index === "number" ? String(index + 1).padStart(2, "0") : undefined;
 
-export default function CourseCard({ course }: { course: Course }) {
-  const Icon = ICONS[course.icon];
   return (
     <Link
       href={`/courses/${course.slug}`}
-      className="group flex h-full flex-col rounded-3xl bg-white p-8 shadow-card ring-1 ring-navy-300/15 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card-hover hover:ring-brand-200"
+      className="group block border-t border-[rgba(0,0,0,0.08)] py-8 transition-transform duration-300 hover:translate-x-3"
     >
-      <span className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-50 text-brand-600 transition-colors duration-300 group-hover:bg-brand-600 group-hover:text-white">
-        <Icon className="h-7 w-7" aria-hidden="true" />
-      </span>
-      <h3 className="font-display text-xl font-bold text-navy-900">{course.title}</h3>
-      <p className="mt-3 flex-1 leading-relaxed text-navy-600">{course.tagline}</p>
-      <span className="mt-6 inline-flex items-center gap-1.5 font-display text-sm font-semibold text-brand-600">
-        Learn More
-        <ArrowRight
-          className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
-          aria-hidden="true"
-        />
-      </span>
+      <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4">
+        <div className="flex items-baseline gap-6 sm:gap-10">
+          {formattedNumber && (
+            <span className="font-mono text-sm text-accent shrink-0">
+              {formattedNumber}.
+            </span>
+          )}
+          <div>
+            <h3 className="font-display text-xl font-bold text-ink transition-colors group-hover:text-accent">
+              {course.title}
+            </h3>
+            <p className="mt-2 text-base leading-relaxed text-navy-600 max-w-2xl">
+              {course.tagline}
+            </p>
+          </div>
+        </div>
+        <span className="inline-flex items-center gap-1 text-sm font-medium text-navy-500 group-hover:text-ink shrink-0 sm:self-center">
+          Explore Program
+          <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+        </span>
+      </div>
     </Link>
   );
 }

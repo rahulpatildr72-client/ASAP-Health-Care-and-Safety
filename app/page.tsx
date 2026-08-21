@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, BadgeCheck, ShieldCheck } from "lucide-react";
 import Hero from "@/components/Hero";
 import TrustBar from "@/components/TrustBar";
 import AudienceGrid from "@/components/AudienceGrid";
@@ -15,7 +14,9 @@ import TestimonialCarousel from "@/components/TestimonialCarousel";
 import FAQAccordion from "@/components/FAQAccordion";
 import CTABanner from "@/components/CTABanner";
 import SectionHeading from "@/components/SectionHeading";
-import Reveal from "@/components/Reveal";
+import ParallaxImage from "@/components/ParallaxImage";
+import RevealText from "@/components/RevealText";
+import FadeIn from "@/components/FadeIn";
 import { COURSES } from "@/data/courses";
 import { CREDENTIALS, FOUNDER, SITE_TAGLINE, WHY_US } from "@/data/site";
 
@@ -33,18 +34,19 @@ export default function HomePage() {
       <TrustBar />
 
       {/* Training categories */}
-      <section className="bg-gradient-to-b from-white to-peri-100/70 py-24">
+      <section className="bg-white py-32 border-t border-[rgba(0,0,0,0.08)]">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading
+            number="01"
             eyebrow="Training Programs"
             title="Training That Prepares You for Real Emergencies"
             subtitle="Hands-on programs delivered onsite, in classrooms and live online — for teams and individuals."
           />
-          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-16 border-b border-[rgba(0,0,0,0.08)]">
             {COURSES.map((course, i) => (
-              <Reveal key={course.slug} delay={(i % 3) * 0.1}>
-                <CourseCard course={course} />
-              </Reveal>
+              <FadeIn key={course.slug} delay={i * 0.08}>
+                <CourseCard course={course} index={i} />
+              </FadeIn>
             ))}
           </div>
         </div>
@@ -73,18 +75,19 @@ export default function HomePage() {
       />
 
       {/* Why choose us */}
-      <section className="bg-gradient-to-b from-peri-100/70 to-white py-24">
+      <section className="bg-white py-32 border-t border-[rgba(0,0,0,0.08)]">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading
+            number="03"
             eyebrow="Why Us"
             title="Why Organizations Trust Us"
             subtitle="From multinational hotels to schools and factories, teams choose us for one reason: training that actually works in a real emergency."
           />
-          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-16 grid gap-x-12 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
             {WHY_US.map((feature, i) => (
-              <Reveal key={feature.title} delay={(i % 3) * 0.1}>
-                <FeatureCard {...feature} />
-              </Reveal>
+              <FadeIn key={feature.title} delay={(i % 3) * 0.08}>
+                <FeatureCard {...feature} index={i} />
+              </FadeIn>
             ))}
           </div>
         </div>
@@ -93,136 +96,129 @@ export default function HomePage() {
       <HowItWorks />
 
       {/* Training experience */}
-      <section className="bg-peri-wash py-24">
+      <section className="bg-surface py-32 border-t border-[rgba(0,0,0,0.08)]">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-16">
-            <Reveal>
-              <span className="mb-4 inline-flex items-center rounded-full bg-white px-4 py-1.5 text-sm font-semibold text-brand-700 ring-1 ring-brand-100">
-                The Training Experience
-              </span>
-              <h2 className="font-display text-3xl font-bold tracking-tight text-navy-900 sm:text-4xl">
+          <div className="grid items-center gap-16 lg:grid-cols-12">
+            <div className="lg:col-span-6">
+              <FadeIn>
+                <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-navy-500">
+                  The Training Experience
+                </p>
+              </FadeIn>
+              <RevealText as="h2" className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
                 Don&apos;t Just Learn. Practice.
-              </h2>
-              <p className="mt-5 text-lg leading-relaxed text-navy-700">
-                Every session is built around doing — chest compressions on mannequins, AED
-                demonstrations, bandaging, choking response drills and realistic scenarios. We
-                train until emergency response becomes reflex, because in a real emergency you
-                fall back on muscle memory, not slides.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                {experienceLabels.map((label) => (
-                  <span
-                    key={label}
-                    className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-navy-800 shadow-sm ring-1 ring-navy-300/20"
+              </RevealText>
+              <FadeIn delay={0.2}>
+                <p className="mt-6 text-lg leading-relaxed text-navy-600">
+                  Every session is built around doing — chest compressions on mannequins, AED
+                  demonstrations, bandaging, choking response drills and realistic scenarios. We
+                  train until emergency response becomes reflex, because in a real emergency you
+                  fall back on muscle memory, not slides.
+                </p>
+              </FadeIn>
+              <FadeIn delay={0.3}>
+                <div className="mt-8 flex flex-wrap gap-4 border-t border-[rgba(0,0,0,0.08)] pt-6">
+                  {experienceLabels.map((label) => (
+                    <span
+                      key={label}
+                      className="text-xs uppercase tracking-wider font-semibold text-navy-600"
+                    >
+                      — {label}
+                    </span>
+                  ))}
+                </div>
+              </FadeIn>
+              <FadeIn delay={0.4}>
+                <div className="mt-8">
+                  <Link
+                    href="/gallery"
+                    className="group link-underline inline-flex items-center gap-1.5 text-sm font-medium text-ink"
                   >
-                    {label}
-                  </span>
-                ))}
-              </div>
-              <Link
-                href="/gallery"
-                className="mt-8 inline-flex items-center gap-1.5 font-display font-semibold text-brand-700 transition-colors hover:text-brand-800"
-              >
-                See the training in action <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-            </Reveal>
+                    See the training in action
+                    <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+                  </Link>
+                </div>
+              </FadeIn>
+            </div>
 
-            <Reveal delay={0.15}>
-              <div className="relative">
-                {/* PLACEHOLDER photo — replace with a real session photo. */}
-                <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-float">
-                  <Image
-                    src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&w=1100&q=80"
-                    alt="Participant practicing chest compressions on a CPR mannequin under trainer guidance"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 576px"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="absolute bottom-4 right-4 rounded-2xl bg-white px-6 py-4 shadow-float">
-                  <p className="font-display text-3xl font-extrabold text-brand-600">100%</p>
-                  <p className="text-sm font-semibold text-navy-600">Hands-on practice</p>
-                </div>
-              </div>
-            </Reveal>
+            <div className="lg:col-span-6">
+              <ParallaxImage
+                src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&w=1100&q=80"
+                alt="Participant practicing chest compressions on a CPR mannequin under trainer guidance"
+                containerClassName="aspect-[4/3] w-full"
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Certification / trust — placeholder slots, do not invent claims */}
-      <section className="bg-white py-24">
+      {/* Certification / trust */}
+      <section className="bg-white py-32 border-t border-[rgba(0,0,0,0.08)]">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading
+            number="06"
             eyebrow="Credibility"
             title="Training Built Around Recognized Standards"
             subtitle="Our programs follow internationally recognized guidelines and are delivered by certified instructors."
           />
-          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-16 grid gap-px bg-[rgba(0,0,0,0.08)] sm:grid-cols-2 lg:grid-cols-4 border border-[rgba(0,0,0,0.08)]">
             {CREDENTIALS.map((item, i) => (
-              <Reveal key={item.title} delay={i * 0.1}>
-                <div className="flex h-full flex-col items-center rounded-3xl border border-brand-100 bg-brand-50/50 p-8 text-center transition-colors duration-300 hover:border-brand-200 hover:bg-brand-50">
-                  {/* PLACEHOLDER SLOT — replace icon with the official accreditation logo once confirmed. */}
-                  <span className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-full bg-white text-brand-600 shadow-sm ring-1 ring-brand-100">
-                    <ShieldCheck className="h-7 w-7" aria-hidden="true" />
-                  </span>
-                  <h3 className="font-display text-lg font-bold text-navy-900">{item.title}</h3>
-                  <p className="mt-2.5 text-[15px] leading-relaxed text-navy-600">
-                    {item.description}
-                  </p>
-                </div>
-              </Reveal>
+              <FadeIn key={item.title} delay={i * 0.08} className="bg-white p-8">
+                <span className="font-mono text-xs text-accent block mb-3">0{i + 1}</span>
+                <h3 className="font-display text-lg font-bold text-ink">{item.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-navy-600">
+                  {item.description}
+                </p>
+              </FadeIn>
             ))}
           </div>
         </div>
       </section>
 
       {/* Meet the expert */}
-      <section className="bg-gradient-to-b from-white to-peri-100/70 py-24">
-        <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 lg:grid-cols-5 lg:gap-16 lg:px-8">
-          <Reveal className="lg:col-span-2">
-            <div className="relative mx-auto max-w-sm">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-float">
-                {/* PLACEHOLDER portrait — replace with the founder's real photo. */}
-                <Image
-                  src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=900&q=80"
-                  alt={`Professional portrait of ${FOUNDER.name}, founder and lead trainer`}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 384px"
-                  className="object-cover"
-                />
-              </div>
-              <div className="absolute bottom-4 left-4 rounded-2xl bg-white px-6 py-3 shadow-float">
-                <p className="font-display font-bold text-navy-900">{FOUNDER.name}</p>
-                <p className="text-sm font-medium text-brand-600">{FOUNDER.role}</p>
-              </div>
-            </div>
-          </Reveal>
+      <section className="bg-surface py-32 border-t border-[rgba(0,0,0,0.08)]">
+        <div className="mx-auto grid max-w-7xl items-center gap-16 px-5 lg:grid-cols-12 lg:px-8">
+          <div className="lg:col-span-5">
+            <ParallaxImage
+              src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=900&q=80"
+              alt={`Professional portrait of ${FOUNDER.name}, founder and lead trainer`}
+              containerClassName="aspect-[4/5] w-full"
+            />
+          </div>
 
-          <Reveal delay={0.1} className="lg:col-span-3">
-            <span className="mb-4 inline-flex items-center rounded-full bg-brand-50 px-4 py-1.5 text-sm font-semibold text-brand-700 ring-1 ring-brand-100">
-              About the Founder
-            </span>
-            <h2 className="font-display text-3xl font-bold tracking-tight text-navy-900 sm:text-4xl">
+          <div className="lg:col-span-7">
+            <FadeIn>
+              <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-navy-500">
+                About the Founder
+              </p>
+            </FadeIn>
+            <RevealText as="h2" className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
               Meet the Expert Behind the Training
-            </h2>
-            <p className="mt-5 text-lg leading-relaxed text-navy-600">{FOUNDER.story}</p>
-            <ul className="mt-8 space-y-3">
-              {FOUNDER.qualifications.map((item) => (
-                <li key={item} className="flex items-start gap-3 font-medium text-navy-800">
-                  <BadgeCheck className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" aria-hidden="true" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-10">
-              <Link
-                href="/about"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 font-display text-base font-semibold text-navy-800 ring-1 ring-navy-300 transition-all hover:-translate-y-0.5 hover:text-brand-700 hover:ring-brand-400"
-              >
-                Meet Our Team <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-            </div>
-          </Reveal>
+            </RevealText>
+            <FadeIn delay={0.2}>
+              <p className="mt-6 text-lg leading-relaxed text-navy-600">{FOUNDER.story}</p>
+            </FadeIn>
+            <FadeIn delay={0.3}>
+              <ul className="mt-8 space-y-3 border-t border-[rgba(0,0,0,0.08)] pt-6">
+                {FOUNDER.qualifications.map((item) => (
+                  <li key={item} className="text-sm font-medium text-navy-700">
+                    — {item}
+                  </li>
+                ))}
+              </ul>
+            </FadeIn>
+            <FadeIn delay={0.4}>
+              <div className="mt-10">
+                <Link
+                  href="/about"
+                  className="group link-underline inline-flex items-center gap-1.5 text-sm font-medium text-ink"
+                >
+                  Meet Our Team
+                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </Link>
+              </div>
+            </FadeIn>
+          </div>
         </div>
       </section>
 
@@ -230,30 +226,32 @@ export default function HomePage() {
       <LogoWall />
 
       {/* Testimonials */}
-      <section className="bg-gradient-to-b from-white to-peri-100/70 py-24">
+      <section className="bg-white py-32 border-t border-[rgba(0,0,0,0.08)]">
         <div className="mx-auto max-w-4xl px-5 lg:px-8">
           <SectionHeading
+            number="07"
             eyebrow="Testimonials"
             title="What Our Participants Say"
             subtitle="Feedback from the teams and individuals we've trained."
           />
-          <Reveal className="mt-14">
+          <div className="mt-16">
             <TestimonialCarousel />
-          </Reveal>
+          </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="bg-white py-24">
+      <section className="bg-white py-32 border-t border-[rgba(0,0,0,0.08)]">
         <div className="mx-auto max-w-3xl px-5 lg:px-8">
           <SectionHeading
+            number="08"
             eyebrow="FAQ"
             title="Frequently Asked Questions"
             subtitle="Everything you need to know before booking your training."
           />
-          <Reveal className="mt-14">
+          <div className="mt-16">
             <FAQAccordion />
-          </Reveal>
+          </div>
         </div>
       </section>
 

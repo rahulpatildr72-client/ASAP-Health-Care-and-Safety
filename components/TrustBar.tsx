@@ -1,33 +1,30 @@
-import Reveal from "./Reveal";
+"use client";
+
 import StatCounter from "./StatCounter";
+import FadeIn from "./FadeIn";
 import { STATS } from "@/data/site";
 
-/**
- * Statistics strip below the hero.
- * ⚠ CLIENT TO CONFIRM — figures in data/site.ts are taken from the existing
- * business website and must be verified before launch.
- */
 export default function TrustBar() {
   return (
-    <section className="border-b border-navy-300/20 bg-white py-14">
+    <section className="border-y border-[rgba(0,0,0,0.08)] bg-white py-20">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="grid grid-cols-2 gap-10 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-12 lg:grid-cols-4">
           {STATS.map((stat, i) => (
-            <Reveal key={stat.label} delay={i * 0.08} className="text-center">
-              <p className="font-display text-4xl font-extrabold tracking-tight text-brand-600 sm:text-5xl">
+            <FadeIn key={stat.label} delay={i * 0.08} className="text-left border-l border-[rgba(0,0,0,0.08)] pl-6 first:border-l-0 first:pl-0">
+              <p className="font-display text-4xl font-extrabold tracking-tight text-ink sm:text-5xl">
                 <StatCounter value={stat.value} suffix={stat.suffix} />
               </p>
-              <p className="mt-2 text-sm font-semibold uppercase tracking-wide text-navy-500">
+              <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-navy-500">
                 {stat.label}
               </p>
-            </Reveal>
+            </FadeIn>
           ))}
         </div>
-        <Reveal delay={0.3}>
-          <p className="mt-12 text-center font-display text-lg font-medium italic text-navy-600">
-            Trusted by organizations that put people first.
+        <FadeIn delay={0.4}>
+          <p className="mt-16 text-left text-sm text-navy-500">
+            Trusted by organizations that put people first across healthcare, hospitality, education and industry.
           </p>
-        </Reveal>
+        </FadeIn>
       </div>
     </section>
   );

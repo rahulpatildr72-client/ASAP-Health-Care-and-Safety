@@ -1,41 +1,26 @@
-import {
-  Award,
-  BadgeCheck,
-  Hand,
-  Laptop,
-  Siren,
-  SlidersHorizontal,
-  type LucideIcon,
-} from "lucide-react";
-
-const ICONS: Record<string, LucideIcon> = {
-  award: Award,
-  hand: Hand,
-  sliders: SlidersHorizontal,
-  laptop: Laptop,
-  siren: Siren,
-  badge: BadgeCheck,
-};
+"use client";
 
 export default function FeatureCard({
-  icon,
   title,
   description,
+  index,
 }: {
   icon: string;
   title: string;
   description: string;
+  index?: number;
 }) {
-  const Icon = ICONS[icon] ?? Award;
+  const formattedIndex = typeof index === "number" ? String(index + 1).padStart(2, "0") : undefined;
+
   return (
-    <div className="group flex h-full gap-5 rounded-3xl bg-white p-7 shadow-card ring-1 ring-navy-300/15 transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover">
-      <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-aqua-50 text-aqua-600 transition-colors duration-300 group-hover:bg-aqua-500 group-hover:text-white">
-        <Icon className="h-6 w-6" aria-hidden="true" />
-      </span>
-      <div>
-        <h3 className="font-display text-lg font-bold text-navy-900">{title}</h3>
-        <p className="mt-2 leading-relaxed text-navy-600">{description}</p>
-      </div>
+    <div className="border-t border-[rgba(0,0,0,0.08)] pt-8 pb-4">
+      {formattedIndex && (
+        <span className="font-mono text-xs text-accent block mb-3">
+          0{formattedIndex}
+        </span>
+      )}
+      <h3 className="font-display text-xl font-bold text-ink">{title}</h3>
+      <p className="mt-3 leading-relaxed text-navy-600">{description}</p>
     </div>
   );
 }

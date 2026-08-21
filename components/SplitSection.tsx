@@ -1,12 +1,10 @@
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
-import Reveal from "./Reveal";
+"use client";
 
-/**
- * Reusable split layout: photo on one side, heading + checklist + CTA on the other.
- * Used for the corporate training pitch on the homepage and /corporate.
- */
+import Link from "next/link";
+import ParallaxImage from "./ParallaxImage";
+import RevealText from "./RevealText";
+import FadeIn from "./FadeIn";
+
 export default function SplitSection({
   eyebrow,
   title,
@@ -31,54 +29,66 @@ export default function SplitSection({
   reverse?: boolean;
 }) {
   return (
-    <section className="bg-white py-24">
-      <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 lg:grid-cols-2 lg:gap-16 lg:px-8">
-        <Reveal className={reverse ? "lg:order-2" : ""}>
+    <section className="bg-surface py-32">
+      <div className="mx-auto grid max-w-7xl items-center gap-16 px-5 lg:grid-cols-12 lg:px-8">
+        <div className={`lg:col-span-6 ${reverse ? "lg:order-2" : ""}`}>
           <div className="relative">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-float">
-              {/* PLACEHOLDER photo — replace with a real training photo. */}
-              <Image
-                src={image}
-                alt={imageAlt}
-                fill
-                sizes="(max-width: 1024px) 100vw, 576px"
-                className="object-cover"
-              />
-            </div>
+            <ParallaxImage
+              src={image}
+              alt={imageAlt}
+              containerClassName="aspect-[4/3] w-full"
+            />
             {badge && (
-              <div className="absolute bottom-4 right-4 rounded-2xl bg-white px-6 py-4 shadow-float">
-                <p className="font-display text-3xl font-extrabold text-brand-600">{badge.value}</p>
-                <p className="text-sm font-semibold text-navy-600">{badge.label}</p>
+              <div className="absolute bottom-6 left-6 border border-[rgba(0,0,0,0.08)] bg-white p-5">
+                <p className="font-display text-3xl font-extrabold text-ink">{badge.value}</p>
+                <p className="text-xs uppercase tracking-widest text-navy-500">{badge.label}</p>
               </div>
             )}
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={0.1} className={reverse ? "lg:order-1" : ""}>
-          <span className="mb-4 inline-flex items-center rounded-full bg-aqua-50 px-4 py-1.5 text-sm font-semibold text-aqua-600 ring-1 ring-aqua-200">
-            {eyebrow}
-          </span>
-          <h2 className="font-display text-3xl font-bold tracking-tight text-navy-900 sm:text-4xl">
+        <div className={`lg:col-span-6 ${reverse ? "lg:order-1" : ""}`}>
+          <FadeIn>
+            <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-navy-500">
+              {eyebrow}
+            </p>
+          </FadeIn>
+
+          <RevealText as="h2" className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             {title}
-          </h2>
-          <p className="mt-5 text-lg leading-relaxed text-navy-600">{description}</p>
-          <ul className="mt-8 grid gap-x-8 gap-y-3.5 sm:grid-cols-2">
-            {points.map((point) => (
-              <li key={point} className="flex items-center gap-2.5 font-medium text-navy-800">
-                <CheckCircle2 className="h-5 w-5 shrink-0 text-brand-600" aria-hidden="true" />
-                {point}
-              </li>
-            ))}
-          </ul>
-          <div className="mt-10">
-            <Link
-              href={ctaHref}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-600 px-7 py-3.5 font-display text-base font-semibold text-white shadow-lg shadow-brand-600/25 transition-all hover:-translate-y-0.5 hover:bg-brand-700"
-            >
-              {ctaLabel} <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-          </div>
-        </Reveal>
+          </RevealText>
+
+          <FadeIn delay={0.2}>
+            <p className="mt-6 text-lg leading-relaxed text-navy-600">{description}</p>
+          </FadeIn>
+
+          <FadeIn delay={0.3}>
+            <ul className="mt-8 grid gap-x-8 gap-y-3 sm:grid-cols-2 border-t border-[rgba(0,0,0,0.08)] pt-6">
+              {points.map((point) => (
+                <li key={point} className="text-sm font-medium text-navy-700">
+                  — {point}
+                </li>
+              ))}
+            </ul>
+          </FadeIn>
+
+          <FadeIn delay={0.4}>
+            <div className="mt-10">
+              <Link
+                href={ctaHref}
+                className="group link-underline inline-flex items-center gap-1.5 text-[15px] font-medium text-ink"
+              >
+                {ctaLabel}
+                <span
+                  aria-hidden="true"
+                  className="inline-block transition-transform duration-300 group-hover:translate-x-1"
+                >
+                  →
+                </span>
+              </Link>
+            </div>
+          </FadeIn>
+        </div>
       </div>
     </section>
   );

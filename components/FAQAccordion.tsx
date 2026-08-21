@@ -1,37 +1,31 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
 import { FAQS } from "@/data/site";
+import FadeIn from "./FadeIn";
 
 export default function FAQAccordion() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <div className="space-y-4">
+    <div className="border-t border-[rgba(0,0,0,0.08)]">
       {FAQS.map((faq, i) => {
         const open = openIndex === i;
         return (
-          <div
-            key={faq.question}
-            className="overflow-hidden rounded-2xl bg-white shadow-card ring-1 ring-navy-300/15"
-          >
+          <FadeIn key={faq.question} delay={i * 0.05} className="border-b border-[rgba(0,0,0,0.08)]">
             <button
               type="button"
               onClick={() => setOpenIndex(open ? -1 : i)}
               aria-expanded={open}
               aria-controls={`faq-panel-${i}`}
-              className="flex w-full items-center justify-between gap-4 px-7 py-5 text-left focus-visible:outline-2 focus-visible:outline-brand-600"
+              className="flex w-full items-center justify-between gap-6 py-6 text-left"
             >
-              <span className="font-display text-lg font-semibold text-navy-900">
+              <span className="font-display text-lg font-bold text-ink">
                 {faq.question}
               </span>
-              <ChevronDown
-                className={`h-5 w-5 shrink-0 text-brand-600 transition-transform duration-300 ${
-                  open ? "rotate-180" : ""
-                }`}
-                aria-hidden="true"
-              />
+              <span className="font-mono text-sm font-medium text-navy-500 shrink-0">
+                {open ? "—" : "+"}
+              </span>
             </button>
             <div
               id={`faq-panel-${i}`}
@@ -40,10 +34,10 @@ export default function FAQAccordion() {
               }`}
             >
               <div className="overflow-hidden">
-                <p className="px-7 pb-6 leading-relaxed text-navy-600">{faq.answer}</p>
+                <p className="pb-6 leading-relaxed text-navy-600 text-base max-w-2xl">{faq.answer}</p>
               </div>
             </div>
-          </div>
+          </FadeIn>
         );
       })}
     </div>

@@ -4,91 +4,134 @@
   --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-display: var(--font-jakarta), ui-sans-serif, sans-serif;
 
-  /* Fresh blue — primary CTA, links, active states, key icons */
-  --color-brand-50: #eff6ff;
-  --color-brand-100: #dbeafe;
-  --color-brand-200: #bfdbfe;
-  --color-brand-300: #93c5fd;
-  --color-brand-400: #60a5fa;
-  --color-brand-500: #3b82f6;
-  --color-brand-600: #2563eb;
-  --color-brand-700: #1d4ed8;
-  --color-brand-800: #1e40af;
-  --color-brand-900: #1e3a8a;
+  /* Editorial palette — 2 colors + surface + text */
+  --color-brand-600: #1a1a1a;
+  --color-brand-700: #000000;
+  --color-brand-50: #f7f7f5;
+  --color-brand-100: #eeeee9;
+  --color-brand-200: #e2e1db;
+  --color-brand-300: #d0cfca;
+  --color-brand-400: #a8a8a3;
+  --color-brand-500: #7a7a76;
 
-  /* Deep blue-navy for logo, headings + cool slate grays for body text */
-  --color-navy-950: #0d1f3c;
-  --color-navy-900: #142f5e;
-  --color-navy-800: #1e4076;
-  --color-navy-700: #2d548c;
-  --color-navy-600: #5a6b82;
-  --color-navy-500: #6d7f96;
-  --color-navy-400: #9bb0c4;
-  --color-navy-300: #c6d3e0;
+  /* Near-black charcoal for text and headings */
+  --color-ink: #141414;
+  --color-navy-950: #141414;
+  --color-navy-900: #1a1a1a;
+  --color-navy-800: #2a2a2a;
+  --color-navy-700: #4a4a4a;
+  --color-navy-600: #666666;
+  --color-navy-500: #888888;
+  --color-navy-400: #aaaaaa;
+  --color-navy-300: #d4d4d4;
 
-  /* Near-black charcoal for display headlines */
-  --color-ink: #16181f;
+  /* Off-white surface */
+  --color-surface: #f7f7f5;
+  --color-surface-warm: #f2f1ed;
 
-  /* Fresh light-blue wash — signature background family (peri-* names kept) */
-  --color-peri-50: #f4f8fe;
-  --color-peri-100: #e9f1fd;
-  --color-peri-200: #d9e7fb;
-  --color-peri-300: #c6dbf9;
-  --color-peri-400: #a3c4f4;
-  --color-peri-500: #7faaee;
-  --color-peri-600: #5c8fe6;
+  /* Muted accent */
+  --color-accent: #8b7355;
+  --color-accent-light: #c4a97d;
 
-  /* aqua-* kept as aliases (legacy class names) remapped into the fresh-blue family */
-  --color-aqua-50: #eff6ff;
-  --color-aqua-100: #e0edfd;
-  --color-aqua-200: #c8dffb;
-  --color-aqua-400: #7faaee;
-  --color-aqua-500: #3b82f6;
-  --color-aqua-600: #2563eb;
+  /* Legacy aliases — keep so existing class names don't break */
+  --color-peri-50: #f7f7f5;
+  --color-peri-100: #f2f1ed;
+  --color-peri-200: #eeeee9;
+  --color-peri-300: #e2e1db;
+  --color-peri-400: #d0cfca;
+  --color-peri-500: #a8a8a3;
+  --color-peri-600: #7a7a76;
 
-  --shadow-card: 0 1px 2px rgb(13 42 92 / 0.04), 0 10px 28px -10px rgb(13 42 92 / 0.12);
-  --shadow-card-hover: 0 2px 4px rgb(13 42 92 / 0.05), 0 22px 44px -14px rgb(37 99 235 / 0.28);
-  --shadow-float: 0 14px 36px -10px rgb(13 42 92 / 0.22);
+  --color-aqua-50: #f7f7f5;
+  --color-aqua-100: #f2f1ed;
+  --color-aqua-200: #eeeee9;
+  --color-aqua-400: #d0cfca;
+  --color-aqua-500: #8b7355;
+  --color-aqua-600: #7a6a4e;
+
+  /* Shadows — editorial: none or barely there */
+  --shadow-card: none;
+  --shadow-card-hover: none;
+  --shadow-float: none;
 }
 
+/* ── Base ────────────────────────────────────── */
+
 html {
-  scroll-behavior: smooth;
   scroll-padding-top: 96px;
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
 body {
   @apply bg-white font-sans text-navy-700 antialiased;
   text-rendering: optimizeLegibility;
-  /* Guard against any absolutely-positioned decoration causing sideways scroll on phones */
   overflow-x: clip;
 }
 
 ::selection {
-  @apply bg-peri-300 text-navy-900;
+  background: #e2e1db;
+  color: #141414;
 }
 
-/* Signature periwinkle washes — mostly near-white (#f4f5fd) with the deepest
-   periwinkle (#dde1f9 range) only as a gentle radial pool behind the hero
-   image, dissolving to pure white at the bottom so sections blend seamlessly. */
-/* Matches the approved hero mock: lightest at the top-left, a deeper
-   fresh-blue bloom behind the image on the right, color held to the
-   bottom edge (no fade to white). */
+/* ── Hairline rules ──────────────────────────── */
+.hairline {
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.hairline-strong {
+  border-color: rgba(0, 0, 0, 0.14);
+}
+
+/* ── Animated underline for links ─────────── */
+.link-underline {
+  position: relative;
+  text-decoration: none;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.link-underline:hover::after,
+.link-underline:focus-visible::after,
+.link-underline.active::after {
+  transform: scaleX(1);
+}
+
+/* ── Legacy wash classes — now editorial neutral ── */
 .bg-peri-wash {
-  background:
-    radial-gradient(ellipse 65% 80% at 78% 55%, #b8d2f0 0%, transparent 62%),
-    radial-gradient(ellipse 55% 55% at 8% 8%, #f2f7fe 0%, transparent 55%),
-    linear-gradient(160deg, #e8f1fd 0%, #cfe1fb 100%);
+  background: var(--color-surface);
 }
 
 .bg-peri-wash-soft {
-  background:
-    radial-gradient(ellipse 70% 60% at 80% 20%, #d9e8fc 0%, transparent 55%),
-    linear-gradient(to bottom, #f2f7fe 0%, #ffffff 100%);
+  background: linear-gradient(to bottom, var(--color-surface) 0%, #ffffff 100%);
 }
 
-/* Scroll-reveal (driven by components/Reveal.tsx via IntersectionObserver).
-   The hidden initial state only applies once JS has stamped `js` on <html> —
-   without JavaScript, all content stays fully visible. */
+/* ── Scroll-reveal (kept for pages not yet refactored) ── */
 .reveal {
   transition:
     opacity 0.6s cubic-bezier(0.21, 0.65, 0.36, 1),
@@ -114,9 +157,11 @@ html.js .reveal:not(.reveal-visible) {
   animation-play-state: paused;
 }
 
+/* ── Reduced motion ──────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal,
   html.js .reveal:not(.reveal-visible) { opacity: 1; transform: none; transition: none; }
   .animate-marquee { animation: none; }
+  .link-underline::after { transition: none; }
 }

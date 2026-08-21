@@ -1,16 +1,20 @@
-import Reveal from "./Reveal";
+"use client";
+
+import RevealText from "./RevealText";
+import FadeIn from "./FadeIn";
 
 export default function SectionHeading({
   eyebrow,
+  number,
   title,
   titleLight,
   subtitle,
-  align = "center",
+  align = "left",
   as: Tag = "h2",
 }: {
   eyebrow?: string;
+  number?: string;
   title: string;
-  /** Optional light-weight first line rendered above the bold title (mixed-weight display pattern). */
   titleLight?: string;
   subtitle?: string;
   align?: "center" | "left";
@@ -18,14 +22,24 @@ export default function SectionHeading({
 }) {
   const isDisplay = Tag === "h1" || Boolean(titleLight);
   return (
-    <Reveal className={`max-w-2xl ${align === "center" ? "mx-auto text-center" : "text-left"}`}>
-      {eyebrow && (
-        <span className="mb-4 inline-flex items-center rounded-full bg-white px-4 py-1.5 text-sm font-semibold text-brand-600 shadow-sm ring-1 ring-brand-100">
-          {eyebrow}
-        </span>
+    <div className={`max-w-2xl ${align === "center" ? "mx-auto text-center" : "text-left"}`}>
+      {(eyebrow || number) && (
+        <FadeIn>
+          <div className={`mb-4 flex items-center gap-3 ${align === "center" ? "justify-center" : "justify-start"}`}>
+            {number && (
+              <span className="text-xs font-mono font-medium text-accent">{number}</span>
+            )}
+            {eyebrow && (
+              <span className="text-xs font-semibold uppercase tracking-widest text-navy-500">
+                {eyebrow}
+              </span>
+            )}
+          </div>
+        </FadeIn>
       )}
-      <Tag
-        className={`font-display tracking-tight text-navy-900 ${
+      <RevealText
+        as={Tag}
+        className={`font-display tracking-tight text-ink ${
           isDisplay ? "text-4xl sm:text-5xl" : "text-3xl font-bold sm:text-4xl"
         }`}
       >
@@ -35,10 +49,14 @@ export default function SectionHeading({
             <span className="block font-extrabold">{title}</span>
           </>
         ) : (
-          <span className={isDisplay ? "font-extrabold" : undefined}>{title}</span>
+          <span className={isDisplay ? "block font-extrabold" : "block"}>{title}</span>
         )}
-      </Tag>
-      {subtitle && <p className="mt-5 text-lg leading-relaxed text-navy-600">{subtitle}</p>}
-    </Reveal>
+      </RevealText>
+      {subtitle && (
+        <FadeIn delay={0.2}>
+          <p className="mt-5 text-lg leading-relaxed text-navy-600">{subtitle}</p>
+        </FadeIn>
+      )}
+    </div>
   );
 }
