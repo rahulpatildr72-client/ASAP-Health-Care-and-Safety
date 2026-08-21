@@ -110,7 +110,7 @@ export default function Header() {
 
   return (
     <>
-      {/* Sticky Header - always visible on scroll with clean light pill navigation */}
+      {/* Sticky Header - always visible on scroll */}
       <header
         ref={headerRef}
         className="fixed inset-x-0 top-0 z-[60] pt-4 pb-2 transition-all duration-300"
@@ -119,7 +119,7 @@ export default function Header() {
           aria-label="Main"
           className="mx-auto flex max-w-7xl items-center justify-between px-5 lg:px-8"
         >
-          {/* Logo */}
+          {/* Logo - Prominent & Larger */}
           <Link href="/" className="flex items-center">
             <Image
               src="/logo-full.png"
@@ -127,7 +127,7 @@ export default function Header() {
               width={1001}
               height={310}
               priority
-              className="h-10 w-auto sm:h-12"
+              className="h-11 w-auto sm:h-13"
             />
           </Link>
 
@@ -159,18 +159,18 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* Mobile Menu 3-Line Hamburger Icon Button */}
+          {/* Mobile Menu 3-Line Hamburger Icon Button - Larger Size */}
           <button
             type="button"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200/90 bg-white/95 text-[#1B2559] shadow-sm backdrop-blur-md transition-all active:scale-95 lg:hidden"
+            className="flex h-12 w-12 items-center justify-center rounded-full border border-slate-200/90 bg-white text-[#1B2559] shadow-md backdrop-blur-md transition-all active:scale-95 lg:hidden"
             aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((v) => !v)}
           >
             {menuOpen ? (
-              <X className="h-5 w-5 text-[#2563EB]" />
+              <X className="h-6 w-6 text-[#2563EB]" strokeWidth={2.5} />
             ) : (
-              <Menu className="h-5 w-5 text-[#1B2559]" />
+              <Menu className="h-7 w-7 text-[#1B2559]" strokeWidth={2.5} />
             )}
           </button>
         </nav>
@@ -187,7 +187,7 @@ export default function Header() {
       >
         <div
           ref={overlayLinksRef}
-          className="min-h-full flex flex-col justify-start bg-gradient-to-b from-[#FFFFFF] via-[#F4F7FC] to-[#EBF1FF] px-5 pt-24 pb-10"
+          className="min-h-full flex flex-col justify-start bg-gradient-to-b from-[#FFFFFF] via-[#F4F7FC] to-[#EBF1FF] px-5 pt-28 pb-10"
         >
           <div className="space-y-6">
             {/* Nav Card Group */}
