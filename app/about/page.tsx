@@ -20,7 +20,7 @@ export default function AboutPage() {
   return (
     <>
       {/* Page hero */}
-      <section className="bg-surface pb-20 pt-36 sm:pt-44">
+      <section className="bg-gradient-to-b from-[#E4E7FB] to-[#F0F3FC] pb-20 pt-36 sm:pt-44">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading
             as="h1"
@@ -33,11 +33,11 @@ export default function AboutPage() {
       </section>
 
       {/* Story */}
-      <section className="bg-white py-24 border-t border-[rgba(0,0,0,0.08)]">
+      <section className="bg-white py-24">
         <div className="mx-auto max-w-3xl px-5 lg:px-8">
           <FadeIn>
-            <h2 className="font-display text-2xl font-bold text-ink sm:text-3xl">Our Story</h2>
-            <div className="mt-6 space-y-5 text-lg leading-relaxed text-navy-600">
+            <h2 className="font-display text-2xl font-bold text-[#141414] sm:text-3xl">Our Story</h2>
+            <div className="mt-6 space-y-5 text-lg leading-relaxed text-[#1B2559]/80">
               <p>
                 Most medical emergencies are decided before the ambulance arrives. Cardiac arrest,
                 choking, severe bleeding — in each case, the first three to five minutes belong not
@@ -88,9 +88,9 @@ export default function AboutPage() {
               },
             ].map(({ title, description }, i) => (
               <FadeIn key={title} delay={i * 0.1} className="bg-white p-8">
-                <span className="font-mono text-xs text-accent block mb-3">0{i + 1}</span>
-                <h3 className="font-display text-xl font-bold text-ink">{title}</h3>
-                <p className="mt-3 leading-relaxed text-navy-600">{description}</p>
+                <span className="font-mono text-xs font-semibold text-[#3B5BDB] block mb-3">0{i + 1}</span>
+                <h3 className="font-display text-xl font-bold text-[#141414]">{title}</h3>
+                <p className="mt-3 leading-relaxed text-[#1B2559]/75">{description}</p>
               </FadeIn>
             ))}
           </div>
@@ -98,25 +98,25 @@ export default function AboutPage() {
       </section>
 
       {/* Vision & Mission */}
-      <section className="bg-surface py-24 border-t border-[rgba(0,0,0,0.08)]">
+      <section className="bg-[#F0F3FC] py-24">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="grid gap-8 lg:grid-cols-2">
             <FadeIn className="border border-[rgba(0,0,0,0.08)] bg-white p-10">
-              <span className="font-mono text-xs text-accent block mb-2">VISION</span>
-              <h2 className="font-display text-2xl font-bold text-ink">Our Vision</h2>
-              <p className="mt-4 text-lg leading-relaxed text-navy-600">{FOUNDER.vision}</p>
+              <span className="font-mono text-xs font-semibold text-[#3B5BDB] block mb-2">VISION</span>
+              <h2 className="font-display text-2xl font-bold text-[#141414]">Our Vision</h2>
+              <p className="mt-4 text-lg leading-relaxed text-[#1B2559]/80">{FOUNDER.vision}</p>
             </FadeIn>
             <FadeIn delay={0.1} className="border border-[rgba(0,0,0,0.08)] bg-white p-10">
-              <span className="font-mono text-xs text-accent block mb-2">MISSION</span>
-              <h2 className="font-display text-2xl font-bold text-ink">Our Mission</h2>
-              <p className="mt-4 text-lg leading-relaxed text-navy-600">{FOUNDER.mission}</p>
+              <span className="font-mono text-xs font-semibold text-[#3B5BDB] block mb-2">MISSION</span>
+              <h2 className="font-display text-2xl font-bold text-[#141414]">Our Mission</h2>
+              <p className="mt-4 text-lg leading-relaxed text-[#1B2559]/80">{FOUNDER.mission}</p>
             </FadeIn>
           </div>
         </div>
       </section>
 
       {/* Founder profile */}
-      <section className="bg-white py-32 border-t border-[rgba(0,0,0,0.08)]">
+      <section className="bg-white py-32">
         <div className="mx-auto grid max-w-7xl items-center gap-16 px-5 lg:grid-cols-12 lg:px-8">
           <div className="lg:col-span-5">
             <ParallaxImage
@@ -127,20 +127,20 @@ export default function AboutPage() {
           </div>
           <div className="lg:col-span-7">
             <FadeIn>
-              <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-navy-500">
+              <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-[#1B2559]/70">
                 Founder &amp; Lead Trainer
               </p>
             </FadeIn>
-            <RevealText as="h2" className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+            <RevealText as="h2" className="font-display text-3xl font-bold tracking-tight text-[#141414] sm:text-4xl">
               {FOUNDER.name}
             </RevealText>
             <FadeIn delay={0.2}>
-              <p className="mt-6 text-lg leading-relaxed text-navy-600">{FOUNDER.story}</p>
+              <p className="mt-6 text-lg leading-relaxed text-[#1B2559]/80">{FOUNDER.story}</p>
             </FadeIn>
             <FadeIn delay={0.3}>
               <ul className="mt-8 space-y-3 border-t border-[rgba(0,0,0,0.08)] pt-6">
                 {FOUNDER.qualifications.map((item) => (
-                  <li key={item} className="text-sm font-medium text-navy-700">
+                  <li key={item} className="text-sm font-medium text-[#1B2559]/90">
                     — {item}
                   </li>
                 ))}
@@ -151,7 +151,7 @@ export default function AboutPage() {
       </section>
 
       {/* Certifications */}
-      <section className="bg-surface py-24 border-t border-[rgba(0,0,0,0.08)]">
+      <section className="bg-[#F0F3FC] py-24">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading
             number="02"
@@ -162,9 +162,9 @@ export default function AboutPage() {
           <div className="mt-16 grid gap-px bg-[rgba(0,0,0,0.08)] sm:grid-cols-2 lg:grid-cols-4 border border-[rgba(0,0,0,0.08)]">
             {CREDENTIALS.map((item, i) => (
               <FadeIn key={item.title} delay={i * 0.1} className="bg-white p-8">
-                <span className="font-mono text-xs text-accent block mb-3">0{i + 1}</span>
-                <h3 className="font-display text-lg font-bold text-ink">{item.title}</h3>
-                <p className="mt-2.5 text-sm leading-relaxed text-navy-600">
+                <span className="font-mono text-xs font-semibold text-[#3B5BDB] block mb-3">0{i + 1}</span>
+                <h3 className="font-display text-lg font-bold text-[#141414]">{item.title}</h3>
+                <p className="mt-2.5 text-sm leading-relaxed text-[#1B2559]/75">
                   {item.description}
                 </p>
               </FadeIn>

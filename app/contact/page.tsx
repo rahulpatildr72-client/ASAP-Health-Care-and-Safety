@@ -47,20 +47,20 @@ export default function ContactPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
       />
 
-      <section className="bg-surface pb-24 pt-36 sm:pt-44">
+      <section className="bg-gradient-to-b from-[#E4E7FB] to-[#F0F3FC] pb-24 pt-36 sm:pt-44">
         <div className="mx-auto grid max-w-7xl gap-16 px-5 lg:grid-cols-12 lg:px-8">
           <div className="lg:col-span-5">
             <FadeIn>
-              <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-navy-500">
+              <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-[#1B2559]/70">
                 Contact
               </p>
             </FadeIn>
-            <RevealText as="h1" className="font-display text-4xl tracking-tight text-ink sm:text-5xl">
+            <RevealText as="h1" className="font-display text-4xl tracking-tight text-[#141414] sm:text-5xl">
               <span className="block font-light">Let&apos;s Build</span>
               <span className="block font-extrabold">A Safer Workplace</span>
             </RevealText>
             <FadeIn delay={0.2}>
-              <p className="mt-6 text-lg leading-relaxed text-navy-600">
+              <p className="mt-6 text-lg leading-relaxed text-[#1B2559]/80">
                 Tell us about your team and your training needs — we&apos;ll get back to you with a
                 program and a plan.
               </p>
@@ -69,18 +69,18 @@ export default function ContactPage() {
               <ul className="mt-12 space-y-6 border-t border-[rgba(0,0,0,0.08)] pt-8">
                 {infoItems.map(({ label, value, href }) => (
                   <li key={label} className="border-b border-[rgba(0,0,0,0.08)] pb-6">
-                    <p className="text-xs font-semibold uppercase tracking-widest text-navy-500 mb-1">
+                    <p className="text-xs font-semibold uppercase tracking-widest text-[#1B2559]/70 mb-1">
                       {label}
                     </p>
                     {href ? (
                       <a
                         href={href}
-                        className="link-underline font-display text-lg font-bold text-ink"
+                        className="link-underline font-display text-lg font-bold text-[#141414] hover:text-[#3B5BDB]"
                       >
                         {value}
                       </a>
                     ) : (
-                      <p className="font-display text-lg font-bold text-ink">{value}</p>
+                      <p className="font-display text-lg font-bold text-[#141414]">{value}</p>
                     )}
                   </li>
                 ))}

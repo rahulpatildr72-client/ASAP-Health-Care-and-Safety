@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -32,15 +32,12 @@ export default function Header() {
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
-  // ── Close menu on route change ──
   useEffect(() => setMenuOpen(false), [pathname]);
 
-  // ── Track if page has scrolled past 100px ──
   useEffect(() => {
     setHasScrolled(scrollY > 100);
   }, [scrollY]);
 
-  // ── Body scroll lock when overlay is open ──
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = "hidden";
@@ -52,7 +49,6 @@ export default function Header() {
     };
   }, [menuOpen]);
 
-  // ── Escape key closes menu ──
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "Escape" && menuOpen) setMenuOpen(false);
@@ -61,7 +57,6 @@ export default function Header() {
     return () => document.removeEventListener("keydown", handleKey);
   }, [menuOpen]);
 
-  // ── Intro animation: header fades in with the page ──
   useEffect(() => {
     if (introRan.current) return;
     introRan.current = true;
@@ -79,7 +74,6 @@ export default function Header() {
     );
   }, []);
 
-  // ── Mobile overlay animation ──
   useEffect(() => {
     const overlay = overlayRef.current;
     const linksContainer = overlayLinksRef.current;
@@ -123,7 +117,6 @@ export default function Header() {
     }
   }, [menuOpen]);
 
-  // ── Header hide/show behavior ──
   const headerHidden = hasScrolled && direction === "down";
   const headerSolid = hasScrolled && direction === "up";
 
@@ -138,7 +131,7 @@ export default function Header() {
         ref={headerRef}
         className="fixed inset-x-0 top-0 z-[60]"
         style={{
-          opacity: 0, // GSAP intro will animate this to 1
+          opacity: 0,
           transform: headerHidden && !prefersReduced ? "translateY(-100%)" : "translateY(0)",
           transition: "transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), background-color 0.3s ease",
           backgroundColor: headerSolid ? "#ffffff" : "transparent",
@@ -150,7 +143,6 @@ export default function Header() {
           aria-label="Main"
           className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-8"
         >
-          {/* Wordmark / Logo */}
           <Link href="/" className="flex items-center">
             <Image
               src="/logo-full.png"
@@ -162,7 +154,6 @@ export default function Header() {
             />
           </Link>
 
-          {/* Desktop nav links */}
           <div className="hidden items-center gap-10 lg:flex">
             {NAV_LINKS.map((link) => (
               <Link
@@ -171,38 +162,36 @@ export default function Header() {
                 aria-current={isActive(link.href) ? "page" : undefined}
                 className={`link-underline whitespace-nowrap text-[15px] font-medium transition-colors ${
                   isActive(link.href)
-                    ? "text-ink active"
-                    : "text-navy-700 hover:text-ink"
+                    ? "text-[#3B5BDB] active"
+                    : "text-[#1B2559]/80 hover:text-[#3B5BDB]"
                 }`}
               >
                 {link.label}
               </Link>
             ))}
 
-            {/* CTA — same text style + arrow nudge */}
             <Link
               href={CTA_LINK.href}
               aria-current={isActive(CTA_LINK.href) ? "page" : undefined}
               className={`group link-underline inline-flex items-center gap-1 whitespace-nowrap text-[15px] font-medium transition-colors ${
                 isActive(CTA_LINK.href)
-                  ? "text-ink active"
-                  : "text-navy-700 hover:text-ink"
+                  ? "text-[#3B5BDB] active"
+                  : "text-[#1B2559]/80 hover:text-[#3B5BDB]"
               }`}
             >
               {CTA_LINK.label}
               <span
                 aria-hidden="true"
-                className="inline-block transition-transform duration-300 group-hover:translate-x-1"
+                className="inline-block text-[#3B5BDB] transition-transform duration-300 group-hover:translate-x-1"
               >
                 →
               </span>
             </Link>
           </div>
 
-          {/* Mobile: "Menu" / "Close" text toggle */}
           <button
             type="button"
-            className="link-underline text-[15px] font-medium text-navy-700 lg:hidden"
+            className="link-underline text-[15px] font-medium text-[#1B2559] hover:text-[#3B5BDB] lg:hidden"
             aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((v) => !v)}
@@ -212,11 +201,10 @@ export default function Header() {
         </nav>
       </header>
 
-      {/* ── Mobile full-screen overlay ── */}
       <div
         ref={overlayRef}
         className="fixed inset-0 z-50 lg:hidden"
-        style={{ opacity: 0, pointerEvents: "none", backgroundColor: "var(--color-surface)" }}
+        style={{ opacity: 0, pointerEvents: "none", backgroundColor: "#F0F3FC" }}
         role="dialog"
         aria-modal="true"
         aria-label="Navigation menu"
@@ -225,7 +213,6 @@ export default function Header() {
           ref={overlayLinksRef}
           className="flex h-full flex-col justify-between px-5 pb-10 pt-28"
         >
-          {/* Nav links — large heading style */}
           <nav className="space-y-2">
             {[...NAV_LINKS, CTA_LINK].map((link) => (
               <Link
@@ -234,7 +221,7 @@ export default function Header() {
                 data-overlay-link
                 onClick={() => setMenuOpen(false)}
                 className={`block font-display text-[2.6rem] leading-[1.08] tracking-tight transition-colors ${
-                  isActive(link.href) ? "text-ink" : "text-navy-500 hover:text-ink"
+                  isActive(link.href) ? "text-[#3B5BDB]" : "text-[#1B2559]/70 hover:text-[#3B5BDB]"
                 }`}
               >
                 {link.label}
@@ -242,15 +229,14 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Small footer row */}
           <div
             data-overlay-link
-            className="flex items-center justify-between border-t border-[rgba(0,0,0,0.08)] pt-6 text-sm text-navy-500"
+            className="flex items-center justify-between border-t border-[rgba(0,0,0,0.08)] pt-6 text-sm text-[#1B2559]/70"
           >
-            <a href={`mailto:${CONTACT.email}`} className="link-underline hover:text-ink">
+            <a href={`mailto:${CONTACT.email}`} className="link-underline hover:text-[#3B5BDB]">
               {CONTACT.email}
             </a>
-            <a href={CONTACT.phoneHref} className="link-underline hover:text-ink">
+            <a href={CONTACT.phoneHref} className="link-underline hover:text-[#3B5BDB]">
               {CONTACT.phone}
             </a>
           </div>

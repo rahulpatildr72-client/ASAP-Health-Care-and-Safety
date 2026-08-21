@@ -20,10 +20,10 @@ export default function FAQAccordion() {
               aria-controls={`faq-panel-${i}`}
               className="flex w-full items-center justify-between gap-6 py-6 text-left"
             >
-              <span className="font-display text-lg font-bold text-ink">
+              <span className="font-display text-lg font-bold text-[#141414]">
                 {faq.question}
               </span>
-              <span className="font-mono text-sm font-medium text-navy-500 shrink-0">
+              <span className="font-mono text-base font-bold text-[#3B5BDB] shrink-0">
                 {open ? "—" : "+"}
               </span>
             </button>
@@ -34,7 +34,7 @@ export default function FAQAccordion() {
               }`}
             >
               <div className="overflow-hidden">
-                <p className="pb-6 leading-relaxed text-navy-600 text-base max-w-2xl">{faq.answer}</p>
+                <p className="pb-6 leading-relaxed text-[#1B2559]/75 text-base max-w-2xl">{faq.answer}</p>
               </div>
             </div>
           </FadeIn>

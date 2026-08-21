@@ -75,7 +75,7 @@ const IMAGES: GalleryImage[] = [
 export default function GalleryPage() {
   return (
     <>
-      <section className="bg-surface pb-20 pt-36 sm:pt-44">
+      <section className="bg-gradient-to-b from-[#E4E7FB] to-[#F0F3FC] pb-20 pt-36 sm:pt-44">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading
             as="h1"

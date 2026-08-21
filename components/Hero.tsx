@@ -7,23 +7,23 @@ import FadeIn from "./FadeIn";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-surface pb-24 pt-36 sm:pt-44 lg:pb-36">
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#E4E7FB] to-[#F0F3FC] pb-24 pt-36 sm:pt-44 lg:pb-36">
       <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-5 lg:grid-cols-2 lg:gap-12 lg:px-8">
         <div>
           <FadeIn delay={0.1}>
-            <p className="mb-6 text-xs font-semibold uppercase tracking-widest text-navy-500">
+            <p className="mb-6 text-xs font-semibold uppercase tracking-widest text-[#1B2559]/70">
               Hands-on training by medical professionals
             </p>
           </FadeIn>
 
           {/* Mixed-weight display headline — EXACT typography locked */}
-          <RevealText as="h1" className="font-display text-[2.6rem] leading-[1.08] tracking-tight text-ink sm:text-6xl xl:text-[4.2rem]">
+          <RevealText as="h1" className="font-display text-[2.6rem] leading-[1.08] tracking-tight text-[#141414] sm:text-6xl xl:text-[4.2rem]">
             <span className="block font-light">Train Today.</span>
             <span className="block font-extrabold">Respond Tomorrow.</span>
           </RevealText>
 
           <FadeIn delay={0.4}>
-            <p className="mt-8 max-w-xl text-lg leading-relaxed text-navy-700">
+            <p className="mt-8 max-w-xl text-lg leading-relaxed text-[#1B2559]/80">
               Professional First Aid, CPR, AED and Health &amp; Safety Training designed to build
               confident lifesavers in workplaces, institutions and communities.
             </p>
@@ -33,24 +33,24 @@ export default function Hero() {
             <div className="mt-10 flex flex-wrap items-center gap-8">
               <Link
                 href="/contact"
-                className="group link-underline inline-flex items-center gap-1.5 text-[15px] font-medium text-ink"
+                className="group link-underline inline-flex items-center gap-1.5 text-[15px] font-medium text-[#141414] hover:text-[#3B5BDB]"
               >
                 Book a Training
                 <span
                   aria-hidden="true"
-                  className="inline-block transition-transform duration-300 group-hover:translate-x-1"
+                  className="inline-block text-[#3B5BDB] transition-transform duration-300 group-hover:translate-x-1"
                 >
                   →
                 </span>
               </Link>
               <Link
                 href="/courses"
-                className="group link-underline inline-flex items-center gap-1.5 text-[15px] font-medium text-navy-600 hover:text-ink"
+                className="group link-underline inline-flex items-center gap-1.5 text-[15px] font-medium text-[#1B2559]/70 hover:text-[#3B5BDB]"
               >
                 Explore Training Programs
                 <span
                   aria-hidden="true"
-                  className="inline-block transition-transform duration-300 group-hover:translate-x-1"
+                  className="inline-block text-[#3B5BDB] transition-transform duration-300 group-hover:translate-x-1"
                 >
                   →
                 </span>
@@ -59,7 +59,7 @@ export default function Hero() {
           </FadeIn>
 
           <FadeIn delay={0.6}>
-            <p className="mt-12 text-sm font-medium text-navy-500">
+            <p className="mt-12 text-sm font-medium text-[#1B2559]/60">
               Trusted by leading organizations across India and beyond
             </p>
           </FadeIn>
@@ -81,7 +81,7 @@ export default function Hero() {
       {/* Scroll indicator bottom-left */}
       <div className="absolute bottom-8 left-5 hidden sm:block lg:left-8">
         <FadeIn delay={0.8}>
-          <span className="text-xs uppercase tracking-widest text-navy-400">
+          <span className="text-xs uppercase tracking-widest text-[#1B2559]/50">
             Scroll ↓
           </span>
         </FadeIn>

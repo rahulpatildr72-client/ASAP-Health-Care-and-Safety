@@ -40,7 +40,7 @@ const pillars = [
 export default function CorporatePage() {
   return (
     <>
-      <section className="bg-surface pb-20 pt-36 sm:pt-44">
+      <section className="bg-gradient-to-b from-[#E4E7FB] to-[#F0F3FC] pb-20 pt-36 sm:pt-44">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading
             as="h1"
@@ -52,10 +52,10 @@ export default function CorporatePage() {
           <FadeIn delay={0.2} className="mt-10">
             <Link
               href="/contact"
-              className="group link-underline inline-flex items-center gap-1.5 text-base font-semibold text-ink"
+              className="group link-underline inline-flex items-center gap-1.5 text-base font-semibold text-[#141414] hover:text-[#3B5BDB]"
             >
               Request a Group Training Quote
-              <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+              <span className="inline-block text-[#3B5BDB] transition-transform duration-300 group-hover:translate-x-1">→</span>
             </Link>
           </FadeIn>
         </div>
@@ -67,9 +67,9 @@ export default function CorporatePage() {
           <div className="grid gap-px bg-[rgba(0,0,0,0.08)] lg:grid-cols-3 border border-[rgba(0,0,0,0.08)]">
             {pillars.map(({ title, description }, i) => (
               <FadeIn key={title} delay={i * 0.1} className="bg-white p-8">
-                <span className="font-mono text-xs text-accent block mb-3">0{i + 1}</span>
-                <h2 className="font-display text-xl font-bold text-ink">{title}</h2>
-                <p className="mt-3 leading-relaxed text-navy-600 text-sm">{description}</p>
+                <span className="font-mono text-xs font-semibold text-[#3B5BDB] block mb-3">0{i + 1}</span>
+                <h2 className="font-display text-xl font-bold text-[#141414]">{title}</h2>
+                <p className="mt-3 leading-relaxed text-[#1B2559]/75 text-sm">{description}</p>
               </FadeIn>
             ))}
           </div>
@@ -110,10 +110,10 @@ export default function CorporatePage() {
           <FadeIn delay={0.2} className="mt-10 flex justify-center">
             <Link
               href="/contact"
-              className="group link-underline inline-flex items-center gap-1.5 text-base font-semibold text-ink"
+              className="group link-underline inline-flex items-center gap-1.5 text-base font-semibold text-[#141414] hover:text-[#3B5BDB]"
             >
               Request Group Pricing
-              <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+              <span className="inline-block text-[#3B5BDB] transition-transform duration-300 group-hover:translate-x-1">→</span>
             </Link>
           </FadeIn>
         </div>

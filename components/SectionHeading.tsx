@@ -27,10 +27,10 @@ export default function SectionHeading({
         <FadeIn>
           <div className={`mb-4 flex items-center gap-3 ${align === "center" ? "justify-center" : "justify-start"}`}>
             {number && (
-              <span className="text-xs font-mono font-medium text-accent">{number}</span>
+              <span className="text-xs font-mono font-semibold text-[#3B5BDB]">{number}</span>
             )}
             {eyebrow && (
-              <span className="text-xs font-semibold uppercase tracking-widest text-navy-500">
+              <span className="text-xs font-semibold uppercase tracking-widest text-[#1B2559]/70">
                 {eyebrow}
               </span>
             )}
@@ -39,7 +39,7 @@ export default function SectionHeading({
       )}
       <RevealText
         as={Tag}
-        className={`font-display tracking-tight text-ink ${
+        className={`font-display tracking-tight text-[#141414] ${
           isDisplay ? "text-4xl sm:text-5xl" : "text-3xl font-bold sm:text-4xl"
         }`}
       >
@@ -54,7 +54,7 @@ export default function SectionHeading({
       </RevealText>
       {subtitle && (
         <FadeIn delay={0.2}>
-          <p className="mt-5 text-lg leading-relaxed text-navy-600">{subtitle}</p>
+          <p className="mt-5 text-lg leading-relaxed text-[#1B2559]/80">{subtitle}</p>
         </FadeIn>
       )}
     </div>

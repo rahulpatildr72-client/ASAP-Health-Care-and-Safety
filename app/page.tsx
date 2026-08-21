@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import Hero from "@/components/Hero";
 import TrustBar from "@/components/TrustBar";
@@ -30,11 +29,14 @@ const experienceLabels = ["Hands-On", "Interactive", "Practical", "Confidence-Bu
 export default function HomePage() {
   return (
     <>
+      {/* 1. Hero */}
       <Hero />
+
+      {/* 2. Stats strip */}
       <TrustBar />
 
-      {/* Training categories */}
-      <section className="bg-white py-32 border-t border-[rgba(0,0,0,0.08)]">
+      {/* 3. 01 Training Programs */}
+      <section className="bg-white py-32">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading
             number="01"
@@ -52,9 +54,10 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 4. 02 Who We Train */}
       <AudienceGrid />
 
-      {/* Corporate split */}
+      {/* 5. Corporate Training split */}
       <SplitSection
         eyebrow="Corporate Training"
         title="Turn Your Employees Into Confident First Responders"
@@ -74,8 +77,8 @@ export default function HomePage() {
         badge={{ value: "250+", label: "Corporate clients trained" }}
       />
 
-      {/* Why choose us */}
-      <section className="bg-white py-32 border-t border-[rgba(0,0,0,0.08)]">
+      {/* 6. 03 Why Us */}
+      <section className="bg-white py-32">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading
             number="03"
@@ -93,23 +96,24 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 7. 04 How It Works */}
       <HowItWorks />
 
-      {/* Training experience */}
-      <section className="bg-surface py-32 border-t border-[rgba(0,0,0,0.08)]">
+      {/* 8. Training Experience */}
+      <section className="bg-white py-32">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="grid items-center gap-16 lg:grid-cols-12">
             <div className="lg:col-span-6">
               <FadeIn>
-                <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-navy-500">
+                <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-[#1B2559]/70">
                   The Training Experience
                 </p>
               </FadeIn>
-              <RevealText as="h2" className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+              <RevealText as="h2" className="font-display text-3xl font-bold tracking-tight text-[#141414] sm:text-4xl">
                 Don&apos;t Just Learn. Practice.
               </RevealText>
               <FadeIn delay={0.2}>
-                <p className="mt-6 text-lg leading-relaxed text-navy-600">
+                <p className="mt-6 text-lg leading-relaxed text-[#1B2559]/80">
                   Every session is built around doing — chest compressions on mannequins, AED
                   demonstrations, bandaging, choking response drills and realistic scenarios. We
                   train until emergency response becomes reflex, because in a real emergency you
@@ -121,7 +125,7 @@ export default function HomePage() {
                   {experienceLabels.map((label) => (
                     <span
                       key={label}
-                      className="text-xs uppercase tracking-wider font-semibold text-navy-600"
+                      className="text-xs uppercase tracking-wider font-semibold text-[#3B5BDB]"
                     >
                       — {label}
                     </span>
@@ -132,10 +136,10 @@ export default function HomePage() {
                 <div className="mt-8">
                   <Link
                     href="/gallery"
-                    className="group link-underline inline-flex items-center gap-1.5 text-sm font-medium text-ink"
+                    className="group link-underline inline-flex items-center gap-1.5 text-sm font-medium text-[#141414] hover:text-[#3B5BDB]"
                   >
                     See the training in action
-                    <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+                    <span className="inline-block text-[#3B5BDB] transition-transform duration-300 group-hover:translate-x-1">→</span>
                   </Link>
                 </div>
               </FadeIn>
@@ -152,8 +156,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Certification / trust */}
-      <section className="bg-white py-32 border-t border-[rgba(0,0,0,0.08)]">
+      {/* 9. 06 Credibility */}
+      <section className="bg-[#F0F3FC] py-32">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading
             number="06"
@@ -164,9 +168,9 @@ export default function HomePage() {
           <div className="mt-16 grid gap-px bg-[rgba(0,0,0,0.08)] sm:grid-cols-2 lg:grid-cols-4 border border-[rgba(0,0,0,0.08)]">
             {CREDENTIALS.map((item, i) => (
               <FadeIn key={item.title} delay={i * 0.08} className="bg-white p-8">
-                <span className="font-mono text-xs text-accent block mb-3">0{i + 1}</span>
-                <h3 className="font-display text-lg font-bold text-ink">{item.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-navy-600">
+                <span className="font-mono text-xs font-semibold text-[#3B5BDB] block mb-3">0{i + 1}</span>
+                <h3 className="font-display text-lg font-bold text-[#141414]">{item.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-[#1B2559]/75">
                   {item.description}
                 </p>
               </FadeIn>
@@ -175,8 +179,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Meet the expert */}
-      <section className="bg-surface py-32 border-t border-[rgba(0,0,0,0.08)]">
+      {/* 10. Founder */}
+      <section className="bg-white py-32">
         <div className="mx-auto grid max-w-7xl items-center gap-16 px-5 lg:grid-cols-12 lg:px-8">
           <div className="lg:col-span-5">
             <ParallaxImage
@@ -188,20 +192,20 @@ export default function HomePage() {
 
           <div className="lg:col-span-7">
             <FadeIn>
-              <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-navy-500">
+              <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-[#1B2559]/70">
                 About the Founder
               </p>
             </FadeIn>
-            <RevealText as="h2" className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+            <RevealText as="h2" className="font-display text-3xl font-bold tracking-tight text-[#141414] sm:text-4xl">
               Meet the Expert Behind the Training
             </RevealText>
             <FadeIn delay={0.2}>
-              <p className="mt-6 text-lg leading-relaxed text-navy-600">{FOUNDER.story}</p>
+              <p className="mt-6 text-lg leading-relaxed text-[#1B2559]/80">{FOUNDER.story}</p>
             </FadeIn>
             <FadeIn delay={0.3}>
               <ul className="mt-8 space-y-3 border-t border-[rgba(0,0,0,0.08)] pt-6">
                 {FOUNDER.qualifications.map((item) => (
-                  <li key={item} className="text-sm font-medium text-navy-700">
+                  <li key={item} className="text-sm font-medium text-[#1B2559]/90">
                     — {item}
                   </li>
                 ))}
@@ -211,10 +215,10 @@ export default function HomePage() {
               <div className="mt-10">
                 <Link
                   href="/about"
-                  className="group link-underline inline-flex items-center gap-1.5 text-sm font-medium text-ink"
+                  className="group link-underline inline-flex items-center gap-1.5 text-sm font-medium text-[#141414] hover:text-[#3B5BDB]"
                 >
                   Meet Our Team
-                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+                  <span className="inline-block text-[#3B5BDB] transition-transform duration-300 group-hover:translate-x-1">→</span>
                 </Link>
               </div>
             </FadeIn>
@@ -222,11 +226,14 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 11. 05 Industries */}
       <IndustryGrid />
+
+      {/* 12. Logo wall */}
       <LogoWall />
 
-      {/* Testimonials */}
-      <section className="bg-white py-32 border-t border-[rgba(0,0,0,0.08)]">
+      {/* 13. 07 Testimonials */}
+      <section className="bg-[#F0F3FC] py-32">
         <div className="mx-auto max-w-4xl px-5 lg:px-8">
           <SectionHeading
             number="07"
@@ -240,8 +247,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="bg-white py-32 border-t border-[rgba(0,0,0,0.08)]">
+      {/* 14. 08 FAQ */}
+      <section className="bg-white py-32">
         <div className="mx-auto max-w-3xl px-5 lg:px-8">
           <SectionHeading
             number="08"
@@ -255,6 +262,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 15. Final CTA */}
       <CTABanner />
     </>
   );
