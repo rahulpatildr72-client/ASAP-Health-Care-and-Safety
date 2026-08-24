@@ -5,7 +5,6 @@ import TrustBar from "@/components/TrustBar";
 import AudienceGrid from "@/components/AudienceGrid";
 import CourseCard from "@/components/CourseCard";
 import FeatureCard from "@/components/FeatureCard";
-import HowItWorks from "@/components/HowItWorks";
 import IndustryGrid from "@/components/IndustryGrid";
 import LogoWall from "@/components/LogoWall";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
@@ -16,14 +15,12 @@ import ParallaxImage from "@/components/ParallaxImage";
 import RevealText from "@/components/RevealText";
 import FadeIn from "@/components/FadeIn";
 import { COURSES } from "@/data/courses";
-import { CREDENTIALS, FOUNDER, SITE_TAGLINE, WHY_US } from "@/data/site";
+import { FOUNDER, SITE_TAGLINE, WHY_US } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "First Aid, CPR & Health Safety Training in India",
   description: SITE_TAGLINE,
 };
-
-const experienceLabels = ["Hands-On", "Interactive", "Practical", "Confidence-Building"];
 
 export default function HomePage() {
   return (
@@ -75,88 +72,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7. 04 How It Works */}
-      <HowItWorks />
 
-      {/* 8. Training Experience */}
-      <section className="bg-white py-32">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="grid items-center gap-16 lg:grid-cols-12">
-            <div className="lg:col-span-6">
-              <FadeIn>
-                <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-[#1B2559]/70">
-                  The Training Experience
-                </p>
-              </FadeIn>
-              <RevealText as="h2" className="font-display text-3xl font-bold tracking-tight text-[#141414] sm:text-4xl">
-                Don&apos;t Just Learn. Practice.
-              </RevealText>
-              <FadeIn delay={0.2}>
-                <p className="mt-6 text-lg leading-relaxed text-[#1B2559]/80">
-                  Every session is built around doing — chest compressions on mannequins, AED
-                  demonstrations, bandaging, choking response drills and realistic scenarios. We
-                  train until emergency response becomes reflex, because in a real emergency you
-                  fall back on muscle memory, not slides.
-                </p>
-              </FadeIn>
-              <FadeIn delay={0.3}>
-                <div className="mt-8 flex flex-wrap gap-4 border-t border-[rgba(0,0,0,0.08)] pt-6">
-                  {experienceLabels.map((label) => (
-                    <span
-                      key={label}
-                      className="text-xs uppercase tracking-wider font-semibold text-[#3B5BDB]"
-                    >
-                      — {label}
-                    </span>
-                  ))}
-                </div>
-              </FadeIn>
-              <FadeIn delay={0.4}>
-                <div className="mt-8">
-                  <Link
-                    href="/gallery"
-                    className="group link-underline inline-flex items-center gap-1.5 text-sm font-medium text-[#141414] hover:text-[#3B5BDB]"
-                  >
-                    See the training in action
-                    <span className="inline-block text-[#3B5BDB] transition-transform duration-300 group-hover:translate-x-1">→</span>
-                  </Link>
-                </div>
-              </FadeIn>
-            </div>
-
-            <div className="lg:col-span-6">
-              <ParallaxImage
-                src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&w=1100&q=80"
-                alt="Participant practicing chest compressions on a CPR mannequin under trainer guidance"
-                containerClassName="aspect-[4/3] w-full"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 9. 06 Credibility */}
-      <section className="bg-[#F0F3FC] py-32">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <SectionHeading
-            number="06"
-            eyebrow="Credibility"
-            title="Training Built Around Recognized Standards"
-            subtitle="Our programs follow internationally recognized guidelines and are delivered by certified instructors."
-          />
-          <div className="mt-16 grid gap-px bg-[rgba(0,0,0,0.08)] sm:grid-cols-2 lg:grid-cols-4 border border-[rgba(0,0,0,0.08)]">
-            {CREDENTIALS.map((item, i) => (
-              <FadeIn key={item.title} delay={i * 0.08} className="bg-white p-8">
-                <span className="font-mono text-xs font-semibold text-[#3B5BDB] block mb-3">0{i + 1}</span>
-                <h3 className="font-display text-lg font-bold text-[#141414]">{item.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-[#1B2559]/75">
-                  {item.description}
-                </p>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* 10. Founder */}
       <section className="bg-white py-32">
