@@ -33,11 +33,11 @@ export default function AboutPage() {
       </section>
 
       {/* Story */}
-      <section className="bg-white py-24">
+      <section className="bg-white py-16 sm:py-24">
         <div className="mx-auto max-w-3xl px-5 lg:px-8">
           <FadeIn>
             <h2 className="font-display text-2xl font-bold text-[#141414] sm:text-3xl">Our Story</h2>
-            <div className="mt-6 space-y-5 text-lg leading-relaxed text-[#1B2559]/80">
+            <div className="mt-6 space-y-4 sm:space-y-5 text-base sm:text-lg leading-relaxed text-[#1B2559]/80">
               <p>
                 Most medical emergencies are decided before the ambulance arrives. Cardiac arrest,
                 choking, severe bleeding — in each case, the first three to five minutes belong not
@@ -61,7 +61,7 @@ export default function AboutPage() {
       </section>
 
       {/* Training approach */}
-      <section className="bg-white py-24 border-t border-[rgba(0,0,0,0.08)]">
+      <section className="bg-white py-16 sm:py-24 border-t border-[rgba(0,0,0,0.08)]">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading
             number="01"
@@ -69,7 +69,7 @@ export default function AboutPage() {
             title="Until Response Becomes Reflex"
             subtitle="Attendance doesn't save lives — competence does. Every program is designed around how people actually behave under pressure."
           />
-          <div className="mt-16 grid gap-px bg-[rgba(0,0,0,0.08)] lg:grid-cols-3 border border-[rgba(0,0,0,0.08)]">
+          <div className="mt-10 sm:mt-16 grid gap-px bg-[rgba(0,0,0,0.08)] lg:grid-cols-3 border border-[rgba(0,0,0,0.08)]">
             {[
               {
                 title: "Scenario-Driven Practice",
@@ -87,10 +87,10 @@ export default function AboutPage() {
                   "Participants show they can perform the skills hands-on before completing the program — certification reflects ability, not just attendance.",
               },
             ].map(({ title, description }, i) => (
-              <FadeIn key={title} delay={i * 0.1} className="bg-white p-8">
+              <FadeIn key={title} delay={i * 0.1} className="bg-white p-6 sm:p-8">
                 <span className="font-mono text-xs font-semibold text-[#3B5BDB] block mb-3">0{i + 1}</span>
-                <h3 className="font-display text-xl font-bold text-[#141414]">{title}</h3>
-                <p className="mt-3 leading-relaxed text-[#1B2559]/75">{description}</p>
+                <h3 className="font-display text-lg sm:text-xl font-bold text-[#141414]">{title}</h3>
+                <p className="mt-2.5 sm:mt-3 leading-relaxed text-sm sm:text-base text-[#1B2559]/75">{description}</p>
               </FadeIn>
             ))}
           </div>
@@ -98,49 +98,49 @@ export default function AboutPage() {
       </section>
 
       {/* Vision & Mission */}
-      <section className="bg-[#F0F3FC] py-24">
+      <section className="bg-[#F0F3FC] py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="grid gap-8 lg:grid-cols-2">
-            <FadeIn className="border border-[rgba(0,0,0,0.08)] bg-white p-10">
+          <div className="grid gap-6 sm:gap-8 lg:grid-cols-2">
+            <FadeIn className="border border-[rgba(0,0,0,0.08)] bg-white p-6 sm:p-10 rounded-xl">
               <span className="font-mono text-xs font-semibold text-[#3B5BDB] block mb-2">VISION</span>
-              <h2 className="font-display text-2xl font-bold text-[#141414]">Our Vision</h2>
-              <p className="mt-4 text-lg leading-relaxed text-[#1B2559]/80">{FOUNDER.vision}</p>
+              <h2 className="font-display text-xl sm:text-2xl font-bold text-[#141414]">Our Vision</h2>
+              <p className="mt-3 sm:mt-4 text-base sm:text-lg leading-relaxed text-[#1B2559]/80">{FOUNDER.vision}</p>
             </FadeIn>
-            <FadeIn delay={0.1} className="border border-[rgba(0,0,0,0.08)] bg-white p-10">
+            <FadeIn delay={0.1} className="border border-[rgba(0,0,0,0.08)] bg-white p-6 sm:p-10 rounded-xl">
               <span className="font-mono text-xs font-semibold text-[#3B5BDB] block mb-2">MISSION</span>
-              <h2 className="font-display text-2xl font-bold text-[#141414]">Our Mission</h2>
-              <p className="mt-4 text-lg leading-relaxed text-[#1B2559]/80">{FOUNDER.mission}</p>
+              <h2 className="font-display text-xl sm:text-2xl font-bold text-[#141414]">Our Mission</h2>
+              <p className="mt-3 sm:mt-4 text-base sm:text-lg leading-relaxed text-[#1B2559]/80">{FOUNDER.mission}</p>
             </FadeIn>
           </div>
         </div>
       </section>
 
       {/* Founder profile */}
-      <section className="bg-white py-32">
-        <div className="mx-auto grid max-w-7xl items-center gap-16 px-5 lg:grid-cols-12 lg:px-8">
+      <section className="bg-white py-16 sm:py-24 lg:py-32">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 sm:gap-16 px-5 lg:grid-cols-12 lg:px-8">
           <div className="lg:col-span-5">
             <ParallaxImage
               src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=900&q=80"
               alt={`Professional portrait of ${FOUNDER.name}, founder and lead trainer`}
-              containerClassName="aspect-[4/5] w-full"
+              containerClassName="aspect-[4/5] w-full rounded-2xl overflow-hidden"
             />
           </div>
           <div className="lg:col-span-7">
             <FadeIn>
-              <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-[#1B2559]/70">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-[#1B2559]/70">
                 Founder &amp; Lead Trainer
               </p>
             </FadeIn>
-            <RevealText as="h2" className="font-display text-3xl font-bold tracking-tight text-[#141414] sm:text-4xl">
+            <RevealText as="h2" className="font-display text-2.5xl font-bold tracking-tight text-[#141414] sm:text-4xl">
               {FOUNDER.name}
             </RevealText>
             <FadeIn delay={0.2}>
-              <p className="mt-6 text-lg leading-relaxed text-[#1B2559]/80">{FOUNDER.story}</p>
+              <p className="mt-5 text-base sm:text-lg leading-relaxed text-[#1B2559]/80">{FOUNDER.story}</p>
             </FadeIn>
             <FadeIn delay={0.3}>
-              <ul className="mt-8 space-y-3 border-t border-[rgba(0,0,0,0.08)] pt-6">
+              <ul className="mt-6 sm:mt-8 space-y-3 border-t border-[rgba(0,0,0,0.08)] pt-6">
                 {FOUNDER.qualifications.map((item) => (
-                  <li key={item} className="text-sm font-medium text-[#1B2559]/90">
+                  <li key={item} className="text-xs sm:text-sm font-medium text-[#1B2559]/90">
                     — {item}
                   </li>
                 ))}
@@ -151,7 +151,7 @@ export default function AboutPage() {
       </section>
 
       {/* Certifications */}
-      <section className="bg-[#F0F3FC] py-24">
+      <section className="bg-[#F0F3FC] py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading
             number="02"
@@ -159,12 +159,12 @@ export default function AboutPage() {
             title="Built Around Recognized Standards"
             subtitle="Accreditation logos and certificates will be displayed here once confirmed and supplied by the organization."
           />
-          <div className="mt-16 grid gap-px bg-[rgba(0,0,0,0.08)] sm:grid-cols-2 lg:grid-cols-4 border border-[rgba(0,0,0,0.08)]">
+          <div className="mt-10 sm:mt-16 grid gap-px bg-[rgba(0,0,0,0.08)] sm:grid-cols-2 lg:grid-cols-4 border border-[rgba(0,0,0,0.08)]">
             {CREDENTIALS.map((item, i) => (
-              <FadeIn key={item.title} delay={i * 0.1} className="bg-white p-8">
+              <FadeIn key={item.title} delay={i * 0.1} className="bg-white p-6 sm:p-8">
                 <span className="font-mono text-xs font-semibold text-[#3B5BDB] block mb-3">0{i + 1}</span>
-                <h3 className="font-display text-lg font-bold text-[#141414]">{item.title}</h3>
-                <p className="mt-2.5 text-sm leading-relaxed text-[#1B2559]/75">
+                <h3 className="font-display text-base sm:text-lg font-bold text-[#141414]">{item.title}</h3>
+                <p className="mt-2.5 text-xs sm:text-sm leading-relaxed text-[#1B2559]/75">
                   {item.description}
                 </p>
               </FadeIn>

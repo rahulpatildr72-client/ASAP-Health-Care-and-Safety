@@ -11,7 +11,7 @@ export default function CourseCard({ course, index }: { course: Course; index?: 
   return (
     <Link
       href={`/courses/${course.slug}`}
-      className="group relative block overflow-hidden rounded-2xl"
+      className="group relative block overflow-hidden rounded-2xl min-h-[290px]"
       style={{ aspectRatio: "4 / 3" }}
     >
       {/* Background image */}

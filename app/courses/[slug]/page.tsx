@@ -108,12 +108,12 @@ export default async function CoursePage({ params }: Props) {
       </section>
 
       {/* Quick facts */}
-      <section className="border-y border-[rgba(0,0,0,0.08)] bg-white py-12">
-        <div className="mx-auto grid max-w-7xl gap-8 px-5 sm:grid-cols-3 lg:px-8">
+      <section className="border-y border-[rgba(0,0,0,0.08)] bg-white py-8 sm:py-12">
+        <div className="mx-auto grid max-w-7xl gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-3 px-5 lg:px-8">
           {facts.map(({ label, value }) => (
-            <div key={label} className="border-l border-[rgba(0,0,0,0.08)] pl-6 first:border-l-0 first:pl-0">
+            <div key={label} className="border-t pt-4 first:border-t-0 first:pt-0 sm:border-t-0 sm:pt-0 sm:border-l sm:pl-6 sm:first:border-l-0 sm:first:pl-0 border-[rgba(0,0,0,0.08)]">
               <p className="text-xs font-semibold uppercase tracking-widest text-[#1B2559]/70">{label}</p>
-              <p className="mt-2 font-display text-lg font-bold text-[#141414]">{value}</p>
+              <p className="mt-1 sm:mt-2 font-display text-base sm:text-lg font-bold text-[#141414]">{value}</p>
             </div>
           ))}
         </div>

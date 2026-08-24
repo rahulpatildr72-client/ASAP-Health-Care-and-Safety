@@ -40,13 +40,13 @@ export default function CoursesClient({ courses }: CoursesClientProps) {
   return (
     <div>
       {/* Filter Tabs */}
-      <div className="mb-12 flex flex-wrap items-center justify-center gap-3">
+      <div className="mb-12 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
         <button
           onClick={() => setFilterMode("all")}
-          className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-all ${
+          className={`flex items-center gap-2 rounded-full px-4 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-bold transition-all active:scale-95 ${
             filterMode === "all"
               ? "bg-[#2563EB] text-white shadow-md shadow-blue-500/25"
-              : "bg-slate-100 text-[#1B2559]/75 hover:bg-slate-200 hover:text-[#141414]"
+              : "bg-slate-100/90 text-[#1B2559]/80 hover:bg-slate-200 hover:text-[#141414]"
           }`}
         >
           <Layers className="h-4 w-4" />
@@ -55,32 +55,32 @@ export default function CoursesClient({ courses }: CoursesClientProps) {
 
         <button
           onClick={() => setFilterMode("offline")}
-          className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-all ${
+          className={`flex items-center gap-2 rounded-full px-4 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-bold transition-all active:scale-95 ${
             filterMode === "offline"
               ? "bg-emerald-600 text-white shadow-md shadow-emerald-500/25"
-              : "bg-slate-100 text-[#1B2559]/75 hover:bg-slate-200 hover:text-[#141414]"
+              : "bg-slate-100/90 text-[#1B2559]/80 hover:bg-slate-200 hover:text-[#141414]"
           }`}
         >
           <Building className="h-4 w-4" />
-          <span>Offline Training (Onsite / Classroom)</span>
+          <span>Offline Training (Onsite)</span>
         </button>
 
         <button
           onClick={() => setFilterMode("online")}
-          className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-all ${
+          className={`flex items-center gap-2 rounded-full px-4 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-bold transition-all active:scale-95 ${
             filterMode === "online"
               ? "bg-[#2563EB] text-white shadow-md shadow-blue-500/25"
-              : "bg-slate-100 text-[#1B2559]/75 hover:bg-slate-200 hover:text-[#141414]"
+              : "bg-slate-100/90 text-[#1B2559]/80 hover:bg-slate-200 hover:text-[#141414]"
           }`}
         >
           <Video className="h-4 w-4" />
-          <span>Online Training (Live Virtual)</span>
+          <span>Online Training (Live)</span>
         </button>
       </div>
 
-      {/* Courses List */}
+      {/* Courses Grid */}
       {filteredCourses.length > 0 ? (
-        <div className="border-b border-[rgba(0,0,0,0.08)]">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filteredCourses.map((course, i) => (
             <FadeIn key={course.slug} delay={i * 0.08}>
               <CourseCard course={course} index={i} />
