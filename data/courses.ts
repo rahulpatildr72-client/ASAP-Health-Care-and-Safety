@@ -19,6 +19,8 @@ export type Course = {
   icon: "cross" | "heart" | "zap" | "wind" | "shield" | "building";
   image: string;
   imageAlt: string;
+  /** Local image used on the homepage card grid */
+  cardImage: string;
 };
 
 export const COURSES: Course[] = [
@@ -53,6 +55,7 @@ export const COURSES: Course[] = [
     image:
       "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Hands-on bandaging practice during a first aid training session",
+    cardImage: "/first-aid-training.png",
   },
   {
     slug: "cpr-training",
@@ -85,6 +88,7 @@ export const COURSES: Course[] = [
     image:
       "https://images.unsplash.com/photo-1638202993928-7267aad84c31?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Participant performing chest compressions on a CPR training mannequin",
+    cardImage: "/cpr-training.png",
   },
   {
     slug: "aed-training",
@@ -117,6 +121,7 @@ export const COURSES: Course[] = [
     image:
       "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Trainer demonstrating AED pad placement during a workshop",
+    cardImage: "/aed-training.png",
   },
   {
     slug: "choking-response",
@@ -149,6 +154,7 @@ export const COURSES: Course[] = [
     image:
       "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Instructor demonstrating choking response technique to a training group",
+    cardImage: "/choking-response.png",
   },
   {
     slug: "health-safety-training",
@@ -181,6 +187,7 @@ export const COURSES: Course[] = [
     image:
       "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Workplace team attending a health and safety training session",
+    cardImage: "/health-safety-training.png",
   },
   {
     slug: "corporate-training",
@@ -213,6 +220,7 @@ export const COURSES: Course[] = [
     image:
       "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Corporate team during a customized emergency response workshop",
+    cardImage: "/corporate-training.png",
   },
 ];
 

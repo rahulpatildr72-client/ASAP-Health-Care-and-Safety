@@ -43,7 +43,7 @@ export default function HomePage() {
             title="Training That Prepares You for Real Emergencies"
             subtitle="Hands-on programs delivered onsite, in classrooms and live online — for teams and individuals."
           />
-          <div className="mt-16 border-b border-[rgba(0,0,0,0.08)]">
+          <div className="mt-16 grid gap-6 sm:grid-cols-2">
             {COURSES.map((course, i) => (
               <FadeIn key={course.slug} delay={i * 0.08}>
                 <CourseCard course={course} index={i} />
