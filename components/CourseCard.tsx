@@ -4,15 +4,25 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Course } from "@/data/courses";
 
+const CARD_HIGHLIGHTS: Record<string, string[]> = {
+  "first-aid-training": ["CPR & AED Certification", "Wound Care & Emergency Response"],
+  "cpr-training": ["High-Quality Chest Compressions", "Adult & Infant CPR Skills"],
+  "aed-training": ["AED Defibrillator Operation", "Emergency Pad Placement"],
+  "choking-response": ["Heimlich Maneuver & Abdominal Thrusts", "Airway Clearance for All Ages"],
+  "health-safety-training": ["POSH & Women Safety", "Workplace Hazard Prevention"],
+  "corporate-customized": ["Onsite Corporate Workshops", "Tailored Incident Protocols"],
+};
+
 export default function CourseCard({ course, index }: { course: Course; index?: number }) {
   const formattedNumber =
     typeof index === "number" ? String(index + 1).padStart(2, "0") : undefined;
 
+  const highlights = CARD_HIGHLIGHTS[course.slug] || (course.learn ? course.learn.slice(0, 2) : []);
+
   return (
     <Link
       href={`/courses/${course.slug}`}
-      className="group relative block overflow-hidden rounded-2xl min-h-[290px]"
-      style={{ aspectRatio: "4 / 3" }}
+      className="group relative block overflow-hidden rounded-[26px] sm:rounded-[30px] min-h-[410px] sm:min-h-[430px] shadow-lg transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl"
     >
       {/* Background image */}
       <Image
@@ -23,44 +33,54 @@ export default function CourseCard({ course, index }: { course: Course; index?: 
         className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
       />
 
-      {/* Dark gradient overlay for text readability */}
+      {/* Deep Dark Green/Emerald gradient overlay matching reference design */}
       <div
         className="absolute inset-0 z-[1]"
         style={{
           background:
-            "linear-gradient(180deg, rgba(7,30,25,0.45) 0%, rgba(5,25,20,0.72) 45%, rgba(4,18,15,0.95) 100%)",
+            "linear-gradient(180deg, rgba(8,32,25,0.20) 0%, rgba(6,28,22,0.65) 35%, rgba(4,22,17,0.92) 75%, rgba(3,18,14,0.98) 100%)",
         }}
       />
 
-      {/* Large faded number watermark */}
+      {/* Faded number watermark */}
       {formattedNumber && (
         <span
-          className="absolute top-3.5 right-4 z-[2] font-display font-extrabold text-white/20 select-none pointer-events-none tracking-tighter"
-          style={{ fontSize: "clamp(3.2rem, 7vw, 5rem)", lineHeight: 1 }}
+          className="absolute top-[36%] right-5 z-[2] font-display font-extrabold text-white/12 select-none pointer-events-none tracking-tighter"
+          style={{ fontSize: "clamp(3.5rem, 8vw, 5.5rem)", lineHeight: 1 }}
         >
           {formattedNumber}
         </span>
       )}
 
       {/* Card content */}
-      <div className="absolute inset-0 z-[3] flex flex-col justify-end p-5 sm:p-7">
+      <div className="absolute inset-0 z-[3] flex flex-col justify-end p-6 sm:p-7">
         {/* Title */}
-        <h3 className="font-display text-xl font-bold text-white sm:text-2xl leading-tight drop-shadow-sm">
+        <h3 className="font-display text-2xl sm:text-[1.65rem] font-bold text-white leading-tight tracking-tight drop-shadow-sm">
           {course.title}
         </h3>
 
         {/* Description */}
-        <p className="mt-2 text-xs sm:text-sm leading-relaxed text-white/85 max-w-md line-clamp-2 sm:line-clamp-3">
+        <p className="mt-2 text-xs sm:text-sm leading-relaxed text-white/90 font-normal line-clamp-2 max-w-sm">
           {course.tagline}
         </p>
 
-        {/* CTA */}
-        <div className="mt-3.5">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-400/20 border border-amber-400/40 px-3.5 py-1.5 text-xs sm:text-sm font-bold text-amber-300 backdrop-blur-md transition-all duration-300 group-hover:bg-amber-400 group-hover:text-slate-950 group-hover:border-amber-400 group-hover:shadow-md">
-            <span>Explore Program</span>
-            <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
-              →
-            </span>
+        {/* Bullet Highlights with Yellow/Orange Dots */}
+        {highlights.length > 0 && (
+          <ul className="mt-3.5 space-y-1.5">
+            {highlights.map((point) => (
+              <li key={point} className="flex items-center gap-2 text-xs sm:text-sm font-bold text-white">
+                <span className="h-2 w-2 rounded-full bg-amber-400 shrink-0" />
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {/* CTA Link */}
+        <div className="mt-4 flex items-center gap-2 font-display text-sm sm:text-base font-bold text-[#F59E0B] group-hover:text-amber-300 transition-colors">
+          <span>Explore Program</span>
+          <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5">
+            →
           </span>
         </div>
       </div>
