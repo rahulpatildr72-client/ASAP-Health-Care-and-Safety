@@ -117,14 +117,14 @@ export default function Header() {
 
   return (
     <>
-      {/* Sticky Header - always visible on scroll */}
+      {/* Sticky Header - floating rounded glass pill on mobile & desktop */}
       <header
         ref={headerRef}
-        className="fixed inset-x-0 top-0 z-[60] bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm py-2.5 transition-all duration-300 lg:bg-transparent lg:border-none lg:shadow-none lg:py-4"
+        className="fixed inset-x-0 top-0 z-[60] px-3.5 pt-3 pb-2 transition-all duration-300 sm:px-5 sm:pt-4 lg:px-8"
       >
         <nav
           aria-label="Main"
-          className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-5 lg:px-8"
+          className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-slate-200/90 bg-white/95 px-4 py-2 shadow-md shadow-slate-900/5 backdrop-blur-xl lg:border-none lg:bg-transparent lg:p-0 lg:shadow-none"
         >
           {/* Logo - Prominent & Larger */}
           <Link href="/" className="flex items-center">
@@ -134,7 +134,7 @@ export default function Header() {
               width={1001}
               height={310}
               priority
-              className="h-11 w-auto sm:h-13"
+              className="h-9 w-auto sm:h-11 lg:h-13"
             />
           </Link>
 
@@ -202,7 +202,7 @@ export default function Header() {
                             <div>
                               <div className="text-xs font-bold text-[#141414] group-hover:text-[#2563EB] flex items-center gap-1.5">
                                 <span>Online Training</span>
-                                <span className="rounded-full bg-blue-100 px-1.5 py-0.5 text-[9px] font-semibold text-blue-700">Live Virtual</span>
+                                <span className="rounded-full bg-blue-100 px-1.5 py-0.5 text-[9px] font-semibold text-[#2563EB]">Live Virtual</span>
                               </div>
                               <div className="text-[11px] text-[#1B2559]/65">Interactive Remote Sessions</div>
                             </div>
@@ -213,13 +213,14 @@ export default function Header() {
                           <Link
                             href="/courses"
                             onClick={() => setDropdownOpen(false)}
-                            className="flex items-center justify-between rounded-xl px-3 py-2 text-xs font-semibold text-[#2563EB] hover:bg-slate-50 transition-colors"
+                            className="flex items-center gap-3 rounded-xl p-2.5 transition-all hover:bg-[#EAF0FF]/80 group"
                           >
-                            <span className="flex items-center gap-2">
-                              <Layers className="h-3.5 w-3.5" />
+                            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-[#1B2559] group-hover:bg-[#2563EB] group-hover:text-white transition-colors">
+                              <Layers className="h-4 w-4" />
+                            </div>
+                            <div className="text-xs font-bold text-[#141414] group-hover:text-[#2563EB]">
                               View All Programs
-                            </span>
-                            <ArrowRight className="h-3.5 w-3.5" />
+                            </div>
                           </Link>
                         </div>
                       </div>
@@ -255,18 +256,18 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* Mobile Menu 3-Line Hamburger Icon Button - Larger Size */}
+          {/* Mobile Menu Button - Sleek Pill Integrated */}
           <button
             type="button"
-            className="flex h-12 w-12 items-center justify-center rounded-full border border-slate-200/90 bg-white text-[#1B2559] shadow-md backdrop-blur-md transition-all active:scale-95 lg:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-full text-[#1B2559] hover:bg-slate-100/80 active:bg-slate-200/80 transition-colors lg:hidden"
             aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((v) => !v)}
           >
             {menuOpen ? (
-              <X className="h-6 w-6 text-[#2563EB]" strokeWidth={2.5} />
+              <X className="h-5 w-5 text-[#2563EB]" strokeWidth={2.5} />
             ) : (
-              <Menu className="h-7 w-7 text-[#1B2559]" strokeWidth={2.5} />
+              <Menu className="h-5.5 w-5.5 text-[#1B2559]" strokeWidth={2.5} />
             )}
           </button>
         </nav>

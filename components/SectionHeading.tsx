@@ -40,7 +40,7 @@ export default function SectionHeading({
       <RevealText
         as={Tag}
         className={`font-display tracking-tight text-[#141414] ${
-          isDisplay ? "text-4xl sm:text-5xl" : "text-3xl font-bold sm:text-4xl"
+          isDisplay ? "text-3xl sm:text-4xl lg:text-5xl" : "text-2xl sm:text-3xl lg:text-4xl font-bold"
         }`}
       >
         {titleLight ? (
@@ -54,7 +54,7 @@ export default function SectionHeading({
       </RevealText>
       {subtitle && (
         <FadeIn delay={0.2}>
-          <p className="mt-5 text-lg leading-relaxed text-[#1B2559]/80">{subtitle}</p>
+          <p className="mt-3.5 sm:mt-5 text-sm sm:text-base lg:text-lg leading-relaxed text-[#1B2559]/80">{subtitle}</p>
         </FadeIn>
       )}
     </div>
