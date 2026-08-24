@@ -11,7 +11,6 @@ const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Training Programs", href: "/courses" },
-  { label: "Corporate Training", href: "/corporate" },
   { label: "Gallery", href: "/gallery" },
   { label: "Contact", href: "/contact" },
 ];
