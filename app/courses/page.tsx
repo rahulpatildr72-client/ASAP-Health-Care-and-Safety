@@ -1,8 +1,8 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
-import CourseCard from "@/components/CourseCard";
 import CTABanner from "@/components/CTABanner";
 import SectionHeading from "@/components/SectionHeading";
-import FadeIn from "@/components/FadeIn";
+import CoursesClient from "./CoursesClient";
 import { COURSES } from "@/data/courses";
 import { SITE_NAME } from "@/data/site";
 
@@ -32,15 +32,11 @@ export default function CoursesPage() {
         </div>
       </section>
 
-      <section className="bg-white py-24 border-t border-[rgba(0,0,0,0.08)]">
+      <section className="bg-white py-20 border-t border-[rgba(0,0,0,0.08)]">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="border-b border-[rgba(0,0,0,0.08)]">
-            {COURSES.map((course, i) => (
-              <FadeIn key={course.slug} delay={i * 0.08}>
-                <CourseCard course={course} index={i} />
-              </FadeIn>
-            ))}
-          </div>
+          <Suspense fallback={<div className="py-16 text-center text-slate-500">Loading programs...</div>}>
+            <CoursesClient courses={COURSES} />
+          </Suspense>
         </div>
       </section>
 
