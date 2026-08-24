@@ -120,11 +120,11 @@ export default function Header() {
       {/* Sticky Header - always visible on scroll */}
       <header
         ref={headerRef}
-        className="fixed inset-x-0 top-0 z-[60] pt-4 pb-2 transition-all duration-300"
+        className="fixed inset-x-0 top-0 z-[60] bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm py-2.5 transition-all duration-300 lg:bg-transparent lg:border-none lg:shadow-none lg:py-4"
       >
         <nav
           aria-label="Main"
-          className="mx-auto flex max-w-7xl items-center justify-between px-5 lg:px-8"
+          className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-5 lg:px-8"
         >
           {/* Logo - Prominent & Larger */}
           <Link href="/" className="flex items-center">
