@@ -43,10 +43,10 @@ export default function Hero() {
             </div>
           </FadeIn>
 
-          {/* Headline */}
-          <RevealText as="h1" className="font-display text-[2.1rem] xs:text-[2.5rem] sm:text-5xl lg:text-6xl xl:text-[4.1rem] leading-[1.08] sm:leading-[1.06] tracking-tight text-[#141414]">
-            <span className="block font-light">Skills That Save Lives.</span>
-            <span className="block font-extrabold text-[#141414]">Knowledge That Protects.</span>
+          {/* Headline — refined uppercase with visual hierarchy */}
+          <RevealText as="h1" className="font-display leading-[1.05] sm:leading-[1.02] tracking-tight">
+            <span className="block text-[1.75rem] xs:text-[2rem] sm:text-3xl lg:text-4xl xl:text-[2.75rem] font-light uppercase tracking-[0.04em] text-[#1B2559]/70">Skills That Save Life.</span>
+            <span className="block text-[1.75rem] xs:text-[2rem] sm:text-3xl lg:text-4xl xl:text-[2.75rem] font-extrabold uppercase tracking-[0.02em] text-[#141414]">Knowledge That Protects.</span>
           </RevealText>
 
           {/* Subtitle */}
