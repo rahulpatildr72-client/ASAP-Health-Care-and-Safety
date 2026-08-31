@@ -47,7 +47,7 @@ export default function ContactPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
       />
 
-      <section className="bg-gradient-to-b from-[#E4E7FB] to-[#F0F3FC] pb-24 pt-36 sm:pt-44">
+      <section className="bg-gradient-to-b from-[#E4E7FB] to-[#F0F3FC] pb-24 pt-40 sm:pt-44">
         <div className="mx-auto grid max-w-7xl gap-16 px-5 lg:grid-cols-12 lg:px-8">
           <div className="lg:col-span-5">
             <FadeIn>
