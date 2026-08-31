@@ -21,8 +21,6 @@ export default function Header() {
   const [mobileSubmenuOpen, setMobileSubmenuOpen] = useState(false);
   const pathname = usePathname();
   const headerRef = useRef<HTMLElement>(null);
-  const overlayRef = useRef<HTMLDivElement>(null);
-  const overlayLinksRef = useRef<HTMLDivElement>(null);
   const introRan = useRef(false);
 
   const isActive = (href: string) =>
@@ -31,6 +29,7 @@ export default function Header() {
   useEffect(() => {
     setMenuOpen(false);
     setDropdownOpen(false);
+    setMobileSubmenuOpen(false);
   }, [pathname]);
 
   useEffect(() => {
@@ -71,49 +70,6 @@ export default function Header() {
       { opacity: 1, y: 0, duration: 0.8, delay: 0.2, ease: "power4.out" }
     );
   }, []);
-
-  useEffect(() => {
-    const overlay = overlayRef.current;
-    const linksContainer = overlayLinksRef.current;
-    if (!overlay || !linksContainer) return;
-
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const links = linksContainer.querySelectorAll("[data-overlay-link]");
-
-    if (menuOpen) {
-      if (prefersReduced) {
-        overlay.style.opacity = "1";
-        overlay.style.pointerEvents = "auto";
-        return;
-      }
-
-      gsap.to(overlay, {
-        opacity: 1,
-        duration: 0.35,
-        ease: "power3.out",
-        onStart: () => { overlay.style.pointerEvents = "auto"; },
-      });
-
-      gsap.fromTo(
-        links,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.4, stagger: 0.05, ease: "power3.out", delay: 0.1 }
-      );
-    } else {
-      if (prefersReduced) {
-        overlay.style.opacity = "0";
-        overlay.style.pointerEvents = "none";
-        return;
-      }
-
-      gsap.to(overlay, {
-        opacity: 0,
-        duration: 0.25,
-        ease: "power3.in",
-        onComplete: () => { overlay.style.pointerEvents = "none"; },
-      });
-    }
-  }, [menuOpen]);
 
   return (
     <>
@@ -260,16 +216,18 @@ export default function Header() {
 
       {/* Mobile Drawer Overlay */}
       <div
-        ref={overlayRef}
-        className="fixed inset-0 z-50 overflow-y-auto lg:hidden bg-slate-950/40 backdrop-blur-md"
-        style={{ opacity: 0, pointerEvents: "none" }}
+        className={`fixed inset-0 z-50 overflow-hidden bg-slate-950/40 transition-[opacity,visibility] duration-200 ease-out motion-reduce:transition-none lg:hidden ${
+          menuOpen ? "visible opacity-100" : "invisible opacity-0"
+        }`}
         role="dialog"
         aria-modal="true"
         aria-label="Navigation menu"
+        aria-hidden={!menuOpen}
       >
         <div
-          ref={overlayLinksRef}
-          className="min-h-full flex flex-col justify-start bg-gradient-to-b from-[#FFFFFF] via-[#F4F7FC] to-[#EBF1FF] px-5 pt-28 pb-10"
+          className={`h-full overflow-y-auto overscroll-contain bg-gradient-to-b from-[#FFFFFF] via-[#F4F7FC] to-[#EBF1FF] px-5 pt-28 pb-10 transform-gpu transition-transform duration-200 ease-out will-change-transform motion-reduce:transition-none ${
+            menuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
         >
           <div className="space-y-6">
             {/* Nav Card Group */}
@@ -279,7 +237,7 @@ export default function Header() {
 
                 if (link.isDropdown) {
                   return (
-                    <div key={link.href} className="space-y-1" data-overlay-link>
+                    <div key={link.href} className="space-y-1">
                       <div
                         className={`flex w-full items-center justify-between rounded-xl px-4 py-3.5 text-base font-bold transition-all ${
                           active
@@ -340,7 +298,6 @@ export default function Header() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    data-overlay-link
                     onClick={() => setMenuOpen(false)}
                     className={`flex items-center justify-between rounded-xl px-4 py-3.5 text-base font-bold transition-all ${
                       active
@@ -356,7 +313,7 @@ export default function Header() {
             </div>
 
             {/* Mobile CTA Button */}
-            <div data-overlay-link>
+            <div>
               <Link
                 href="/contact"
                 onClick={() => setMenuOpen(false)}
