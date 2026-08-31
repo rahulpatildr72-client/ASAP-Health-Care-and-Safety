@@ -9,12 +9,12 @@ const CARD_HIGHLIGHTS: Record<string, string[]> = {
   "basic-first-aid-cpr": ["Fundamental First Aid Principles", "CPR Awareness"],
   "cpr-aed-choking": ["Cardiac Emergency Awareness", "AED Operation & Choking Response"],
   "fire-safety-awareness": ["Fire Risks & Hazard Prevention", "Fire Extinguishers & Evacuation"],
-  "ert-emergency-response-team": ["Incident Command & Crisis Response", "Evacuation & Triage Drills"],
-  "posh-prevention-sexual-harassment": ["POSH Act Compliance & Legal Framework", "IC Committee & Workplace Policy"],
+  "ert-emergency-response-team": ["Emergency Preparedness Principles", "ERT Roles & Evacuation Protocols"],
+  "posh-prevention-sexual-harassment": ["Respectful Workplace & Boundaries", "Inappropriate Behavior Recognition"],
   "stress-management-awareness": ["Understanding Stress Triggers", "Relaxation & Coping Habits"],
   "counselling-mental-wellbeing": ["Mental & Emotional Wellbeing", "Supportive Communication & Empathy"],
   "diet-nutrition-meditation-yoga": ["Balanced Nutrition Basics", "Mindfulness, Meditation & Yoga"],
-  "female-healthcare-wellbeing": ["Women's Health Across Life Stages", "Preventive Care & Self-Wellness"],
+  "female-healthcare-wellbeing": ["Women's Health Concerns & Self-Care", "Preventive Care & Regular Check-ups"],
 };
 
 export default function CourseCard({ course, index }: { course: Course; index?: number }) {
