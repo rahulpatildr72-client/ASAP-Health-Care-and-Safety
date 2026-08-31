@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronRight, ArrowRight, ChevronDown, Building, Video, Layers } from "lucide-react";
+import { Menu, X, ChevronRight, ArrowRight, ChevronDown, Building, Video } from "lucide-react";
 import { gsap } from "gsap";
 
 const NAV_LINKS = [
@@ -207,21 +207,6 @@ export default function Header() {
                               <div className="text-[11px] text-[#1B2559]/65">Interactive Remote Sessions</div>
                             </div>
                           </Link>
-
-                          <div className="my-1 border-t border-slate-100" />
-
-                          <Link
-                            href="/courses"
-                            onClick={() => setDropdownOpen(false)}
-                            className="flex items-center gap-3 rounded-xl p-2.5 transition-all hover:bg-[#EAF0FF]/80 group"
-                          >
-                            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-[#1B2559] group-hover:bg-[#2563EB] group-hover:text-white transition-colors">
-                              <Layers className="h-4 w-4" />
-                            </div>
-                            <div className="text-xs font-bold text-[#141414] group-hover:text-[#2563EB]">
-                              View All Programs
-                            </div>
-                          </Link>
                         </div>
                       </div>
                     )}
@@ -329,14 +314,6 @@ export default function Header() {
                           >
                             <Video className="h-4 w-4 text-[#2563EB]" />
                             <span>Online Training (Live)</span>
-                          </Link>
-                          <Link
-                            href="/courses"
-                            onClick={() => setMenuOpen(false)}
-                            className="flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-xs font-semibold text-[#2563EB]"
-                          >
-                            <Layers className="h-3.5 w-3.5" />
-                            <span>All Training Programs</span>
                           </Link>
                         </div>
                       )}

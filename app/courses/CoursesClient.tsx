@@ -6,7 +6,7 @@ import Link from "next/link";
 import CourseCard from "@/components/CourseCard";
 import FadeIn from "@/components/FadeIn";
 import { Course, CourseCategory, CATEGORY_META } from "@/data/courses";
-import { Building, Video, Layers, Shield, Leaf, Clock, ArrowRight } from "lucide-react";
+import { Building, Video, Shield, Leaf, Clock, ArrowRight } from "lucide-react";
 
 type CoursesClientProps = {
   courses: Course[];
@@ -65,19 +65,7 @@ export default function CoursesClient({ courses }: CoursesClientProps) {
       {/* Filter Tabs */}
       <div className="mb-10 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
         <button
-          onClick={() => setFilterMode("all")}
-          className={`flex items-center gap-2 rounded-full px-4 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-bold transition-all active:scale-95 ${
-            filterMode === "all"
-              ? "bg-[#2563EB] text-white shadow-md shadow-blue-500/25"
-              : "bg-slate-100/90 text-[#1B2559]/80 hover:bg-slate-200 hover:text-[#141414]"
-          }`}
-        >
-          <Layers className="h-4 w-4" />
-          <span>All Programs ({courses.length})</span>
-        </button>
-
-        <button
-          onClick={() => setFilterMode("offline")}
+          onClick={() => setFilterMode(filterMode === "offline" ? "all" : "offline")}
           className={`flex items-center gap-2 rounded-full px-4 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-bold transition-all active:scale-95 ${
             filterMode === "offline"
               ? "bg-emerald-600 text-white shadow-md shadow-emerald-500/25"
@@ -89,7 +77,7 @@ export default function CoursesClient({ courses }: CoursesClientProps) {
         </button>
 
         <button
-          onClick={() => setFilterMode("online")}
+          onClick={() => setFilterMode(filterMode === "online" ? "all" : "online")}
           className={`flex items-center gap-2 rounded-full px-4 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-bold transition-all active:scale-95 ${
             filterMode === "online"
               ? "bg-[#2563EB] text-white shadow-md shadow-blue-500/25"
