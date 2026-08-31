@@ -42,9 +42,9 @@ export default function Hero() {
           </FadeIn>
 
           {/* Headline */}
-          <RevealText as="h1" className="font-display text-[2.2rem] xs:text-[2.6rem] sm:text-6xl xl:text-[4.4rem] leading-[1.08] sm:leading-[1.06] tracking-tight text-[#141414]">
-            <span className="block font-light">Train Today.</span>
-            <span className="block font-extrabold text-[#141414]">Respond Tomorrow.</span>
+          <RevealText as="h1" className="font-display text-[2.1rem] xs:text-[2.5rem] sm:text-5xl lg:text-6xl xl:text-[4.1rem] leading-[1.08] sm:leading-[1.06] tracking-tight text-[#141414]">
+            <span className="block font-light">Skills That Save Lives.</span>
+            <span className="block font-extrabold text-[#141414]">Knowledge That Protects.</span>
           </RevealText>
 
           {/* Subtitle */}
