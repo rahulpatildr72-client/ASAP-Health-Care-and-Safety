@@ -134,7 +134,20 @@ export default async function CoursePage({ params }: Props) {
                 ))}
               </div>
 
-              {course.secondaryImage && (
+              {course.galleryImages && course.galleryImages.length > 0 ? (
+                <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                  {course.galleryImages.map((imgSrc, idx) => (
+                    <div key={idx} className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-[rgba(0,0,0,0.08)] shadow-md">
+                      <Image
+                        src={imgSrc}
+                        alt={`${course.title} highlight ${idx + 1}`}
+                        fill
+                        className="object-cover transition-transform duration-500 hover:scale-105"
+                      />
+                    </div>
+                  ))}
+                </div>
+              ) : course.secondaryImage ? (
                 <div className="mt-8 overflow-hidden rounded-2xl border border-[rgba(0,0,0,0.08)] shadow-md">
                   <div className="relative aspect-[16/9] w-full">
                     <Image
@@ -145,7 +158,7 @@ export default async function CoursePage({ params }: Props) {
                     />
                   </div>
                 </div>
-              )}
+              ) : null}
             </FadeIn>
 
             <FadeIn delay={0.2} className="mt-16 border-t border-[rgba(0,0,0,0.08)] pt-12">
