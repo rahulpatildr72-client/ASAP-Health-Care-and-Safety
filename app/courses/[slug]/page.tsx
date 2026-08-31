@@ -67,8 +67,8 @@ export default async function CoursePage({ params }: Props) {
 
       {/* Course hero */}
       <section className="bg-gradient-to-b from-[#E4E7FB] to-[#F0F3FC] pb-20 pt-36 sm:pt-44">
-        <div className="mx-auto grid max-w-7xl items-center gap-16 px-5 lg:grid-cols-12 lg:px-8">
-          <div className="lg:col-span-6">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 lg:gap-16 px-5 lg:grid-cols-12 lg:px-8">
+          <div className="lg:col-span-5">
             <FadeIn>
               <nav aria-label="Breadcrumb" className="mb-4 text-xs font-semibold uppercase tracking-widest text-[#1B2559]/70">
                 <Link href="/courses" className="link-underline hover:text-[#3B5BDB]">
@@ -97,13 +97,13 @@ export default async function CoursePage({ params }: Props) {
             </FadeIn>
           </div>
 
-          <div className="lg:col-span-6">
+          <div className="lg:col-span-7">
             {course.galleryImages && course.galleryImages.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
                 {course.galleryImages.map((imgSrc, idx) => (
                   <div
                     key={idx}
-                    className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-[rgba(0,0,0,0.08)] shadow-lg transition-transform duration-500 hover:scale-[1.02]"
+                    className="relative aspect-[3/4] sm:h-[420px] w-full overflow-hidden rounded-[24px] border border-[rgba(0,0,0,0.08)] shadow-xl transition-all duration-500 hover:scale-[1.03] hover:shadow-2xl"
                   >
                     <Image
                       src={imgSrc}
