@@ -1,0 +1,17 @@
+# Normalize all text files to LF in the repository and in the working tree.
+# Prevents CRLF churn when the project is edited from both Windows and WSL.
+* text=auto eol=lf
+
+# Explicitly binary — never touch these
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.ico   binary
+*.pdf   binary
+*.docx  binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.otf   binary
