@@ -164,7 +164,7 @@ export const COURSES: Course[] = [
     icon: "flame",
     image: "/fire-safety.webp",
     imageAlt: "Fire safety training program session",
-    cardImage: "/fire-safety.webp",
+    cardImage: "/fire-safety.png",
   },
   {
     slug: "ert-emergency-response-team",
@@ -230,7 +230,7 @@ export const COURSES: Course[] = [
     icon: "building",
     image: "/posh-awareness.webp",
     imageAlt: "POSH training program session",
-    cardImage: "/posh-awareness.webp",
+    cardImage: "/posh-awareness.png",
   },
   {
     slug: "stress-management-awareness",
