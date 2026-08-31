@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronRight, ArrowRight, ChevronDown, Building, Video } from "lucide-react";
+import { Menu, X, ChevronRight, ArrowRight, ChevronDown, Building, Video, GraduationCap } from "lucide-react";
 import { gsap } from "gsap";
 
 const NAV_LINKS = [
@@ -273,13 +273,13 @@ export default function Header() {
         >
           <div className="space-y-6">
             {/* Nav Card Group */}
-            <div className="rounded-2xl border border-slate-200/80 bg-white/90 p-2 shadow-sm space-y-1.5" data-overlay-link>
+            <div className="rounded-2xl border border-slate-200/80 bg-white/90 p-2 shadow-sm space-y-1.5">
               {NAV_LINKS.map((link) => {
                 const active = isActive(link.href);
 
                 if (link.isDropdown) {
                   return (
-                    <div key={link.href} className="space-y-1">
+                    <div key={link.href} className="space-y-1" data-overlay-link>
                       <button
                         type="button"
                         onClick={() => setMobileSubmenuOpen((v) => !v)}
@@ -299,6 +299,14 @@ export default function Header() {
 
                       {mobileSubmenuOpen && (
                         <div className="ml-3 space-y-1 border-l-2 border-[#2563EB]/20 pl-3 pt-1 pb-1">
+                          <Link
+                            href="/courses"
+                            onClick={() => setMenuOpen(false)}
+                            className="flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-sm font-semibold text-[#141414] hover:bg-blue-50"
+                          >
+                            <GraduationCap className="h-4 w-4 text-[#2563EB]" />
+                            <span>All Training Programs</span>
+                          </Link>
                           <Link
                             href="/courses?mode=offline"
                             onClick={() => setMenuOpen(false)}
