@@ -259,9 +259,8 @@ export const COURSES: Course[] = [
     certification:
       "Participants receive a certificate of completion after successfully finishing the program.",
     icon: "brain",
-    image:
-      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1200&q=80",
-    imageAlt: "Stress management session with guided relaxation exercises",
+    image: "/stress-management.webp",
+    imageAlt: "Stress management training program session",
     cardImage: "/stress-management.png",
   },
   {
