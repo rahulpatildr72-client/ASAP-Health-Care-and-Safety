@@ -27,6 +27,8 @@ export type Course = {
   imageAlt: string;
   /** Local image used on the homepage card grid */
   cardImage: string;
+  /** Optional secondary showcase image displayed on the course detail page */
+  secondaryImage?: string;
 };
 
 export const CATEGORY_META: Record<CourseCategory, { label: string; icon: "shield" | "leaf" }> = {
@@ -319,9 +321,11 @@ export const COURSES: Course[] = [
     certification:
       "Participants receive a certificate of completion after successfully finishing the program.",
     icon: "apple",
-    image: "/diet-nutrition.webp",
-    imageAlt: "Diet & Nutrition, Meditation & Yoga wellness program session",
-    cardImage: "/diet-nutrition.webp",
+    image:
+      "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80",
+    imageAlt: "Wellness program with meditation, yoga and nutrition guidance",
+    cardImage: "/wellness-program.png",
+    secondaryImage: "/diet-nutrition.webp",
   },
   {
     slug: "female-healthcare-wellbeing",

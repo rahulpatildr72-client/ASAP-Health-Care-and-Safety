@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import CTABanner from "@/components/CTABanner";
 import ParallaxImage from "@/components/ParallaxImage";
@@ -132,6 +133,19 @@ export default async function CoursePage({ params }: Props) {
                   <p key={para.slice(0, 40)}>{para}</p>
                 ))}
               </div>
+
+              {course.secondaryImage && (
+                <div className="mt-8 overflow-hidden rounded-2xl border border-[rgba(0,0,0,0.08)] shadow-md">
+                  <div className="relative aspect-[16/9] w-full">
+                    <Image
+                      src={course.secondaryImage}
+                      alt={`${course.title} feature session`}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+              )}
             </FadeIn>
 
             <FadeIn delay={0.2} className="mt-16 border-t border-[rgba(0,0,0,0.08)] pt-12">
