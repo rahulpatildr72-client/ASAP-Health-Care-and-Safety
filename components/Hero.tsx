@@ -8,26 +8,28 @@ import FadeIn from "./FadeIn";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-[#F4F7FC] pt-32 pb-24 sm:pt-40 lg:py-36 min-h-[90vh] flex items-center">
-      {/* CPR Background Image & Gradient Fade (Exact match to User Mockup) */}
+    <section className="relative flex items-center overflow-hidden bg-[#F4F7FC] pt-28 pb-[36vh] sm:pt-36 sm:pb-[34vh] lg:min-h-[90vh] lg:py-36 lg:pb-36">
+      {/* CPR background image. Mobile: a band anchored to the bottom, with the
+          copy sitting on clean background above it. Desktop: the right-hand
+          column, faded in from the left. */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        {/* CPR Image container spanning full right side */}
-        <div className="absolute inset-y-0 right-0 w-full lg:w-[62%] h-full">
+        <div className="absolute inset-x-0 bottom-0 h-[38vh] lg:inset-y-0 lg:left-auto lg:right-0 lg:h-full lg:w-[62%]">
           <Image
             src="/hero-cpr.jpg"
             alt="Hands performing CPR compressions on a training mannequin"
             fill
             priority
-            sizes="100vw"
-            className="object-cover object-[center_35%] lg:object-[20%_30%]"
+            sizes="(max-width: 1023px) 100vw, 62vw"
+            className="object-cover object-[42%_45%] lg:object-[20%_30%]"
           />
         </div>
 
-        {/* Soft Left-to-Right Gradient Mask matching user mockup */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#F4F7FC] via-[#F4F7FC] via-30% sm:via-35% lg:via-42% to-transparent lg:to-65%" />
-        
-        {/* Soft Top Gradient Overlay for Mobile Header clarity */}
-        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#F4F7FC]/90 to-transparent lg:hidden" />
+        {/* Mobile: blend the top edge of the band into the page background so
+            there is no hard seam under the copy. */}
+        <div className="absolute inset-x-0 bottom-0 h-[38vh] bg-gradient-to-b from-[#F4F7FC] from-2% via-[#F4F7FC]/45 via-28% to-transparent lg:hidden" />
+
+        {/* Desktop: left-to-right fade across the image column. */}
+        <div className="absolute inset-0 hidden bg-gradient-to-r from-[#F4F7FC] via-[#F4F7FC] via-42% to-transparent to-65% lg:block" />
       </div>
 
       {/* Hero Content Layer */}
