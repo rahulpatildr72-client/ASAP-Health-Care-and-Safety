@@ -20,11 +20,6 @@ export default function TrustBar() {
             </FadeIn>
           ))}
         </div>
-        <FadeIn delay={0.4}>
-          <p className="mt-10 sm:mt-16 text-left text-xs sm:text-sm text-[#1B2559]/60">
-            Trusted by organizations that put people first across healthcare, hospitality, education and industry.
-          </p>
-        </FadeIn>
       </div>
     </section>
   );
