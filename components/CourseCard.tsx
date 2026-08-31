@@ -5,15 +5,15 @@ import Image from "next/image";
 import type { Course } from "@/data/courses";
 
 const CARD_HIGHLIGHTS: Record<string, string[]> = {
-  "first-aid-cpr-training": ["CPR & First Aid Certification", "Wound Care & Emergency Response"],
-  "basic-first-aid-cpr": ["Essential CPR Fundamentals", "Basic Wound Care & Recovery"],
-  "cpr-aed-choking": ["AED Defibrillator Operation", "Choking & Airway Clearance"],
-  "fire-safety-awareness": ["Fire Warden Training", "Mock Evacuation Drills"],
+  "first-aid-cpr-training": ["Basics of First Aid & Emergency Response", "CPR Awareness & Response"],
+  "basic-first-aid-cpr": ["Fundamental First Aid Principles", "CPR Awareness"],
+  "cpr-aed-choking": ["Cardiac Emergency Awareness", "AED Operation & Choking Response"],
+  "fire-safety-awareness": ["Fire Risks & Hazard Prevention", "Fire Extinguishers & Evacuation"],
   "ert-emergency-response-team": ["Incident Command & Crisis Response", "Evacuation & Triage Drills"],
   "posh-prevention-sexual-harassment": ["POSH Act Compliance & Legal Framework", "IC Committee & Workplace Policy"],
-  "stress-management-awareness": ["Stress Coping Techniques", "Work-Life Balance Strategies"],
-  "counselling-mental-wellbeing": ["Active Listening Skills", "Mental Health First Aid"],
-  "diet-nutrition-meditation-yoga": ["Balanced Nutrition Planning", "Yoga & Meditation Practices"],
+  "stress-management-awareness": ["Understanding Stress Triggers", "Relaxation & Coping Habits"],
+  "counselling-mental-wellbeing": ["Mental & Emotional Wellbeing", "Supportive Communication & Empathy"],
+  "diet-nutrition-meditation-yoga": ["Balanced Nutrition Basics", "Mindfulness, Meditation & Yoga"],
   "female-healthcare-wellbeing": ["Women's Health Across Life Stages", "Preventive Care & Self-Wellness"],
 };
 
