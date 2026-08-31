@@ -48,7 +48,8 @@ export default function ContactPage() {
       />
 
       <section className="bg-gradient-to-b from-[#E4E7FB] to-[#F0F3FC] pb-24 pt-40 sm:pt-44">
-        <div className="mx-auto grid max-w-7xl gap-16 px-5 lg:grid-cols-12 lg:px-8">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:gap-x-16 lg:gap-y-8 px-5 lg:grid-cols-12 lg:px-8">
+          {/* Section 1: Header & Subtitle (Always at top) */}
           <div className="lg:col-span-5">
             <FadeIn>
               <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-[#1B2559]/70">
@@ -65,8 +66,19 @@ export default function ContactPage() {
                 program and a plan.
               </p>
             </FadeIn>
+          </div>
+
+          {/* Section 2: Contact Form (Appears FIRST on mobile right after header intro; on desktop spans right column) */}
+          <div className="lg:col-span-7 lg:row-span-2">
+            <FadeIn delay={0.2}>
+              <EnquiryForm />
+            </FadeIn>
+          </div>
+
+          {/* Section 3: Contact Info Details (Appears AFTER form on mobile; under header intro on desktop) */}
+          <div className="lg:col-span-5">
             <FadeIn delay={0.3}>
-              <ul className="mt-12 space-y-6 border-t border-[rgba(0,0,0,0.08)] pt-8">
+              <ul className="space-y-6 border-t border-[rgba(0,0,0,0.08)] pt-8">
                 {infoItems.map(({ label, value, href }) => (
                   <li key={label} className="border-b border-[rgba(0,0,0,0.08)] pb-6">
                     <p className="text-xs font-semibold uppercase tracking-widest text-[#1B2559]/70 mb-1">
@@ -85,12 +97,6 @@ export default function ContactPage() {
                   </li>
                 ))}
               </ul>
-            </FadeIn>
-          </div>
-
-          <div className="lg:col-span-7">
-            <FadeIn delay={0.2}>
-              <EnquiryForm />
             </FadeIn>
           </div>
         </div>
