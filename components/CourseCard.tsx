@@ -5,12 +5,13 @@ import Image from "next/image";
 import type { Course } from "@/data/courses";
 
 const CARD_HIGHLIGHTS: Record<string, string[]> = {
-  "first-aid-training": ["CPR & AED Certification", "Wound Care & Emergency Response"],
-  "cpr-training": ["High-Quality Chest Compressions", "Adult & Infant CPR Skills"],
-  "aed-training": ["AED Defibrillator Operation", "Emergency Pad Placement"],
-  "choking-response": ["Heimlich Maneuver & Abdominal Thrusts", "Airway Clearance for All Ages"],
-  "health-safety-training": ["POSH & Women Safety", "Workplace Hazard Prevention"],
-  "corporate-customized": ["Onsite Corporate Workshops", "Tailored Incident Protocols"],
+  "first-aid-cpr-training": ["CPR & First Aid Certification", "Wound Care & Emergency Response"],
+  "basic-first-aid-cpr": ["Essential CPR Fundamentals", "Basic Wound Care & Recovery"],
+  "cpr-aed-choking": ["AED Defibrillator Operation", "Choking & Airway Clearance"],
+  "fire-safety-awareness": ["Fire Extinguisher Operation", "Evacuation & Emergency Drills"],
+  "stress-management-awareness": ["Stress Coping Techniques", "Work-Life Balance Strategies"],
+  "counselling-mental-wellbeing": ["Active Listening Skills", "Mental Health First Aid"],
+  "diet-nutrition-meditation-yoga": ["Balanced Nutrition Planning", "Yoga & Meditation Practices"],
 };
 
 export default function CourseCard({ course, index }: { course: Course; index?: number }) {
@@ -51,6 +52,17 @@ export default function CourseCard({ course, index }: { course: Course; index?: 
           {formattedNumber}
         </span>
       )}
+
+      {/* Duration badge */}
+      <div className="absolute top-5 left-5 z-[3]">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 backdrop-blur-md px-3.5 py-1.5 text-[11px] sm:text-xs font-bold text-white/95 border border-white/10">
+          <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
+          {course.duration}
+        </span>
+      </div>
 
       {/* Card content */}
       <div className="absolute inset-0 z-[3] flex flex-col justify-end p-6 sm:p-7">

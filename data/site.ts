@@ -156,8 +156,8 @@ export const AUDIENCES = [
       "Choking, injury and sudden-illness drills",
       "Sessions planned around the academic calendar",
     ],
-    href: "/courses/first-aid-training",
-    linkLabel: "First Aid Training",
+    href: "/courses/first-aid-cpr-training",
+    linkLabel: "First Aid & CPR Training",
   },
   {
     icon: "stethoscope",
@@ -169,8 +169,8 @@ export const AUDIENCES = [
       "Refresher programs to keep skills sharp",
       "Support staff and non-clinical team training",
     ],
-    href: "/courses/cpr-training",
-    linkLabel: "CPR Training",
+    href: "/courses/basic-first-aid-cpr",
+    linkLabel: "Basic First Aid & CPR",
   },
   {
     icon: "users",
