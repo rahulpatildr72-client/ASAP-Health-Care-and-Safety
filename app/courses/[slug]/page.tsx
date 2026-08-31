@@ -99,11 +99,11 @@ export default async function CoursePage({ params }: Props) {
 
           <div className="lg:col-span-7">
             {course.galleryImages && course.galleryImages.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 {course.galleryImages.map((imgSrc, idx) => (
                   <div
                     key={idx}
-                    className="relative aspect-[3/4] sm:h-[420px] w-full overflow-hidden rounded-[24px] border border-[rgba(0,0,0,0.08)] shadow-xl transition-all duration-500 hover:scale-[1.03] hover:shadow-2xl"
+                    className="relative aspect-[4/3] min-h-[260px] sm:min-h-[340px] lg:min-h-[380px] w-full overflow-hidden rounded-[24px] border border-[rgba(0,0,0,0.08)] shadow-xl transition-all duration-500 hover:scale-[1.03] hover:shadow-2xl"
                   >
                     <Image
                       src={imgSrc}
