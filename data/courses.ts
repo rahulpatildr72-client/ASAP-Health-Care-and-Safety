@@ -158,10 +158,9 @@ export const COURSES: Course[] = [
     certification:
       "Participants receive a certificate of completion after successfully finishing the program.",
     icon: "flame",
-    image:
-      "https://images.unsplash.com/photo-1586953208270-767fc7e3f180?auto=format&fit=crop&w=1200&q=80",
-    imageAlt: "Fire safety training session with extinguisher demonstration",
-    cardImage: "/fire-safety.png",
+    image: "/fire-safety.webp",
+    imageAlt: "Fire safety training program session",
+    cardImage: "/fire-safety.webp",
   },
   {
     slug: "ert-emergency-response-team",
@@ -225,10 +224,9 @@ export const COURSES: Course[] = [
     certification:
       "Participants receive a certificate of completion after successfully finishing the program.",
     icon: "building",
-    image:
-      "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80",
-    imageAlt: "Corporate team participating in a POSH training workshop",
-    cardImage: "/posh-awareness.png",
+    image: "/posh-awareness.webp",
+    imageAlt: "POSH training program session",
+    cardImage: "/posh-awareness.webp",
   },
   {
     slug: "stress-management-awareness",
@@ -321,10 +319,9 @@ export const COURSES: Course[] = [
     certification:
       "Participants receive a certificate of completion after successfully finishing the program.",
     icon: "apple",
-    image:
-      "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80",
-    imageAlt: "Wellness program with meditation, yoga and nutrition guidance",
-    cardImage: "/wellness-program.png",
+    image: "/diet-nutrition.webp",
+    imageAlt: "Diet & Nutrition, Meditation & Yoga wellness program session",
+    cardImage: "/diet-nutrition.webp",
   },
   {
     slug: "female-healthcare-wellbeing",
