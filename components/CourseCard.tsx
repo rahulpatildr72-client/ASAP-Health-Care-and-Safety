@@ -14,6 +14,7 @@ const CARD_HIGHLIGHTS: Record<string, string[]> = {
   "stress-management-awareness": ["Stress Coping Techniques", "Work-Life Balance Strategies"],
   "counselling-mental-wellbeing": ["Active Listening Skills", "Mental Health First Aid"],
   "diet-nutrition-meditation-yoga": ["Balanced Nutrition Planning", "Yoga & Meditation Practices"],
+  "female-healthcare-wellbeing": ["Women's Health Across Life Stages", "Preventive Care & Self-Wellness"],
 };
 
 export default function CourseCard({ course, index }: { course: Course; index?: number }) {

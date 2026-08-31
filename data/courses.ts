@@ -351,6 +351,41 @@ export const COURSES: Course[] = [
     imageAlt: "Wellness program with meditation, yoga and nutrition guidance",
     cardImage: "/wellness-program.png",
   },
+  {
+    slug: "female-healthcare-wellbeing",
+    title: "Awareness of Female Healthcare & Wellbeing Program",
+    shortTitle: "Female Healthcare & Wellbeing",
+    category: "wellbeing",
+    tagline: "Empowering women with essential health knowledge, self-care practices and wellness strategies for every life stage.",
+    overview: [
+      "Women face unique health challenges across different life stages — from reproductive health and hormonal changes to mental well-being and chronic disease prevention. This awareness program provides practical, evidence-based knowledge to help women take charge of their health proactively.",
+      "Through expert-led sessions, interactive discussions and self-assessment exercises, participants gain clarity on preventive healthcare, nutrition, emotional resilience and workplace wellness — creating a culture of care and empowerment.",
+    ],
+    whoShouldAttend: [
+      "All female employees across organizations",
+      "HR and Diversity & Inclusion teams",
+      "Corporate wellness program coordinators",
+      "Healthcare and social service professionals",
+      "Anyone interested in women's health awareness",
+    ],
+    learn: [
+      "Understanding women's health across life stages",
+      "Reproductive health, menstrual wellness and hormonal balance",
+      "Breast health awareness and early screening importance",
+      "Nutrition, bone health and chronic disease prevention",
+      "Managing stress, anxiety and emotional well-being",
+      "Building sustainable self-care and wellness routines",
+    ],
+    duration: "2–3 Hours",
+    modes: ["Onsite", "Classroom", "Live Online"],
+    certification:
+      "Participants receive a certificate of completion after successfully finishing the program.",
+    icon: "heart",
+    image:
+      "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1200&q=80",
+    imageAlt: "Women participating in a female healthcare and wellbeing awareness workshop",
+    cardImage: "/female-healthcare.png",
+  },
 ];
 
 export function getCourse(slug: string): Course | undefined {
