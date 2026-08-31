@@ -5,7 +5,7 @@ import TrustBar from "@/components/TrustBar";
 import ParallaxImage from "@/components/ParallaxImage";
 import RevealText from "@/components/RevealText";
 import FadeIn from "@/components/FadeIn";
-import { CREDENTIALS, FOUNDER, SITE_NAME } from "@/data/site";
+import { FOUNDER, SITE_NAME } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -146,29 +146,6 @@ export default function AboutPage() {
                 ))}
               </ul>
             </FadeIn>
-          </div>
-        </div>
-      </section>
-
-      {/* Certifications */}
-      <section className="bg-[#F0F3FC] py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <SectionHeading
-            number="02"
-            eyebrow="Standards & Credentials"
-            title="Built Around Recognized Standards"
-            subtitle="Accreditation logos and certificates will be displayed here once confirmed and supplied by the organization."
-          />
-          <div className="mt-10 sm:mt-16 grid gap-px bg-[rgba(0,0,0,0.08)] sm:grid-cols-2 lg:grid-cols-4 border border-[rgba(0,0,0,0.08)]">
-            {CREDENTIALS.map((item, i) => (
-              <FadeIn key={item.title} delay={i * 0.1} className="bg-white p-6 sm:p-8">
-                <span className="font-mono text-xs font-semibold text-[#3B5BDB] block mb-3">0{i + 1}</span>
-                <h3 className="font-display text-base sm:text-lg font-bold text-[#141414]">{item.title}</h3>
-                <p className="mt-2.5 text-xs sm:text-sm leading-relaxed text-[#1B2559]/75">
-                  {item.description}
-                </p>
-              </FadeIn>
-            ))}
           </div>
         </div>
       </section>
