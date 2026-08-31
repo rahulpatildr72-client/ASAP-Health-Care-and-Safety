@@ -138,8 +138,6 @@ export default function CoursesClient({ courses }: CoursesClientProps) {
       {filteredCourses.length > 0 ? (
         <div className="space-y-12 sm:space-y-16">
           {groupedCourses.map((group) => {
-            const startIndex = globalIndex;
-
             return (
               <div key={group.category}>
                 {/* Category Heading */}
@@ -176,9 +174,8 @@ export default function CoursesClient({ courses }: CoursesClientProps) {
                 {viewMode === "list" && (
                   <div className="space-y-3 sm:space-y-4">
                     {group.courses.map((course, i) => {
-                      const num = startIndex + i + 1;
-                      // eslint-disable-next-line react-hooks/exhaustive-deps
-                      globalIndex = startIndex + i + 1;
+                      const globalIdx = filteredCourses.findIndex((c) => c.slug === course.slug);
+                      const num = globalIdx >= 0 ? globalIdx + 1 : i + 1;
 
                       return (
                         <FadeIn key={course.slug} delay={i * 0.06}>
@@ -226,12 +223,11 @@ export default function CoursesClient({ courses }: CoursesClientProps) {
                 {viewMode === "cards" && (
                   <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     {group.courses.map((course, i) => {
-                      const num = startIndex + i;
-                      globalIndex = startIndex + i + 1;
+                      const globalIdx = filteredCourses.findIndex((c) => c.slug === course.slug);
 
                       return (
                         <FadeIn key={course.slug} delay={i * 0.08}>
-                          <CourseCard course={course} index={num} />
+                          <CourseCard course={course} index={globalIdx >= 0 ? globalIdx : i} />
                         </FadeIn>
                       );
                     })}

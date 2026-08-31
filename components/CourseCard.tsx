@@ -9,6 +9,8 @@ const CARD_HIGHLIGHTS: Record<string, string[]> = {
   "basic-first-aid-cpr": ["Essential CPR Fundamentals", "Basic Wound Care & Recovery"],
   "cpr-aed-choking": ["AED Defibrillator Operation", "Choking & Airway Clearance"],
   "fire-safety-awareness": ["Fire Extinguisher Operation", "Evacuation & Emergency Drills"],
+  "ert-emergency-response-team": ["Incident Command & Crisis Response", "Evacuation & Triage Drills"],
+  "posh-prevention-sexual-harassment": ["POSH Act Compliance & Legal Framework", "IC Committee & Workplace Policy"],
   "stress-management-awareness": ["Stress Coping Techniques", "Work-Life Balance Strategies"],
   "counselling-mental-wellbeing": ["Active Listening Skills", "Mental Health First Aid"],
   "diet-nutrition-meditation-yoga": ["Balanced Nutrition Planning", "Yoga & Meditation Practices"],
