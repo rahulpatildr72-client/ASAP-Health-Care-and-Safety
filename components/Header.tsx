@@ -280,33 +280,40 @@ export default function Header() {
                 if (link.isDropdown) {
                   return (
                     <div key={link.href} className="space-y-1" data-overlay-link>
-                      <button
-                        type="button"
-                        onClick={() => setMobileSubmenuOpen((v) => !v)}
+                      <div
                         className={`flex w-full items-center justify-between rounded-xl px-4 py-3.5 text-base font-bold transition-all ${
                           active
                             ? "bg-[#2563EB] text-white shadow-md shadow-blue-500/20"
                             : "text-[#1B2559] hover:bg-slate-50"
                         }`}
                       >
-                        <span>{link.label}</span>
-                        <ChevronDown
-                          className={`h-4 w-4 transition-transform ${
-                            mobileSubmenuOpen ? "rotate-180" : ""
-                          } ${active ? "text-white" : "text-[#2563EB]"}`}
-                        />
-                      </button>
+                        <Link
+                          href={link.href}
+                          onClick={() => setMenuOpen(false)}
+                          className="flex-1 text-left"
+                        >
+                          {link.label}
+                        </Link>
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            setMobileSubmenuOpen((v) => !v);
+                          }}
+                          className="p-1 rounded-lg hover:bg-black/10 transition-colors"
+                          aria-label="Toggle Training Programs sub-menu"
+                        >
+                          <ChevronDown
+                            className={`h-4 w-4 transition-transform ${
+                              mobileSubmenuOpen ? "rotate-180" : ""
+                            } ${active ? "text-white" : "text-[#2563EB]"}`}
+                          />
+                        </button>
+                      </div>
 
                       {mobileSubmenuOpen && (
                         <div className="ml-3 space-y-1 border-l-2 border-[#2563EB]/20 pl-3 pt-1 pb-1">
-                          <Link
-                            href="/courses"
-                            onClick={() => setMenuOpen(false)}
-                            className="flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-sm font-semibold text-[#141414] hover:bg-blue-50"
-                          >
-                            <GraduationCap className="h-4 w-4 text-[#2563EB]" />
-                            <span>All Training Programs</span>
-                          </Link>
                           <Link
                             href="/courses?mode=offline"
                             onClick={() => setMenuOpen(false)}
