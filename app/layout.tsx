@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
+import localFont from "next/font/local";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -7,15 +7,18 @@ import SmoothScroll from "@/components/SmoothScroll";
 import { CONTACT, SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/data/site";
 import "./globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
+// Fonts are bundled with the repo (OFL-licensed, latin subset, variable weight)
+// so production builds never depend on downloading them from Google Fonts.
+const inter = localFont({
+  src: "./fonts/inter-latin.woff2",
+  weight: "100 900",
   variable: "--font-inter",
   display: "swap",
 });
 
-const outfit = Outfit({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+const outfit = localFont({
+  src: "./fonts/outfit-latin.woff2",
+  weight: "100 900",
   variable: "--font-outfit",
   display: "swap",
 });
