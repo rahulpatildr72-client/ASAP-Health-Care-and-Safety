@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import { Activity, Siren, BadgeCheck, Eye, Target, Users } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
 import CTABanner from "@/components/CTABanner";
 import TrustBar from "@/components/TrustBar";
-import ParallaxImage from "@/components/ParallaxImage";
-import RevealText from "@/components/RevealText";
+import PageHero from "@/components/PageHero";
+import FounderPortrait from "@/components/FounderPortrait";
 import FadeIn from "@/components/FadeIn";
 import { FOUNDER, SITE_NAME } from "@/data/site";
 
@@ -16,28 +18,82 @@ export const metadata: Metadata = {
   },
 };
 
+const APPROACH = [
+  {
+    icon: Activity,
+    title: "Scenario-Driven Practice",
+    description:
+      "Mannequins, AED trainer units and realistic drills — participants rehearse real emergencies, not abstract theory, until the right response comes automatically.",
+  },
+  {
+    icon: Siren,
+    title: "Built for Pressure",
+    description:
+      "Real emergencies bring panic, noise and hesitation. Training deliberately accounts for how people respond under stress, so skills hold up when it counts.",
+  },
+  {
+    icon: BadgeCheck,
+    title: "Demonstrated Competence",
+    description:
+      "Participants show they can perform the skills hands-on before completing the program — certification reflects ability, not just attendance.",
+  },
+];
+
 export default function AboutPage() {
   return (
     <>
-      {/* Page hero */}
-      <section className="bg-gradient-to-b from-[#E4E7FB] to-[#F0F3FC] pb-20 pt-36 sm:pt-44">
+      <PageHero breadcrumb={[{ label: "About Us" }]}>
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading
             as="h1"
+            tone="light"
             eyebrow="About Us"
             titleLight="We Train People to Respond"
             title="When Lives Depend On It"
             subtitle="Born from two decades of frontline emergency experience, we exist for one reason: to make sure that when an emergency happens, someone nearby knows exactly what to do."
           />
         </div>
-      </section>
+      </PageHero>
 
-      {/* Story */}
+      {/* Our Story (reference: Who We Are split) */}
       <section className="bg-white py-16 sm:py-24">
-        <div className="mx-auto max-w-3xl px-5 lg:px-8">
-          <FadeIn>
-            <h2 className="font-display text-2xl font-bold text-[#141414] sm:text-3xl">Our Story</h2>
-            <div className="mt-6 space-y-4 sm:space-y-5 text-base sm:text-lg leading-relaxed text-[#1B2559]/80">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 lg:grid-cols-2 lg:gap-16 lg:px-8">
+          <FadeIn className="relative">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border-4 border-white shadow-lg">
+              <Image
+                src="/health-safety-training.png"
+                alt="Industrial safety training session on a factory floor"
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover transition-transform duration-500 hover:scale-105"
+              />
+            </div>
+            <div className="absolute -bottom-6 left-4 w-[40%] overflow-hidden rounded-xl border-4 border-white shadow-lg sm:left-6">
+              <div className="relative aspect-square">
+                <Image
+                  src="/cpr-training.png"
+                  alt="Trainer guiding a participant through chest compressions"
+                  fill
+                  sizes="20vw"
+                  className="object-cover"
+                />
+              </div>
+            </div>
+            <div className="absolute -top-4 right-4 flex items-center gap-3 rounded-xl border border-gray-200 bg-white px-4 py-3 shadow-md sm:right-6">
+              <span className="icon-square h-10 w-10 rounded-lg">
+                <Users className="h-5 w-5" />
+              </span>
+              <div>
+                <p className="font-display text-[1.1rem] font-extrabold leading-none text-primary">30,000+</p>
+                <p className="mt-0.5 text-[0.7rem] font-medium text-gray-500">Lifesavers trained</p>
+              </div>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.15}>
+            <h2 className="font-display text-[1.75rem] font-semibold text-gray-900 sm:text-[2.25rem]">Our Story</h2>
+            <div className="mt-5 space-y-4 text-[1rem] leading-[1.8] text-gray-700 sm:text-[1.05rem]">
               <p>
                 Most medical emergencies are decided before the ambulance arrives. Cardiac arrest,
                 choking, severe bleeding — in each case, the first three to five minutes belong not
@@ -50,107 +106,117 @@ export default function AboutPage() {
                 staff, parents and individuals — across India and internationally — with practical,
                 hands-on lifesaving skills.
               </p>
-              <p>
-                Every program we run is built on the same principle: people don&apos;t rise to the
-                occasion in an emergency, they fall back on their training. So we make sure the
-                training is worth falling back on.
+              <p className="rounded-xl border-l-4 border-primary bg-primary-light/60 px-5 py-4 font-medium text-primary-dark">
+                People don&apos;t rise to the occasion in an emergency — they fall back on their
+                training. So we make sure the training is worth falling back on.
               </p>
             </div>
           </FadeIn>
         </div>
       </section>
 
+      {/* Vision & Mission (reference: vmCard grid) */}
+      <section className="bg-off-white py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <SectionHeading align="center" title="Our Vision & Mission" />
+          <div className="grid gap-6 lg:grid-cols-2 lg:gap-8">
+            <FadeIn className="card p-8 sm:p-10">
+              <span className="icon-square mb-5 h-14 w-14">
+                <Eye className="h-6 w-6" />
+              </span>
+              <span className="tag-pill mb-3">Vision</span>
+              <h2 className="font-display text-[1.5rem] font-semibold text-gray-900">Our Vision</h2>
+              <p className="mt-3 leading-[1.7] text-gray-600">{FOUNDER.vision}</p>
+            </FadeIn>
+            <FadeIn delay={0.1} className="card p-8 sm:p-10">
+              <span className="icon-square mb-5 h-14 w-14">
+                <Target className="h-6 w-6" />
+              </span>
+              <span className="tag-pill mb-3">Mission</span>
+              <h2 className="font-display text-[1.5rem] font-semibold text-gray-900">Our Mission</h2>
+              <p className="mt-3 leading-[1.7] text-gray-600">{FOUNDER.mission}</p>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats band */}
+      <TrustBar />
+
+      {/* Founder (reference: leadership card) */}
+      <section className="bg-white py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <SectionHeading align="center" eyebrow="Founder & Lead Trainer" title={FOUNDER.name} />
+          <FadeIn>
+            <div className="flex flex-col items-center gap-8 rounded-2xl bg-off-white p-7 sm:p-10 md:flex-row md:items-start md:gap-12">
+              <FounderPortrait
+                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=900&q=80"
+                alt={`Professional portrait of ${FOUNDER.name}, founder and lead trainer`}
+              />
+              <div className="min-w-0 flex-1">
+                <blockquote className="border-l-4 border-primary pl-5 text-[1rem] italic leading-[1.7] text-gray-700 sm:text-[1.15rem]">
+                  {FOUNDER.story}
+                </blockquote>
+                <p className="mt-5 font-display text-[1.1rem] font-semibold text-gray-900">{FOUNDER.name}</p>
+                <p className="text-[0.85rem] text-gray-500">{FOUNDER.role}</p>
+                <ul className="mt-6 grid gap-3 border-t border-gray-200 pt-6 sm:grid-cols-2">
+                  {FOUNDER.qualifications.map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-[0.875rem] font-medium text-gray-800">
+                      <BadgeCheck className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
       {/* Training approach */}
-      <section className="bg-white py-16 sm:py-24 border-t border-[rgba(0,0,0,0.08)]">
+      <section className="bg-off-white py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading
+            align="center"
             number="01"
             eyebrow="Our Approach"
             title="Until Response Becomes Reflex"
             subtitle="Attendance doesn't save lives — competence does. Every program is designed around how people actually behave under pressure."
           />
-          <div className="mt-10 sm:mt-16 grid gap-px bg-[rgba(0,0,0,0.08)] lg:grid-cols-3 border border-[rgba(0,0,0,0.08)]">
-            {[
-              {
-                title: "Scenario-Driven Practice",
-                description:
-                  "Mannequins, AED trainer units and realistic drills — participants rehearse real emergencies, not abstract theory, until the right response comes automatically.",
-              },
-              {
-                title: "Built for Pressure",
-                description:
-                  "Real emergencies bring panic, noise and hesitation. Training deliberately accounts for how people respond under stress, so skills hold up when it counts.",
-              },
-              {
-                title: "Demonstrated Competence",
-                description:
-                  "Participants show they can perform the skills hands-on before completing the program — certification reflects ability, not just attendance.",
-              },
-            ].map(({ title, description }, i) => (
-              <FadeIn key={title} delay={i * 0.1} className="bg-white p-6 sm:p-8">
-                <span className="font-mono text-xs font-semibold text-[#3B5BDB] block mb-3">0{i + 1}</span>
-                <h3 className="font-display text-lg sm:text-xl font-bold text-[#141414]">{title}</h3>
-                <p className="mt-2.5 sm:mt-3 leading-relaxed text-sm sm:text-base text-[#1B2559]/75">{description}</p>
+
+          <FadeIn className="mx-auto mb-12 max-w-4xl">
+            <div className="relative aspect-[16/9] overflow-hidden rounded-2xl border-4 border-white shadow-lg">
+              <Image
+                src="/first-aid-training.png"
+                alt="Instructor bandaging a participant's arm during first aid practice"
+                fill
+                sizes="(max-width: 1024px) 100vw, 900px"
+                className="object-cover transition-transform duration-500 hover:scale-105"
+              />
+            </div>
+            <p className="mt-4 text-center text-[0.9rem] text-gray-600">
+              <span className="font-semibold uppercase tracking-[0.08em] text-primary">Hands-on, always</span>
+              {" — "}
+              Mannequins, AED trainers, bandages and real equipment in every session.
+            </p>
+          </FadeIn>
+
+          <div className="grid gap-6 lg:grid-cols-3 lg:gap-8">
+            {APPROACH.map(({ icon: Icon, title, description }, i) => (
+              <FadeIn key={title} delay={i * 0.1} className="h-full">
+                <div className="group relative h-full overflow-hidden rounded-2xl bg-white p-8 text-center shadow-sm transition-all duration-300 before:absolute before:inset-x-0 before:top-0 before:h-1 before:origin-left before:scale-x-0 before:bg-primary before:transition-transform before:duration-300 before:content-[''] hover:-translate-y-2 hover:shadow-lg hover:before:scale-x-100">
+                  <span className="icon-square mx-auto mb-6 h-[70px] w-[70px] rounded-2xl group-hover:scale-110 group-hover:bg-primary group-hover:text-white">
+                    <Icon className="h-7 w-7" />
+                  </span>
+                  <h3 className="font-display text-[1.15rem] font-semibold text-gray-900">{title}</h3>
+                  <p className="mt-2 text-[0.9rem] leading-[1.6] text-gray-600">{description}</p>
+                </div>
               </FadeIn>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Vision & Mission */}
-      <section className="bg-[#F0F3FC] py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="grid gap-6 sm:gap-8 lg:grid-cols-2">
-            <FadeIn className="border border-[rgba(0,0,0,0.08)] bg-white p-6 sm:p-10 rounded-xl">
-              <span className="font-mono text-xs font-semibold text-[#3B5BDB] block mb-2">VISION</span>
-              <h2 className="font-display text-xl sm:text-2xl font-bold text-[#141414]">Our Vision</h2>
-              <p className="mt-3 sm:mt-4 text-base sm:text-lg leading-relaxed text-[#1B2559]/80">{FOUNDER.vision}</p>
-            </FadeIn>
-            <FadeIn delay={0.1} className="border border-[rgba(0,0,0,0.08)] bg-white p-6 sm:p-10 rounded-xl">
-              <span className="font-mono text-xs font-semibold text-[#3B5BDB] block mb-2">MISSION</span>
-              <h2 className="font-display text-xl sm:text-2xl font-bold text-[#141414]">Our Mission</h2>
-              <p className="mt-3 sm:mt-4 text-base sm:text-lg leading-relaxed text-[#1B2559]/80">{FOUNDER.mission}</p>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
-
-      {/* Founder profile */}
-      <section className="bg-white py-16 sm:py-24 lg:py-32">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 sm:gap-16 px-5 lg:grid-cols-12 lg:px-8">
-          <div className="lg:col-span-5">
-            <ParallaxImage
-              src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=900&q=80"
-              alt={`Professional portrait of ${FOUNDER.name}, founder and lead trainer`}
-              containerClassName="aspect-[4/5] w-full rounded-2xl overflow-hidden"
-            />
-          </div>
-          <div className="lg:col-span-7">
-            <FadeIn>
-              <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-[#1B2559]/70">
-                Founder &amp; Lead Trainer
-              </p>
-            </FadeIn>
-            <RevealText as="h2" className="font-display text-2.5xl font-bold tracking-tight text-[#141414] sm:text-4xl">
-              {FOUNDER.name}
-            </RevealText>
-            <FadeIn delay={0.2}>
-              <p className="mt-5 text-base sm:text-lg leading-relaxed text-[#1B2559]/80">{FOUNDER.story}</p>
-            </FadeIn>
-            <FadeIn delay={0.3}>
-              <ul className="mt-6 sm:mt-8 space-y-3 border-t border-[rgba(0,0,0,0.08)] pt-6">
-                {FOUNDER.qualifications.map((item) => (
-                  <li key={item} className="text-xs sm:text-sm font-medium text-[#1B2559]/90">
-                    — {item}
-                  </li>
-                ))}
-              </ul>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
-
-      <TrustBar />
       <CTABanner />
     </>
   );

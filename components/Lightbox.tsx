@@ -43,7 +43,7 @@ export default function Lightbox({ images }: { images: GalleryImage[] }) {
             key={img.src}
             type="button"
             onClick={() => setActive(i)}
-            className="group block w-full overflow-hidden rounded-3xl bg-white shadow-card ring-1 ring-navy-300/15 transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover focus-visible:outline-2 focus-visible:outline-brand-600"
+            className="group relative block w-full overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-md focus-visible:outline-2 focus-visible:outline-primary"
             aria-label={`View larger: ${img.alt}`}
           >
             <Image
@@ -54,6 +54,9 @@ export default function Lightbox({ images }: { images: GalleryImage[] }) {
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               className="w-full transition-transform duration-500 group-hover:scale-105"
             />
+            <span className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary-darker/85 via-primary-darker/40 to-transparent px-4 pb-4 pt-12 text-left text-xs font-semibold text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              {img.alt}
+            </span>
           </button>
         ))}
       </div>
@@ -63,7 +66,7 @@ export default function Lightbox({ images }: { images: GalleryImage[] }) {
           role="dialog"
           aria-modal="true"
           aria-label={images[active].alt}
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-navy-950/90 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-primary-darker/90 p-4 backdrop-blur-sm"
           onClick={close}
         >
           <button

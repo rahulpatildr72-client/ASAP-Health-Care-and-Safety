@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import SectionHeading from "@/components/SectionHeading";
+import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import { CONTACT, SITE_NAME } from "@/data/site";
 
@@ -11,17 +12,18 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <>
-      <section className="bg-peri-wash-soft pb-16 pt-36 sm:pt-40">
+      <PageHero breadcrumb={[{ label: "Privacy Policy" }]}>
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading
             as="h1"
+            tone="light"
             eyebrow="Legal"
             titleLight="Privacy"
             title="Policy"
             subtitle={`How ${SITE_NAME} collects, uses, and safeguards your personal information.`}
           />
         </div>
-      </section>
+      </PageHero>
 
       <section className="bg-white py-20">
         <div className="mx-auto max-w-3xl px-5 lg:px-8">

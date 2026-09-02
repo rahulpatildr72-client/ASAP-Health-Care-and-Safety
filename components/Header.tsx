@@ -1,11 +1,24 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronRight, ArrowRight, ChevronDown, Building, Video, GraduationCap } from "lucide-react";
-import { gsap } from "gsap";
+import {
+  Menu,
+  X,
+  ChevronRight,
+  ChevronDown,
+  Building,
+  Video,
+  Mail,
+  Phone,
+  Globe,
+  Facebook,
+  Instagram,
+  Linkedin,
+} from "lucide-react";
+import { CONTACT } from "@/data/site";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
@@ -15,13 +28,24 @@ const NAV_LINKS = [
   { label: "Contact", href: "/contact" },
 ];
 
+/* PLACEHOLDER — point these at the real social profiles. */
+const SOCIALS = [
+  { label: "Facebook", href: "#", icon: Facebook },
+  { label: "Instagram", href: "#", icon: Instagram },
+  { label: "LinkedIn", href: "#", icon: Linkedin },
+];
+
+const navLinkClass = (active: boolean) =>
+  `relative flex items-center gap-1 whitespace-nowrap rounded-md px-3 py-2.5 text-[0.9rem] font-medium transition-all duration-200 after:absolute after:bottom-1 after:left-1/2 after:h-0.5 after:w-0 after:-translate-x-1/2 after:rounded-full after:bg-primary after:transition-all after:duration-300 after:content-[''] hover:bg-primary-light hover:text-primary hover:after:w-3/5 ${
+    active ? "bg-primary-light text-primary after:w-3/5" : "text-gray-700"
+  }`;
+
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileSubmenuOpen, setMobileSubmenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-  const headerRef = useRef<HTMLElement>(null);
-  const introRan = useRef(false);
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -33,11 +57,7 @@ export default function Header() {
   }, [pathname]);
 
   useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
@@ -52,37 +72,62 @@ export default function Header() {
     };
     document.addEventListener("keydown", handleKey);
     return () => document.removeEventListener("keydown", handleKey);
-  }, [menuOpen]);
+  }, []);
 
   useEffect(() => {
-    if (introRan.current) return;
-    introRan.current = true;
-
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReduced) return;
-
-    const header = headerRef.current;
-    if (!header) return;
-
-    gsap.fromTo(
-      header,
-      { opacity: 0, y: -10 },
-      { opacity: 1, y: 0, duration: 0.8, delay: 0.2, ease: "power4.out" }
-    );
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <>
-      {/* Sticky Header - floating rounded glass pill on mobile & desktop */}
+      {/* Utility bar */}
+      <div className="hidden bg-primary-dark text-white md:block">
+        <div className="mx-auto flex h-10 max-w-7xl items-center justify-between px-5 text-[0.82rem] lg:px-8">
+          <div className="flex items-center gap-6">
+            <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-1.5 text-white/90 transition-colors hover:text-white">
+              <Mail className="h-3.5 w-3.5" />
+              {CONTACT.email}
+            </a>
+            <a href={CONTACT.phoneHref} className="flex items-center gap-1.5 text-white/90 transition-colors hover:text-white">
+              <Phone className="h-3.5 w-3.5" />
+              {CONTACT.phone}
+            </a>
+          </div>
+          <div className="flex items-center gap-5">
+            <span className="hidden items-center gap-1.5 rounded-full bg-white/15 px-3.5 py-1 text-[0.72rem] font-medium uppercase tracking-[0.03em] lg:flex">
+              <Globe className="h-3 w-3" />
+              {CONTACT.onlineNote}
+            </span>
+            <div className="flex items-center gap-2">
+              {SOCIALS.map(({ label, href, icon: Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  className="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:-translate-y-px hover:bg-white/25"
+                >
+                  <Icon className="h-3.5 w-3.5" />
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Sticky main header */}
       <header
-        ref={headerRef}
-        className="fixed inset-x-0 top-0 z-[60] px-3.5 pt-3 pb-2 transition-all duration-300 sm:px-5 sm:pt-4 lg:px-8"
+        className={`sticky top-0 z-[60] bg-white transition-shadow duration-300 ${
+          scrolled ? "shadow-[0_4px_20px_rgba(0,0,0,0.1)]" : "shadow-[0_2px_10px_rgba(0,0,0,0.06)]"
+        }`}
       >
         <nav
           aria-label="Main"
-          className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-slate-200/90 bg-white/95 px-4 py-2 shadow-md shadow-slate-900/5 backdrop-blur-xl lg:border-none lg:bg-transparent lg:p-0 lg:shadow-none"
+          className="mx-auto flex h-[74px] max-w-7xl items-center justify-between gap-6 px-5 lg:h-[92px] lg:px-8"
         >
-          {/* Logo - Prominent & Larger */}
+          {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
               src="/logo-full.png"
@@ -90,82 +135,78 @@ export default function Header() {
               width={1001}
               height={310}
               priority
-              className="h-9 w-auto sm:h-11 lg:h-13"
+              className="h-10 w-auto sm:h-12 lg:h-14"
             />
           </Link>
 
-          {/* Desktop Floating Pill Nav Bar */}
-          <div className="hidden items-center rounded-full border border-white/80 bg-white/90 p-1.5 shadow-sm backdrop-blur-md lg:flex gap-1">
+          {/* Desktop nav */}
+          <div className="hidden items-center gap-0.5 lg:flex">
             {NAV_LINKS.map((link) => {
               if (link.isDropdown) {
                 return (
                   <div
                     key={link.href}
-                    className="relative"
+                    className="relative flex h-full items-center"
                     onMouseEnter={() => setDropdownOpen(true)}
                     onMouseLeave={() => setDropdownOpen(false)}
                   >
                     <Link
                       href={link.href}
                       aria-current={isActive(link.href) ? "page" : undefined}
-                      className={`whitespace-nowrap rounded-full px-4 py-2 text-[14px] font-medium transition-all flex items-center gap-1.5 ${
-                        isActive(link.href)
-                          ? "bg-[#EAF0FF] text-[#2563EB] font-semibold"
-                          : "text-[#1B2559]/80 hover:bg-slate-50 hover:text-[#2563EB]"
-                      }`}
+                      className={navLinkClass(isActive(link.href))}
                     >
                       <span>{link.label}</span>
                       <ChevronDown
-                        className={`h-3.5 w-3.5 transition-transform duration-200 ${
-                          dropdownOpen ? "rotate-180 text-[#2563EB]" : "text-[#1B2559]/60"
-                        }`}
+                        className={`h-3.5 w-3.5 transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""}`}
                       />
                     </Link>
 
-                    {/* Dropdown Menu */}
-                    {dropdownOpen && (
-                      <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 w-72 z-50">
-                        <div className="rounded-2xl border border-slate-200/90 bg-white/95 p-2.5 shadow-xl backdrop-blur-xl animate-in fade-in slide-in-from-top-2 duration-200">
-                          <div className="px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-[#1B2559]/50">
-                            Training Formats
-                          </div>
-
-                          <Link
-                            href="/courses?mode=offline"
-                            onClick={() => setDropdownOpen(false)}
-                            className="flex items-center gap-3 rounded-xl p-2.5 transition-all hover:bg-[#EAF0FF]/80 group"
-                          >
-                            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
-                              <Building className="h-4 w-4" />
-                            </div>
-                            <div>
-                              <div className="text-xs font-bold text-[#141414] group-hover:text-[#2563EB] flex items-center gap-1.5">
-                                <span>Offline Training</span>
-                                <span className="rounded-full bg-emerald-100 px-1.5 py-0.5 text-[9px] font-semibold text-emerald-700">Onsite</span>
-                              </div>
-                              <div className="text-[11px] text-[#1B2559]/65">Onsite & Classroom Workshops</div>
-                            </div>
-                          </Link>
-
-                          <Link
-                            href="/courses?mode=online"
-                            onClick={() => setDropdownOpen(false)}
-                            className="flex items-center gap-3 rounded-xl p-2.5 transition-all hover:bg-[#EAF0FF]/80 group"
-                          >
-                            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-[#2563EB] group-hover:bg-[#2563EB] group-hover:text-white transition-colors">
-                              <Video className="h-4 w-4" />
-                            </div>
-                            <div>
-                              <div className="text-xs font-bold text-[#141414] group-hover:text-[#2563EB] flex items-center gap-1.5">
-                                <span>Online Training</span>
-                                <span className="rounded-full bg-blue-100 px-1.5 py-0.5 text-[9px] font-semibold text-[#2563EB]">Live Virtual</span>
-                              </div>
-                              <div className="text-[11px] text-[#1B2559]/65">Interactive Remote Sessions</div>
-                            </div>
-                          </Link>
+                    {/* Dropdown */}
+                    <div
+                      className={`absolute left-1/2 top-full z-50 w-72 -translate-x-1/2 pt-3 transition-all duration-300 ${
+                        dropdownOpen ? "visible translate-y-0 opacity-100" : "invisible translate-y-2 opacity-0"
+                      }`}
+                    >
+                      <div className="rounded-2xl border border-gray-200 bg-white p-3 shadow-[0_10px_40px_rgba(0,0,0,0.12)]">
+                        <div className="border-b-2 border-primary-light px-3 pb-2 pt-1 text-[0.8rem] font-bold text-primary">
+                          Training Formats
                         </div>
+
+                        <Link
+                          href="/courses?mode=offline"
+                          onClick={() => setDropdownOpen(false)}
+                          className="group mt-2 flex items-center gap-3 rounded-xl p-2.5 transition-all hover:bg-primary-light"
+                        >
+                          <div className="icon-square h-9 w-9 shrink-0 rounded-lg group-hover:bg-primary group-hover:text-white">
+                            <Building className="h-4 w-4" />
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-1.5 text-[0.85rem] font-semibold text-gray-900 group-hover:text-primary">
+                              <span>Offline Training</span>
+                              <span className="rounded-full bg-primary-light px-1.5 py-0.5 text-[9px] font-semibold text-primary">Onsite</span>
+                            </div>
+                            <div className="text-[0.75rem] text-gray-600">Onsite & Classroom Workshops</div>
+                          </div>
+                        </Link>
+
+                        <Link
+                          href="/courses?mode=online"
+                          onClick={() => setDropdownOpen(false)}
+                          className="group flex items-center gap-3 rounded-xl p-2.5 transition-all hover:bg-primary-light"
+                        >
+                          <div className="icon-square h-9 w-9 shrink-0 rounded-lg group-hover:bg-primary group-hover:text-white">
+                            <Video className="h-4 w-4" />
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-1.5 text-[0.85rem] font-semibold text-gray-900 group-hover:text-primary">
+                              <span>Online Training</span>
+                              <span className="rounded-full bg-accent-light px-1.5 py-0.5 text-[9px] font-semibold text-accent-dark">Live Virtual</span>
+                            </div>
+                            <div className="text-[0.75rem] text-gray-600">Interactive Remote Sessions</div>
+                          </div>
+                        </Link>
                       </div>
-                    )}
+                    </div>
                   </div>
                 );
               }
@@ -175,155 +216,130 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   aria-current={isActive(link.href) ? "page" : undefined}
-                  className={`whitespace-nowrap rounded-full px-4 py-2 text-[14px] font-medium transition-all ${
-                    isActive(link.href)
-                      ? "bg-[#EAF0FF] text-[#2563EB] font-semibold"
-                      : "text-[#1B2559]/80 hover:bg-slate-50 hover:text-[#2563EB]"
-                  }`}
+                  className={navLinkClass(isActive(link.href))}
                 >
                   {link.label}
                 </Link>
               );
             })}
-          </div>
 
-          {/* Desktop CTA Button */}
-          <div className="hidden items-center lg:flex">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center rounded-full bg-[#2563EB] px-6 py-2.5 text-[14px] font-bold text-white shadow-md shadow-blue-500/25 transition-all hover:bg-blue-700 hover:shadow-lg hover:-translate-y-0.5"
-            >
+            <Link href="/contact" className="btn btn-primary ml-3 px-6 py-2.5 text-[0.9rem]">
               Book Training
             </Link>
           </div>
 
-          {/* Mobile Menu Button - Sleek Pill Integrated */}
+          {/* Mobile hamburger */}
           <button
             type="button"
-            className="flex h-9 w-9 items-center justify-center rounded-full text-[#1B2559] hover:bg-slate-100/80 active:bg-slate-200/80 transition-colors lg:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-md text-gray-900 transition-colors hover:bg-primary-light hover:text-primary lg:hidden"
             aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((v) => !v)}
           >
-            {menuOpen ? (
-              <X className="h-5 w-5 text-[#2563EB]" strokeWidth={2.5} />
-            ) : (
-              <Menu className="h-5.5 w-5.5 text-[#1B2559]" strokeWidth={2.5} />
-            )}
+            {menuOpen ? <X className="h-6 w-6" strokeWidth={2.2} /> : <Menu className="h-6 w-6" strokeWidth={2.2} />}
           </button>
         </nav>
       </header>
 
-      {/* Mobile Drawer Overlay */}
+      {/* Mobile overlay */}
       <div
-        className={`fixed inset-0 z-50 overflow-hidden bg-slate-950/40 transition-[opacity,visibility] duration-200 ease-out motion-reduce:transition-none lg:hidden ${
-          menuOpen ? "visible opacity-100" : "invisible opacity-0"
+        className={`fixed inset-0 z-50 bg-black/50 transition-opacity duration-300 lg:hidden ${
+          menuOpen ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+        aria-hidden="true"
+        onClick={() => setMenuOpen(false)}
+      />
+
+      {/* Mobile drawer (slides in from the right) */}
+      <div
+        className={`fixed right-0 top-0 z-[55] h-full w-[300px] max-w-[85vw] overflow-y-auto bg-white px-6 pb-8 pt-24 shadow-[-4px_0_20px_rgba(0,0,0,0.15)] transition-transform duration-300 lg:hidden ${
+          menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
         role="dialog"
         aria-modal="true"
         aria-label="Navigation menu"
         aria-hidden={!menuOpen}
       >
-        <div
-          className={`h-full overflow-y-auto overscroll-contain bg-gradient-to-b from-[#FFFFFF] via-[#F4F7FC] to-[#EBF1FF] px-5 pt-28 pb-10 transform-gpu transition-transform duration-200 ease-out will-change-transform motion-reduce:transition-none ${
-            menuOpen ? "translate-x-0" : "translate-x-full"
-          }`}
-        >
-          <div className="space-y-6">
-            {/* Nav Card Group */}
-            <div className="rounded-2xl border border-slate-200/80 bg-white/90 p-2 shadow-sm space-y-1.5">
-              {NAV_LINKS.map((link) => {
-                const active = isActive(link.href);
+        <div className="space-y-1">
+          {NAV_LINKS.map((link) => {
+            const active = isActive(link.href);
 
-                if (link.isDropdown) {
-                  return (
-                    <div key={link.href} className="space-y-1">
-                      <div
-                        className={`flex w-full items-center justify-between rounded-xl px-4 py-3.5 text-base font-bold transition-all ${
-                          active
-                            ? "bg-[#2563EB] text-white shadow-md shadow-blue-500/20"
-                            : "text-[#1B2559] hover:bg-slate-50"
-                        }`}
-                      >
-                        <Link
-                          href={link.href}
-                          onClick={() => setMenuOpen(false)}
-                          className="flex-1 text-left"
-                        >
-                          {link.label}
-                        </Link>
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            setMobileSubmenuOpen((v) => !v);
-                          }}
-                          className="p-1 rounded-lg hover:bg-black/10 transition-colors"
-                          aria-label="Toggle Training Programs sub-menu"
-                        >
-                          <ChevronDown
-                            className={`h-4 w-4 transition-transform ${
-                              mobileSubmenuOpen ? "rotate-180" : ""
-                            } ${active ? "text-white" : "text-[#2563EB]"}`}
-                          />
-                        </button>
-                      </div>
-
-                      {mobileSubmenuOpen && (
-                        <div className="ml-3 space-y-1 border-l-2 border-[#2563EB]/20 pl-3 pt-1 pb-1">
-                          <Link
-                            href="/courses?mode=offline"
-                            onClick={() => setMenuOpen(false)}
-                            className="flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-sm font-semibold text-[#141414] hover:bg-blue-50"
-                          >
-                            <Building className="h-4 w-4 text-emerald-600" />
-                            <span>Offline Training (Onsite)</span>
-                          </Link>
-                          <Link
-                            href="/courses?mode=online"
-                            onClick={() => setMenuOpen(false)}
-                            className="flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-sm font-semibold text-[#141414] hover:bg-blue-50"
-                          >
-                            <Video className="h-4 w-4 text-[#2563EB]" />
-                            <span>Online Training (Live)</span>
-                          </Link>
-                        </div>
-                      )}
-                    </div>
-                  );
-                }
-
-                return (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setMenuOpen(false)}
-                    className={`flex items-center justify-between rounded-xl px-4 py-3.5 text-base font-bold transition-all ${
-                      active
-                        ? "bg-[#2563EB] text-white shadow-md shadow-blue-500/20"
-                        : "text-[#1B2559] hover:bg-slate-50"
+            if (link.isDropdown) {
+              return (
+                <div key={link.href}>
+                  <div
+                    className={`flex items-center justify-between rounded-md px-3 py-3 text-[0.95rem] font-medium transition-colors ${
+                      active ? "bg-primary-light text-primary" : "text-gray-800 hover:bg-primary-light hover:text-primary"
                     }`}
                   >
-                    <span>{link.label}</span>
-                    <ChevronRight className={`h-4 w-4 ${active ? "text-white" : "text-[#2563EB]"}`} />
-                  </Link>
-                );
-              })}
-            </div>
+                    <Link href={link.href} onClick={() => setMenuOpen(false)} className="flex-1">
+                      {link.label}
+                    </Link>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        setMobileSubmenuOpen((v) => !v);
+                      }}
+                      className="rounded p-1 text-gray-600 transition-colors hover:text-primary"
+                      aria-label="Toggle Training Programs sub-menu"
+                    >
+                      <ChevronDown className={`h-4 w-4 transition-transform ${mobileSubmenuOpen ? "rotate-180" : ""}`} />
+                    </button>
+                  </div>
 
-            {/* Mobile CTA Button */}
-            <div>
+                  {mobileSubmenuOpen && (
+                    <div className="ml-3 space-y-1 border-l-2 border-primary-light pl-3 pt-1">
+                      <Link
+                        href="/courses?mode=offline"
+                        onClick={() => setMenuOpen(false)}
+                        className="flex items-center gap-2.5 rounded-md px-3 py-2.5 text-[0.9rem] font-medium text-gray-700 hover:bg-primary-light hover:text-primary"
+                      >
+                        <Building className="h-4 w-4 text-primary" />
+                        <span>Offline Training (Onsite)</span>
+                      </Link>
+                      <Link
+                        href="/courses?mode=online"
+                        onClick={() => setMenuOpen(false)}
+                        className="flex items-center gap-2.5 rounded-md px-3 py-2.5 text-[0.9rem] font-medium text-gray-700 hover:bg-primary-light hover:text-primary"
+                      >
+                        <Video className="h-4 w-4 text-primary" />
+                        <span>Online Training (Live)</span>
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
+            return (
               <Link
-                href="/contact"
+                key={link.href}
+                href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="flex w-full items-center justify-center gap-2 rounded-2xl bg-[#2563EB] py-4 text-center font-display text-base font-bold text-white shadow-lg shadow-blue-500/25 transition-transform active:scale-[0.98]"
+                className={`flex items-center justify-between rounded-md px-3 py-3 text-[0.95rem] font-medium transition-colors ${
+                  active ? "bg-primary-light text-primary" : "text-gray-800 hover:bg-primary-light hover:text-primary"
+                }`}
               >
-                <span>Book Training</span>
-                <ArrowRight className="h-4 w-4" />
+                <span>{link.label}</span>
+                <ChevronRight className="h-4 w-4 text-gray-400" />
               </Link>
-            </div>
-          </div>
+            );
+          })}
+        </div>
+
+        <Link href="/contact" onClick={() => setMenuOpen(false)} className="btn btn-primary btn-block mt-6">
+          Book Training
+        </Link>
+
+        <div className="mt-8 space-y-3 border-t border-gray-200 pt-6 text-[0.85rem] text-gray-600">
+          <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-2 hover:text-primary">
+            <Mail className="h-4 w-4 text-primary" /> {CONTACT.email}
+          </a>
+          <a href={CONTACT.phoneHref} className="flex items-center gap-2 hover:text-primary">
+            <Phone className="h-4 w-4 text-primary" /> {CONTACT.phone}
+          </a>
         </div>
       </div>
     </>

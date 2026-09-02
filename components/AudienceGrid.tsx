@@ -1,56 +1,91 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
+import { CircleCheck, ArrowRight } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 import FadeIn from "./FadeIn";
+import AppIcon from "./icons";
 import { AUDIENCES } from "@/data/site";
 
+/** Real training photos from /public matched to each audience segment. */
+const AUDIENCE_IMAGES: Record<string, { src: string; alt: string }> = {
+  "Corporates & Industries": {
+    src: "/corporate-training.png",
+    alt: "Office team practicing CPR on mannequins during an onsite corporate training session",
+  },
+  "Schools & Institutions": {
+    src: "/choking-response.png",
+    alt: "Instructor demonstrating choking response to a classroom of staff",
+  },
+  "Hospitals & Healthcare": {
+    src: "/aed-training.png",
+    alt: "Healthcare staff attaching AED pads to a training mannequin",
+  },
+  "Communities & Individuals": {
+    src: "/hero-cpr.jpg",
+    alt: "Individual performing chest compressions on a CPR mannequin",
+  },
+};
+
+/** Alternating image / text rows (reference: aboutPreview grid). */
 export default function AudienceGrid() {
   return (
-    <section className="bg-[#F0F3FC] py-16 sm:py-24 lg:py-32">
+    <section className="bg-white py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <SectionHeading
+          align="center"
           number="02"
           eyebrow="Who We Train"
           title="Training Built for the People In Front of Us"
           subtitle="An office floor, a classroom, a hospital corridor and a family home face very different emergencies. Every program is shaped around who is in the room."
         />
-        <div className="mt-12 sm:mt-20 border-b border-[rgba(0,0,0,0.08)]">
-          {AUDIENCES.map((audience, i) => (
-            <FadeIn key={audience.title} delay={i * 0.1}>
-              <div className="group border-t border-[rgba(0,0,0,0.08)] py-8 sm:py-12">
-                <div className="grid items-start gap-6 sm:gap-8 lg:grid-cols-12">
-                  <div className="lg:col-span-5">
-                    <span className="font-mono text-xs font-semibold text-[#3B5BDB]">
-                      SECTION 0{i + 1}
+
+        <div className="mt-4 space-y-16 lg:space-y-24">
+          {AUDIENCES.map((audience, i) => {
+            const img = AUDIENCE_IMAGES[audience.title];
+            const reverse = i % 2 === 1;
+            return (
+              <FadeIn key={audience.title} delay={0.05}>
+                <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+                  <div className={`group relative aspect-[4/3] overflow-hidden rounded-2xl bg-primary-light ${reverse ? "lg:order-2" : ""}`}>
+                    {img && (
+                      <Image
+                        src={img.src}
+                        alt={img.alt}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                      />
+                    )}
+                  </div>
+
+                  <div>
+                    <span className="tag-pill mb-4">
+                      <AppIcon name={audience.icon} className="h-3.5 w-3.5" />
+                      Section 0{i + 1}
                     </span>
-                    <h3 className="mt-1.5 font-display text-xl sm:text-2xl font-bold text-[#141414]">
+                    <h3 className="font-display text-[1.6rem] font-semibold leading-tight text-gray-900 sm:text-[2rem]">
                       {audience.title}
                     </h3>
-                    <p className="mt-2.5 leading-relaxed text-sm sm:text-base text-[#1B2559]/75">
-                      {audience.description}
-                    </p>
-                    <Link
-                      href={audience.href}
-                      className="group/link link-underline mt-4 sm:mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-[#141414] hover:text-[#3B5BDB]"
-                    >
-                      {audience.linkLabel}
-                      <span className="inline-block text-[#3B5BDB] transition-transform duration-300 group-hover/link:translate-x-1">→</span>
-                    </Link>
-                  </div>
-                  <div className="lg:col-span-7">
-                    <ul className="space-y-3 sm:space-y-4 border-l border-[rgba(0,0,0,0.08)] pl-4 sm:pl-6 lg:pl-10">
+                    <p className="mt-4 leading-[1.8] text-gray-700">{audience.description}</p>
+                    <ul className="mt-6 grid gap-3 sm:grid-cols-2">
                       {audience.points.map((point) => (
-                        <li key={point} className="text-sm sm:text-base text-[#1B2559]/80">
-                          {point}
+                        <li key={point} className="flex items-start gap-2 text-[0.9rem] font-medium text-gray-800">
+                          <CircleCheck className="mt-0.5 h-4.5 w-4.5 shrink-0 text-primary" />
+                          <span>{point}</span>
                         </li>
                       ))}
                     </ul>
+                    <Link href={audience.href} className="btn btn-primary mt-8">
+                      {audience.linkLabel}
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
                   </div>
                 </div>
-              </div>
-            </FadeIn>
-          ))}
+              </FadeIn>
+            );
+          })}
         </div>
       </div>
     </section>

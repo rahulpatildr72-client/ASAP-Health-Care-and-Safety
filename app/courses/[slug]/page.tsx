@@ -2,12 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { Clock, MapPin, Award, CircleCheck, ArrowRight, MessageCircle, Users } from "lucide-react";
 import CTABanner from "@/components/CTABanner";
+import PageHero from "@/components/PageHero";
 import ParallaxImage from "@/components/ParallaxImage";
+import CertificateCard from "@/components/CertificateCard";
 import RevealText from "@/components/RevealText";
 import FadeIn from "@/components/FadeIn";
-import { COURSES, getCourse } from "@/data/courses";
-import { SITE_NAME, SITE_URL } from "@/data/site";
+import { COURSES, getCourse, CATEGORY_META } from "@/data/courses";
+import { CONTACT, SITE_NAME, SITE_URL } from "@/data/site";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -53,10 +56,17 @@ export default async function CoursePage({ params }: Props) {
   };
 
   const facts = [
-    { label: "Duration", value: course.duration },
-    { label: "Modes", value: course.modes.join(" · ") },
-    { label: "Certification", value: "Certificate on completion" },
+    { icon: Clock, label: "Duration", value: course.duration },
+    { icon: MapPin, label: "Modes", value: course.modes.join(" · ") },
+    { icon: Award, label: "Certification", value: "Certificate on completion" },
   ];
+
+  // Local training photos are far more on-topic than the remote placeholder stills.
+  const heroImage = course.image.startsWith("http") ? course.cardImage : course.image;
+
+  const waHref = `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(
+    `Hello! I'd like to enquire about the ${course.title}.`
+  )}`;
 
   return (
     <>
@@ -66,95 +76,114 @@ export default async function CoursePage({ params }: Props) {
       />
 
       {/* Course hero */}
-      <section className="bg-gradient-to-b from-[#E4E7FB] to-[#F0F3FC] pb-20 pt-36 sm:pt-44">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 lg:gap-16 px-5 lg:grid-cols-12 lg:px-8">
-          <div className="lg:col-span-5">
+      <PageHero breadcrumb={[{ label: "Programs", href: "/courses" }, { label: course.shortTitle }]}>
+        <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 lg:grid-cols-12 lg:gap-16 lg:px-8">
+          <div className="lg:col-span-6">
             <FadeIn>
-              <nav aria-label="Breadcrumb" className="mb-4 text-xs font-semibold uppercase tracking-widest text-[#1B2559]/70">
-                <Link href="/courses" className="link-underline hover:text-[#3B5BDB]">
-                  Programs
-                </Link>{" "}
-                / <span className="text-[#141414]">{course.title}</span>
-              </nav>
+              <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/15 px-3.5 py-1.5 text-[0.75rem] font-semibold uppercase tracking-[0.05em] text-white backdrop-blur-[10px]">
+                <span className={`h-2 w-2 rounded-full ${course.category === "emergency" ? "bg-accent" : "bg-primary-light"}`} />
+                {CATEGORY_META[course.category].label}
+              </span>
             </FadeIn>
 
-            <RevealText as="h1" className="font-display text-4xl font-extrabold tracking-tight text-[#141414] sm:text-5xl">
+            <RevealText as="h1" className="font-display text-[2rem] font-extrabold leading-[1.15] text-white sm:text-[2.75rem]">
               {course.title}
             </RevealText>
 
             <FadeIn delay={0.2}>
-              <p className="mt-6 text-lg leading-relaxed text-[#1B2559]/80">{course.tagline}</p>
+              <p className="mt-4 max-w-[600px] text-[1rem] leading-relaxed text-white/80 sm:text-[1.1rem]">{course.tagline}</p>
             </FadeIn>
 
-            <FadeIn delay={0.3} className="mt-8">
-              <Link
-                href="/contact"
-                className="group link-underline inline-flex items-center gap-1.5 text-base font-semibold text-[#141414] hover:text-[#3B5BDB]"
-              >
-                Enquire About This Training
-                <span className="inline-block text-[#3B5BDB] transition-transform duration-300 group-hover:translate-x-1">→</span>
+            <FadeIn delay={0.3} className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <Link href="/contact" className="btn btn-accent">
+                Enquire About This Training <ArrowRight className="h-4 w-4" />
               </Link>
+              <a href={waHref} target="_blank" rel="noopener noreferrer" className="btn btn-white">
+                <MessageCircle className="h-4 w-4" /> WhatsApp
+              </a>
             </FadeIn>
           </div>
 
-          <div className="lg:col-span-7">
+          <div className="relative lg:col-span-6">
             {course.galleryImages && course.galleryImages.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6">
                 {course.galleryImages.map((imgSrc, idx) => (
                   <div
                     key={idx}
-                    className="relative aspect-[4/3] min-h-[260px] sm:min-h-[340px] lg:min-h-[380px] w-full overflow-hidden rounded-[24px] border border-[rgba(0,0,0,0.08)] shadow-xl transition-all duration-500 hover:scale-[1.03] hover:shadow-2xl"
+                    className="relative aspect-[4/3] min-h-[240px] w-full overflow-hidden rounded-2xl border-4 border-white shadow-lg transition-transform duration-500 hover:scale-[1.02] sm:min-h-[300px]"
                   >
                     <Image
                       src={imgSrc}
                       alt={`${course.title} image ${idx + 1}`}
                       fill
                       priority
+                      sizes="(max-width: 640px) 100vw, 30vw"
                       className="object-cover"
                     />
                   </div>
                 ))}
               </div>
             ) : (
-              <ParallaxImage
-                src={course.image}
-                alt={course.imageAlt}
-                containerClassName="aspect-[4/3] w-full"
-                priority
-              />
+              <div className="relative">
+                <ParallaxImage
+                  src={heroImage}
+                  alt={course.imageAlt}
+                  containerClassName="aspect-[4/3] w-full rounded-2xl border-4 border-white shadow-lg"
+                  priority
+                />
+                {/* floating fact chips */}
+                <div className="absolute -bottom-5 left-5 flex items-center gap-3 rounded-xl bg-white px-4 py-3 shadow-lg sm:left-8">
+                  <span className="icon-square h-10 w-10 rounded-lg">
+                    <Clock className="h-5 w-5" />
+                  </span>
+                  <div>
+                    <p className="font-display text-[1rem] font-extrabold leading-none text-gray-900">{course.duration}</p>
+                    <p className="mt-1 text-[0.7rem] font-medium uppercase tracking-[0.05em] text-gray-500">Session length</p>
+                  </div>
+                </div>
+                <div className="absolute -top-4 right-5 hidden items-center gap-2.5 rounded-full border border-white/20 bg-white/15 px-4 py-2 text-white backdrop-blur-[10px] sm:right-8 sm:flex">
+                  <Users className="h-4 w-4 text-accent" />
+                  <span className="text-[0.8rem] font-semibold">Small batches · hands-on</span>
+                </div>
+              </div>
             )}
           </div>
         </div>
-      </section>
+      </PageHero>
 
-      {/* Quick facts */}
-      <section className="border-y border-[rgba(0,0,0,0.08)] bg-white py-8 sm:py-12">
-        <div className="mx-auto grid max-w-7xl gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-3 px-5 lg:px-8">
-          {facts.map(({ label, value }) => (
-            <div key={label} className="border-t pt-4 first:border-t-0 first:pt-0 sm:border-t-0 sm:pt-0 sm:border-l sm:pl-6 sm:first:border-l-0 sm:first:pl-0 border-[rgba(0,0,0,0.08)]">
-              <p className="text-xs font-semibold uppercase tracking-widest text-[#1B2559]/70">{label}</p>
-              <p className="mt-1 sm:mt-2 font-display text-base sm:text-lg font-bold text-[#141414]">{value}</p>
+      {/* Quick facts (reference: trustBar) */}
+      <section className="border-b border-gray-200 bg-white py-8">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-4 px-5 lg:gap-8 lg:px-8">
+          {facts.map(({ icon: Icon, label, value }) => (
+            <div key={label} className="flex items-center gap-4 rounded-xl border border-gray-200 bg-white px-6 py-4 shadow-sm">
+              <span className="icon-square h-[50px] w-[50px] shrink-0">
+                <Icon className="h-5 w-5" />
+              </span>
+              <div className="min-w-0">
+                <p className="text-[0.75rem] text-gray-500">{label}</p>
+                <p className="font-display text-[0.95rem] font-semibold leading-[1.3] text-gray-800">{value}</p>
+              </div>
             </div>
           ))}
         </div>
       </section>
 
       {/* Overview + who should attend + learn */}
-      <section className="bg-white py-24">
-        <div className="mx-auto grid max-w-7xl gap-16 px-5 lg:grid-cols-12 lg:px-8">
+      <section className="bg-white py-16 sm:py-24">
+        <div className="mx-auto grid max-w-7xl gap-14 px-5 lg:grid-cols-12 lg:px-8">
           <div className="lg:col-span-8">
             <FadeIn>
-              <h2 className="font-display text-2xl font-bold text-[#141414] sm:text-3xl">
+              <h2 className="font-display text-[1.75rem] font-semibold text-gray-900 sm:text-[2.25rem]">
                 About This Program
               </h2>
-              <div className="mt-6 space-y-5 text-lg leading-relaxed text-[#1B2559]/80">
+              <div className="mt-5 space-y-4 text-[1rem] leading-[1.8] text-gray-700 sm:text-[1.05rem]">
                 {course.overview.map((para) => (
                   <p key={para.slice(0, 40)}>{para}</p>
                 ))}
               </div>
 
               {course.secondaryImage && (
-                <div className="mt-8 overflow-hidden rounded-2xl border border-[rgba(0,0,0,0.08)] shadow-md">
+                <div className="mt-8 overflow-hidden rounded-2xl border-4 border-white shadow-lg">
                   <div className="relative aspect-[16/9] w-full">
                     <Image
                       src={course.secondaryImage}
@@ -167,49 +196,63 @@ export default async function CoursePage({ params }: Props) {
               )}
             </FadeIn>
 
-            <FadeIn delay={0.2} className="mt-16 border-t border-[rgba(0,0,0,0.08)] pt-12">
-              <h2 className="font-display text-2xl font-bold text-[#141414] sm:text-3xl">
+            <FadeIn delay={0.2} className="mt-14 border-t border-gray-200 pt-12">
+              <h2 className="font-display text-[1.75rem] font-semibold text-gray-900 sm:text-[2.25rem]">
                 What You&apos;ll Learn
               </h2>
-              <ul className="mt-8 grid gap-x-8 gap-y-4 sm:grid-cols-2">
+              <ul className="mt-7 grid gap-3 sm:grid-cols-2">
                 {course.learn.map((point) => (
-                  <li key={point} className="text-base text-[#1B2559]/85">
-                    — {point}
+                  <li key={point} className="flex items-start gap-3 rounded-xl border border-gray-200 bg-off-white px-4 py-3 text-[0.95rem] text-gray-800">
+                    <CircleCheck className="mt-0.5 h-4.5 w-4.5 shrink-0 text-primary" />
+                    <span>{point}</span>
                   </li>
                 ))}
               </ul>
             </FadeIn>
 
-            <FadeIn delay={0.3} className="mt-16 border-t border-[rgba(0,0,0,0.08)] pt-12">
-              <h2 className="font-display text-2xl font-bold text-[#141414] sm:text-3xl">
-                Certification
-              </h2>
-              <p className="mt-6 text-lg leading-relaxed text-[#1B2559]/80">{course.certification}</p>
+            <FadeIn delay={0.3} className="mt-14 border-t border-gray-200 pt-12">
+              <div className="grid items-center gap-10 md:grid-cols-2">
+                <div>
+                  <h2 className="font-display text-[1.75rem] font-semibold text-gray-900 sm:text-[2.25rem]">Certification</h2>
+                  <p className="mt-5 text-[1rem] leading-[1.8] text-gray-700 sm:text-[1.05rem]">{course.certification}</p>
+                  <p className="mt-4 text-[0.875rem] text-gray-500">
+                    Certificates are issued in the participant&apos;s name and note the program completed and the date of training.
+                  </p>
+                </div>
+                <div className="mx-auto w-full max-w-sm">
+                  <CertificateCard program={course.shortTitle} />
+                </div>
+              </div>
             </FadeIn>
           </div>
 
           <aside className="lg:col-span-4">
             <FadeIn delay={0.1}>
-              <div className="sticky top-32 border border-[rgba(0,0,0,0.08)] bg-[#F0F3FC] p-8">
-                <span className="text-xs font-mono font-semibold text-[#3B5BDB]">TARGET AUDIENCE</span>
-                <h2 className="mt-2 font-display text-xl font-bold text-[#141414]">
-                  Who Should Attend
-                </h2>
-                <ul className="mt-6 space-y-3.5 border-t border-[rgba(0,0,0,0.08)] pt-6">
-                  {course.whoShouldAttend.map((who) => (
-                    <li key={who} className="text-sm text-[#1B2559]/80">
-                      — {who}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-8 border-t border-[rgba(0,0,0,0.08)] pt-6">
-                  <Link
-                    href="/contact"
-                    className="group link-underline inline-flex items-center gap-1.5 text-sm font-semibold text-[#141414] hover:text-[#3B5BDB]"
-                  >
-                    Book This Training
-                    <span className="inline-block text-[#3B5BDB] transition-transform duration-300 group-hover:translate-x-1">→</span>
-                  </Link>
+              <div className="sticky top-32 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-md">
+                <div className="bg-green-gradient px-7 py-6 text-white">
+                  <span className="text-[0.75rem] font-semibold uppercase tracking-[0.08em] text-white/70">Target Audience</span>
+                  <h2 className="mt-1 font-display text-[1.25rem] font-semibold text-white">Who Should Attend</h2>
+                </div>
+                <div className="p-7">
+                  <ul className="space-y-3.5">
+                    {course.whoShouldAttend.map((who) => (
+                      <li key={who} className="flex items-start gap-2.5 text-[0.9rem] leading-[1.6] text-gray-700">
+                        <Users className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                        <span>{who}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-7 space-y-3 border-t border-gray-200 pt-6">
+                    <Link href="/contact" className="btn btn-primary btn-block">
+                      Book This Training <ArrowRight className="h-4 w-4" />
+                    </Link>
+                    <a href={waHref} target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-block">
+                      <MessageCircle className="h-4 w-4" /> Ask on WhatsApp
+                    </a>
+                  </div>
+                  <p className="mt-5 flex items-center gap-2 text-xs text-gray-500">
+                    <Clock className="h-3.5 w-3.5" /> Typical response within 24 hours
+                  </p>
                 </div>
               </div>
             </FadeIn>

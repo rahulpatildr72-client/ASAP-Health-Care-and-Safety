@@ -1,29 +1,41 @@
 "use client";
 
+import { ClipboardCheck, CalendarCheck, HeartPulse, Award } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 import FadeIn from "./FadeIn";
 import { STEPS } from "@/data/site";
 
+const STEP_ICONS = [ClipboardCheck, CalendarCheck, HeartPulse, Award];
+
 export default function HowItWorks() {
   return (
-    <section className="bg-[#F0F3FC] py-32">
+    <section className="bg-off-white py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <SectionHeading
+          align="center"
           number="04"
           eyebrow="How It Works"
           title="From First Click to First Responder"
           subtitle="Getting your team trained is simple — four steps from enquiry to certification."
         />
-        <ol className="mt-20 grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
-          {STEPS.map((step, i) => (
-            <FadeIn key={step.number} delay={i * 0.12} as="li" className="border-t border-[rgba(0,0,0,0.08)] pt-8">
-              <span className="font-mono text-sm font-semibold text-[#3B5BDB] block">
-                STEP {step.number}
-              </span>
-              <h3 className="mt-4 font-display text-xl font-bold text-[#141414]">{step.title}</h3>
-              <p className="mt-3 leading-relaxed text-[#1B2559]/75 text-sm">{step.description}</p>
-            </FadeIn>
-          ))}
+        <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {STEPS.map((step, i) => {
+            const Icon = STEP_ICONS[i % STEP_ICONS.length];
+            return (
+              <FadeIn key={step.number} delay={i * 0.1} as="li" className="h-full">
+                <div className="card group flex h-full flex-col p-7 hover:border-primary-light">
+                  <div className="flex items-center justify-between">
+                    <span className="icon-square h-14 w-14 group-hover:bg-primary group-hover:text-white">
+                      <Icon className="h-6 w-6" />
+                    </span>
+                    <span className="tag-pill">Step {step.number}</span>
+                  </div>
+                  <h3 className="mt-6 font-display text-[1.15rem] font-semibold text-gray-900">{step.title}</h3>
+                  <p className="mt-2 text-[0.9rem] leading-[1.6] text-gray-600">{step.description}</p>
+                </div>
+              </FadeIn>
+            );
+          })}
         </ol>
       </div>
     </section>

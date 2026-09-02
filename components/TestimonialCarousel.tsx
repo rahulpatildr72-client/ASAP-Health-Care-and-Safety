@@ -1,44 +1,45 @@
 "use client";
 
+import { Quote, Star } from "lucide-react";
 import { TESTIMONIALS } from "@/data/site";
 import FadeIn from "./FadeIn";
 
-export default function TestimonialCarousel() {
-  const featured = TESTIMONIALS[0];
-  const rest = TESTIMONIALS.slice(1);
-
+function Stars({ count }: { count: number }) {
   return (
-    <div className="space-y-16">
-      {/* Featured main quote */}
-      {featured && (
-        <FadeIn className="border-b border-[#3B5BDB] pb-16">
-          <blockquote className="font-display text-2xl font-light leading-snug tracking-tight text-[#141414] sm:text-3xl lg:text-4xl">
-            &ldquo;{featured.text}&rdquo;
-          </blockquote>
-          <div className="mt-8 flex items-center justify-between">
-            <div>
-              <p className="font-display font-bold text-[#141414]">{featured.name}</p>
-              <p className="text-sm text-[#1B2559]/70">{featured.company}</p>
-            </div>
-            <span className="font-mono text-xs font-semibold text-[#3B5BDB]">FEATURED FEEDBACK</span>
-          </div>
-        </FadeIn>
-      )}
+    <div className="flex items-center gap-0.5 text-accent" aria-label={`${count} out of 5 stars`}>
+      {Array.from({ length: 5 }).map((_, i) => (
+        <Star key={i} className={`h-3.5 w-3.5 ${i < count ? "fill-current" : "opacity-30"}`} />
+      ))}
+    </div>
+  );
+}
 
-      {/* Quiet hairline-separated rows for the rest */}
-      <div className="space-y-0">
-        {rest.map((t, i) => (
-          <FadeIn key={t.name} delay={i * 0.1} className="border-b border-[rgba(0,0,0,0.08)] py-8">
-            <blockquote className="text-base text-[#1B2559]/80 leading-relaxed">
+/** Three equal bordered cards with quote icon and initial avatar (reference: testimonialCard). */
+export default function TestimonialCarousel() {
+  return (
+    <div className="grid gap-6 md:grid-cols-3 lg:gap-8">
+      {TESTIMONIALS.map((t, i) => (
+        <FadeIn key={t.name} delay={i * 0.1} className="h-full">
+          <figure className="flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-7 shadow-sm transition-all duration-300 hover:border-primary-light hover:shadow-md sm:p-8">
+            <span className="icon-square mb-4 h-10 w-10 rounded-lg">
+              <Quote className="h-5 w-5" />
+            </span>
+            <Stars count={t.rating} />
+            <blockquote className="mt-3 flex-1 text-[0.95rem] italic leading-[1.7] text-gray-700">
               &ldquo;{t.text}&rdquo;
             </blockquote>
-            <div className="mt-4 flex items-center justify-between text-sm">
-              <p className="font-display font-semibold text-[#141414]">{t.name}</p>
-              <p className="text-[#1B2559]/60">{t.company}</p>
-            </div>
-          </FadeIn>
-        ))}
-      </div>
+            <figcaption className="mt-6 flex items-center gap-4 border-t border-gray-200 pt-4">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary font-display font-bold text-white">
+                {t.name.charAt(0)}
+              </span>
+              <div>
+                <strong className="block text-[0.9rem] text-gray-900">{t.name}</strong>
+                <span className="text-[0.8rem] text-gray-500">{t.company}</span>
+              </div>
+            </figcaption>
+          </figure>
+        </FadeIn>
+      ))}
     </div>
   );
 }

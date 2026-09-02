@@ -1,12 +1,11 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { Loader2, XCircle } from "lucide-react";
+import { Loader2, XCircle, ArrowRight, CircleCheck } from "lucide-react";
 import { COURSES } from "@/data/courses";
 import { WEB3FORMS_KEY } from "@/data/site";
 
-const inputClass =
-  "w-full border-b border-[rgba(0,0,0,0.12)] bg-transparent py-3 text-[#141414] placeholder:text-[#1B2559]/40 outline-none transition-colors focus:border-[#3B5BDB]";
+const labelClass = "mb-1.5 block text-[0.875rem] font-medium text-gray-700";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -58,18 +57,17 @@ export default function EnquiryForm() {
 
   if (status === "success") {
     return (
-      <div className="border border-[rgba(0,0,0,0.08)] bg-white p-12 text-left">
-        <span className="font-mono text-xs font-semibold text-[#3B5BDB]">CONFIRMATION</span>
-        <h3 className="mt-3 font-display text-2xl font-bold text-[#141414]">Enquiry Sent Successfully</h3>
-        <p className="mt-4 max-w-md leading-relaxed text-[#1B2559]/80">
+      <div className="rounded-2xl border border-gray-200 bg-white p-8 text-left shadow-md sm:p-12">
+        <span className="icon-square mb-5 h-14 w-14 bg-primary-light text-primary">
+          <CircleCheck className="h-7 w-7" />
+        </span>
+        <span className="tag-pill">Confirmation</span>
+        <h3 className="mt-4 font-display text-2xl font-semibold text-gray-900">Enquiry Sent Successfully</h3>
+        <p className="mt-3 max-w-md leading-[1.7] text-gray-600">
           Thank you for reaching out. Our team will review your requirements and respond shortly with a training proposal.
         </p>
-        <button
-          type="button"
-          onClick={() => setStatus("idle")}
-          className="group link-underline mt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-[#141414] hover:text-[#3B5BDB]"
-        >
-          Send Another Enquiry <span className="inline-block text-[#3B5BDB] transition-transform duration-300 group-hover:translate-x-1">→</span>
+        <button type="button" onClick={() => setStatus("idle")} className="btn btn-secondary mt-8">
+          Send Another Enquiry <ArrowRight className="h-4 w-4" />
         </button>
       </div>
     );
@@ -79,31 +77,34 @@ export default function EnquiryForm() {
     <form
       onSubmit={handleSubmit}
       noValidate
-      className="border border-[rgba(0,0,0,0.08)] bg-white p-8 sm:p-12"
+      className="rounded-2xl border border-gray-200 bg-white p-6 shadow-md sm:p-10"
     >
-      <div className="grid gap-8 sm:grid-cols-2">
+      <h3 className="font-display text-[1.5rem] font-semibold text-gray-900">Training Enquiry</h3>
+      <p className="mb-7 mt-1 text-[0.9rem] text-gray-600">Takes about a minute — no commitment.</p>
+
+      <div className="grid gap-5 sm:grid-cols-2 [&>*]:min-w-0">
         <label className="block">
-          <span className="mb-1 block text-xs font-semibold uppercase tracking-widest text-[#1B2559]/70">Full Name *</span>
-          <input name="name" required placeholder="Your full name" className={inputClass} autoComplete="name" />
-          {errors.name && <span className="mt-1 block text-xs text-red-600">{errors.name}</span>}
+          <span className={labelClass}>Full Name *</span>
+          <input name="name" required placeholder="Your full name" className="input" autoComplete="name" />
+          {errors.name && <span className="mt-1 block text-xs text-danger">{errors.name}</span>}
         </label>
         <label className="block">
-          <span className="mb-1 block text-xs font-semibold uppercase tracking-widest text-[#1B2559]/70">Company Name</span>
-          <input name="company" placeholder="Your organization" className={inputClass} autoComplete="organization" />
+          <span className={labelClass}>Company Name</span>
+          <input name="company" placeholder="Your organization" className="input" autoComplete="organization" />
         </label>
         <label className="block">
-          <span className="mb-1 block text-xs font-semibold uppercase tracking-widest text-[#1B2559]/70">Email *</span>
-          <input name="email" type="email" required placeholder="you@company.com" className={inputClass} autoComplete="email" />
-          {errors.email && <span className="mt-1 block text-xs text-red-600">{errors.email}</span>}
+          <span className={labelClass}>Email *</span>
+          <input name="email" type="email" required placeholder="you@company.com" className="input" autoComplete="email" />
+          {errors.email && <span className="mt-1 block text-xs text-danger">{errors.email}</span>}
         </label>
         <label className="block">
-          <span className="mb-1 block text-xs font-semibold uppercase tracking-widest text-[#1B2559]/70">Phone *</span>
-          <input name="phone" type="tel" required placeholder="+91 ..." className={inputClass} autoComplete="tel" />
-          {errors.phone && <span className="mt-1 block text-xs text-red-600">{errors.phone}</span>}
+          <span className={labelClass}>Phone *</span>
+          <input name="phone" type="tel" required placeholder="+91 ..." className="input" autoComplete="tel" />
+          {errors.phone && <span className="mt-1 block text-xs text-danger">{errors.phone}</span>}
         </label>
         <label className="block">
-          <span className="mb-1 block text-xs font-semibold uppercase tracking-widest text-[#1B2559]/70">Program</span>
-          <select name="course" className={`${inputClass} bg-white cursor-pointer`} defaultValue={COURSES[0].title}>
+          <span className={labelClass}>Program</span>
+          <select name="course" className="input min-w-0 max-w-full cursor-pointer" defaultValue={COURSES[0].title}>
             {COURSES.map((course) => (
               <option key={course.slug} value={course.title}>
                 {course.title}
@@ -112,24 +113,22 @@ export default function EnquiryForm() {
           </select>
         </label>
         <label className="block">
-          <span className="mb-1 block text-xs font-semibold uppercase tracking-widest text-[#1B2559]/70">Headcount</span>
-          <input name="participants" type="number" min="1" placeholder="e.g. 25" className={inputClass} />
+          <span className={labelClass}>Headcount</span>
+          <input name="participants" type="number" min="1" placeholder="e.g. 25" className="input" />
         </label>
         <fieldset className="sm:col-span-2">
-          <legend className="mb-3 block text-xs font-semibold uppercase tracking-widest text-[#1B2559]/70">
-            Training Mode
-          </legend>
-          <div className="flex flex-wrap gap-4">
+          <legend className={labelClass}>Training Mode</legend>
+          <div className="flex flex-wrap gap-2">
             {["Onsite", "Online", "Classroom"].map((m) => (
               <button
                 key={m}
                 type="button"
                 onClick={() => setMode(m)}
                 aria-pressed={mode === m}
-                className={`text-xs uppercase tracking-widest px-4 py-2 font-medium border transition-colors ${
+                className={`rounded-full border px-5 py-2 text-[0.875rem] font-medium transition-all ${
                   mode === m
-                    ? "border-[#3B5BDB] bg-[#3B5BDB] text-white"
-                    : "border-[rgba(0,0,0,0.12)] text-[#1B2559]/80 hover:border-[#3B5BDB] hover:text-[#3B5BDB]"
+                    ? "border-primary bg-primary text-white"
+                    : "border-gray-300 bg-white text-gray-600 hover:border-primary hover:text-primary"
                 }`}
               >
                 {m}
@@ -138,39 +137,40 @@ export default function EnquiryForm() {
           </div>
         </fieldset>
         <label className="block sm:col-span-2">
-          <span className="mb-1 block text-xs font-semibold uppercase tracking-widest text-[#1B2559]/70">Details</span>
+          <span className={labelClass}>Details</span>
           <textarea
             name="message"
-            rows={3}
+            rows={4}
             placeholder="Tell us about your location, preferred dates, or specific requirements..."
-            className={inputClass}
+            className="input resize-y"
           />
         </label>
       </div>
 
       {status === "error" && (
-        <p className="mt-6 flex items-center gap-2 border border-red-200 bg-red-50 p-4 text-xs text-red-700">
+        <p className="mt-5 flex items-center gap-2 rounded-lg border border-red-200 bg-red-50 p-4 text-xs text-danger">
           <XCircle className="h-4 w-4 shrink-0" aria-hidden="true" />
           Something went wrong. Please try again or contact us directly.
         </p>
       )}
 
-      <div className="mt-10 border-t border-[rgba(0,0,0,0.08)] pt-6">
+      <div className="mt-7">
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="group link-underline inline-flex items-center gap-1.5 text-base font-semibold text-[#141414] hover:text-[#3B5BDB] disabled:opacity-50"
+          className="btn btn-primary btn-lg btn-block disabled:opacity-60 disabled:hover:translate-y-0"
         >
           {status === "submitting" ? (
             <>
-              Sending <Loader2 className="h-4 w-4 animate-spin text-[#3B5BDB]" aria-hidden="true" />
+              Sending <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
             </>
           ) : (
             <>
-              Submit Request <span className="inline-block text-[#3B5BDB] transition-transform duration-300 group-hover:translate-x-1">→</span>
+              Submit Request <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </>
           )}
         </button>
+        <p className="mt-3 text-center text-xs text-gray-500">We only use your details to respond to this enquiry.</p>
       </div>
     </form>
   );

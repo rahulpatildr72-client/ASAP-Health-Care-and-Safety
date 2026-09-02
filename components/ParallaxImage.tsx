@@ -69,7 +69,7 @@ export default function ParallaxImage({
       ref={containerRef}
       className={`overflow-hidden ${containerClassName}`}
     >
-      <div ref={imageRef} className="h-full w-full" style={{ willChange: "transform" }}>
+      <div ref={imageRef} className="relative h-full w-full" style={{ willChange: "transform" }}>
         <Image
           src={src}
           alt={alt}

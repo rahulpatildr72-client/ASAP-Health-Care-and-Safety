@@ -2,87 +2,102 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ShieldCheck, ArrowRight } from "lucide-react";
+import { ShieldCheck, ArrowRight, MapPin, Video, BadgeCheck } from "lucide-react";
 import RevealText from "./RevealText";
 import FadeIn from "./FadeIn";
 
+const TRUST_ROW = [
+  { icon: BadgeCheck, label: "Certified instructors" },
+  { icon: MapPin, label: "Onsite across India" },
+  { icon: Video, label: "Live online worldwide" },
+];
+
 export default function Hero() {
   return (
-    <section className="relative flex items-center overflow-hidden bg-[#F4F7FC] pt-28 pb-[36vh] sm:pt-36 sm:pb-[34vh] lg:min-h-[90vh] lg:py-36 lg:pb-36">
-      {/* CPR background image. Mobile: a band anchored to the bottom, with the
-          copy sitting on clean background above it. Desktop: the right-hand
-          column, faded in from the left. */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute inset-x-0 bottom-0 h-[38vh] lg:inset-y-0 lg:left-auto lg:right-0 lg:h-full lg:w-[62%]">
-          <Image
-            src="/hero-cpr.jpg"
-            alt="Hands performing CPR compressions on a training mannequin"
-            fill
-            priority
-            sizes="(max-width: 1023px) 100vw, 62vw"
-            className="object-cover object-[42%_45%] lg:object-[20%_30%]"
-          />
-        </div>
+    <section className="bg-hero-gradient relative flex min-h-[560px] items-center overflow-hidden py-20 md:h-[85vh] md:max-h-[800px] md:min-h-[550px] md:py-0">
+      {/* Photo with slow zoom */}
+      <div className="animate-hero-zoom absolute inset-0" aria-hidden="true">
+        <Image
+          src="/hero-cpr.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[50%_35%]"
+        />
+      </div>
+      {/* Green overlay */}
+      <div
+        className="absolute inset-0 z-[1]"
+        style={{
+          background: "linear-gradient(90deg, rgba(3,58,39,0.85) 0%, rgba(10,104,71,0.6) 50%, rgba(10,104,71,0.3) 100%)",
+        }}
+        aria-hidden="true"
+      />
 
-        {/* Mobile: blend the top edge of the band into the page background so
-            there is no hard seam under the copy. */}
-        <div className="absolute inset-x-0 bottom-0 h-[38vh] bg-gradient-to-b from-[#F4F7FC] from-2% via-[#F4F7FC]/45 via-28% to-transparent lg:hidden" />
+      {/* Content */}
+      <div className="relative z-[2] mx-auto w-full max-w-7xl px-5 text-white lg:px-8">
+        <FadeIn delay={0.1}>
+          <p className="mb-4 flex items-center gap-3 text-[0.85rem] font-medium uppercase tracking-[0.15em] text-white/85 sm:text-[0.95rem]">
+            <span className="h-0.5 w-10 shrink-0 bg-accent" aria-hidden="true" />
+            <ShieldCheck className="h-4 w-4 shrink-0 text-accent" />
+            Hands-on training by medical professionals
+          </p>
+        </FadeIn>
 
-        {/* Desktop: left-to-right fade across the image column. */}
-        <div className="absolute inset-0 hidden bg-gradient-to-r from-[#F4F7FC] via-[#F4F7FC] via-42% to-transparent to-65% lg:block" />
+        <RevealText
+          as="h1"
+          className="max-w-[760px] font-display text-[2rem] font-extrabold leading-[1.1] text-white [text-shadow:0_2px_20px_rgba(0,0,0,0.2)] sm:text-[2.8rem] lg:text-[3.5rem]"
+        >
+          <span className="block">Skills That Save Life.</span>
+          <span className="block">Knowledge That Protects.</span>
+        </RevealText>
+
+        <FadeIn delay={0.4}>
+          <p className="mt-6 max-w-[550px] text-[1rem] leading-[1.6] text-white/90 sm:text-[1.15rem]">
+            Professional First Aid, CPR, AED and Health &amp; Safety Training designed to build
+            confident lifesavers in workplaces, institutions and communities.
+          </p>
+        </FadeIn>
+
+        <FadeIn delay={0.5}>
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+            <Link href="/contact" className="btn btn-accent btn-lg">
+              Book a Training
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link href="/courses" className="btn btn-white btn-lg">
+              Explore Training Programs
+            </Link>
+          </div>
+        </FadeIn>
+
+        {/* Mobile trust row (badges are absolute on desktop) */}
+        <FadeIn delay={0.6}>
+          <ul className="mt-8 flex flex-wrap gap-x-5 gap-y-2 md:hidden">
+            {TRUST_ROW.map(({ icon: Icon, label }) => (
+              <li key={label} className="flex items-center gap-2 text-[0.8rem] font-semibold text-white/90">
+                <Icon className="h-4 w-4 text-accent" />
+                {label}
+              </li>
+            ))}
+          </ul>
+        </FadeIn>
       </div>
 
-      {/* Hero Content Layer */}
-      <div className="relative z-10 mx-auto max-w-7xl px-5 lg:px-8 w-full">
-        <div className="max-w-xl lg:max-w-2xl">
-          {/* Pill Badge */}
-          <FadeIn delay={0.1}>
-            <div className="inline-flex items-center gap-2 rounded-full border border-blue-100/80 bg-white/90 px-3.5 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold text-[#1B2559] shadow-sm backdrop-blur-sm mb-5 sm:mb-6">
-              <ShieldCheck className="h-4 w-4 text-[#2563EB] shrink-0" />
-              <span>Hands-on training by medical professionals</span>
-            </div>
-          </FadeIn>
-
-          {/* Headline — refined uppercase with visual hierarchy */}
-          <RevealText as="h1" className="font-display leading-[1.05] sm:leading-[1.02] tracking-tight">
-            <span className="block text-[1.75rem] xs:text-[2rem] sm:text-3xl lg:text-4xl xl:text-[2.75rem] font-light uppercase tracking-[0.04em] text-[#1B2559]/70">Skills That Save Life.</span>
-            <span className="block text-[1.75rem] xs:text-[2rem] sm:text-3xl lg:text-4xl xl:text-[2.75rem] font-extrabold uppercase tracking-[0.02em] text-[#141414]">Knowledge That Protects.</span>
-          </RevealText>
-
-          {/* Subtitle */}
-          <FadeIn delay={0.4}>
-            <p className="mt-5 sm:mt-7 max-w-lg text-base sm:text-lg leading-relaxed text-[#1B2559]/90 font-medium sm:font-normal">
-              Professional First Aid, CPR, AED and Health &amp; Safety Training designed to build
-              confident lifesavers in workplaces, institutions and communities.
-            </p>
-          </FadeIn>
-
-          {/* Action Buttons */}
-          <FadeIn delay={0.5}>
-            <div className="mt-7 sm:mt-9 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-5">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#2563EB] px-8 py-3.5 text-base font-bold text-white shadow-lg shadow-blue-500/25 transition-all hover:bg-blue-700 hover:shadow-xl hover:-translate-y-0.5 active:scale-[0.98]"
-              >
-                <span>Book a Training</span>
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-
-              <Link
-                href="/courses"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200/90 bg-white/95 px-8 py-3.5 text-base font-bold text-[#1B2559] shadow-sm backdrop-blur-sm transition-all hover:bg-white hover:shadow-md hover:-translate-y-0.5 active:scale-[0.98]"
-              >
-                Explore Training Programs
-              </Link>
-            </div>
-          </FadeIn>
-
-          {/* Subtext */}
-          <FadeIn delay={0.6}>
-            <p className="mt-6 sm:mt-12 text-xs sm:text-sm font-semibold text-[#1B2559]/75">
-              Trusted by leading organizations across India and beyond
-            </p>
-          </FadeIn>
+      {/* Glass badges (reference: heroBadges) */}
+      <div className="absolute inset-x-0 bottom-10 z-[2] hidden md:block">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-6 px-5 lg:gap-12 lg:px-8">
+          {TRUST_ROW.map(({ icon: Icon, label }, i) => (
+            <FadeIn key={label} delay={0.7 + i * 0.1} y={12}>
+              <div className="flex items-center gap-2.5 rounded-2xl border border-white/20 bg-white/15 px-5 py-2.5 backdrop-blur-[10px]">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/20 text-accent">
+                  <Icon className="h-4 w-4" />
+                </span>
+                <span className="text-[0.8rem] font-semibold leading-[1.3] text-white">{label}</span>
+              </div>
+            </FadeIn>
+          ))}
         </div>
       </div>
     </section>
