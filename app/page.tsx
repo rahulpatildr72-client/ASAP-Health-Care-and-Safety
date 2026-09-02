@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, CircleCheck, BadgeCheck } from "lucide-react";
+import { ArrowRight, CircleCheck } from "lucide-react";
 import Hero from "@/components/Hero";
 import AudienceGrid from "@/components/AudienceGrid";
 import CourseCard from "@/components/CourseCard";
@@ -11,11 +11,10 @@ import TestimonialCarousel from "@/components/TestimonialCarousel";
 import FAQAccordion from "@/components/FAQAccordion";
 import CTABanner from "@/components/CTABanner";
 import SectionHeading from "@/components/SectionHeading";
-import FounderPortrait from "@/components/FounderPortrait";
 import CertificateCard from "@/components/CertificateCard";
 import FadeIn from "@/components/FadeIn";
 import { COURSES } from "@/data/courses";
-import { FOUNDER, SITE_TAGLINE, WHY_US } from "@/data/site";
+import { SITE_TAGLINE, WHY_US } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "First Aid, CPR & Health Safety Training in India",
@@ -119,43 +118,6 @@ export default function HomePage() {
               <CertificateCard />
             </FadeIn>
           </div>
-        </div>
-      </section>
-
-      {/* 7. Founder (reference: leadership card) */}
-      <section className="bg-off-white py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <SectionHeading
-            align="center"
-            eyebrow="About the Founder"
-            title="Meet the Expert Behind the Training"
-          />
-          <FadeIn>
-            <div className="flex flex-col items-center gap-8 rounded-2xl border border-gray-200 bg-white p-7 shadow-sm sm:p-10 md:flex-row md:items-start md:gap-12">
-              <FounderPortrait
-                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=900&q=80"
-                alt={`Professional portrait of ${FOUNDER.name}, founder and lead trainer`}
-              />
-              <div className="min-w-0 flex-1">
-                <blockquote className="border-l-4 border-primary pl-5 text-[1rem] italic leading-[1.7] text-gray-700 sm:text-[1.1rem]">
-                  {FOUNDER.story}
-                </blockquote>
-                <p className="mt-5 font-display text-[1.1rem] font-semibold text-gray-900">{FOUNDER.name}</p>
-                <p className="text-[0.85rem] text-gray-500">{FOUNDER.role}</p>
-                <ul className="mt-6 grid gap-3 border-t border-gray-200 pt-6 sm:grid-cols-2">
-                  {FOUNDER.qualifications.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-[0.875rem] font-medium text-gray-800">
-                      <BadgeCheck className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Link href="/about" className="btn btn-secondary mt-7">
-                  Meet Our Team <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </div>
-          </FadeIn>
         </div>
       </section>
 
