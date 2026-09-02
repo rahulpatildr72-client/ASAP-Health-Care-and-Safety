@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, CircleCheck, BadgeCheck } from "lucide-react";
 import Hero from "@/components/Hero";
-import TrustBar from "@/components/TrustBar";
 import AudienceGrid from "@/components/AudienceGrid";
 import CourseCard from "@/components/CourseCard";
 import FeatureCard from "@/components/FeatureCard";
@@ -35,9 +34,6 @@ export default function HomePage() {
     <>
       {/* 1. Hero */}
       <Hero />
-
-      {/* 2. Stats band */}
-      <TrustBar />
 
       {/* 3. Training Programs — bento grid (reference: trainingsSection) */}
       <section className="bg-white py-16 sm:py-24">

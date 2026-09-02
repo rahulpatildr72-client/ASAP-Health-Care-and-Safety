@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { ShieldCheck, ArrowRight } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 import RevealText from "./RevealText";
 import FadeIn from "./FadeIn";
 
@@ -54,17 +53,6 @@ export default function Hero() {
           </p>
         </FadeIn>
 
-        <FadeIn delay={0.5}>
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-            <Link href="/contact" className="btn btn-accent btn-lg">
-              Book a Training
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-            <Link href="/courses" className="btn btn-white btn-lg">
-              Explore Training Programs
-            </Link>
-          </div>
-        </FadeIn>
 
       </div>
 

@@ -3,7 +3,6 @@ import Image from "next/image";
 import { Activity, Siren, BadgeCheck, Eye, Target, Users } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
 import CTABanner from "@/components/CTABanner";
-import TrustBar from "@/components/TrustBar";
 import PageHero from "@/components/PageHero";
 import FounderPortrait from "@/components/FounderPortrait";
 import FadeIn from "@/components/FadeIn";
@@ -139,9 +138,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      {/* Stats band */}
-      <TrustBar />
 
       {/* Founder (reference: leadership card) */}
       <section className="bg-white py-16 sm:py-24">
