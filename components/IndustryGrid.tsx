@@ -11,13 +11,12 @@ export default function IndustryGrid() {
     <section className="bg-white py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <SectionHeading
-          align="center"
           number="05"
           eyebrow="Industries We Serve"
           title="Safety Training for Every Environment"
           subtitle="Wherever people work, learn or gather, emergencies can happen. We train them all."
         />
-        <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
+        <div className="mt-12 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
           {INDUSTRIES.map(({ icon, title, description }, i) => (
             <FadeIn key={title} delay={(i % 4) * 0.06} className="h-full">
               <div className="card group h-full p-6 text-center hover:border-primary-light sm:p-8">

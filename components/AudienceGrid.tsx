@@ -34,14 +34,13 @@ export default function AudienceGrid() {
     <section className="bg-white py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <SectionHeading
-          align="center"
           number="02"
           eyebrow="Who We Train"
           title="Training Built for the People In Front of Us"
           subtitle="An office floor, a classroom, a hospital corridor and a family home face very different emergencies. Every program is shaped around who is in the room."
         />
 
-        <div className="mt-4 space-y-16 lg:space-y-24">
+        <div className="mt-12 space-y-16 lg:space-y-24">
           {AUDIENCES.map((audience, i) => {
             const img = AUDIENCE_IMAGES[audience.title];
             const reverse = i % 2 === 1;

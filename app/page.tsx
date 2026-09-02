@@ -71,13 +71,12 @@ export default function HomePage() {
       <section className="bg-off-white py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading
-            align="center"
             number="03"
             eyebrow="Why Us"
             title="Why Organizations Trust Us"
             subtitle="From multinational hotels to schools and factories, teams choose us for one reason: training that actually works in a real emergency."
           />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
             {WHY_US.map((feature, i) => (
               <FadeIn key={feature.title} delay={(i % 3) * 0.08} className="h-full">
                 <FeatureCard {...feature} index={i} />
@@ -131,13 +130,14 @@ export default function HomePage() {
       <section className="bg-off-white py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading
-            align="center"
             number="07"
             eyebrow="Testimonials"
             title="What Our Participants Say"
             subtitle="Feedback from the teams and individuals we've trained."
           />
-          <TestimonialCarousel />
+          <div className="mt-12">
+            <TestimonialCarousel />
+          </div>
         </div>
       </section>
 
@@ -145,13 +145,14 @@ export default function HomePage() {
       <section className="bg-white py-16 sm:py-24">
         <div className="mx-auto max-w-3xl px-5 lg:px-8">
           <SectionHeading
-            align="center"
             number="08"
             eyebrow="FAQ"
             title="Frequently Asked Questions"
             subtitle="Everything you need to know before booking your training."
           />
-          <FAQAccordion />
+          <div className="mt-12">
+            <FAQAccordion />
+          </div>
         </div>
       </section>
 
