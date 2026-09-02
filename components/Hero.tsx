@@ -2,15 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ShieldCheck, ArrowRight, MapPin, Video, BadgeCheck } from "lucide-react";
+import { ShieldCheck, ArrowRight } from "lucide-react";
 import RevealText from "./RevealText";
 import FadeIn from "./FadeIn";
-
-const TRUST_ROW = [
-  { icon: BadgeCheck, label: "Certified instructors" },
-  { icon: MapPin, label: "Onsite across India" },
-  { icon: Video, label: "Live online worldwide" },
-];
 
 export default function Hero() {
   return (
@@ -72,34 +66,8 @@ export default function Hero() {
           </div>
         </FadeIn>
 
-        {/* Mobile trust row (badges are absolute on desktop) */}
-        <FadeIn delay={0.6}>
-          <ul className="mt-8 flex flex-wrap gap-x-5 gap-y-2 md:hidden">
-            {TRUST_ROW.map(({ icon: Icon, label }) => (
-              <li key={label} className="flex items-center gap-2 text-[0.8rem] font-semibold text-white/90">
-                <Icon className="h-4 w-4 text-accent" />
-                {label}
-              </li>
-            ))}
-          </ul>
-        </FadeIn>
       </div>
 
-      {/* Glass badges (reference: heroBadges) */}
-      <div className="absolute inset-x-0 bottom-10 z-[2] hidden md:block">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-6 px-5 lg:gap-12 lg:px-8">
-          {TRUST_ROW.map(({ icon: Icon, label }, i) => (
-            <FadeIn key={label} delay={0.7 + i * 0.1} y={12}>
-              <div className="flex items-center gap-2.5 rounded-2xl border border-white/20 bg-white/15 px-5 py-2.5 backdrop-blur-[10px]">
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/20 text-accent">
-                  <Icon className="h-4 w-4" />
-                </span>
-                <span className="text-[0.8rem] font-semibold leading-[1.3] text-white">{label}</span>
-              </div>
-            </FadeIn>
-          ))}
-        </div>
-      </div>
     </section>
   );
 }
