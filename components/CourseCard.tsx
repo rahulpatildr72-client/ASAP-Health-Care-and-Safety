@@ -22,10 +22,13 @@ export default function CourseCard({
   course,
   index,
   className = "",
+  title,
 }: {
   course: Course;
   index?: number;
   className?: string;
+  /** Optional display title override (falls back to course.title). */
+  title?: string;
 }) {
   const formattedNumber =
     typeof index === "number" ? String(index + 1).padStart(2, "0") : undefined;
@@ -77,7 +80,7 @@ export default function CourseCard({
       {/* Content */}
       <div className="relative z-[3] w-full p-6 text-white sm:p-7">
         <h3 className="font-display text-[1.25rem] font-bold leading-tight tracking-[0.01em] text-white">
-          {course.title}
+          {title ?? course.title}
         </h3>
 
         <div className="grid grid-rows-[0fr] opacity-0 transition-all duration-500 ease-out group-hover:mt-2 group-hover:grid-rows-[1fr] group-hover:opacity-100">

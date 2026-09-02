@@ -57,7 +57,11 @@ export default function HomePage() {
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:auto-rows-[280px] lg:grid-cols-3">
             {COURSES.map((course, i) => (
               <FadeIn key={course.slug} delay={(i % 3) * 0.08} className={`h-full ${i === 0 ? "lg:row-span-2" : ""}`}>
-                <CourseCard course={course} index={i} />
+                <CourseCard
+                  course={course}
+                  index={i}
+                  title={i < 3 ? course.title.replace(/\s+Program$/, "") : undefined}
+                />
               </FadeIn>
             ))}
           </div>
