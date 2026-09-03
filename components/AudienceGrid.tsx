@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { CircleCheck, ArrowRight } from "lucide-react";
+import { CircleCheck } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 import FadeIn from "./FadeIn";
 import AppIcon from "./icons";
@@ -81,10 +80,6 @@ export default function AudienceGrid() {
                         </li>
                       ))}
                     </ul>
-                    <Link href={audience.href} className="btn btn-primary mt-8">
-                      {audience.linkLabel}
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
                   </div>
                 </div>
               </FadeIn>
