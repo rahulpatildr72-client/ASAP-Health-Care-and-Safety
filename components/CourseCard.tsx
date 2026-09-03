@@ -39,7 +39,7 @@ export default function CourseCard({
   return (
     <Link
       href={`/courses/${course.slug}`}
-      className={`group relative flex h-full min-h-[300px] flex-col justify-end overflow-hidden rounded-2xl bg-gray-200 transition-all duration-500 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-[0_24px_48px_rgba(0,0,0,0.18)] ${className}`}
+      className={`group relative flex h-full min-h-[280px] flex-col justify-end overflow-hidden rounded-2xl bg-gray-200 transition-all duration-500 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-[0_24px_48px_rgba(0,0,0,0.18)] ${className}`}
     >
       {/* Background image */}
       <Image
