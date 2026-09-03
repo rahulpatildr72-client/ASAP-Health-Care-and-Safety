@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Activity, Siren, BadgeCheck, Eye, Target, Users } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
-import StatsGrid from "@/components/StatsGrid";
+import TrustBar from "@/components/TrustBar";
 import CTABanner from "@/components/CTABanner";
 import PageHero from "@/components/PageHero";
 import FounderPortrait from "@/components/FounderPortrait";
@@ -116,7 +116,7 @@ export default function AboutPage() {
       </section>
 
       {/* Key figures */}
-      <StatsGrid />
+      <TrustBar />
 
       {/* Vision & Mission (reference: vmCard grid) */}
       <section className="bg-off-white py-16 sm:py-24">

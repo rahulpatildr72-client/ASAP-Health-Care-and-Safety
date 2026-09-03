@@ -14,7 +14,7 @@ export default function TrustBar() {
             <p className="font-display text-[1.8rem] font-extrabold leading-none sm:text-[2.5rem]">
               <StatCounter value={stat.value} suffix={stat.suffix} />
             </p>
-            <p className="mt-2 text-[0.85rem] text-white/80">{stat.label}</p>
+            <p className="mt-2 text-[0.95rem] text-white/90">{stat.label}</p>
           </FadeIn>
         ))}
       </div>
