@@ -23,6 +23,7 @@ export default function SectionHeading({
   as: Tag = "h2",
   tone = "dark",
   gradient = true,
+  weight = "bold",
 }: {
   eyebrow?: string;
   number?: string;
@@ -35,6 +36,8 @@ export default function SectionHeading({
   tone?: "dark" | "light";
   /** Apply the gradient accent to the last word(s) of left-aligned headings. */
   gradient?: boolean;
+  /** `medium` renders a light-tone single-line title in the softer titleLight style. */
+  weight?: "bold" | "medium";
 }) {
   const light = tone === "light";
   const eyebrowText = [number, eyebrow].filter(Boolean).join("  ");
@@ -58,7 +61,7 @@ export default function SectionHeading({
               <span className="block font-extrabold">{title}</span>
             </>
           ) : (
-            <span className="block font-extrabold">{title}</span>
+            <span className={weight === "medium" ? "block font-medium text-white/85" : "block font-extrabold"}>{title}</span>
           )}
         </RevealText>
         {subtitle && (

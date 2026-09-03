@@ -59,6 +59,7 @@ export default function ContactPage() {
           <SectionHeading
             as="h1"
             tone="light"
+            weight="medium"
             title="Contact"
             subtitle="Tell us about your team and your training needs — we'll get back to you with a program and a plan."
           />

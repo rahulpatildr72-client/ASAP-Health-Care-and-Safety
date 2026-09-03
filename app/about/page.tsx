@@ -47,6 +47,7 @@ export default function AboutPage() {
           <SectionHeading
             as="h1"
             tone="light"
+            weight="medium"
             title="About ASAP Health & Safety"
             subtitle="Born from two decades of frontline emergency experience, we exist for one reason: to make sure that when an emergency happens, someone nearby knows exactly what to do."
           />
