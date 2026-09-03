@@ -76,25 +76,28 @@ export default function SectionHeading({
   /* ── Centered section title with green underline (reference: .section-title) ── */
   if (align === "center") {
     return (
-      <div className="section-title mx-auto max-w-3xl">
+      <div className="section-title">
+        {/* Label pill sits on the left edge; title and subtitle stay centered */}
         {eyebrowText && (
-          <FadeIn>
+          <FadeIn className="text-left">
             <span className="tag-pill mb-5">{eyebrowText}</span>
           </FadeIn>
         )}
-        <RevealText
-          as={Tag}
-          className="font-display text-[1.75rem] font-bold tracking-[-0.01em] text-gray-900 sm:text-[2.25rem]"
-        >
-          <span className="block">
-            <span className="section-title-heading">{titleLight ? `${titleLight} ${title}` : title}</span>
-          </span>
-        </RevealText>
-        {subtitle && (
-          <FadeIn delay={0.2}>
-            <p className="mx-auto mt-6 max-w-[600px] text-[1rem] leading-relaxed text-gray-600 sm:text-[1.1rem]">{subtitle}</p>
-          </FadeIn>
-        )}
+        <div className="mx-auto max-w-3xl">
+          <RevealText
+            as={Tag}
+            className="font-display text-[1.75rem] font-bold tracking-[-0.01em] text-gray-900 sm:text-[2.25rem]"
+          >
+            <span className="block">
+              <span className="section-title-heading">{titleLight ? `${titleLight} ${title}` : title}</span>
+            </span>
+          </RevealText>
+          {subtitle && (
+            <FadeIn delay={0.2}>
+              <p className="mx-auto mt-6 max-w-[600px] text-[1rem] leading-relaxed text-gray-600 sm:text-[1.1rem]">{subtitle}</p>
+            </FadeIn>
+          )}
+        </div>
       </div>
     );
   }
