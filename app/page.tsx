@@ -59,7 +59,6 @@ export default function HomePage() {
               <FadeIn key={course.slug} delay={(i % 3) * 0.08} className={`h-full ${i === 0 ? "lg:row-span-2" : ""}`}>
                 <CourseCard
                   course={course}
-                  index={i}
                   title={HOME_CARD_TITLES[course.slug]}
                 />
               </FadeIn>
@@ -89,7 +88,7 @@ export default function HomePage() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
             {WHY_US.map((feature, i) => (
               <FadeIn key={feature.title} delay={(i % 3) * 0.08} className="h-full">
-                <FeatureCard {...feature} index={i} />
+                <FeatureCard {...feature} />
               </FadeIn>
             ))}
           </div>

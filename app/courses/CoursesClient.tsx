@@ -171,7 +171,7 @@ export default function CoursesClient({ courses }: CoursesClientProps) {
 
                       return (
                         <FadeIn key={course.slug} delay={i * 0.08} className="h-full min-h-[320px]">
-                          <CourseCard course={course} index={globalIdx >= 0 ? globalIdx : i} />
+                          <CourseCard course={course} />
                         </FadeIn>
                       );
                     })}

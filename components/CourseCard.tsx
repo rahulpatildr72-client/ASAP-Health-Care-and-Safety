@@ -21,19 +21,14 @@ const CARD_HIGHLIGHTS: Record<string, string[]> = {
 /** Image card with deep-green gradient overlay and hover-reveal details (reference: trainingCard). */
 export default function CourseCard({
   course,
-  index,
   className = "",
   title,
 }: {
   course: Course;
-  index?: number;
   className?: string;
   /** Optional display title override (falls back to course.title). */
   title?: string;
 }) {
-  const formattedNumber =
-    typeof index === "number" ? String(index + 1).padStart(2, "0") : undefined;
-
   const highlights = CARD_HIGHLIGHTS[course.slug] || (course.learn ? course.learn.slice(0, 2) : []);
 
   return (
@@ -59,15 +54,6 @@ export default function CourseCard({
         className="absolute inset-0 z-[1] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
         style={{ background: "linear-gradient(180deg, rgba(3,58,39,0.2) 0%, rgba(3,58,39,0.7) 40%, rgba(3,58,39,0.98) 100%)" }}
       />
-
-      {/* Number watermark */}
-      {formattedNumber && (
-        <span
-          className="pointer-events-none absolute right-6 top-6 z-[2] select-none font-display text-[3rem] font-black leading-none text-white/[0.12] transition-all duration-500 group-hover:scale-110 group-hover:text-white/25"
-        >
-          {formattedNumber}
-        </span>
-      )}
 
       {/* Duration badge */}
       <span className="absolute left-5 top-5 z-[3] inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/30 px-3.5 py-1.5 text-[11px] font-bold text-white/95 backdrop-blur-md sm:text-xs">
