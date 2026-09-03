@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowRight, CircleCheck } from "lucide-react";
+import { CircleCheck } from "lucide-react";
 import Hero from "@/components/Hero";
 import AudienceGrid from "@/components/AudienceGrid";
 import CourseCard from "@/components/CourseCard";
@@ -106,11 +105,6 @@ export default function HomePage() {
                   </li>
                 ))}
               </ul>
-            </FadeIn>
-            <FadeIn delay={0.3}>
-              <Link href="/courses" className="btn btn-primary mt-8">
-                See All Programs <ArrowRight className="h-4 w-4" />
-              </Link>
             </FadeIn>
           </div>
           <div className="flex justify-center lg:justify-end">
