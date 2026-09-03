@@ -49,6 +49,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="Training Programs"
             title="Training That Prepares You for Real Emergencies"
+            highlight="Real Emergencies"
             subtitle="Hands-on programs delivered onsite, in classrooms and live online — for teams and individuals."
           />
 

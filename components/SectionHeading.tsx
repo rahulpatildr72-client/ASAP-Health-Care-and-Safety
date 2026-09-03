@@ -24,6 +24,7 @@ export default function SectionHeading({
   tone = "dark",
   gradient = true,
   weight = "bold",
+  highlight,
 }: {
   eyebrow?: string;
   number?: string;
@@ -38,7 +39,22 @@ export default function SectionHeading({
   gradient?: boolean;
   /** `medium` renders a light-tone single-line title in the softer titleLight style. */
   weight?: "bold" | "medium";
+  /** Phrase inside `title` to render with the green-to-gold gradient (centered variant). */
+  highlight?: string;
 }) {
+  const centeredTitle = titleLight ? `${titleLight} ${title}` : title;
+  const hi = highlight && centeredTitle.includes(highlight) ? highlight : undefined;
+  const renderCenteredTitle = () => {
+    if (!hi) return centeredTitle;
+    const at = centeredTitle.indexOf(hi);
+    return (
+      <>
+        {centeredTitle.slice(0, at)}
+        <span className="text-gradient whitespace-nowrap">{hi}</span>
+        {centeredTitle.slice(at + hi.length)}
+      </>
+    );
+  };
   const light = tone === "light";
   const eyebrowText = [number, eyebrow].filter(Boolean).join("  ");
 
@@ -89,7 +105,7 @@ export default function SectionHeading({
             className="font-display text-[1.75rem] font-bold tracking-[-0.01em] text-gray-900 sm:text-[2.25rem]"
           >
             <span className="block">
-              <span className="section-title-heading">{titleLight ? `${titleLight} ${title}` : title}</span>
+              <span className="section-title-heading">{renderCenteredTitle()}</span>
             </span>
           </RevealText>
           {subtitle && (
