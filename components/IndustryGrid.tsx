@@ -13,6 +13,7 @@ export default function IndustryGrid() {
         <SectionHeading
           eyebrow="Industries We Serve"
           title="Safety Training for Every Environment"
+          highlight="Every Environment"
           subtitle="Wherever people work, learn or gather, emergencies can happen. We train them all."
         />
         <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">

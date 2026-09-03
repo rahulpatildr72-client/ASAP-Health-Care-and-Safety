@@ -75,6 +75,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="Why Us"
             title="Why Organizations Trust Us"
+            highlight="Trust Us"
             subtitle="From multinational hotels to schools and factories, teams choose us for one reason: training that actually works in a real emergency."
           />
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
@@ -93,6 +94,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="Certification"
             title="Walk Out With Proof of Competence"
+            highlight="Proof of Competence"
             subtitle="Every participant who successfully completes a program receives a certificate of completion — a record of hands-on training for personal and workplace documentation."
           />
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
@@ -126,6 +128,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="FAQ"
             title="Frequently Asked Questions"
+            highlight="Questions"
             subtitle="Everything you need to know before booking your training."
           />
           <div>

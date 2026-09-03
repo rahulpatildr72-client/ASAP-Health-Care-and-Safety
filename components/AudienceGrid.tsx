@@ -35,6 +35,7 @@ export default function AudienceGrid() {
         <SectionHeading
           eyebrow="Who We Train"
           title="Training Built for the People In Front of Us"
+          highlight="In Front of Us"
           subtitle="An office floor, a classroom, a hospital corridor and a family home face very different emergencies. Every program is shaped around who is in the room."
         />
 
