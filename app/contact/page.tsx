@@ -41,9 +41,6 @@ const infoItems = [
   { icon: Globe, label: "Online Training", value: CONTACT.onlineNote },
 ];
 
-  "Hello! I'd like to enquire about a training session."
-)}`;
-
 export default function ContactPage() {
   return (
     <>
