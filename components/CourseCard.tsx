@@ -13,7 +13,8 @@ const CARD_HIGHLIGHTS: Record<string, string[]> = {
   "posh-prevention-sexual-harassment": ["Respectful Workplace & Boundaries", "Inappropriate Behavior Recognition"],
   "stress-management-awareness": ["Understanding Stress Triggers", "Relaxation & Coping Habits"],
   "counselling-mental-wellbeing": ["Mental & Emotional Wellbeing", "Supportive Communication & Empathy"],
-  "diet-nutrition-meditation-yoga": ["Balanced Nutrition Basics", "Mindfulness, Meditation & Yoga"],
+  "diet-nutrition": ["Balanced Nutrition Basics", "Healthier Eating Habits & Hydration"],
+  "meditation-yoga": ["Introduction to Mindfulness", "Meditation, Breathing & Yoga"],
   "female-healthcare-wellbeing": ["Women's Health Concerns & Self-Care", "Preventive Care & Regular Check-ups"],
 };
 

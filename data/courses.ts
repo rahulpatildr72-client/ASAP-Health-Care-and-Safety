@@ -296,13 +296,13 @@ export const COURSES: Course[] = [
     cardImage: "/counselling-wellbeing.png",
   },
   {
-    slug: "diet-nutrition-meditation-yoga",
-    title: "Diet & Nutrition, Meditation & Yoga – Wellness Program",
-    shortTitle: "Diet & Nutrition, Meditation & Yoga",
+    slug: "diet-nutrition",
+    title: "Diet & Nutrition Program",
+    shortTitle: "Diet & Nutrition",
     category: "wellbeing",
-    tagline: "Holistic wellness exploring balanced nutrition, mindfulness, meditation, and yoga practices.",
+    tagline: "Wellness program exploring balanced nutrition, healthier eating habits and hydration.",
     overview: [
-      "A holistic wellness program focused on healthy lifestyle choices. Participants explore the role of balanced nutrition, mindfulness, meditation and yoga in supporting overall wellbeing.",
+      "A wellness program focused on healthy lifestyle choices. Participants explore the role of balanced nutrition, healthier eating habits and hydration in supporting overall wellbeing.",
     ],
     whoShouldAttend: [
       "Corporate teams, institutions, community groups and individuals interested in developing healthier lifestyle habits.",
@@ -312,6 +312,29 @@ export const COURSES: Course[] = [
       "Developing healthier eating habits",
       "The importance of hydration",
       "Making healthier lifestyle choices",
+    ],
+    duration: "3–4 Hours",
+    modes: ["Onsite", "Classroom", "Live Online"],
+    certification:
+      "Participants receive a certificate of completion after successfully finishing the program.",
+    icon: "apple",
+    image: "/diet-nutrition-card.jpg",
+    imageAlt: "Diet and nutrition session with a healthy plate guide and fresh fruit and vegetables",
+    cardImage: "/diet-nutrition-card.jpg",
+  },
+  {
+    slug: "meditation-yoga",
+    title: "Meditation & Yoga – Wellness Program",
+    shortTitle: "Meditation & Yoga",
+    category: "wellbeing",
+    tagline: "Holistic wellness exploring mindfulness, meditation, and yoga practices.",
+    overview: [
+      "A holistic wellness program focused on healthy lifestyle choices. Participants explore the role of mindfulness, meditation and yoga in supporting overall wellbeing.",
+    ],
+    whoShouldAttend: [
+      "Corporate teams, institutions, community groups and individuals interested in developing healthier lifestyle habits.",
+    ],
+    learn: [
       "Introduction to mindfulness",
       "Meditation techniques and practice",
       "Breathing and relaxation techniques",
@@ -321,11 +344,10 @@ export const COURSES: Course[] = [
     modes: ["Onsite", "Classroom", "Live Online"],
     certification:
       "Participants receive a certificate of completion after successfully finishing the program.",
-    icon: "apple",
+    icon: "wind",
     image: "/meditation-yoga.jpg",
-    imageAlt: "Wellness program with meditation, yoga and nutrition guidance",
+    imageAlt: "Wellness program with meditation and yoga guidance",
     cardImage: "/wellness-program.png",
-    galleryImages: ["/diet-nutrition.webp", "/meditation-yoga.jpg"],
   },
   {
     slug: "female-healthcare-wellbeing",
