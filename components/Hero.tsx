@@ -23,7 +23,7 @@ export default function Hero() {
       <div
         className="absolute inset-0 z-[1]"
         style={{
-          background: "linear-gradient(90deg, rgba(3,58,39,0.85) 0%, rgba(10,104,71,0.6) 50%, rgba(10,104,71,0.3) 100%)",
+          background: "linear-gradient(90deg, rgba(3,58,39,0.7) 0%, rgba(10,104,71,0.45) 50%, rgba(10,104,71,0.18) 100%)",
         }}
         aria-hidden="true"
       />
