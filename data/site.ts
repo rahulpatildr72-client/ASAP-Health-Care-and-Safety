@@ -161,7 +161,7 @@ export const AUDIENCES = [
   },
   {
     icon: "stethoscope",
-    title: "Hospitals & Gyms",
+    title: "Hospitality & Gyms",
     description:
       "Sharper emergency response for clinics, care homes and healthcare support teams — CPR, AED and first-response skills kept current.",
     points: [

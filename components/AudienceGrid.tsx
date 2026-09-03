@@ -17,7 +17,7 @@ const AUDIENCE_IMAGES: Record<string, { src: string; alt: string }> = {
     src: "/choking-response.png",
     alt: "Instructor demonstrating choking response to a classroom of staff",
   },
-  "Hospitals & Gyms": {
+  "Hospitality & Gyms": {
     src: "/aed-training.png",
     alt: "Healthcare staff attaching AED pads to a training mannequin",
   },
