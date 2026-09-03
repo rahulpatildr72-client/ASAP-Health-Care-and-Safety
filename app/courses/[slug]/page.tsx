@@ -122,20 +122,6 @@ export default async function CoursePage({ params }: Props) {
                   containerClassName="aspect-[4/3] w-full rounded-2xl border-4 border-white shadow-lg"
                   priority
                 />
-                {/* floating fact chips */}
-                <div className="absolute -bottom-5 left-5 flex items-center gap-3 rounded-xl bg-white px-4 py-3 shadow-lg sm:left-8">
-                  <span className="icon-square h-10 w-10 rounded-lg">
-                    <Clock className="h-5 w-5" />
-                  </span>
-                  <div>
-                    <p className="font-display text-[1rem] font-extrabold leading-none text-gray-900">{course.duration}</p>
-                    <p className="mt-1 text-[0.7rem] font-medium uppercase tracking-[0.05em] text-gray-500">Session length</p>
-                  </div>
-                </div>
-                <div className="absolute -top-4 right-5 hidden items-center gap-2.5 rounded-full border border-white/20 bg-white/15 px-4 py-2 text-white backdrop-blur-[10px] sm:right-8 sm:flex">
-                  <Users className="h-4 w-4 text-accent" />
-                  <span className="text-[0.8rem] font-semibold">Small batches · hands-on</span>
-                </div>
               </div>
             )}
           </div>
