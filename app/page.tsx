@@ -28,14 +28,14 @@ const CERT_POINTS = [
 
 /** Homepage-only display titles for the program cards (course data itself is unchanged). */
 const HOME_CARD_TITLES: Record<string, string> = {
-  "first-aid-cpr-training": "First Aid & CPR Training",
-  "basic-first-aid-cpr": "Basic First Aid & CPR",
-  "cpr-aed-choking": "CPR, AED & Choking",
   "fire-safety-awareness": "Fire Safety Awareness",
   "ert-emergency-response-team": "Emergency Response Team (ERT)",
-  "diet-nutrition": "Diet & Nutrition",
-  "female-healthcare-wellbeing": "Women Healthcare & Wellbeing Program",
+  "female-healthcare-wellbeing": "Women Healthcare & Wellbeing",
 };
+
+/** Explicit override if present, otherwise the course title without its trailing "Program". */
+const homeCardTitle = (course: { slug: string; title: string }) =>
+  HOME_CARD_TITLES[course.slug] ?? course.title.replace(/\s+Program$/, "");
 
 export default function HomePage() {
   return (
@@ -57,7 +57,7 @@ export default function HomePage() {
               <FadeIn key={course.slug} delay={(i % 3) * 0.08} className={`h-full ${i === 0 ? "lg:row-span-2" : ""}`}>
                 <CourseCard
                   course={course}
-                  title={HOME_CARD_TITLES[course.slug]}
+                  title={homeCardTitle(course)}
                 />
               </FadeIn>
             ))}
