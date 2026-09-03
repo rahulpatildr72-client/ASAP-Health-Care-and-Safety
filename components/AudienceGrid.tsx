@@ -59,7 +59,7 @@ export default function AudienceGrid() {
                     {/* Soft green fade over the photo */}
                     <div
                       className="pointer-events-none absolute inset-0"
-                      style={{ background: "linear-gradient(180deg, rgba(3,58,39,0.12) 0%, rgba(3,58,39,0.5) 50%, rgba(3,58,39,0.82) 100%)" }}
+                      style={{ background: "linear-gradient(180deg, rgba(3,58,39,0.06) 0%, rgba(3,58,39,0.36) 50%, rgba(3,58,39,0.66) 100%)" }}
                       aria-hidden="true"
                     />
                   </div>
