@@ -6,8 +6,6 @@ import AudienceGrid from "@/components/AudienceGrid";
 import CourseCard from "@/components/CourseCard";
 import FeatureCard from "@/components/FeatureCard";
 import IndustryGrid from "@/components/IndustryGrid";
-import LogoWall from "@/components/LogoWall";
-import TestimonialCarousel from "@/components/TestimonialCarousel";
 import FAQAccordion from "@/components/FAQAccordion";
 import CTABanner from "@/components/CTABanner";
 import SectionHeading from "@/components/SectionHeading";
@@ -132,23 +130,6 @@ export default function HomePage() {
 
       {/* 8. 05 Industries */}
       <IndustryGrid />
-
-      {/* 9. Logo wall */}
-      <LogoWall />
-
-      {/* 10. 07 Testimonials */}
-      <section className="bg-off-white py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <SectionHeading
-            eyebrow="Testimonials"
-            title="What Our Participants Say"
-            subtitle="Feedback from the teams and individuals we've trained."
-          />
-          <div>
-            <TestimonialCarousel />
-          </div>
-        </div>
-      </section>
 
       {/* 11. 08 FAQ */}
       <section className="bg-white py-16 sm:py-24">

@@ -3,7 +3,6 @@ import Link from "next/link";
 import { MapPin, ShieldCheck, Users, ArrowRight } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
 import SplitSection from "@/components/SplitSection";
-import LogoWall from "@/components/LogoWall";
 import HowItWorks from "@/components/HowItWorks";
 import CTABanner from "@/components/CTABanner";
 import PageHero from "@/components/PageHero";
@@ -103,7 +102,6 @@ export default function CorporatePage() {
       />
 
       <HowItWorks />
-      <LogoWall />
 
       {/* Group pricing enquiry */}
       <section className="bg-white py-16 sm:py-24">
