@@ -70,9 +70,6 @@ export default function ContactPage() {
       {/* Enquiry (reference: Get In Touch grid) */}
       <section className="bg-white py-16 sm:py-24">
         <div className="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-2 lg:gap-16 lg:px-8 [&>*]:min-w-0">
-          <FadeIn delay={0.1}>
-            <EnquiryForm />
-          </FadeIn>
 
           <div className="space-y-5">
             <FadeIn delay={0.2}>
@@ -97,6 +94,10 @@ export default function ContactPage() {
               </ul>
             </FadeIn>
           </div>
+
+          <FadeIn delay={0.3}>
+            <EnquiryForm />
+          </FadeIn>
         </div>
       </section>
     </>
