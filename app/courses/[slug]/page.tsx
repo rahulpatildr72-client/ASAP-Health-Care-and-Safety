@@ -93,15 +93,6 @@ export default async function CoursePage({ params }: Props) {
             <FadeIn delay={0.2}>
               <p className="mt-4 max-w-[600px] text-[1rem] leading-relaxed text-white/80 sm:text-[1.1rem]">{course.tagline}</p>
             </FadeIn>
-
-            <FadeIn delay={0.3} className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <Link href="/contact" className="btn btn-accent">
-                Enquire About This Training <ArrowRight className="h-4 w-4" />
-              </Link>
-              <a href={waHref} target="_blank" rel="noopener noreferrer" className="btn btn-white">
-                <MessageCircle className="h-4 w-4" /> WhatsApp
-              </a>
-            </FadeIn>
           </div>
 
           <div className="relative lg:col-span-6">
