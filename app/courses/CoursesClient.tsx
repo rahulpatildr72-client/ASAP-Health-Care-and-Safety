@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { Shield, Leaf, Clock, ArrowRight } from "lucide-react";
+import { Shield, Leaf, Clock, ArrowRight, Building, Video, CircleCheck } from "lucide-react";
 import AppIcon from "@/components/icons";
 import { Course, CourseCategory, CATEGORY_META } from "@/data/courses";
 
@@ -15,6 +15,12 @@ const CATEGORY_ORDER: CourseCategory[] = ["emergency", "wellbeing"];
 
 const isCategory = (value: string | null): value is CourseCategory =>
   value === "emergency" || value === "wellbeing";
+
+/** Delivery formats — informational only; every program is available in both. */
+const FORMATS = [
+  { icon: Building, label: "Offline Training (Onsite)" },
+  { icon: Video, label: "Online Training (Live)" },
+];
 
 const CategoryIcon = ({ icon, className }: { icon: "shield" | "leaf"; className?: string }) =>
   icon === "shield" ? <Shield className={className} /> : <Leaf className={className} />;
@@ -34,7 +40,21 @@ export default function CoursesClient({ courses }: CoursesClientProps) {
 
   return (
     <div>
-      {/* Category tabs */}
+      {/* Training formats (not filters) */}
+      <div className="mb-6 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-3">
+        {FORMATS.map(({ icon: Icon, label }) => (
+          <span
+            key={label}
+            className="inline-flex items-center justify-center gap-2.5 rounded-full border border-primary/20 bg-primary-light px-6 py-2.5 text-[0.9rem] font-semibold text-primary-dark"
+          >
+            <Icon className="h-4 w-4 text-primary" />
+            <span>{label}</span>
+            <CircleCheck className="h-4 w-4 text-primary" aria-hidden="true" />
+          </span>
+        ))}
+      </div>
+
+      {/* Category tabs — the only filters */}
       <div
         role="tablist"
         aria-label="Training categories"
