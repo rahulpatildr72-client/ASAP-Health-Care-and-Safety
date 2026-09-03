@@ -40,7 +40,7 @@ export default function AudienceGrid() {
           subtitle="An office floor, a classroom, a hospital corridor and a family home face very different emergencies. Every program is shaped around who is in the room."
         />
 
-        <div className="mt-12 space-y-16 lg:space-y-24">
+        <div className="space-y-16 lg:space-y-24">
           {AUDIENCES.map((audience, i) => {
             const img = AUDIENCE_IMAGES[audience.title];
             const reverse = i % 2 === 1;

@@ -48,24 +48,14 @@ export default function HomePage() {
       {/* 3. Training Programs — bento grid (reference: trainingsSection) */}
       <section className="bg-white py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between lg:gap-16">
-            <SectionHeading
-              number="01"
-              eyebrow="Training Programs"
-              title="Training That Prepares You for Real Emergencies"
-            />
-            <FadeIn delay={0.2} className="flex flex-col items-start gap-5 lg:w-[400px] lg:shrink-0">
-              <p className="text-[0.95rem] leading-[1.7] text-gray-600">
-                Hands-on programs delivered onsite, in classrooms and live online — for teams and individuals.
-              </p>
-              <Link href="/courses" className="btn-outline-pill">
-                See All Programs
-                <ArrowRight className="h-4 w-4 transition-transform duration-300" />
-              </Link>
-            </FadeIn>
-          </div>
+          <SectionHeading
+            number="01"
+            eyebrow="Training Programs"
+            title="Training That Prepares You for Real Emergencies"
+            subtitle="Hands-on programs delivered onsite, in classrooms and live online — for teams and individuals."
+          />
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:auto-rows-[280px] lg:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:auto-rows-[280px] lg:grid-cols-3">
             {COURSES.map((course, i) => (
               <FadeIn key={course.slug} delay={(i % 3) * 0.08} className={`h-full ${i === 0 ? "lg:row-span-2" : ""}`}>
                 <CourseCard
@@ -76,6 +66,13 @@ export default function HomePage() {
               </FadeIn>
             ))}
           </div>
+
+          <FadeIn delay={0.2} className="mt-12 flex justify-center">
+            <Link href="/courses" className="btn-outline-pill">
+              See All Programs
+              <ArrowRight className="h-4 w-4 transition-transform duration-300" />
+            </Link>
+          </FadeIn>
         </div>
       </section>
 
@@ -91,7 +88,7 @@ export default function HomePage() {
             title="Why Organizations Trust Us"
             subtitle="From multinational hotels to schools and factories, teams choose us for one reason: training that actually works in a real emergency."
           />
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
             {WHY_US.map((feature, i) => (
               <FadeIn key={feature.title} delay={(i % 3) * 0.08} className="h-full">
                 <FeatureCard {...feature} index={i} />
@@ -103,16 +100,17 @@ export default function HomePage() {
 
       {/* 6. 04 Certification */}
       <section className="bg-white py-16 sm:py-24">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 lg:grid-cols-2 lg:gap-16 lg:px-8">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <SectionHeading
+            number="04"
+            eyebrow="Certification"
+            title="Walk Out With Proof of Competence"
+            subtitle="Every participant who successfully completes a program receives a certificate of completion — a record of hands-on training for personal and workplace documentation."
+          />
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
-            <SectionHeading
-              number="04"
-              eyebrow="Certification"
-              title="Walk Out With Proof of Competence"
-              subtitle="Every participant who successfully completes a program receives a certificate of completion — a record of hands-on training for personal and workplace documentation."
-            />
             <FadeIn delay={0.2}>
-              <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+              <ul className="grid gap-3 sm:grid-cols-2">
                 {CERT_POINTS.map((p) => (
                   <li key={p} className="flex items-start gap-2 text-[0.9rem] font-medium text-gray-800">
                     <CircleCheck className="mt-0.5 h-4.5 w-4.5 shrink-0 text-primary" />
@@ -132,6 +130,7 @@ export default function HomePage() {
               <CertificateCard />
             </FadeIn>
           </div>
+          </div>
         </div>
       </section>
 
@@ -150,7 +149,7 @@ export default function HomePage() {
             title="What Our Participants Say"
             subtitle="Feedback from the teams and individuals we've trained."
           />
-          <div className="mt-12">
+          <div>
             <TestimonialCarousel />
           </div>
         </div>
@@ -165,7 +164,7 @@ export default function HomePage() {
             title="Frequently Asked Questions"
             subtitle="Everything you need to know before booking your training."
           />
-          <div className="mt-12">
+          <div>
             <FAQAccordion />
           </div>
         </div>

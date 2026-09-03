@@ -109,15 +109,15 @@ export default function CoursesClient({ courses }: CoursesClientProps) {
               <div key={group.category}>
                 {/* Category Heading */}
                 <FadeIn>
-                  <div className="mb-8 flex items-center gap-4">
+                  <div className="mb-10 flex flex-col items-center gap-4 text-center">
                     <div className="icon-square h-12 w-12 sm:h-14 sm:w-14">
                       <CategoryIcon icon={group.meta.icon} className="h-6 w-6 sm:h-7 sm:w-7" />
                     </div>
                     <div>
                       <h2 className="font-display text-[1.5rem] font-bold tracking-[-0.01em] text-gray-900 sm:text-[1.75rem]">
-                        {group.meta.label}
+                        <span className="section-title-heading">{group.meta.label}</span>
                       </h2>
-                      <p className="mt-0.5 text-[0.875rem] text-gray-500">
+                      <p className="mt-3 text-[0.875rem] text-gray-500">
                         {group.courses.length} {group.courses.length === 1 ? "program" : "programs"}
                       </p>
                     </div>

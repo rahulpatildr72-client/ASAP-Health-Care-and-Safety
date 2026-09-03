@@ -173,8 +173,8 @@ export default async function CoursePage({ params }: Props) {
         <div className="mx-auto grid max-w-7xl gap-14 px-5 lg:grid-cols-12 lg:px-8">
           <div className="lg:col-span-8">
             <FadeIn>
-              <h2 className="font-display text-[1.75rem] font-semibold text-gray-900 sm:text-[2.25rem]">
-                About This Program
+              <h2 className="text-center font-display text-[1.75rem] font-bold text-gray-900 sm:text-[2.25rem]">
+                <span className="section-title-heading">About This Program</span>
               </h2>
               <div className="mt-5 space-y-4 text-[1rem] leading-[1.8] text-gray-700 sm:text-[1.05rem]">
                 {course.overview.map((para) => (
@@ -197,8 +197,8 @@ export default async function CoursePage({ params }: Props) {
             </FadeIn>
 
             <FadeIn delay={0.2} className="mt-14 border-t border-gray-200 pt-12">
-              <h2 className="font-display text-[1.75rem] font-semibold text-gray-900 sm:text-[2.25rem]">
-                What You&apos;ll Learn
+              <h2 className="text-center font-display text-[1.75rem] font-bold text-gray-900 sm:text-[2.25rem]">
+                <span className="section-title-heading">What You&apos;ll Learn</span>
               </h2>
               <ul className="mt-7 grid gap-3 sm:grid-cols-2">
                 {course.learn.map((point) => (
@@ -213,7 +213,9 @@ export default async function CoursePage({ params }: Props) {
             <FadeIn delay={0.3} className="mt-14 border-t border-gray-200 pt-12">
               <div className="grid items-center gap-10 md:grid-cols-2">
                 <div>
-                  <h2 className="font-display text-[1.75rem] font-semibold text-gray-900 sm:text-[2.25rem]">Certification</h2>
+                  <h2 className="text-center font-display text-[1.75rem] font-bold text-gray-900 sm:text-[2.25rem]">
+                    <span className="section-title-heading">Certification</span>
+                  </h2>
                   <p className="mt-5 text-[1rem] leading-[1.8] text-gray-700 sm:text-[1.05rem]">{course.certification}</p>
                   <p className="mt-4 text-[0.875rem] text-gray-500">
                     Certificates are issued in the participant&apos;s name and note the program completed and the date of training.

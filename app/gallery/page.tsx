@@ -42,7 +42,6 @@ export default function GalleryPage() {
           <SectionHeading
             as="h1"
             tone="light"
-            eyebrow="Gallery"
             titleLight="Training"
             title="In Action"
             subtitle="Real skills, real practice — a look inside our hands-on First Aid, CPR and safety training sessions."

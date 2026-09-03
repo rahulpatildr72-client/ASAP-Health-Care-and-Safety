@@ -26,7 +26,6 @@ export default function CoursesPage() {
           <SectionHeading
             as="h1"
             tone="light"
-            eyebrow="Training Programs"
             titleLight="Training That Prepares You"
             title="For Real Emergencies"
             subtitle="Every program is hands-on, practical and delivered by certified instructors — onsite at your premises, in our classroom, or live online."

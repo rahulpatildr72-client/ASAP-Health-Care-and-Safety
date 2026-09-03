@@ -19,7 +19,7 @@ export default function SectionHeading({
   title,
   titleLight,
   subtitle,
-  align = "left",
+  align = "center",
   as: Tag = "h2",
   tone = "dark",
   gradient = true,
@@ -86,8 +86,8 @@ export default function SectionHeading({
           as={Tag}
           className="font-display text-[1.75rem] font-bold tracking-[-0.01em] text-gray-900 sm:text-[2.25rem]"
         >
-          <span className="section-title-heading">
-            {titleLight ? `${titleLight} ${title}` : title}
+          <span className="block">
+            <span className="section-title-heading">{titleLight ? `${titleLight} ${title}` : title}</span>
           </span>
         </RevealText>
         {subtitle && (

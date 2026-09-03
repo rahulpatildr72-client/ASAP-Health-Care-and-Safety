@@ -56,7 +56,9 @@ export default function AboutPage() {
 
       {/* Our Story (reference: Who We Are split) */}
       <section className="bg-white py-16 sm:py-24">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 lg:grid-cols-2 lg:gap-16 lg:px-8">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <SectionHeading title="Our Story" />
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <FadeIn className="relative">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border-4 border-white shadow-lg">
               <Image
@@ -91,8 +93,7 @@ export default function AboutPage() {
           </FadeIn>
 
           <FadeIn delay={0.15}>
-            <h2 className="font-display text-[1.75rem] font-semibold text-gray-900 sm:text-[2.25rem]">Our Story</h2>
-            <div className="mt-5 space-y-4 text-[1rem] leading-[1.8] text-gray-700 sm:text-[1.05rem]">
+            <div className="space-y-4 text-[1rem] leading-[1.8] text-gray-700 sm:text-[1.05rem]">
               <p>
                 Most medical emergencies are decided before the ambulance arrives. Cardiac arrest,
                 choking, severe bleeding — in each case, the first three to five minutes belong not
@@ -111,6 +112,7 @@ export default function AboutPage() {
               </p>
             </div>
           </FadeIn>
+          </div>
         </div>
       </section>
 
