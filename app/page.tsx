@@ -28,6 +28,15 @@ const CERT_POINTS = [
   "Refresher sessions to keep skills current",
 ];
 
+/** Homepage-only display titles for the program cards (course data itself is unchanged). */
+const HOME_CARD_TITLES: Record<string, string> = {
+  "first-aid-cpr-training": "First Aid & CPR Training",
+  "basic-first-aid-cpr": "Basic First Aid & CPR",
+  "cpr-aed-choking": "CPR, AED & Choking",
+  "fire-safety-awareness": "Fire Safety Awareness Program",
+  "ert-emergency-response-team": "Emergency Response Team",
+};
+
 export default function HomePage() {
   return (
     <>
@@ -60,7 +69,7 @@ export default function HomePage() {
                 <CourseCard
                   course={course}
                   index={i}
-                  title={i < 3 ? course.title.replace(/\s+Program$/, "") : undefined}
+                  title={HOME_CARD_TITLES[course.slug]}
                 />
               </FadeIn>
             ))}
