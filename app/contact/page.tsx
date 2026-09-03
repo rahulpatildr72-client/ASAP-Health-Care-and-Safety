@@ -59,9 +59,7 @@ export default function ContactPage() {
           <SectionHeading
             as="h1"
             tone="light"
-            eyebrow="Contact"
-            titleLight="Let's Build"
-            title="A Safer Workplace"
+            title="Contact ASAP Health & Safety"
             subtitle="Tell us about your team and your training needs — we'll get back to you with a program and a plan."
           />
           <FadeIn delay={0.25}>
