@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronRight, ChevronDown, Mail, Phone, Facebook, Instagram, Linkedin, Shield, Leaf } from "lucide-react";
+import { Menu, X, ChevronRight, ChevronDown, Mail, Phone, Shield, Leaf } from "lucide-react";
+import SocialIcon from "./SocialIcon";
 import { COURSES, CATEGORY_META } from "@/data/courses";
 import { CONTACT, SOCIAL_LINKS } from "@/data/site";
 
@@ -26,8 +27,7 @@ const NAV_LINKS = [
 ];
 
 /* PLACEHOLDER — point these at the real social profiles. */
-const SOCIAL_ICONS = { facebook: Facebook, instagram: Instagram, linkedin: Linkedin } as const;
-const SOCIALS = SOCIAL_LINKS.map((s) => ({ ...s, icon: SOCIAL_ICONS[s.icon] }));
+const SOCIALS = SOCIAL_LINKS;
 
 const navLinkClass = (active: boolean) =>
   `relative flex items-center gap-1 whitespace-nowrap rounded-md px-3 py-2.5 text-[0.9rem] font-medium transition-all duration-200 after:absolute after:bottom-1 after:left-1/2 after:h-0.5 after:w-0 after:-translate-x-1/2 after:rounded-full after:bg-primary after:transition-all after:duration-300 after:content-[''] hover:bg-primary-light hover:text-primary hover:after:w-3/5 ${
@@ -92,14 +92,14 @@ export default function Header() {
           </div>
           <div className="flex items-center gap-5">
             <div className="flex items-center gap-2">
-              {SOCIALS.map(({ label, href, icon: Icon }) => (
+              {SOCIALS.map(({ label, href, icon }) => (
                 <a
                   key={label}
                   href={href}
                   aria-label={label}
                   className="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:-translate-y-px hover:bg-white/25"
                 >
-                  <Icon className="h-3.5 w-3.5" />
+                  <SocialIcon name={icon} className="h-3.5 w-3.5" />
                 </a>
               ))}
             </div>

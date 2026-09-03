@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Phone, Mail, MapPin, Linkedin, Instagram, Facebook, Youtube, ChevronRight } from "lucide-react";
+import { Phone, Mail, MapPin, ChevronRight } from "lucide-react";
+import SocialIcon from "./SocialIcon";
 import { COURSES } from "@/data/courses";
 import { CONTACT, SITE_NAME } from "@/data/site";
 
@@ -15,11 +16,11 @@ const navigation = [
 
 /* PLACEHOLDER — point these at the real social profiles. */
 const SOCIALS = [
-  { label: "LinkedIn", href: "#", icon: Linkedin },
-  { label: "Instagram", href: "#", icon: Instagram },
-  { label: "Facebook", href: "#", icon: Facebook },
-  { label: "YouTube", href: "#", icon: Youtube },
-];
+  { label: "LinkedIn", href: "#", icon: "linkedin" },
+  { label: "Instagram", href: "#", icon: "instagram" },
+  { label: "Facebook", href: "#", icon: "facebook" },
+  { label: "YouTube", href: "#", icon: "youtube" },
+] as const;
 
 export default function Footer() {
   return (
@@ -35,14 +36,14 @@ export default function Footer() {
             hands-on, practical and delivered by medical professionals.
           </p>
           <div className="mt-6 flex items-center gap-2">
-            {SOCIALS.map(({ label, href, icon: Icon }) => (
+            {SOCIALS.map(({ label, href, icon }) => (
               <a
                 key={label}
                 href={href}
                 aria-label={label}
                 className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:-translate-y-0.5 hover:bg-primary"
               >
-                <Icon className="h-4 w-4" />
+                <SocialIcon name={icon} className="h-4 w-4" />
               </a>
             ))}
           </div>

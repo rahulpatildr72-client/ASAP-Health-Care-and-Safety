@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Phone, Mail, MapPin, Clock, Share2, Facebook, Instagram, Linkedin } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Share2 } from "lucide-react";
+import SocialIcon from "@/components/SocialIcon";
 import EnquiryForm from "@/components/EnquiryForm";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
@@ -33,8 +34,6 @@ const localBusinessJsonLd = {
   description:
     "Professional First Aid, CPR, AED and Health & Safety training for organizations and individuals — onsite across India and live online worldwide.",
 };
-
-const SOCIAL_ICONS = { facebook: Facebook, instagram: Instagram, linkedin: Linkedin } as const;
 
 const infoItems = [
   { icon: Phone, label: "Phone", value: CONTACT.phone, href: CONTACT.phoneHref },
@@ -103,7 +102,6 @@ export default function ContactPage() {
                   </div>
                   <div className="mt-3 flex items-center gap-2.5">
                     {SOCIAL_LINKS.map(({ label, href, icon }) => {
-                      const Icon = SOCIAL_ICONS[icon];
                       const external = href.startsWith("http");
                       return (
                         <a
@@ -114,7 +112,7 @@ export default function ContactPage() {
                           rel={external ? "noopener noreferrer" : undefined}
                           className="icon-square h-10 w-10 rounded-lg hover:-translate-y-0.5 hover:bg-primary hover:text-white"
                         >
-                          <Icon className="h-4.5 w-4.5" />
+                          <SocialIcon name={icon} className="h-[18px] w-[18px]" />
                         </a>
                       );
                     })}
