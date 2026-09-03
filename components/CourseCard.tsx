@@ -48,11 +48,11 @@ export default function CourseCard({
       {/* Gradient overlays */}
       <div
         className="absolute inset-0 z-[1] transition-opacity duration-500 group-hover:opacity-0"
-        style={{ background: "linear-gradient(180deg, rgba(3,58,39,0.1) 0%, rgba(3,58,39,0.6) 50%, rgba(3,58,39,0.95) 100%)" }}
+        style={{ background: "linear-gradient(180deg, rgba(3,58,39,0.06) 0%, rgba(3,58,39,0.42) 50%, rgba(3,58,39,0.82) 100%)" }}
       />
       <div
         className="absolute inset-0 z-[1] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-        style={{ background: "linear-gradient(180deg, rgba(3,58,39,0.2) 0%, rgba(3,58,39,0.7) 40%, rgba(3,58,39,0.98) 100%)" }}
+        style={{ background: "linear-gradient(180deg, rgba(3,58,39,0.12) 0%, rgba(3,58,39,0.58) 40%, rgba(3,58,39,0.94) 100%)" }}
       />
 
       {/* Duration badge */}
