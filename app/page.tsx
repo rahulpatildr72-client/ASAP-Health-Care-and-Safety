@@ -36,6 +36,7 @@ const HOME_CARD_TITLES: Record<string, string> = {
   "fire-safety-awareness": "Fire Safety Awareness",
   "ert-emergency-response-team": "Emergency Response Team (ERT)",
   "diet-nutrition": "Diet & Nutrition",
+  "female-healthcare-wellbeing": "Women Healthcare & Wellbeing Program",
 };
 
 export default function HomePage() {
