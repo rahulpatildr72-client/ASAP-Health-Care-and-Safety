@@ -33,8 +33,8 @@ const HOME_CARD_TITLES: Record<string, string> = {
   "first-aid-cpr-training": "First Aid & CPR Training",
   "basic-first-aid-cpr": "Basic First Aid & CPR",
   "cpr-aed-choking": "CPR, AED & Choking",
-  "fire-safety-awareness": "Fire Safety Awareness Program",
-  "ert-emergency-response-team": "Emergency Response Team",
+  "fire-safety-awareness": "Fire Safety Awareness",
+  "ert-emergency-response-team": "Emergency Response Team (ERT)",
 };
 
 export default function HomePage() {
