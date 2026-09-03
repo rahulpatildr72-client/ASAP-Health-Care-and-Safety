@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronRight, ChevronDown, Mail, Phone, Globe, Facebook, Instagram, Linkedin, Shield, Leaf } from "lucide-react";
+import { Menu, X, ChevronRight, ChevronDown, Mail, Phone, Facebook, Instagram, Linkedin, Shield, Leaf } from "lucide-react";
 import { COURSES, CATEGORY_META } from "@/data/courses";
 import { CONTACT } from "@/data/site";
 
@@ -94,10 +94,6 @@ export default function Header() {
             </a>
           </div>
           <div className="flex items-center gap-5">
-            <span className="hidden items-center gap-1.5 rounded-full bg-white/15 px-3.5 py-1 text-[0.72rem] font-medium uppercase tracking-[0.03em] lg:flex">
-              <Globe className="h-3 w-3" />
-              {CONTACT.onlineNote}
-            </span>
             <div className="flex items-center gap-2">
               {SOCIALS.map(({ label, href, icon: Icon }) => (
                 <a
