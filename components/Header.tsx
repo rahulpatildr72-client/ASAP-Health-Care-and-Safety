@@ -4,21 +4,18 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  Menu,
-  X,
-  ChevronRight,
-  ChevronDown,
-  Building,
-  Video,
-  Mail,
-  Phone,
-  Globe,
-  Facebook,
-  Instagram,
-  Linkedin,
-} from "lucide-react";
+import { Menu, X, ChevronRight, ChevronDown, Mail, Phone, Globe, Facebook, Instagram, Linkedin, Shield, Leaf } from "lucide-react";
+import { COURSES, CATEGORY_META } from "@/data/courses";
 import { CONTACT } from "@/data/site";
+
+/** Dropdown entries: one per training category, linking to the tab on /courses. */
+const CATEGORY_LINKS = (["emergency", "wellbeing"] as const).map((key) => ({
+  key,
+  href: `/courses?category=${key}`,
+  label: CATEGORY_META[key].label,
+  icon: CATEGORY_META[key].icon,
+  count: COURSES.filter((course) => course.category === key).length,
+}));
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
@@ -169,42 +166,25 @@ export default function Header() {
                     >
                       <div className="rounded-2xl border border-gray-200 bg-white p-3 shadow-[0_10px_40px_rgba(0,0,0,0.12)]">
                         <div className="border-b-2 border-primary-light px-3 pb-2 pt-1 text-[0.8rem] font-bold text-primary">
-                          Training Formats
+                          Training Categories
                         </div>
 
-                        <Link
-                          href="/courses?mode=offline"
-                          onClick={() => setDropdownOpen(false)}
-                          className="group mt-2 flex items-center gap-3 rounded-xl p-2.5 transition-all hover:bg-primary-light"
-                        >
-                          <div className="icon-square h-9 w-9 shrink-0 rounded-lg group-hover:bg-primary group-hover:text-white">
-                            <Building className="h-4 w-4" />
-                          </div>
-                          <div>
-                            <div className="flex items-center gap-1.5 text-[0.85rem] font-semibold text-gray-900 group-hover:text-primary">
-                              <span>Offline Training</span>
-                              <span className="rounded-full bg-primary-light px-1.5 py-0.5 text-[9px] font-semibold text-primary">Onsite</span>
+                        {CATEGORY_LINKS.map((cat) => (
+                          <Link
+                            key={cat.key}
+                            href={cat.href}
+                            onClick={() => setDropdownOpen(false)}
+                            className="group mt-2 flex items-center gap-3 rounded-xl p-2.5 transition-all hover:bg-primary-light"
+                          >
+                            <div className="icon-square h-9 w-9 shrink-0 rounded-lg group-hover:bg-primary group-hover:text-white">
+                              {cat.icon === "shield" ? <Shield className="h-4 w-4" /> : <Leaf className="h-4 w-4" />}
                             </div>
-                            <div className="text-[0.75rem] text-gray-600">Onsite & Classroom Workshops</div>
-                          </div>
-                        </Link>
-
-                        <Link
-                          href="/courses?mode=online"
-                          onClick={() => setDropdownOpen(false)}
-                          className="group flex items-center gap-3 rounded-xl p-2.5 transition-all hover:bg-primary-light"
-                        >
-                          <div className="icon-square h-9 w-9 shrink-0 rounded-lg group-hover:bg-primary group-hover:text-white">
-                            <Video className="h-4 w-4" />
-                          </div>
-                          <div>
-                            <div className="flex items-center gap-1.5 text-[0.85rem] font-semibold text-gray-900 group-hover:text-primary">
-                              <span>Online Training</span>
-                              <span className="rounded-full bg-accent-light px-1.5 py-0.5 text-[9px] font-semibold text-accent-dark">Live Virtual</span>
+                            <div>
+                              <div className="text-[0.85rem] font-semibold text-gray-900 group-hover:text-primary">{cat.label}</div>
+                              <div className="text-[0.75rem] text-gray-600">{cat.count} programs</div>
                             </div>
-                            <div className="text-[0.75rem] text-gray-600">Interactive Remote Sessions</div>
-                          </div>
-                        </Link>
+                          </Link>
+                        ))}
                       </div>
                     </div>
                   </div>
@@ -291,22 +271,17 @@ export default function Header() {
 
                   {mobileSubmenuOpen && (
                     <div className="ml-3 space-y-1 border-l-2 border-primary-light pl-3 pt-1">
-                      <Link
-                        href="/courses?mode=offline"
-                        onClick={() => setMenuOpen(false)}
-                        className="flex items-center gap-2.5 rounded-md px-3 py-2.5 text-[0.9rem] font-medium text-gray-700 hover:bg-primary-light hover:text-primary"
-                      >
-                        <Building className="h-4 w-4 text-primary" />
-                        <span>Offline Training (Onsite)</span>
-                      </Link>
-                      <Link
-                        href="/courses?mode=online"
-                        onClick={() => setMenuOpen(false)}
-                        className="flex items-center gap-2.5 rounded-md px-3 py-2.5 text-[0.9rem] font-medium text-gray-700 hover:bg-primary-light hover:text-primary"
-                      >
-                        <Video className="h-4 w-4 text-primary" />
-                        <span>Online Training (Live)</span>
-                      </Link>
+                      {CATEGORY_LINKS.map((cat) => (
+                        <Link
+                          key={cat.key}
+                          href={cat.href}
+                          onClick={() => setMenuOpen(false)}
+                          className="flex items-center gap-2.5 rounded-md px-3 py-2.5 text-[0.9rem] font-medium text-gray-700 hover:bg-primary-light hover:text-primary"
+                        >
+                          {cat.icon === "shield" ? <Shield className="h-4 w-4 text-primary" /> : <Leaf className="h-4 w-4 text-primary" />}
+                          <span>{cat.label}</span>
+                        </Link>
+                      ))}
                     </div>
                   )}
                 </div>
