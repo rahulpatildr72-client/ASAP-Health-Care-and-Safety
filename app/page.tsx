@@ -31,6 +31,7 @@ const HOME_CARD_TITLES: Record<string, string> = {
   "fire-safety-awareness": "Fire Safety Awareness",
   "ert-emergency-response-team": "Emergency Response Team (ERT)",
   "female-healthcare-wellbeing": "Women Healthcare & Wellbeing",
+  "meditation-yoga": "Meditation & Yoga",
 };
 
 /** Explicit override if present, otherwise the course title without its trailing "Program". */
