@@ -204,7 +204,9 @@ export default function Header() {
           {/* Mobile hamburger */}
           <button
             type="button"
-            className="flex h-10 w-10 items-center justify-center rounded-md text-gray-900 transition-colors hover:bg-primary-light hover:text-primary lg:hidden"
+            className={`relative z-[70] flex h-10 w-10 items-center justify-center rounded-full transition-colors lg:hidden ${
+              menuOpen ? "border border-gray-200 bg-white text-gray-900 shadow-sm" : "text-gray-900 hover:bg-primary-light hover:text-primary"
+            }`}
             aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((v) => !v)}
@@ -216,7 +218,7 @@ export default function Header() {
 
       {/* Mobile overlay */}
       <div
-        className={`fixed inset-0 z-50 bg-black/50 transition-opacity duration-300 lg:hidden ${
+        className={`fixed inset-0 z-50 bg-black/45 backdrop-blur-[2px] transition-opacity duration-300 lg:hidden ${
           menuOpen ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         aria-hidden="true"
@@ -225,7 +227,7 @@ export default function Header() {
 
       {/* Mobile drawer (slides in from the right) */}
       <div
-        className={`fixed right-0 top-0 z-[55] h-full w-[300px] max-w-[85vw] overflow-y-auto bg-white px-6 pb-8 pt-24 shadow-[-4px_0_20px_rgba(0,0,0,0.15)] transition-transform duration-300 lg:hidden ${
+        className={`fixed right-0 top-0 z-[55] h-dvh w-[300px] max-w-[85vw] overflow-y-auto overscroll-contain bg-white px-5 pb-8 pt-[90px] shadow-[-8px_0_30px_rgba(0,0,0,0.18)] transition-transform duration-300 ease-out [&_*]:min-w-0 lg:hidden ${
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
         role="dialog"
@@ -241,11 +243,11 @@ export default function Header() {
               return (
                 <div key={link.href}>
                   <div
-                    className={`flex items-center justify-between rounded-md px-3 py-3 text-[0.95rem] font-medium transition-colors ${
+                    className={`flex items-center justify-between rounded-lg px-3.5 py-2.5 text-[0.9rem] font-medium transition-colors ${
                       active ? "bg-primary-light text-primary" : "text-gray-800 hover:bg-primary-light hover:text-primary"
                     }`}
                   >
-                    <Link href={link.href} onClick={() => setMenuOpen(false)} className="flex-1">
+                    <Link href={link.href} onClick={() => setMenuOpen(false)} className="flex-1 truncate">
                       {link.label}
                     </Link>
                     <button
@@ -269,7 +271,7 @@ export default function Header() {
                           key={cat.key}
                           href={cat.href}
                           onClick={() => setMenuOpen(false)}
-                          className="flex items-center gap-2.5 rounded-md px-3 py-2.5 text-[0.9rem] font-medium text-gray-700 hover:bg-primary-light hover:text-primary"
+                          className="flex items-center gap-2.5 rounded-lg px-3 py-2 text-[0.85rem] font-medium text-gray-700 hover:bg-primary-light hover:text-primary"
                         >
                           {cat.icon === "shield" ? <Shield className="h-4 w-4 text-primary" /> : <Leaf className="h-4 w-4 text-primary" />}
                           <span>{cat.label}</span>
@@ -286,27 +288,27 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className={`flex items-center justify-between rounded-md px-3 py-3 text-[0.95rem] font-medium transition-colors ${
+                className={`flex items-center justify-between rounded-lg px-3.5 py-2.5 text-[0.9rem] font-medium transition-colors ${
                   active ? "bg-primary-light text-primary" : "text-gray-800 hover:bg-primary-light hover:text-primary"
                 }`}
               >
-                <span>{link.label}</span>
-                <ChevronRight className="h-4 w-4 text-gray-400" />
+                <span className="truncate">{link.label}</span>
+                <ChevronRight className="h-4 w-4 shrink-0 text-gray-400" />
               </Link>
             );
           })}
         </div>
 
-        <Link href="/contact" onClick={() => setMenuOpen(false)} className="btn btn-primary btn-block mt-6">
+        <Link href="/contact" onClick={() => setMenuOpen(false)} className="btn btn-primary btn-block mt-5">
           Book Training
         </Link>
 
-        <div className="mt-8 space-y-3 border-t border-gray-200 pt-6 text-[0.85rem] text-gray-600">
-          <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-2 hover:text-primary">
-            <Mail className="h-4 w-4 text-primary" /> {CONTACT.email}
+        <div className="mt-6 space-y-3 border-t border-gray-200 pt-5 text-[0.82rem] text-gray-600">
+          <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-2.5 break-all hover:text-primary">
+            <Mail className="h-4 w-4 shrink-0 text-primary" /> {CONTACT.email}
           </a>
-          <a href={CONTACT.phoneHref} className="flex items-center gap-2 hover:text-primary">
-            <Phone className="h-4 w-4 text-primary" /> {CONTACT.phone}
+          <a href={CONTACT.phoneHref} className="flex items-center gap-2.5 hover:text-primary">
+            <Phone className="h-4 w-4 shrink-0 text-primary" /> {CONTACT.phone}
           </a>
         </div>
       </div>
