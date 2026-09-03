@@ -57,6 +57,12 @@ export default function AudienceGrid() {
                         className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                       />
                     )}
+                    {/* Soft green fade over the photo */}
+                    <div
+                      className="pointer-events-none absolute inset-0"
+                      style={{ background: "linear-gradient(180deg, rgba(10,104,71,0.12) 0%, rgba(10,104,71,0.22) 55%, rgba(3,58,39,0.42) 100%)" }}
+                      aria-hidden="true"
+                    />
                   </div>
 
                   <div>
