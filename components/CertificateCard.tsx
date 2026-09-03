@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FOUNDER, SITE_NAME } from "@/data/site";
+import { SITE_NAME } from "@/data/site";
 
 /**
  * Stylised "certificate of completion" mock-up rendered purely with CSS/SVG.
@@ -73,12 +73,6 @@ export default function CertificateCard({
 
         {/* footer */}
         <div className="relative mt-6 flex items-end justify-between gap-4">
-          <div className="min-w-0">
-            <div className="h-px w-32 bg-gray-400" />
-            <p className="mt-1.5 truncate font-display text-xs font-bold text-gray-900">{FOUNDER.name}</p>
-            <p className="text-[10px] text-gray-500">{FOUNDER.role}</p>
-          </div>
-
           {/* seal */}
           <div className="relative flex h-16 w-16 shrink-0 items-center justify-center">
             <svg viewBox="0 0 64 64" className="absolute inset-0 h-full w-full drop-shadow-md" aria-hidden="true">

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Phone, Mail, MapPin, Globe, Linkedin, Instagram, Facebook, Youtube, ChevronRight } from "lucide-react";
+import { Phone, Mail, MapPin, Linkedin, Instagram, Facebook, Youtube, ChevronRight } from "lucide-react";
 import { COURSES } from "@/data/courses";
 import { CONTACT, SITE_NAME } from "@/data/site";
 
@@ -93,10 +93,6 @@ export default function Footer() {
             <li className="flex items-start gap-2.5">
               <MapPin className="mt-1 h-4 w-4 shrink-0 text-primary-mid" />
               <span>{CONTACT.location}</span>
-            </li>
-            <li className="flex items-start gap-2.5">
-              <Globe className="mt-1 h-4 w-4 shrink-0 text-primary-mid" />
-              <span className="font-medium text-white/85">{CONTACT.onlineNote}</span>
             </li>
           </ul>
         </div>
