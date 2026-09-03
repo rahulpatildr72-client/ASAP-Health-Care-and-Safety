@@ -132,8 +132,8 @@ export default function Header() {
             <Image
               src="/logo-full.png"
               alt="ASAP Healthcare & Safety"
-              width={1001}
-              height={310}
+              width={1527}
+              height={458}
               priority
               className="h-10 w-auto sm:h-12 lg:h-14"
             />

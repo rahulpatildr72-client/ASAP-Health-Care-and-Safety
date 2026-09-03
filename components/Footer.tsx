@@ -29,7 +29,7 @@ export default function Footer() {
         {/* Brand */}
         <div>
           <Link href="/" className="inline-flex rounded-lg bg-white px-4 py-3">
-            <Image src="/logo-full.png" alt={SITE_NAME} width={1000} height={308} className="h-10 w-auto sm:h-11" />
+            <Image src="/logo-full.png" alt={SITE_NAME} width={1527} height={458} className="h-10 w-auto sm:h-11" />
           </Link>
           <p className="mt-5 max-w-sm text-[0.9rem] leading-[1.7] text-white/60">
             Professional First Aid, CPR, AED and Health &amp; Safety training for teams and individuals —
