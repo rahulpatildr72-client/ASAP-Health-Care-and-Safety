@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Phone, Mail, MapPin, Globe, MessageCircle, Clock, ExternalLink } from "lucide-react";
+import { Phone, Mail, MapPin, Globe, Clock } from "lucide-react";
 import EnquiryForm from "@/components/EnquiryForm";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
@@ -41,8 +41,6 @@ const infoItems = [
   { icon: Globe, label: "Online Training", value: CONTACT.onlineNote },
 ];
 
-const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CONTACT.location)}`;
-const waHref = `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(
   "Hello! I'd like to enquire about a training session."
 )}`;
 
@@ -100,56 +98,6 @@ export default function ContactPage() {
                   </li>
                 ))}
               </ul>
-            </FadeIn>
-
-            {/* WhatsApp quick card */}
-            <FadeIn delay={0.3}>
-              <a
-                href={waHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center gap-4 rounded-2xl bg-[#25D366] p-5 text-white shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg"
-              >
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/20">
-                  <MessageCircle className="h-5 w-5" />
-                </span>
-                <div className="min-w-0 flex-1">
-                  <p className="font-display text-[1rem] font-semibold">Prefer WhatsApp?</p>
-                  <p className="text-[0.85rem] text-white/90">Chat with us directly — quick answers on dates, batches and pricing.</p>
-                </div>
-                <ExternalLink className="h-4 w-4 shrink-0 opacity-80 transition-transform group-hover:translate-x-0.5" />
-              </a>
-            </FadeIn>
-
-            {/* Location panel (PLACEHOLDER for a real map embed; reference: enquiryMap) */}
-            <FadeIn delay={0.4}>
-              <div className="overflow-hidden rounded-2xl border border-gray-200 bg-gray-100">
-                <div className="relative h-48 bg-primary-light/60">
-                  <div aria-hidden="true" className="absolute inset-0 opacity-70">
-                    <div className="absolute left-0 right-0 top-[38%] h-2 -rotate-6 bg-white" />
-                    <div className="absolute left-0 right-0 top-[68%] h-1.5 rotate-3 bg-white/90" />
-                    <div className="absolute bottom-0 top-0 left-[30%] w-1.5 rotate-12 bg-white/90" />
-                    <div className="absolute bottom-0 top-0 left-[72%] w-2 -rotate-6 bg-white" />
-                  </div>
-                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                    <span className="relative flex h-12 w-12 items-center justify-center">
-                      <span className="animate-ring absolute inset-0 rounded-full bg-primary/40" />
-                      <span className="relative flex h-10 w-10 items-center justify-center rounded-full bg-primary text-white shadow-lg ring-4 ring-white">
-                        <MapPin className="h-5 w-5" />
-                      </span>
-                    </span>
-                  </div>
-                </div>
-                <div className="flex items-center justify-between gap-3 bg-white px-5 py-4">
-                  <div className="min-w-0">
-                    <p className="text-[0.75rem] font-semibold uppercase tracking-[0.08em] text-gray-500">Training centre</p>
-                    <p className="truncate text-[0.95rem] font-semibold text-gray-900">{CONTACT.location}</p>
-                  </div>
-                  <a href={mapsHref} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm shrink-0">
-                    Open map <ExternalLink className="h-3.5 w-3.5" />
-                  </a>
-                </div>
-              </div>
             </FadeIn>
           </div>
         </div>
