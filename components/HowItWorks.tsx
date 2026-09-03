@@ -13,7 +13,6 @@ export default function HowItWorks() {
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <SectionHeading
           align="center"
-          number="04"
           eyebrow="How It Works"
           title="From First Click to First Responder"
           subtitle="Getting your team trained is simple — four steps from enquiry to certification."

@@ -179,7 +179,6 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading
             align="center"
-            number="01"
             eyebrow="Our Approach"
             title="Until Response Becomes Reflex"
             subtitle="Attendance doesn't save lives — competence does. Every program is designed around how people actually behave under pressure."

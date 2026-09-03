@@ -11,7 +11,6 @@ export default function IndustryGrid() {
     <section className="bg-white py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <SectionHeading
-          number="05"
           eyebrow="Industries We Serve"
           title="Safety Training for Every Environment"
           subtitle="Wherever people work, learn or gather, emergencies can happen. We train them all."

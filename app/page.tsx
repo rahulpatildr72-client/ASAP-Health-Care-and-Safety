@@ -49,7 +49,6 @@ export default function HomePage() {
       <section className="bg-white py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading
-            number="01"
             eyebrow="Training Programs"
             title="Training That Prepares You for Real Emergencies"
             subtitle="Hands-on programs delivered onsite, in classrooms and live online — for teams and individuals."
@@ -83,7 +82,6 @@ export default function HomePage() {
       <section className="bg-off-white py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading
-            number="03"
             eyebrow="Why Us"
             title="Why Organizations Trust Us"
             subtitle="From multinational hotels to schools and factories, teams choose us for one reason: training that actually works in a real emergency."
@@ -102,7 +100,6 @@ export default function HomePage() {
       <section className="bg-white py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading
-            number="04"
             eyebrow="Certification"
             title="Walk Out With Proof of Competence"
             subtitle="Every participant who successfully completes a program receives a certificate of completion — a record of hands-on training for personal and workplace documentation."
@@ -144,7 +141,6 @@ export default function HomePage() {
       <section className="bg-off-white py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading
-            number="07"
             eyebrow="Testimonials"
             title="What Our Participants Say"
             subtitle="Feedback from the teams and individuals we've trained."
@@ -159,7 +155,6 @@ export default function HomePage() {
       <section className="bg-white py-16 sm:py-24">
         <div className="mx-auto max-w-3xl px-5 lg:px-8">
           <SectionHeading
-            number="08"
             eyebrow="FAQ"
             title="Frequently Asked Questions"
             subtitle="Everything you need to know before booking your training."

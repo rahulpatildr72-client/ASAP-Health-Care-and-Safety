@@ -34,7 +34,6 @@ export default function AudienceGrid() {
     <section className="bg-white py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <SectionHeading
-          number="02"
           eyebrow="Who We Train"
           title="Training Built for the People In Front of Us"
           subtitle="An office floor, a classroom, a hospital corridor and a family home face very different emergencies. Every program is shaped around who is in the room."
@@ -68,7 +67,7 @@ export default function AudienceGrid() {
                   <div>
                     <span className="tag-pill mb-4">
                       <AppIcon name={audience.icon} className="h-3.5 w-3.5" />
-                      Section 0{i + 1}
+                      Who We Train
                     </span>
                     <h3 className="font-display text-[1.6rem] font-semibold leading-tight text-gray-900 sm:text-[2rem]">
                       {audience.title}
