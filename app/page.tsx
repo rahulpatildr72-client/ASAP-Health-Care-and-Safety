@@ -63,13 +63,6 @@ export default function HomePage() {
               </FadeIn>
             ))}
           </div>
-
-          <FadeIn delay={0.2} className="mt-12 flex justify-center">
-            <Link href="/courses" className="btn-outline-pill">
-              See All Programs
-              <ArrowRight className="h-4 w-4 transition-transform duration-300" />
-            </Link>
-          </FadeIn>
         </div>
       </section>
 
