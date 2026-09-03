@@ -25,6 +25,13 @@ export const CONTACT = {
 export const WEB3FORMS_KEY = "YOUR_WEB3FORMS_KEY";
 
 /* ⚠ CLIENT TO CONFIRM — figures taken from the existing business website; verify before launch. */
+/* PLACEHOLDER — replace "#" with the real profile URLs. */
+export const SOCIAL_LINKS = [
+  { label: "Facebook", href: "#", icon: "facebook" },
+  { label: "Instagram", href: "#", icon: "instagram" },
+  { label: "LinkedIn", href: "#", icon: "linkedin" },
+] as const;
+
 export const STATS = [
   { value: 30000, suffix: "+", label: "People Trained" },
   { value: "All", suffix: "", label: "Pan India Presence" },

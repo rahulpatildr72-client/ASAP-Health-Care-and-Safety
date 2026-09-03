@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronRight, ChevronDown, Mail, Phone, Facebook, Instagram, Linkedin, Shield, Leaf } from "lucide-react";
 import { COURSES, CATEGORY_META } from "@/data/courses";
-import { CONTACT } from "@/data/site";
+import { CONTACT, SOCIAL_LINKS } from "@/data/site";
 
 /** Dropdown entries: one per training category, linking to the tab on /courses. */
 const CATEGORY_LINKS = (["emergency", "wellbeing"] as const).map((key) => ({
@@ -26,11 +26,8 @@ const NAV_LINKS = [
 ];
 
 /* PLACEHOLDER — point these at the real social profiles. */
-const SOCIALS = [
-  { label: "Facebook", href: "#", icon: Facebook },
-  { label: "Instagram", href: "#", icon: Instagram },
-  { label: "LinkedIn", href: "#", icon: Linkedin },
-];
+const SOCIAL_ICONS = { facebook: Facebook, instagram: Instagram, linkedin: Linkedin } as const;
+const SOCIALS = SOCIAL_LINKS.map((s) => ({ ...s, icon: SOCIAL_ICONS[s.icon] }));
 
 const navLinkClass = (active: boolean) =>
   `relative flex items-center gap-1 whitespace-nowrap rounded-md px-3 py-2.5 text-[0.9rem] font-medium transition-all duration-200 after:absolute after:bottom-1 after:left-1/2 after:h-0.5 after:w-0 after:-translate-x-1/2 after:rounded-full after:bg-primary after:transition-all after:duration-300 after:content-[''] hover:bg-primary-light hover:text-primary hover:after:w-3/5 ${

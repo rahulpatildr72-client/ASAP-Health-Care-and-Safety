@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Phone, Mail, MapPin, Globe, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Share2, Facebook, Instagram, Linkedin } from "lucide-react";
 import EnquiryForm from "@/components/EnquiryForm";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import FadeIn from "@/components/FadeIn";
-import { CONTACT, SITE_NAME, SITE_URL } from "@/data/site";
+import { CONTACT, SITE_NAME, SITE_URL, SOCIAL_LINKS } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Contact & Book Training",
@@ -34,11 +34,12 @@ const localBusinessJsonLd = {
     "Professional First Aid, CPR, AED and Health & Safety training for organizations and individuals — onsite across India and live online worldwide.",
 };
 
+const SOCIAL_ICONS = { facebook: Facebook, instagram: Instagram, linkedin: Linkedin } as const;
+
 const infoItems = [
   { icon: Phone, label: "Phone", value: CONTACT.phone, href: CONTACT.phoneHref },
   { icon: Mail, label: "Email", value: CONTACT.email, href: `mailto:${CONTACT.email}` },
   { icon: MapPin, label: "Location", value: CONTACT.location },
-  { icon: Globe, label: "Online Training", value: CONTACT.onlineNote },
 ];
 
 export default function ContactPage() {
@@ -91,6 +92,34 @@ export default function ContactPage() {
                     )}
                   </li>
                 ))}
+
+                {/* Social profiles */}
+                <li className="card p-5 hover:border-primary-light">
+                  <div className="flex items-center gap-3">
+                    <span className="icon-square h-10 w-10 shrink-0 rounded-lg">
+                      <Share2 className="h-4.5 w-4.5" />
+                    </span>
+                    <p className="text-[0.75rem] font-semibold uppercase tracking-[0.08em] text-gray-500">Follow us</p>
+                  </div>
+                  <div className="mt-3 flex items-center gap-2.5">
+                    {SOCIAL_LINKS.map(({ label, href, icon }) => {
+                      const Icon = SOCIAL_ICONS[icon];
+                      const external = href.startsWith("http");
+                      return (
+                        <a
+                          key={label}
+                          href={href}
+                          aria-label={label}
+                          target={external ? "_blank" : undefined}
+                          rel={external ? "noopener noreferrer" : undefined}
+                          className="icon-square h-10 w-10 rounded-lg hover:-translate-y-0.5 hover:bg-primary hover:text-white"
+                        >
+                          <Icon className="h-4.5 w-4.5" />
+                        </a>
+                      );
+                    })}
+                  </div>
+                </li>
               </ul>
             </FadeIn>
           </div>
