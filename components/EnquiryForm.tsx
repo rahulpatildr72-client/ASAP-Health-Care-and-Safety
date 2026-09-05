@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { Loader2, XCircle, ArrowRight, CircleCheck } from "lucide-react";
 import { COURSES } from "@/data/courses";
 import { WEB3FORMS_KEY } from "@/data/site";
@@ -13,6 +13,9 @@ export default function EnquiryForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [mode, setMode] = useState("Onsite");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  // Set on the client only, so the static build and the browser render the same markup.
+  const [today, setToday] = useState("");
+  useEffect(() => setToday(new Date().toISOString().slice(0, 10)), []);
 
   const validate = (form: HTMLFormElement) => {
     const data = new FormData(form);
@@ -116,7 +119,11 @@ export default function EnquiryForm() {
           <span className={labelClass}>Headcount</span>
           <input name="participants" type="number" min="1" placeholder="e.g. 25" className="input" />
         </label>
-        <fieldset className="sm:col-span-2">
+        <label className="block">
+          <span className={labelClass}>Tentative Date</span>
+          <input name="tentative_date" type="date" min={today} className="input cursor-pointer" />
+        </label>
+        <fieldset className="block">
           <legend className={labelClass}>Training Mode</legend>
           <div className="flex flex-wrap gap-2">
             {["Onsite", "Online", "Classroom"].map((m) => (
