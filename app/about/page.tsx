@@ -94,17 +94,25 @@ export default function AboutPage() {
 
           <FadeIn delay={0.15}>
             <div className="space-y-4 text-[1rem] leading-[1.8] text-gray-700 sm:text-[1.05rem]">
-              <p>
-                Most medical emergencies are decided before the ambulance arrives. Cardiac arrest,
-                choking, severe bleeding — in each case, the first three to five minutes belong not
-                to doctors, but to whoever happens to be standing nearby. That simple, sobering fact
-                is why this organization exists.
+              <p className="font-display text-[1.15rem] font-semibold text-gray-900 sm:text-[1.25rem]">
+                Training people to be ready when safety matters most.
               </p>
               <p>
-                What began as one doctor&apos;s conviction has grown into a training organization
-                that has equipped thousands of employees, teachers, hospitality teams, security
-                staff, parents and individuals — across India and internationally — with practical,
-                hands-on lifesaving skills.
+                Emergencies can happen anywhere — at a workplace, hotel, gym, school, or in
+                everyday life. In those important first moments, knowing what to do can make a
+                real difference. V-Safe World was created with a simple goal: to make practical
+                safety, emergency response, and wellbeing training accessible to organizations and
+                individuals.
+              </p>
+              <p>
+                We provide practical training programs covering First Aid, CPR, AED, Fire Safety,
+                Emergency Response, POSH, Stress Management, Mental Wellbeing, Nutrition, Yoga,
+                Meditation, and Women&apos;s Health.
+              </p>
+              <p>
+                Our approach goes beyond simply explaining procedures. We focus on clear guidance,
+                practical learning, demonstrations, and confidence-building so participants can
+                better understand how to respond when they need those skills.
               </p>
               <p className="rounded-xl border-l-4 border-primary bg-primary-light/60 px-5 py-4 font-medium text-primary-dark">
                 People don&apos;t rise to the occasion in an emergency — they fall back on their

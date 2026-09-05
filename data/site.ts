@@ -170,11 +170,13 @@ export const AUDIENCES = [
     icon: "hotel",
     title: "Hospitality & Gyms",
     description:
-      "In a hotel, restaurant or gym, an emergency happens in front of guests and members — and the first few moments decide the outcome. We train front-desk, floor, kitchen and fitness teams to respond calmly and correctly, with First Aid, CPR, AED and Fire Safety skills built through clear guidance, live demonstrations and hands-on practice.",
+      "Creating safer, more prepared teams for hotels, restaurants, fitness centres and gyms — with practical first aid, CPR, emergency response and workplace safety skills.",
     points: [
-      "First Aid, CPR & AED for guest-facing and gym-floor staff",
-      "Fire safety and emergency response for guest and member areas",
-      "Choking, injury and sudden-collapse drills that build real confidence",
+      "CPR, AED & first-aid training for frontline and support teams",
+      "Emergency response training for injuries, medical incidents and workplace emergencies",
+      "Fire safety and evacuation awareness for staff and facility teams",
+      "Health, safety and wellbeing programs designed for employees and customers",
+      "Refresher training to keep essential safety skills current and effective",
     ],
     href: "/courses/basic-first-aid-cpr",
     linkLabel: "Basic First Aid & CPR",
