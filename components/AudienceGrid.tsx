@@ -19,7 +19,7 @@ const AUDIENCE_IMAGES: Record<string, { src: string; alt: string }> = {
   },
   "Hospitality & Gyms": {
     src: "/aed-training.png",
-    alt: "Healthcare staff attaching AED pads to a training mannequin",
+    alt: "Hospitality and gym staff attaching AED pads to a training mannequin",
   },
   "Communities & Individuals": {
     src: "/hero-cpr.jpg",
