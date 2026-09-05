@@ -38,6 +38,8 @@ export default async function CoursePage({ params }: Props) {
   const course = getCourse(slug);
   if (!course) notFound();
 
+  const showModes = !course.hideDeliveryModes;
+
   const courseJsonLd = {
     "@context": "https://schema.org",
     "@type": "Course",
@@ -49,15 +51,17 @@ export default async function CoursePage({ params }: Props) {
       name: SITE_NAME,
       url: SITE_URL,
     },
-    hasCourseInstance: course.modes.map((mode) => ({
-      "@type": "CourseInstance",
-      courseMode: mode.toLowerCase().includes("online") ? "Online" : "Onsite",
-    })),
+    ...(showModes && {
+      hasCourseInstance: course.modes.map((mode) => ({
+        "@type": "CourseInstance",
+        courseMode: mode.toLowerCase().includes("online") ? "Online" : "Onsite",
+      })),
+    }),
   };
 
   const facts = [
     { icon: Clock, label: "Duration", value: course.duration },
-    { icon: MapPin, label: "Modes", value: course.modes.join(" · ") },
+    ...(showModes ? [{ icon: MapPin, label: "Modes", value: course.modes.join(" · ") }] : []),
     { icon: Award, label: "Certification", value: "Certificate on completion" },
   ];
 
@@ -239,7 +243,7 @@ export default async function CoursePage({ params }: Props) {
         </div>
       </section>
 
-      <CTABanner />
+      <CTABanner showModes={showModes} />
     </>
   );
 }

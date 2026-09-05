@@ -20,6 +20,8 @@ export type Course = {
   learn: string[];
   duration: string;
   modes: string[];
+  /** When true, the program page shows no delivery-mode (online/offline) label, badge or note. */
+  hideDeliveryModes?: boolean;
   certification: string;
   /** lucide-react icon key resolved in components/CourseCard.tsx */
   icon: "cross" | "heart" | "zap" | "wind" | "shield" | "building" | "flame" | "brain" | "smile" | "apple";
@@ -159,6 +161,7 @@ export const COURSES: Course[] = [
     ],
     duration: "2–3 Hours",
     modes: ["Onsite", "Classroom"],
+    hideDeliveryModes: true,
     certification:
       "Participants receive a certificate of completion after successfully finishing the program.",
     icon: "flame",
@@ -192,6 +195,7 @@ export const COURSES: Course[] = [
     ],
     duration: "Customizable",
     modes: ["Onsite", "Classroom"],
+    hideDeliveryModes: true,
     certification:
       "Participants receive a certificate of completion after successfully finishing the program.",
     icon: "shield",

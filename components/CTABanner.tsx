@@ -12,8 +12,14 @@ const NOTES = [
   { icon: BadgeCheck, label: "Certificate on completion" },
 ];
 
+type CTABannerProps = {
+  /** Hide the "Onsite & live online" note (used by programs without delivery-mode labels). */
+  showModes?: boolean;
+};
+
 /** Green gradient CTA band with decorative circle (reference: ctaBanner). */
-export default function CTABanner() {
+export default function CTABanner({ showModes = true }: CTABannerProps) {
+  const notes = showModes ? NOTES : NOTES.filter((note) => note.icon !== MapPin);
   const wa = `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(
     "Hello! I'd like to book a training session."
   )}`;
@@ -47,7 +53,7 @@ export default function CTABanner() {
         </FadeIn>
         <FadeIn delay={0.5}>
           <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-7 gap-y-3 text-[0.875rem] text-white/75">
-            {NOTES.map(({ icon: Icon, label }) => (
+            {notes.map(({ icon: Icon, label }) => (
               <li key={label} className="flex items-center gap-2">
                 <Icon className="h-4 w-4 text-accent" />
                 {label}
