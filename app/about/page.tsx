@@ -100,9 +100,7 @@ export default function AboutPage() {
               <p>
                 Emergencies can happen anywhere — at a workplace, hotel, gym, school, or in
                 everyday life. In those important first moments, knowing what to do can make a
-                real difference. V-Safe World was created with a simple goal: to make practical
-                safety, emergency response, and wellbeing training accessible to organizations and
-                individuals.
+                real difference.
               </p>
               <p>
                 We provide practical training programs covering First Aid, CPR, AED, Fire Safety,
