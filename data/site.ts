@@ -130,9 +130,9 @@ export const FOUNDER = {
   story:
     "After more than two decades of working with medical and accidental emergencies, Dr. Fernandes saw the same pattern again and again: in the critical minutes before professional help arrives, it is the people nearby who decide the outcome. She founded this organization with one goal — to increase the survival rates of victims of life-threatening emergencies by making premium-quality, affordable First Aid and CPR training accessible to everyone, everywhere.",
   vision:
-    "To increase the survival rates of victims of life-threatening medical and accidental emergencies, so that everyone feels safe and secure.",
+    "To create safer workplaces and communities where people are prepared to respond confidently when it matters most.",
   mission:
-    "To make affordable, premium-quality, high-standard First Aid & CPR training easily available to every human being across the world.",
+    "To provide practical, accessible, and professional safety training that helps individuals and organizations prevent risks, respond to emergencies, and build a stronger culture of safety.",
 };
 
 /**
