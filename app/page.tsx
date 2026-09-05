@@ -14,7 +14,7 @@ import { COURSES } from "@/data/courses";
 import { SITE_TAGLINE, WHY_US } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "First Aid, CPR & Health Safety Training in India",
+  title: { absolute: "ASAP Healthcare & Safety" },
   description: SITE_TAGLINE,
 };
 
