@@ -16,7 +16,7 @@ export const CONTACT = {
   phoneHref: "tel:+919967730940",
   /* PLACEHOLDER — replace with the real WhatsApp business number (digits only, country code first). */
   whatsapp: "919967730940",
-  email: "asapfirstaid@gmail.com",
+  email: "info@asaphealthandsafety.com",
   location: "Navi Mumbai, Maharashtra, India",
   onlineNote: "Live online training available worldwide",
 };
