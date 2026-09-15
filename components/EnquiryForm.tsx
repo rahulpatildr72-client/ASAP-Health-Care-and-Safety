@@ -12,6 +12,9 @@ type Status = "idle" | "submitting" | "success" | "error";
 export default function EnquiryForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [mode, setMode] = useState("Onsite");
+  const [courseTitle, setCourseTitle] = useState(COURSES[0].title);
+  // Programs flagged hideDeliveryModes have no selectable Online/Offline mode.
+  const showMode = !COURSES.find((c) => c.title === courseTitle)?.hideDeliveryModes;
   const [errors, setErrors] = useState<Record<string, string>>({});
   // Set on the client only, so the static build and the browser render the same markup.
   const [today, setToday] = useState("");
@@ -38,7 +41,7 @@ export default function EnquiryForm() {
     const data = new FormData(form);
     data.append("access_key", WEB3FORMS_KEY);
     data.append("subject", `Training Enquiry — ${data.get("course")}`);
-    data.append("preferred_mode", mode);
+    if (showMode) data.append("preferred_mode", mode);
 
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
@@ -50,6 +53,7 @@ export default function EnquiryForm() {
         setStatus("success");
         form.reset();
         setMode("Onsite");
+        setCourseTitle(COURSES[0].title);
       } else {
         setStatus("error");
       }
@@ -107,7 +111,12 @@ export default function EnquiryForm() {
         </label>
         <label className="block">
           <span className={labelClass}>Program</span>
-          <select name="course" className="input min-w-0 max-w-full cursor-pointer" defaultValue={COURSES[0].title}>
+          <select
+            name="course"
+            className="input min-w-0 max-w-full cursor-pointer"
+            value={courseTitle}
+            onChange={(e) => setCourseTitle(e.target.value)}
+          >
             {COURSES.map((course) => (
               <option key={course.slug} value={course.title}>
                 {course.title}
@@ -123,6 +132,7 @@ export default function EnquiryForm() {
           <span className={labelClass}>Tentative Date</span>
           <input name="tentative_date" type="date" min={today} className="input cursor-pointer" />
         </label>
+        {showMode && (
         <fieldset className="block">
           <legend className={labelClass}>Training Mode</legend>
           <div className="flex flex-wrap gap-2">
@@ -143,6 +153,7 @@ export default function EnquiryForm() {
             ))}
           </div>
         </fieldset>
+        )}
         <label className="block sm:col-span-2">
           <span className={labelClass}>Details</span>
           <textarea

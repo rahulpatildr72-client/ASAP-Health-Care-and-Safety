@@ -291,6 +291,7 @@ export const COURSES: Course[] = [
     ],
     duration: "2–3 Hours",
     modes: ["Onsite", "Classroom"],
+    hideDeliveryModes: true,
     certification:
       "Participants receive a certificate of completion after successfully finishing the program.",
     icon: "smile",
