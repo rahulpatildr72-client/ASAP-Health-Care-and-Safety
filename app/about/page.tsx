@@ -156,10 +156,7 @@ export default function AboutPage() {
           <SectionHeading align="center" eyebrow="Founder & Lead Trainer" title={FOUNDER.name} />
           <FadeIn>
             <div className="flex flex-col items-center gap-8 rounded-2xl bg-off-white p-7 sm:p-10 md:flex-row md:items-start md:gap-12">
-              <FounderPortrait
-                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=900&q=80"
-                alt={`Professional portrait of ${FOUNDER.name}, founder and lead trainer`}
-              />
+              <FounderPortrait />
               <div className="min-w-0 flex-1">
                 <blockquote className="border-l-4 border-primary pl-5 text-[1rem] italic leading-[1.7] text-gray-700 sm:text-[1.15rem]">
                   {FOUNDER.story}
