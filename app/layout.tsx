@@ -52,7 +52,7 @@ const organizationJsonLd = {
   email: CONTACT.email,
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Mumbai",
+    addressLocality: "Navi Mumbai",
     addressRegion: "Maharashtra",
     addressCountry: "IN",
   },

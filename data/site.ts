@@ -17,7 +17,7 @@ export const CONTACT = {
   /* PLACEHOLDER — replace with the real WhatsApp business number (digits only, country code first). */
   whatsapp: "919967730940",
   email: "asapfirstaid@gmail.com",
-  location: "Goregaon West, Mumbai, Maharashtra, India",
+  location: "Navi Mumbai, Maharashtra, India",
   onlineNote: "Live online training available worldwide",
 };
 
