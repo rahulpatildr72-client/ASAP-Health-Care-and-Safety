@@ -1,7 +1,6 @@
 import Image from "next/image";
-import { Shield } from "lucide-react";
 
-/** Circular leadership photo with amber shield badge (reference: directorPhoto). */
+/** Circular leadership photo with the brand logo mark as a badge (reference: directorPhoto). */
 export default function FounderPortrait({ src, alt }: { src: string; alt: string }) {
   return (
     <div className="relative mx-auto h-44 w-44 shrink-0 sm:h-48 sm:w-48">
@@ -10,9 +9,9 @@ export default function FounderPortrait({ src, alt }: { src: string; alt: string
       </div>
       <span
         aria-hidden="true"
-        className="absolute bottom-1 right-1 flex h-11 w-11 items-center justify-center rounded-full bg-accent text-white shadow-md ring-4 ring-white"
+        className="absolute bottom-1 right-1 flex h-11 w-11 items-center justify-center rounded-full bg-white shadow-md ring-4 ring-white"
       >
-        <Shield className="h-5 w-5" />
+        <Image src="/logo-mark.png" alt="" width={32} height={32} className="h-8 w-8 object-contain" />
       </span>
     </div>
   );
