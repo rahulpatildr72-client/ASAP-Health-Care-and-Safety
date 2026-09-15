@@ -18,7 +18,6 @@ const navigation = [
 const SOCIALS = [
   { label: "LinkedIn", href: "#", icon: "linkedin" },
   { label: "Instagram", href: "#", icon: "instagram" },
-  { label: "Facebook", href: "#", icon: "facebook" },
 ] as const;
 
 export default function Footer() {
