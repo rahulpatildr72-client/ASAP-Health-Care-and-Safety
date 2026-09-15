@@ -11,7 +11,7 @@ type Status = "idle" | "submitting" | "success" | "error";
 
 export default function EnquiryForm() {
   const [status, setStatus] = useState<Status>("idle");
-  const [mode, setMode] = useState("Offline");
+  const [mode, setMode] = useState("Onsite");
   const [courseTitle, setCourseTitle] = useState(COURSES[0].title);
   // Programs flagged hideDeliveryModes have no selectable Online/Offline mode.
   const showMode = !COURSES.find((c) => c.title === courseTitle)?.hideDeliveryModes;
@@ -52,7 +52,7 @@ export default function EnquiryForm() {
       if (json.success) {
         setStatus("success");
         form.reset();
-        setMode("Offline");
+        setMode("Onsite");
         setCourseTitle(COURSES[0].title);
       } else {
         setStatus("error");
@@ -136,7 +136,7 @@ export default function EnquiryForm() {
         <fieldset className="block">
           <legend className={labelClass}>Training Mode</legend>
           <div className="flex flex-wrap gap-2">
-            {["Offline", "Online"].map((m) => (
+            {["Onsite", "Online", "Classroom"].map((m) => (
               <button
                 key={m}
                 type="button"

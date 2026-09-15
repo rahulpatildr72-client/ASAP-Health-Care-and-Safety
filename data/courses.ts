@@ -64,7 +64,7 @@ export const COURSES: Course[] = [
       "Knowing when to seek emergency medical assistance",
     ],
     duration: "6 Hours",
-    modes: ["Onsite", "Classroom"],
+    modes: ["Offline", "Online"],
     certification:
       "Participants receive a certificate of completion after successfully finishing the program.",
     icon: "cross",
@@ -96,7 +96,7 @@ export const COURSES: Course[] = [
       "Understanding when to contact emergency services",
     ],
     duration: "4 Hours",
-    modes: ["Onsite", "Classroom"],
+    modes: ["Offline", "Online"],
     certification:
       "Participants receive a certificate of completion after successfully finishing the program.",
     icon: "heart",
@@ -128,7 +128,7 @@ export const COURSES: Course[] = [
       "Knowing when to seek emergency assistance",
     ],
     duration: "2–3 Hours",
-    modes: ["Onsite", "Classroom"],
+    modes: ["Offline", "Online"],
     certification:
       "Participants receive a certificate of completion after successfully finishing the program.",
     icon: "zap",
@@ -160,7 +160,7 @@ export const COURSES: Course[] = [
       "Emergency exits and assembly areas",
     ],
     duration: "2–3 Hours",
-    modes: ["Onsite", "Classroom"],
+    modes: ["Offline", "Online"],
     hideDeliveryModes: true,
     certification:
       "Participants receive a certificate of completion after successfully finishing the program.",
@@ -194,7 +194,7 @@ export const COURSES: Course[] = [
       "Post-emergency reporting and review",
     ],
     duration: "Customizable",
-    modes: ["Onsite", "Classroom"],
+    modes: ["Offline", "Online"],
     hideDeliveryModes: true,
     certification:
       "Participants receive a certificate of completion after successfully finishing the program.",
@@ -228,7 +228,7 @@ export const COURSES: Course[] = [
       "Prevention through responsible behaviour",
     ],
     duration: "2–3 Hours",
-    modes: ["Onsite", "Classroom"],
+    modes: ["Offline", "Online"],
     certification:
       "Participants receive a certificate of completion after successfully finishing the program.",
     icon: "building",
@@ -259,7 +259,7 @@ export const COURSES: Course[] = [
       "Supporting a healthier work-life balance",
     ],
     duration: "2–3 Hours",
-    modes: ["Onsite", "Classroom"],
+    modes: ["Offline", "Online"],
     certification:
       "Participants receive a certificate of completion after successfully finishing the program.",
     icon: "brain",
@@ -290,7 +290,7 @@ export const COURSES: Course[] = [
       "Promoting positive wellbeing practices",
     ],
     duration: "2–3 Hours",
-    modes: ["Onsite", "Classroom"],
+    modes: ["Offline", "Online"],
     hideDeliveryModes: true,
     certification:
       "Participants receive a certificate of completion after successfully finishing the program.",
@@ -319,7 +319,7 @@ export const COURSES: Course[] = [
       "Making healthier lifestyle choices",
     ],
     duration: "3–4 Hours",
-    modes: ["Onsite", "Classroom"],
+    modes: ["Offline", "Online"],
     certification:
       "Participants receive a certificate of completion after successfully finishing the program.",
     icon: "apple",
@@ -346,7 +346,7 @@ export const COURSES: Course[] = [
       "Basic yoga practices for wellbeing",
     ],
     duration: "3–4 Hours",
-    modes: ["Onsite", "Classroom"],
+    modes: ["Offline", "Online"],
     certification:
       "Participants receive a certificate of completion after successfully finishing the program.",
     icon: "wind",
@@ -379,7 +379,7 @@ export const COURSES: Course[] = [
       "Knowing when to seek appropriate professional healthcare support",
     ],
     duration: "2–3 Hours",
-    modes: ["Onsite", "Classroom"],
+    modes: ["Offline", "Online"],
     certification:
       "Participants receive a certificate of completion after successfully finishing the program.",
     icon: "heart",
