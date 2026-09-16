@@ -1,6 +1,22 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Activity, Siren, BadgeCheck, Eye, Target, Users } from "lucide-react";
+import {
+  Activity,
+  Siren,
+  BadgeCheck,
+  Eye,
+  Target,
+  Users,
+  Compass,
+  CircleCheck,
+  BookOpen,
+  Hand,
+  ShieldCheck,
+  UserCheck,
+  Lightbulb,
+  Building2,
+  ArrowRight,
+} from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
 import TrustBar from "@/components/TrustBar";
 import CTABanner from "@/components/CTABanner";
@@ -36,6 +52,68 @@ const APPROACH = [
     title: "Demonstrated Competence",
     description:
       "Participants show they can perform the skills hands-on before completing the program — certification reflects ability, not just attendance.",
+  },
+];
+
+const PURPOSE =
+  "To help people and organizations build the knowledge, skills, and confidence needed to stay safer, prevent risks, and respond effectively during emergencies.";
+
+const EXPERTISE = [
+  "First Aid & CPR",
+  "AED Awareness",
+  "Emergency Response",
+  "Fire Safety",
+  "Workplace Safety",
+  "Emergency Preparedness",
+  "POSH Awareness",
+  "Stress Management & Mental Wellbeing",
+  "Health & Wellbeing Awareness",
+  "Customized Safety Training",
+];
+
+const STEPS = [
+  {
+    icon: BookOpen,
+    title: "Learn",
+    description: "Understand important safety procedures and emergency response techniques.",
+  },
+  {
+    icon: Hand,
+    title: "Practise",
+    description: "Build confidence through demonstrations, activities, and practical learning.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Respond",
+    description: "Learn how to take appropriate action when an emergency occurs.",
+  },
+];
+
+const WHY_US = [
+  {
+    icon: UserCheck,
+    title: "Experienced Trainers",
+    description: "Learn from trainers with practical knowledge of health and safety.",
+  },
+  {
+    icon: Hand,
+    title: "Practical Learning",
+    description: "Focus on demonstrations, activities, and real-world situations.",
+  },
+  {
+    icon: Lightbulb,
+    title: "Clear & Easy to Understand",
+    description: "Training is explained in a simple and practical way.",
+  },
+  {
+    icon: Building2,
+    title: "Organization Focused",
+    description: "Programs can be adapted to the needs of different organizations.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Safety First",
+    description: "Encourages awareness, preparedness, and responsible action.",
   },
 ];
 
@@ -118,6 +196,117 @@ export default function AboutPage() {
               </p>
             </div>
           </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Purpose */}
+      <section className="bg-off-white py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <FadeIn>
+            <div className="card relative overflow-hidden p-8 sm:p-12 lg:p-14">
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-primary-light"
+              />
+              <div className="relative flex flex-col items-start gap-8 lg:flex-row lg:items-center lg:gap-14">
+                <div className="shrink-0">
+                  <span className="icon-square h-16 w-16 rounded-2xl sm:h-20 sm:w-20">
+                    <Compass className="h-8 w-8 sm:h-9 sm:w-9" />
+                  </span>
+                </div>
+                <div className="min-w-0">
+                  <span className="tag-pill mb-4">Our Purpose</span>
+                  <h2 className="font-display text-[1.75rem] font-bold leading-tight text-gray-900 sm:text-[2.25rem]">
+                    Why ASAP Health &amp; Safety Exists
+                  </h2>
+                  <span className="mt-4 block h-1 w-14 rounded-full bg-accent" aria-hidden="true" />
+                  <p className="mt-5 max-w-3xl text-[1.05rem] leading-[1.8] text-gray-700 sm:text-[1.2rem]">{PURPOSE}</p>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Our Training Expertise */}
+      <section className="bg-white py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <SectionHeading
+            align="center"
+            eyebrow="Our Training Expertise"
+            title="Areas We Train In"
+            subtitle="Practical programs that cover the safety, emergency and wellbeing needs of workplaces, institutions and communities."
+          />
+          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {EXPERTISE.map((item, i) => (
+              <FadeIn key={item} delay={i * 0.04}>
+                <li className="flex h-full items-center gap-3.5 rounded-xl border border-gray-200 bg-off-white px-5 py-4 transition-colors hover:border-primary/40 hover:bg-primary-light/60">
+                  <CircleCheck className="h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+                  <span className="text-[0.95rem] font-semibold text-gray-800">{item}</span>
+                </li>
+              </FadeIn>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Our Training Approach: Learn, Practise, Respond */}
+      <section className="bg-off-white py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <SectionHeading
+            align="center"
+            eyebrow="Our Training Approach"
+            title="Learn. Practise. Respond."
+            subtitle="A simple three-step path that takes participants from understanding to confident action."
+          />
+          <ol className="grid gap-8 lg:grid-cols-3 lg:gap-6">
+            {STEPS.map(({ icon: Icon, title, description }, i) => (
+              <FadeIn key={title} delay={i * 0.1} className="relative h-full">
+                <li className="relative h-full rounded-2xl bg-white p-8 pt-10 text-center shadow-sm">
+                  <span className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary px-4 py-1 font-display text-[0.8rem] font-bold tracking-[0.1em] text-white ring-4 ring-off-white">
+                    0{i + 1}
+                  </span>
+                  <span className="icon-square mx-auto mb-5 h-[70px] w-[70px] rounded-2xl">
+                    <Icon className="h-7 w-7" />
+                  </span>
+                  <h3 className="font-display text-[1.25rem] font-bold uppercase tracking-[0.06em] text-gray-900">{title}</h3>
+                  <span className="mx-auto mt-3 block h-1 w-10 rounded-full bg-accent" aria-hidden="true" />
+                  <p className="mt-4 text-[0.95rem] leading-[1.7] text-gray-600">{description}</p>
+                  {i < STEPS.length - 1 && (
+                    <ArrowRight
+                      aria-hidden="true"
+                      className="absolute -right-6 top-1/2 hidden h-6 w-6 -translate-y-1/2 text-accent lg:block"
+                    />
+                  )}
+                </li>
+              </FadeIn>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* Why ASAP Health & Safety? */}
+      <section className="bg-white py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <SectionHeading
+            align="center"
+            eyebrow="Why Choose Us"
+            title="Why ASAP Health & Safety?"
+            highlight="Health & Safety?"
+          />
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5 lg:gap-5">
+            {WHY_US.map(({ icon: Icon, title, description }, i) => (
+              <FadeIn key={title} delay={i * 0.08} className="h-full">
+                <div className="group h-full rounded-2xl border border-gray-200 bg-white p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-md">
+                  <span className="icon-square mx-auto mb-4 h-14 w-14 rounded-2xl group-hover:bg-primary group-hover:text-white">
+                    <Icon className="h-6 w-6" />
+                  </span>
+                  <h3 className="font-display text-[1.05rem] font-semibold leading-snug text-gray-900">{title}</h3>
+                  <p className="mt-2 text-[0.875rem] leading-[1.6] text-gray-600">{description}</p>
+                </div>
+              </FadeIn>
+            ))}
           </div>
         </div>
       </section>
