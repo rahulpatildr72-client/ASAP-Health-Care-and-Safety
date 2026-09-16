@@ -118,7 +118,7 @@ export const CREDENTIALS = [
 
 /* ⚠ CLIENT TO CONFIRM — founder details referenced from the existing business website. */
 export const FOUNDER = {
-  name: "Dr. Geeta Fernandes",
+  name: "Dr. Amruta Patil",
   role: "Founder & Lead Trainer",
   qualifications: [
     "Medical graduate, Mumbai University",
@@ -127,7 +127,7 @@ export const FOUNDER = {
     "Trained participants across all pan India",
   ],
   story:
-    "After more than two decades of working with medical and accidental emergencies, Dr. Fernandes saw the same pattern again and again: in the critical minutes before professional help arrives, it is the people nearby who decide the outcome. She founded this organization with one goal — to increase the survival rates of victims of life-threatening emergencies by making premium-quality, affordable First Aid and CPR training accessible to everyone, everywhere.",
+    "After more than two decades of working with medical and accidental emergencies, Dr. Patil saw the same pattern again and again: in the critical minutes before professional help arrives, it is the people nearby who decide the outcome. She founded this organization with one goal — to increase the survival rates of victims of life-threatening emergencies by making premium-quality, affordable First Aid and CPR training accessible to everyone, everywhere.",
   vision:
     "To create safer workplaces and communities where people are prepared to respond confidently when it matters most.",
   mission:
