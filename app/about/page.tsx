@@ -7,7 +7,6 @@ import {
   Eye,
   Target,
   Users,
-  Compass,
   CircleCheck,
   BookOpen,
   Hand,
@@ -54,9 +53,6 @@ const APPROACH = [
       "Participants show they can perform the skills hands-on before completing the program — certification reflects ability, not just attendance.",
   },
 ];
-
-const PURPOSE =
-  "To help people and organizations build the knowledge, skills, and confidence needed to stay safer, prevent risks, and respond effectively during emergencies.";
 
 const EXPERTISE = [
   "First Aid & CPR",
@@ -200,37 +196,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Our Purpose */}
-      <section className="bg-off-white py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <FadeIn>
-            <div className="card relative overflow-hidden p-8 sm:p-12 lg:p-14">
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-primary-light"
-              />
-              <div className="relative flex flex-col items-start gap-8 lg:flex-row lg:items-center lg:gap-14">
-                <div className="shrink-0">
-                  <span className="icon-square h-16 w-16 rounded-2xl sm:h-20 sm:w-20">
-                    <Compass className="h-8 w-8 sm:h-9 sm:w-9" />
-                  </span>
-                </div>
-                <div className="min-w-0">
-                  <span className="tag-pill mb-4">Our Purpose</span>
-                  <h2 className="font-display text-[1.75rem] font-bold leading-tight text-gray-900 sm:text-[2.25rem]">
-                    Why ASAP Health &amp; Safety Exists
-                  </h2>
-                  <span className="mt-4 block h-1 w-14 rounded-full bg-accent" aria-hidden="true" />
-                  <p className="mt-5 max-w-3xl text-[1.05rem] leading-[1.8] text-gray-700 sm:text-[1.2rem]">{PURPOSE}</p>
-                </div>
-              </div>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
       {/* Our Training Expertise */}
-      <section className="bg-white py-16 sm:py-24">
+      <section className="bg-off-white py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading
             align="center"
@@ -241,7 +208,7 @@ export default function AboutPage() {
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {EXPERTISE.map((item, i) => (
               <FadeIn key={item} delay={i * 0.04}>
-                <li className="flex h-full items-center gap-3.5 rounded-xl border border-gray-200 bg-off-white px-5 py-4 transition-colors hover:border-primary/40 hover:bg-primary-light/60">
+                <li className="flex h-full items-center gap-3.5 rounded-xl border border-gray-200 bg-white px-5 py-4 transition-colors hover:border-primary/40 hover:bg-primary-light/60">
                   <CircleCheck className="h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
                   <span className="text-[0.95rem] font-semibold text-gray-800">{item}</span>
                 </li>
@@ -252,7 +219,7 @@ export default function AboutPage() {
       </section>
 
       {/* Our Training Approach: Learn, Practise, Respond */}
-      <section className="bg-off-white py-16 sm:py-24">
+      <section className="bg-white py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading
             align="center"
@@ -263,8 +230,8 @@ export default function AboutPage() {
           <ol className="grid gap-8 lg:grid-cols-3 lg:gap-6">
             {STEPS.map(({ icon: Icon, title, description }, i) => (
               <FadeIn key={title} delay={i * 0.1} className="relative h-full">
-                <li className="relative h-full rounded-2xl bg-white p-8 pt-10 text-center shadow-sm">
-                  <span className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary px-4 py-1 font-display text-[0.8rem] font-bold tracking-[0.1em] text-white ring-4 ring-off-white">
+                <li className="relative h-full rounded-2xl bg-off-white p-8 pt-10 text-center shadow-sm">
+                  <span className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary px-4 py-1 font-display text-[0.8rem] font-bold tracking-[0.1em] text-white ring-4 ring-white">
                     0{i + 1}
                   </span>
                   <span className="icon-square mx-auto mb-5 h-[70px] w-[70px] rounded-2xl">
@@ -287,7 +254,7 @@ export default function AboutPage() {
       </section>
 
       {/* Why ASAP Health & Safety? */}
-      <section className="bg-white py-16 sm:py-24">
+      <section className="bg-off-white py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading
             align="center"
