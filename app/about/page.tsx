@@ -198,7 +198,7 @@ export default function AboutPage() {
             align="center"
             eyebrow="Our Training Expertise"
             title="Doctor-Led Training"
-            subtitle="Practical programs that cover the safety, emergency and wellbeing needs of workplaces, institutions and communities."
+            subtitle="At ASAP, our core health and safety training sessions are conducted by doctors, bringing medical knowledge, clinical understanding and practical healthcare experience directly into the training environment."
           />
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {EXPERTISE.map((item, i) => (
