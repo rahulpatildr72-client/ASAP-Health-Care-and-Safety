@@ -168,23 +168,15 @@ export default function AboutPage() {
 
           <FadeIn delay={0.15}>
             <div className="space-y-4 text-[1rem] leading-[1.8] text-gray-700 sm:text-[1.05rem]">
-              <p className="font-display text-[1.15rem] font-semibold text-gray-900 sm:text-[1.25rem]">
-                Training people to be ready when safety matters most.
+              <p>
+                ASAP is supported by a team of doctors and healthcare professionals with relevant
+                experience in healthcare, emergency response, first aid, CPR, BLS, AED, workplace
+                health, preventive healthcare and health education.
               </p>
               <p>
-                Emergencies can happen anywhere — at a workplace, hotel, gym, school, or in
-                everyday life. In those important first moments, knowing what to do can make a
-                real difference.
-              </p>
-              <p>
-                We provide practical training programs covering First Aid, CPR, AED, Fire Safety,
-                Emergency Response, POSH, Stress Management, Mental Wellbeing, Nutrition, Yoga,
-                Meditation, and Women&apos;s Health.
-              </p>
-              <p>
-                Our approach goes beyond simply explaining procedures. We focus on clear guidance,
-                practical learning, demonstrations, and confidence-building so participants can
-                better understand how to respond when they need those skills.
+                Our professional team includes doctors with relevant clinical and training
+                qualifications, including professionals with AHA BLS Instructor credentials, where
+                applicable.
               </p>
               <p className="rounded-xl border-l-4 border-primary bg-primary-light/60 px-5 py-4 font-medium text-primary-dark">
                 People don&apos;t rise to the occasion in an emergency — they fall back on their
