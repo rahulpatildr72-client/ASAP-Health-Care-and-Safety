@@ -43,7 +43,7 @@ export default function Lightbox({ images }: { images: GalleryImage[] }) {
             key={img.src}
             type="button"
             onClick={() => setActive(i)}
-            className="group relative block w-full overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-200 [-webkit-tap-highlight-color:transparent] transition-all duration-300 hover:-translate-y-1 hover:shadow-md focus-visible:outline-2 focus-visible:outline-primary"
+            className="group relative block w-full break-inside-avoid overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-200 [-webkit-tap-highlight-color:transparent] transition-all duration-300 hover:-translate-y-1 hover:shadow-md focus-visible:outline-2 focus-visible:outline-primary"
             aria-label={`View larger: ${img.alt}`}
           >
             <Image

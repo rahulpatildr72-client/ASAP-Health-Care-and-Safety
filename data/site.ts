@@ -28,7 +28,6 @@ export const WEB3FORMS_KEY = "YOUR_WEB3FORMS_KEY";
 /* PLACEHOLDER — replace "#" with the real profile URLs. */
 export const SOCIAL_LINKS = [
   { label: "Instagram", href: "https://www.instagram.com/asaphealthandsafety", icon: "instagram" },
-  { label: "LinkedIn", href: "#", icon: "linkedin" },
 ] as const;
 
 export const STATS = [

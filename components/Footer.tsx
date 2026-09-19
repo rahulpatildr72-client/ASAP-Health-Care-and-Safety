@@ -16,7 +16,6 @@ const navigation = [
 
 /* PLACEHOLDER — point these at the real social profiles. */
 const SOCIALS = [
-  { label: "LinkedIn", href: "#", icon: "linkedin" },
   { label: "Instagram", href: "https://www.instagram.com/asaphealthandsafety", icon: "instagram" },
 ] as const;
 
