@@ -280,6 +280,17 @@ export default function AboutPage() {
               more people.
             </p>
           </FadeIn>
+          <FadeIn delay={0.15}>
+            <div className="mx-auto mt-10 max-w-3xl text-center">
+              <span className="mx-auto mb-5 block h-1 w-14 rounded-full bg-accent" aria-hidden="true" />
+              <p className="font-display text-[1.25rem] font-bold text-gray-900 sm:text-[1.5rem]">
+                ASAP Healthcare and Safety
+              </p>
+              <p className="mt-2 font-display text-[1.05rem] font-semibold text-primary sm:text-[1.2rem]">
+                Empowering People. Promoting Health. Protecting Life.
+              </p>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
