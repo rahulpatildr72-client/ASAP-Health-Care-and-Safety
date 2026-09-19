@@ -153,7 +153,7 @@ export default function AboutPage() {
               </p>
               <p>
                 ASAP is supported by a team of doctors and healthcare professionals with relevant
-                experience in healthcare, emergency response, first aid, CPR, BLS, AED, workplace
+                experience in healthcare, emergency response, first aid, CPR, AED, workplace
                 health, preventive healthcare and health education.
               </p>
               <p>
@@ -269,24 +269,18 @@ export default function AboutPage() {
       {/* Founder (reference: leadership card) */}
       <section className="bg-white py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <SectionHeading align="center" eyebrow="Founder & Lead Trainer" title={FOUNDER.name} />
+          <SectionHeading align="center" eyebrow="Founder" title={FOUNDER.name} />
           <FadeIn>
             <div className="flex flex-col items-center gap-8 rounded-2xl bg-off-white p-7 sm:p-10 md:flex-row md:items-start md:gap-12">
               <FounderPortrait />
               <div className="min-w-0 flex-1">
-                <blockquote className="border-l-4 border-primary pl-5 text-[1rem] italic leading-[1.7] text-gray-700 sm:text-[1.15rem]">
-                  {FOUNDER.story}
-                </blockquote>
+                <div className="space-y-4 border-l-4 border-primary pl-5 text-[1rem] leading-[1.8] text-gray-700 sm:text-[1.05rem]">
+                  {FOUNDER.story.map((para) => (
+                    <p key={para.slice(0, 40)}>{para}</p>
+                  ))}
+                </div>
                 <p className="mt-5 font-display text-[1.1rem] font-semibold text-gray-900">{FOUNDER.name}</p>
                 <p className="text-[0.85rem] text-gray-500">{FOUNDER.role}</p>
-                <ul className="mt-6 grid gap-3 border-t border-gray-200 pt-6 sm:grid-cols-2">
-                  {FOUNDER.qualifications.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-[0.875rem] font-medium text-gray-800">
-                      <BadgeCheck className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
             </div>
           </FadeIn>
