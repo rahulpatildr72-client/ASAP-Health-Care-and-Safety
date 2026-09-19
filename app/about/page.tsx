@@ -8,13 +8,11 @@ import {
   Target,
   Users,
   CircleCheck,
-  BookOpen,
   Hand,
   ShieldCheck,
   UserCheck,
   Lightbulb,
   Building2,
-  ArrowRight,
 } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
 import TrustBar from "@/components/TrustBar";
@@ -65,24 +63,6 @@ const EXPERTISE = [
   "Stress Management & Mental Wellbeing",
   "Health & Wellbeing Awareness",
   "Customized Safety Training",
-];
-
-const STEPS = [
-  {
-    icon: BookOpen,
-    title: "Learn",
-    description: "Understand important safety procedures and emergency response techniques.",
-  },
-  {
-    icon: Hand,
-    title: "Practise",
-    description: "Build confidence through demonstrations, activities, and practical learning.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Respond",
-    description: "Learn how to take appropriate action when an emergency occurs.",
-  },
 ];
 
 const WHY_US = [
@@ -213,38 +193,24 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Our Training Approach: Learn, Practise, Respond */}
+      {/* Experience Behind ASAP */}
       <section className="bg-white py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <SectionHeading
-            align="center"
-            eyebrow="Our Training Approach"
-            title="Learn. Practise. Respond."
-            subtitle="A simple three-step path that takes participants from understanding to confident action."
-          />
-          <ol className="grid gap-8 lg:grid-cols-3 lg:gap-6">
-            {STEPS.map(({ icon: Icon, title, description }, i) => (
-              <FadeIn key={title} delay={i * 0.1} className="relative h-full">
-                <li className="relative h-full rounded-2xl bg-off-white p-8 pt-10 text-center shadow-sm">
-                  <span className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary px-4 py-1 font-display text-[0.8rem] font-bold tracking-[0.1em] text-white ring-4 ring-white">
-                    0{i + 1}
-                  </span>
-                  <span className="icon-square mx-auto mb-5 h-[70px] w-[70px] rounded-2xl">
-                    <Icon className="h-7 w-7" />
-                  </span>
-                  <h3 className="font-display text-[1.25rem] font-bold uppercase tracking-[0.06em] text-gray-900">{title}</h3>
-                  <span className="mx-auto mt-3 block h-1 w-10 rounded-full bg-accent" aria-hidden="true" />
-                  <p className="mt-4 text-[0.95rem] leading-[1.7] text-gray-600">{description}</p>
-                  {i < STEPS.length - 1 && (
-                    <ArrowRight
-                      aria-hidden="true"
-                      className="absolute -right-6 top-1/2 hidden h-6 w-6 -translate-y-1/2 text-accent lg:block"
-                    />
-                  )}
-                </li>
-              </FadeIn>
-            ))}
-          </ol>
+          <SectionHeading align="center" title="Experience Behind ASAP" />
+          <FadeIn>
+            <div className="mx-auto max-w-3xl space-y-5 text-center text-[1rem] leading-[1.8] text-gray-700 sm:text-[1.1rem]">
+              <p>
+                The professional experience supporting ASAP includes many years of first-aid
+                training, clinical healthcare exposure, BLS/CPR training and healthcare-management
+                knowledge.
+              </p>
+              <p>
+                Our programmes are designed for corporates, industries, educational institutions,
+                healthcare organisations, communities and individuals, with content adapted
+                according to the needs of each group.
+              </p>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
