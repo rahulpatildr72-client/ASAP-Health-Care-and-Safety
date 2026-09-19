@@ -12,10 +12,10 @@ export const SITE_TAGLINE =
   "Professional First Aid, CPR, AED and Health & Safety Training designed to build confident lifesavers in workplaces, institutions and communities.";
 
 export const CONTACT = {
-  phone: "+91 99677 30940",
-  phoneHref: "tel:+919967730940",
+  phone: "+91 85917 07324",
+  phoneHref: "tel:+918591707324",
   /* PLACEHOLDER — replace with the real WhatsApp business number (digits only, country code first). */
-  whatsapp: "919967730940",
+  whatsapp: "918591707324",
   email: "info@asaphealthandsafety.com",
   location: "Navi Mumbai, Maharashtra, India",
   onlineNote: "Live online training available worldwide",
