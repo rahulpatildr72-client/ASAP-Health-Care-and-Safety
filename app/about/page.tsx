@@ -88,7 +88,7 @@ const STEPS = [
 const WHY_US = [
   {
     icon: UserCheck,
-    title: "Experienced Trainers",
+    title: "Doctor-Led Training",
     description: "Learn from trainers with practical knowledge of health and safety.",
   },
   {
