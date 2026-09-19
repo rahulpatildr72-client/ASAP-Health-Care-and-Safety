@@ -260,8 +260,8 @@ export default function AboutPage() {
                     <p key={para.slice(0, 40)}>{para}</p>
                   ))}
                 </div>
-                <p className="mt-5 font-display text-[1.1rem] font-semibold text-gray-900">{FOUNDER.name}</p>
-                <p className="text-[0.85rem] text-gray-500">{FOUNDER.role}</p>
+                <p className="mt-5 font-display text-[1.15rem] font-bold text-gray-900">{FOUNDER.name}</p>
+                <p className="text-[0.9rem] font-bold text-gray-900">{FOUNDER.role}</p>
               </div>
             </div>
           </FadeIn>
