@@ -275,7 +275,7 @@ export default function AboutPage() {
           <SectionHeading align="center" eyebrow="Founder" title={FOUNDER.name} />
           <FadeIn>
             <div className="flex flex-col items-center gap-8 rounded-2xl bg-off-white p-7 sm:p-10 md:flex-row md:items-start md:gap-12">
-              <FounderPortrait />
+              <FounderPortrait alt={`${FOUNDER.name}, ${FOUNDER.role}`} />
               <div className="min-w-0 flex-1">
                 <div className="space-y-4 border-l-4 border-primary pl-5 text-[1rem] leading-[1.8] text-gray-700 sm:text-[1.05rem]">
                   {FOUNDER.story.map((para) => (
