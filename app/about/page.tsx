@@ -176,7 +176,7 @@ export default function AboutPage() {
             align="center"
             eyebrow="Our Training Expertise"
             title="Doctor-Led Training"
-            subtitle="At ASAP, our core health and safety training sessions are conducted by doctors, bringing medical knowledge, clinical understanding and practical healthcare experience directly into the training environment."
+            subtitle="At ASAP, our core health and safety training sessions are conducted by doctors and safety experts respectively, bringing medical knowledge, clinical understanding and practical healthcare experience directly into the training environment."
           />
           <FadeIn>
             <p className="mb-6 text-center font-display text-[1.15rem] font-semibold text-gray-900 sm:text-[1.25rem]">
