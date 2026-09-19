@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import {
-  Activity,
-  Siren,
   BadgeCheck,
   Eye,
   Target,
@@ -31,26 +29,6 @@ export const metadata: Metadata = {
   },
 };
 
-const APPROACH = [
-  {
-    icon: Activity,
-    title: "Scenario-Driven Practice",
-    description:
-      "Mannequins, AED trainer units and realistic drills — participants rehearse real emergencies, not abstract theory, until the right response comes automatically.",
-  },
-  {
-    icon: Siren,
-    title: "Built for Pressure",
-    description:
-      "Real emergencies bring panic, noise and hesitation. Training deliberately accounts for how people respond under stress, so skills hold up when it counts.",
-  },
-  {
-    icon: BadgeCheck,
-    title: "Demonstrated Competence",
-    description:
-      "Participants show they can perform the skills hands-on before completing the program — certification reflects ability, not just attendance.",
-  },
-];
 
 const EXPERTISE = [
   "Practical demonstrations",
@@ -290,46 +268,18 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Training approach */}
+      {/* Our Commitment */}
       <section className="bg-off-white py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <SectionHeading
-            align="center"
-            eyebrow="Our Approach"
-            title="Until Response Becomes Reflex"
-            subtitle="Attendance doesn't save lives — competence does. Every program is designed around how people actually behave under pressure."
-          />
-
-          <FadeIn className="mx-auto mb-12 max-w-4xl">
-            <div className="relative aspect-[16/9] overflow-hidden rounded-2xl border-4 border-white shadow-lg">
-              <Image
-                src="/first-aid-training.png"
-                alt="Instructor bandaging a participant's arm during first aid practice"
-                fill
-                sizes="(max-width: 1024px) 100vw, 900px"
-                className="object-cover transition-transform duration-500 hover:scale-105"
-              />
-            </div>
-            <p className="mt-4 text-center text-[0.9rem] text-gray-600">
-              <span className="font-semibold uppercase tracking-[0.08em] text-primary">Hands-on, always</span>
-              {" — "}
-              Mannequins, AED trainers, bandages and real equipment in every session.
+          <SectionHeading align="center" title="Our Commitment" />
+          <FadeIn>
+            <p className="mx-auto max-w-3xl text-center text-[1rem] leading-[1.8] text-gray-700 sm:text-[1.1rem]">
+              At ASAP Healthcare and Safety, our goal is not simply to conduct training sessions.
+              We aim to build confidence, improve preparedness and promote a culture of prevention
+              and responsible action by making essential health and safety knowledge accessible to
+              more people.
             </p>
           </FadeIn>
-
-          <div className="grid gap-6 lg:grid-cols-3 lg:gap-8">
-            {APPROACH.map(({ icon: Icon, title, description }, i) => (
-              <FadeIn key={title} delay={i * 0.1} className="h-full">
-                <div className="group relative h-full overflow-hidden rounded-2xl bg-white p-8 text-center shadow-sm transition-all duration-300 before:absolute before:inset-x-0 before:top-0 before:h-1 before:origin-left before:scale-x-0 before:bg-primary before:transition-transform before:duration-300 before:content-[''] hover:-translate-y-2 hover:shadow-lg hover:before:scale-x-100">
-                  <span className="icon-square mx-auto mb-6 h-[70px] w-[70px] rounded-2xl group-hover:scale-110 group-hover:bg-primary group-hover:text-white">
-                    <Icon className="h-7 w-7" />
-                  </span>
-                  <h3 className="font-display text-[1.15rem] font-semibold text-gray-900">{title}</h3>
-                  <p className="mt-2 text-[0.9rem] leading-[1.6] text-gray-600">{description}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
         </div>
       </section>
 
