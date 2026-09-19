@@ -122,7 +122,7 @@ export const FOUNDER = {
   role: "Founder – ASAP Healthcare and Safety",
   story: [
     "Dr. Amruta Patil is the Founder of ASAP Healthcare and Safety, established with a vision of promoting practical health awareness, emergency preparedness and safety education across communities, workplaces and institutions.",
-    "Dr. Amruta Patil has gained broad clinical exposure across Intensive Care, Gynaecology and Paediatrics, alongside many years of experience in first-aid training and health education. This combination of clinical insight and training expertise forms an integral part of the foundation and vision of ASAP Healthcare and Safety.",
+    "Dr. Amruta Patil has gained broad clinical exposure across various hospitals, alongside many years of experience in first-aid training and health education. This combination of clinical insight and training expertise forms an integral part of the foundation and vision of ASAP Healthcare and Safety.",
     "Her professional journey has provided her with valuable insight into patient care, emergency situations and the importance of timely and appropriate first-aid response. This experience has helped shape ASAP’s approach to making health and safety education practical, understandable and applicable to real-life situations.",
     "Under her leadership, ASAP provides professionally designed health and safety awareness and training programmes conducted by qualified doctors with relevant experience and subject knowledge.",
   ],
