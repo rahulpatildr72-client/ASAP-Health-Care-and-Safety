@@ -53,16 +53,14 @@ const APPROACH = [
 ];
 
 const EXPERTISE = [
-  "First Aid & CPR",
-  "AED Awareness",
-  "Emergency Response",
-  "Fire Safety",
-  "Workplace Safety",
-  "Emergency Preparedness",
-  "POSH Awareness",
-  "Stress Management & Mental Wellbeing",
-  "Health & Wellbeing Awareness",
-  "Customized Safety Training",
+  "Practical demonstrations",
+  "CPR and AED demonstrations",
+  "First-aid demonstrations",
+  "Emergency-response scenarios",
+  "Case-based learning",
+  "Interactive discussions",
+  "Question-and-answer sessions",
+  "Workplace and community-specific examples",
 ];
 
 const WHY_US = [
@@ -180,7 +178,12 @@ export default function AboutPage() {
             title="Doctor-Led Training"
             subtitle="At ASAP, our core health and safety training sessions are conducted by doctors, bringing medical knowledge, clinical understanding and practical healthcare experience directly into the training environment."
           />
-          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <FadeIn>
+            <p className="mb-6 text-center font-display text-[1.15rem] font-semibold text-gray-900 sm:text-[1.25rem]">
+              Our doctors use:
+            </p>
+          </FadeIn>
+          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {EXPERTISE.map((item, i) => (
               <FadeIn key={item} delay={i * 0.04}>
                 <li className="flex h-full items-center gap-3.5 rounded-xl border border-gray-200 bg-white px-5 py-4 transition-colors hover:border-primary/40 hover:bg-primary-light/60">
