@@ -194,7 +194,7 @@ export default function AboutPage() {
           <SectionHeading
             align="center"
             eyebrow="Our Training Expertise"
-            title="Areas We Train In"
+            title="Doctor-Led Training"
             subtitle="Practical programs that cover the safety, emergency and wellbeing needs of workplaces, institutions and communities."
           />
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
