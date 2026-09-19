@@ -43,7 +43,7 @@ export default function Lightbox({ images }: { images: GalleryImage[] }) {
             key={img.src}
             type="button"
             onClick={() => setActive(i)}
-            className="group relative block w-full overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-md focus-visible:outline-2 focus-visible:outline-primary"
+            className="group relative block w-full overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-200 [-webkit-tap-highlight-color:transparent] transition-all duration-300 hover:-translate-y-1 hover:shadow-md focus-visible:outline-2 focus-visible:outline-primary"
             aria-label={`View larger: ${img.alt}`}
           >
             <Image
@@ -66,7 +66,7 @@ export default function Lightbox({ images }: { images: GalleryImage[] }) {
           role="dialog"
           aria-modal="true"
           aria-label={images[active].alt}
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-primary-darker/90 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/90 p-4"
           onClick={close}
         >
           <button
@@ -95,7 +95,7 @@ export default function Lightbox({ images }: { images: GalleryImage[] }) {
               width={images[active].width * 2}
               height={images[active].height * 2}
               sizes="100vw"
-              className="mx-auto max-h-[80vh] w-auto rounded-2xl object-contain"
+              className="mx-auto h-auto max-h-[80vh] w-auto max-w-full rounded-2xl object-contain"
             />
             <p className="mt-4 text-center text-sm text-white/80">{images[active].alt}</p>
           </div>
