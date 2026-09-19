@@ -66,7 +66,7 @@ export default function Lightbox({ images }: { images: GalleryImage[] }) {
           role="dialog"
           aria-modal="true"
           aria-label={images[active].alt}
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/90 p-4"
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black p-4"
           onClick={close}
         >
           <button
@@ -97,7 +97,6 @@ export default function Lightbox({ images }: { images: GalleryImage[] }) {
               sizes="100vw"
               className="mx-auto h-auto max-h-[80vh] w-auto max-w-full rounded-2xl object-contain"
             />
-            <p className="mt-4 text-center text-sm text-white/80">{images[active].alt}</p>
           </div>
           <button
             type="button"
