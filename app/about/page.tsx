@@ -168,6 +168,9 @@ export default function AboutPage() {
 
           <FadeIn delay={0.15}>
             <div className="space-y-4 text-[1rem] leading-[1.8] text-gray-700 sm:text-[1.05rem]">
+              <p className="font-display text-[1.15rem] font-bold text-gray-900 sm:text-[1.25rem]">
+                Training people to be ready when safety matters most.
+              </p>
               <p>
                 ASAP is supported by a team of doctors and healthcare professionals with relevant
                 experience in healthcare, emergency response, first aid, CPR, BLS, AED, workplace
