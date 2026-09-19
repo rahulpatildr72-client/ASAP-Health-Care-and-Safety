@@ -150,7 +150,7 @@ export default function AboutPage() {
                 Training people to be ready when safety matters most.
               </p>
               <p>
-                ASAP is supported by a team of doctors and healthcare professionals with relevant
+                ASAP is supported by a team of doctors, healthcare and safety professionals with relevant
                 experience in healthcare, emergency response, first aid, CPR, AED, workplace
                 health and safety, preventive healthcare and health education.
               </p>
