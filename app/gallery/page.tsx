@@ -17,21 +17,16 @@ export const metadata: Metadata = {
 };
 
 const IMAGES: GalleryImage[] = [
-  { src: "/hero-cpr.jpg", alt: "Chest compressions on a CPR training mannequin", width: 1024, height: 643 },
-  { src: "/first-aid-training.png", alt: "Instructor demonstrating bandaging during first aid practice", width: 1024, height: 1024 },
-  { src: "/aed-training.png", alt: "Attaching AED pads to a training mannequin", width: 1024, height: 1024 },
-  { src: "/meditation-yoga.jpg", alt: "Meditation and yoga wellness session", width: 1200, height: 1395 },
-  { src: "/fire-safety.webp", alt: "Fire safety and extinguisher training session", width: 1000, height: 667 },
-  { src: "/corporate-training.png", alt: "Corporate team practicing CPR during an onsite session", width: 1024, height: 1024 },
-  { src: "/choking-response.png", alt: "Choking response demonstration in a classroom", width: 1024, height: 1024 },
-  { src: "/stress-management-inner.jpg", alt: "Stress management workshop for office teams", width: 1170, height: 777 },
-  { src: "/ert-training.png", alt: "Emergency Response Team drill in an industrial facility", width: 1024, height: 1024 },
-  { src: "/health-safety-training.png", alt: "Workplace safety briefing on a factory floor", width: 1024, height: 1024 },
-  { src: "/cpr-training.png", alt: "Trainer guiding CPR technique on a mannequin", width: 1024, height: 1024 },
-  { src: "/posh-awareness.webp", alt: "POSH awareness workshop for office staff", width: 1024, height: 1024 },
-  { src: "/female-healthcare.png", alt: "Female healthcare and wellbeing awareness session", width: 1024, height: 1024 },
-  { src: "/counselling-wellbeing.png", alt: "Counselling and mental wellbeing workshop", width: 1024, height: 1024 },
-  { src: "/wellness-program.png", alt: "Yoga session during a workplace wellness program", width: 1024, height: 1024 },
+  { src: "/gallery/training-01.jpg", alt: "Women's health and hygiene awareness session for a village community", width: 1280, height: 960 },
+  { src: "/gallery/training-02.jpg", alt: "Checking responsiveness during an outdoor emergency response drill", width: 1280, height: 720 },
+  { src: "/gallery/training-03.jpg", alt: "CPR practice on a mannequin with an AED trainer at an industrial site", width: 960, height: 1280 },
+  { src: "/gallery/training-04.jpg", alt: "Participant performing chest compressions on a CPR mannequin", width: 572, height: 769 },
+  { src: "/gallery/training-05.jpg", alt: "Infant CPR demonstration during a corporate training session", width: 960, height: 1280 },
+  { src: "/gallery/training-06.jpg", alt: "Choking response demonstration with security staff", width: 960, height: 1280 },
+  { src: "/gallery/training-07.jpg", alt: "Hands-on infant first aid practice with a training doll", width: 960, height: 1280 },
+  { src: "/gallery/training-08.jpg", alt: "Learning to operate an AED trainer with pads attached to a mannequin", width: 960, height: 1280 },
+  { src: "/gallery/training-09.jpg", alt: "Infant AED and CPR practice during an onsite session", width: 720, height: 1280 },
+  { src: "/gallery/training-10.jpg", alt: "Bandaging practice during first aid training", width: 1280, height: 960 },
 ];
 
 export default function GalleryPage() {

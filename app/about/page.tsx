@@ -152,7 +152,7 @@ export default function AboutPage() {
               <p>
                 ASAP is supported by a team of doctors and healthcare professionals with relevant
                 experience in healthcare, emergency response, first aid, CPR, AED, workplace
-                health, preventive healthcare and health education.
+                health and safety, preventive healthcare and health education.
               </p>
               <p>
                 Our professional team includes doctors with relevant clinical and training
