@@ -17,7 +17,7 @@ const navigation = [
 /* PLACEHOLDER — point these at the real social profiles. */
 const SOCIALS = [
   { label: "LinkedIn", href: "#", icon: "linkedin" },
-  { label: "Instagram", href: "#", icon: "instagram" },
+  { label: "Instagram", href: "https://www.instagram.com/asaphealthandsafety", icon: "instagram" },
 ] as const;
 
 export default function Footer() {
@@ -39,6 +39,8 @@ export default function Footer() {
                 key={label}
                 href={href}
                 aria-label={label}
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
                 className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:-translate-y-0.5 hover:bg-primary"
               >
                 <SocialIcon name={icon} className="h-4 w-4" />

@@ -97,6 +97,8 @@ export default function Header() {
                   key={label}
                   href={href}
                   aria-label={label}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
                   className="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:-translate-y-px hover:bg-white/25"
                 >
                   <SocialIcon name={icon} className="h-3.5 w-3.5" />

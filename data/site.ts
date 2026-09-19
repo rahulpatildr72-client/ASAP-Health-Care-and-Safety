@@ -27,7 +27,7 @@ export const WEB3FORMS_KEY = "YOUR_WEB3FORMS_KEY";
 /* ⚠ CLIENT TO CONFIRM — figures taken from the existing business website; verify before launch. */
 /* PLACEHOLDER — replace "#" with the real profile URLs. */
 export const SOCIAL_LINKS = [
-  { label: "Instagram", href: "#", icon: "instagram" },
+  { label: "Instagram", href: "https://www.instagram.com/asaphealthandsafety", icon: "instagram" },
   { label: "LinkedIn", href: "#", icon: "linkedin" },
 ] as const;
 
